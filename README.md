@@ -14,9 +14,7 @@ QRISKvalidation
 - Publications: **-**
 - Results explorer: **-**
 
-[Description (single paragraph)]
 
-[You can add other text at this point]
 
 Code to run
 =========
