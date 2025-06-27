@@ -7,7 +7,7 @@ QRISKvalidation
 - Study type: **Methods Research**
 - Tags: **Prediction Models**
 - Study lead: **Alexander Saelmans**
-- Study lead forums tag: **[[Lead tag]](https://forums.ohdsi.org/u/[Lead tag])**
+- Study lead forums tag: **[add](https://forums.ohdsi.org/u/add)**
 - Study start date: **06-27-2025**
 - Study end date: **-**
 - Protocol: **-**
