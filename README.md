@@ -1,4 +1,4 @@
-[Study title]
+QRISKvalidation
 =============
 
 <img src="https://img.shields.io/badge/Study%20Status-Repo%20Created-lightgray.svg" alt="Study Status: Repo Created">
@@ -17,3 +17,9 @@
 [Description (single paragraph)]
 
 [You can add other text at this point]
+
+Code to run
+=========
+```r
+
+
