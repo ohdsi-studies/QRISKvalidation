@@ -69,7 +69,7 @@ minCellCount <- 5
 
 # =========== END OF INPUTS ========== #
 
-analysisSpecifications <- RCRIvalidation::loadStudySpec()
+analysisSpecifications <- QRISKvalidation::loadStudySpec()
 
 executionSettings <- Strategus::createCdmExecutionSettings(
   workDatabaseSchema = workDatabaseSchema,
