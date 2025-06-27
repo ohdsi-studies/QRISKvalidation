@@ -5,10 +5,10 @@
 
 - Analytics use case(s): **Patient-Level Prediction**
 - Study type: **Methods Research**
-- Tags: **-**
-- Study lead: **-**
+- Tags: **Prediction Models**
+- Study lead: **Alexander Saelmans**
 - Study lead forums tag: **[[Lead tag]](https://forums.ohdsi.org/u/[Lead tag])**
-- Study start date: **-**
+- Study start date: **06-27-2025**
 - Study end date: **-**
 - Protocol: **-**
 - Publications: **-**
