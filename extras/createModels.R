@@ -23,7 +23,7 @@ populationSettings <- PatientLevelPrediction::createStudyPopulationSettings(
 #=======================================================================================
 # need to add covariateSettings and stuff to this?
 canalysisId <- 668
-plpModelOriginal <- PatientLevelPrediction::createGlmModel(
+plpModelQRISK1_male <- PatientLevelPrediction::createGlmModel(
   coefficients = data.frame(
     covariateId = predictorIds*1000+canalysisId,
     coefficient = c() #TODO
@@ -101,16 +101,16 @@ plpModelOriginal <- PatientLevelPrediction::createGlmModel(
     )
 )
 
-plpModelOriginal$modelDesign$targetId <- targetId
-plpModelOriginal$modelDesign$outcomeId <- outcomeId
-plpModelOriginal$modelDesign$covariateSettings <- list(
+plpModelQRISK1_male$modelDesign$targetId <- targetId
+plpModelQRISK1_male$modelDesign$outcomeId <- outcomeId
+plpModelQRISK1_male$modelDesign$covariateSettings <- list(
   FeatureExtraction::createCohortBasedCovariateSettings(
   analysisId = canalysisId,
   covariateCohortDatabaseSchema = '', 
   covariateCohortTable = '', 
   covariateCohorts = data.frame(
     cohortId = predictorIds,
-    cohortName = c('','','','','','')
+    cohortName = c('','','','','','') #TODO
     ), 
   valueType = 'binary', 
   startDay = -365, 
@@ -122,11 +122,11 @@ plpModelOriginal$modelDesign$covariateSettings <- list(
 )
 
 # bug that needs fixing in PLP
-attr(plpModelOriginal,"saveType") <- 'RtoJson'
+attr(plpModelQRISK1_male,"saveType") <- 'RtoJson'
 
 # RtoJson
 PatientLevelPrediction::savePlpModel(
-  plpModel = plpModelOriginal, 
+  plpModel = plpModelQRISK1_male, 
   dirPath = './inst/models/QRISK1_male'
     )
 
@@ -134,7 +134,7 @@ PatientLevelPrediction::savePlpModel(
 #=============================================================================================
 # need to add covariateSettings and stuff to this?
 canalysisId <- 668
-plpModelOriginal <- PatientLevelPrediction::createGlmModel(
+plpModelQRISK2_male <- PatientLevelPrediction::createGlmModel(
   coefficients = data.frame(
     covariateId = predictorIds*1000+canalysisId,
     coefficient = c() #TODO
@@ -212,16 +212,16 @@ plpModelOriginal <- PatientLevelPrediction::createGlmModel(
     )
 )
 
-plpModelOriginal$modelDesign$targetId <- targetId
-plpModelOriginal$modelDesign$outcomeId <- outcomeId
-plpModelOriginal$modelDesign$covariateSettings <- list(
+plpModelQRISK2_male$modelDesign$targetId <- targetId
+plpModelQRISK2_male$modelDesign$outcomeId <- outcomeId
+plpModelQRISK2_male$modelDesign$covariateSettings <- list(
   FeatureExtraction::createCohortBasedCovariateSettings(
   analysisId = canalysisId,
   covariateCohortDatabaseSchema = '', 
   covariateCohortTable = '', 
   covariateCohorts = data.frame(
     cohortId = predictorIds,
-    cohortName = c('','','','','','')
+    cohortName = c('','','','','','') #TODO
     ), 
   valueType = 'binary', 
   startDay = -365, 
@@ -233,11 +233,11 @@ plpModelOriginal$modelDesign$covariateSettings <- list(
 )
 
 # bug that needs fixing in PLP
-attr(plpModelOriginal,"saveType") <- 'RtoJson'
+attr(plpModelQRISK2_male,"saveType") <- 'RtoJson'
 
 # RtoJson
 PatientLevelPrediction::savePlpModel(
-  plpModel = plpModelOriginal, 
+  plpModel = plpModelQRISK2_male, 
   dirPath = './inst/models/QRISK2_male'
     )
 
@@ -245,7 +245,7 @@ PatientLevelPrediction::savePlpModel(
 #============================================================================
 # need to add covariateSettings and stuff to this?
 canalysisId <- 668
-plpModelOriginal <- PatientLevelPrediction::createGlmModel(
+plpModelQRISK3_male <- PatientLevelPrediction::createGlmModel(
   coefficients = data.frame(
     covariateId = predictorIds*1000+canalysisId,
     coefficient = c() #TODO
@@ -323,16 +323,16 @@ plpModelOriginal <- PatientLevelPrediction::createGlmModel(
     )
 )
 
-plpModelOriginal$modelDesign$targetId <- targetId
-plpModelOriginal$modelDesign$outcomeId <- outcomeId
-plpModelOriginal$modelDesign$covariateSettings <- list(
+plpModelQRISK3_male$modelDesign$targetId <- targetId
+plpModelQRISK3_male$modelDesign$outcomeId <- outcomeId
+plpModelQRISK3_male$modelDesign$covariateSettings <- list(
   FeatureExtraction::createCohortBasedCovariateSettings(
   analysisId = canalysisId,
   covariateCohortDatabaseSchema = '', 
   covariateCohortTable = '', 
   covariateCohorts = data.frame(
     cohortId = predictorIds,
-    cohortName = c('','','','','','')
+    cohortName = c('','','','','','') #TODO
     ), 
   valueType = 'binary', 
   startDay = -365, 
@@ -344,11 +344,11 @@ plpModelOriginal$modelDesign$covariateSettings <- list(
 )
 
 # bug that needs fixing in PLP
-attr(plpModelOriginal,"saveType") <- 'RtoJson'
+attr(plpModelQRISK3_male,"saveType") <- 'RtoJson'
 
 # RtoJson
 PatientLevelPrediction::savePlpModel(
-  plpModel = plpModelOriginal, 
+  plpModel = plpModelQRISK3_male, 
   dirPath = './inst/models/QRISK3_male'
     )
 
@@ -356,7 +356,7 @@ PatientLevelPrediction::savePlpModel(
 #============================================================================
 # need to add covariateSettings and stuff to this?
 canalysisId <- 668
-plpModelOriginal <- PatientLevelPrediction::createGlmModel(
+plpModelQRISK4_male <- PatientLevelPrediction::createGlmModel(
   coefficients = data.frame(
     covariateId = predictorIds*1000+canalysisId,
     coefficient = c() #TODO
@@ -434,16 +434,16 @@ plpModelOriginal <- PatientLevelPrediction::createGlmModel(
     )
 )
 
-plpModelOriginal$modelDesign$targetId <- targetId
-plpModelOriginal$modelDesign$outcomeId <- outcomeId
-plpModelOriginal$modelDesign$covariateSettings <- list(
+plpModelQRISK4_male$modelDesign$targetId <- targetId
+plpModelQRISK4_male$modelDesign$outcomeId <- outcomeId
+plpModelQRISK4_male$modelDesign$covariateSettings <- list(
   FeatureExtraction::createCohortBasedCovariateSettings(
   analysisId = canalysisId,
   covariateCohortDatabaseSchema = '', 
   covariateCohortTable = '', 
   covariateCohorts = data.frame(
     cohortId = predictorIds,
-    cohortName = c('','','','','','')
+    cohortName = c('','','','','','') #TODO
     ), 
   valueType = 'binary', 
   startDay = -365, 
@@ -455,11 +455,11 @@ plpModelOriginal$modelDesign$covariateSettings <- list(
 )
 
 # bug that needs fixing in PLP
-attr(plpModelOriginal,"saveType") <- 'RtoJson'
+attr(plpModelQRISK4_male,"saveType") <- 'RtoJson'
 
 # RtoJson
 PatientLevelPrediction::savePlpModel(
-  plpModel = plpModelOriginal, 
+  plpModel = plpModelQRISK4_male, 
   dirPath = './inst/models/QRISK4_male'
     )
 
