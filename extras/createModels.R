@@ -26,72 +26,72 @@ canalysisId <- 668
 plpModelOriginal <- PatientLevelPrediction::createGlmModel(
   coefficients = data.frame(
     covariateId = predictorIds*1000+canalysisId,
-    coefficient = c(1,1,1,1,1,1)
+    coefficient = c() #TODO
   ), 
   intercept = 0, 
-  mapping = RCRIoriginal,
+  mapping = "logistic", #TODO
   populationSettings = populationSettings,
   covariateSettings = list(createCohortCovariateSettings(
-      cohortName = 'Covariate RCRI Cerebrovascular disease',
+      cohortName = '', #TODO
       settingId = 1,
       cohortDatabaseSchema = cohortDatabaseSchema,
       cohortTable = cohortTableName,
-      cohortId = 19690, 
+      cohortId = , #TODO 
       startDay = -9999,
       endDay = 0,
       count = F, 
       ageInteraction = F, 
       analysisId = 668
     ), createCohortCovariateSettings(
-      cohortName = 'Covariate RCRI Heart Failure',
+      cohortName = '', #TODO
       settingId = 1,
       cohortDatabaseSchema = cohortDatabaseSchema,
       cohortTable = cohortTableName,
-      cohortId = 19686,  
+      cohortId = , #TODO  
       startDay = -9999,
       endDay = 0,
       count = F, 
       ageInteraction = F, 
       analysisId = 668
     ), createCohortCovariateSettings(
-      cohortName = 'Covariate RCRI Insulin treatment',
+      cohortName = '', #TODO
       settingId = 1,
       cohortDatabaseSchema = cohortDatabaseSchema,
       cohortTable = cohortTableName,
-      cohortId = 19691,  
+      cohortId = , #TODO  
       startDay = -30,
       endDay = 0,
       count = F, 
       ageInteraction = F, 
       analysisId = 668
     ), createCohortCovariateSettings(
-      cohortName = 'Covariate RCRI Ischemic heart disease',
+      cohortName = '', #TODO
       settingId = 1,
       cohortDatabaseSchema = cohortDatabaseSchema,
       cohortTable = cohortTableName,
-      cohortId = 19687, 
+      cohortId = , #TODO 
       startDay = -9999,
       endDay = 0,
       count = F, 
       ageInteraction = F, 
       analysisId = 668
     ), createCohortCovariateSettings(
-      cohortName = 'Covariate RCRI Elevated risk surgery',
+      cohortName = '', #TODO
       settingId = 1,
       cohortDatabaseSchema = cohortDatabaseSchema,
       cohortTable = cohortTableName,
-      cohortId = 19685, 
+      cohortId = , #TODO
       startDay = -30,
       endDay = 0,
       count = F, 
       ageInteraction = F, 
       analysisId = 668
     ), createCohortCovariateSettings(
-      cohortName = 'Covariate RCRI Creatinine including renal impairment',
+      cohortName = '', #TODO
       settingId = 1,
       cohortDatabaseSchema = cohortDatabaseSchema,
       cohortTable = cohortTableName,
-      cohortId = 19695, 
+      cohortId = , #TODO 
       startDay = -9999,
       endDay = 0,
       count = F, 
@@ -110,7 +110,7 @@ plpModelOriginal$modelDesign$covariateSettings <- list(
   covariateCohortTable = '', 
   covariateCohorts = data.frame(
     cohortId = predictorIds,
-    cohortName = c('Elevated risk surgery','Renal impairment creatinine','Ischemic heart disease','Cerebrovascular disease','Heart failure','Insulin')
+    cohortName = c('','','','','','')
     ), 
   valueType = 'binary', 
   startDay = -365, 
@@ -127,81 +127,82 @@ attr(plpModelOriginal,"saveType") <- 'RtoJson'
 # RtoJson
 PatientLevelPrediction::savePlpModel(
   plpModel = plpModelOriginal, 
-  dirPath = './inst/models/original_rcri'
+  dirPath = './inst/models/QRISK1_male'
     )
 
 #QRISK2_male
 #=============================================================================================
+# need to add covariateSettings and stuff to this?
 canalysisId <- 668
-plpModelOMOP <- PatientLevelPrediction::createGlmModel(
+plpModelOriginal <- PatientLevelPrediction::createGlmModel(
   coefficients = data.frame(
     covariateId = predictorIds*1000+canalysisId,
-    coefficient = c(1,1,1,1,1,1)
+    coefficient = c() #TODO
   ), 
   intercept = 0, 
-  mapping = "logistic",
+  mapping = "logistic", #TODO
   populationSettings = populationSettings,
   covariateSettings = list(createCohortCovariateSettings(
-      cohortName = 'Covariate RCRI Cerebrovascular disease',
+      cohortName = '', #TODO
       settingId = 1,
       cohortDatabaseSchema = cohortDatabaseSchema,
       cohortTable = cohortTableName,
-      cohortId = 19690, 
+      cohortId = , #TODO 
       startDay = -9999,
       endDay = 0,
       count = F, 
       ageInteraction = F, 
       analysisId = 668
     ), createCohortCovariateSettings(
-      cohortName = 'Covariate RCRI Heart Failure',
+      cohortName = '', #TODO
       settingId = 1,
       cohortDatabaseSchema = cohortDatabaseSchema,
       cohortTable = cohortTableName,
-      cohortId = 19686,  
+      cohortId = , #TODO  
       startDay = -9999,
       endDay = 0,
       count = F, 
       ageInteraction = F, 
       analysisId = 668
     ), createCohortCovariateSettings(
-      cohortName = 'Covariate RCRI Insulin treatment',
+      cohortName = '', #TODO
       settingId = 1,
       cohortDatabaseSchema = cohortDatabaseSchema,
       cohortTable = cohortTableName,
-      cohortId = 19691,  
+      cohortId = , #TODO  
       startDay = -30,
       endDay = 0,
       count = F, 
       ageInteraction = F, 
       analysisId = 668
     ), createCohortCovariateSettings(
-      cohortName = 'Covariate RCRI Ischemic heart disease',
+      cohortName = '', #TODO
       settingId = 1,
       cohortDatabaseSchema = cohortDatabaseSchema,
       cohortTable = cohortTableName,
-      cohortId = 19687, 
+      cohortId = , #TODO 
       startDay = -9999,
       endDay = 0,
       count = F, 
       ageInteraction = F, 
       analysisId = 668
     ), createCohortCovariateSettings(
-      cohortName = 'Covariate RCRI Elevated risk surgery',
+      cohortName = '', #TODO
       settingId = 1,
       cohortDatabaseSchema = cohortDatabaseSchema,
       cohortTable = cohortTableName,
-      cohortId = 19685, 
+      cohortId = , #TODO
       startDay = -30,
       endDay = 0,
       count = F, 
       ageInteraction = F, 
       analysisId = 668
     ), createCohortCovariateSettings(
-      cohortName = 'Covariate RCRI Creatinine including renal impairment',
+      cohortName = '', #TODO
       settingId = 1,
       cohortDatabaseSchema = cohortDatabaseSchema,
       cohortTable = cohortTableName,
-      cohortId = 19695, 
+      cohortId = , #TODO 
       startDay = -9999,
       endDay = 0,
       count = F, 
@@ -211,16 +212,16 @@ plpModelOMOP <- PatientLevelPrediction::createGlmModel(
     )
 )
 
-plpModelOMOP$modelDesign$targetId <- targetId
-plpModelOMOP$modelDesign$outcomeId <- outcomeId
-plpModelOMOP$modelDesign$covariateSettings <- list(
+plpModelOriginal$modelDesign$targetId <- targetId
+plpModelOriginal$modelDesign$outcomeId <- outcomeId
+plpModelOriginal$modelDesign$covariateSettings <- list(
   FeatureExtraction::createCohortBasedCovariateSettings(
   analysisId = canalysisId,
   covariateCohortDatabaseSchema = '', 
   covariateCohortTable = '', 
   covariateCohorts = data.frame(
     cohortId = predictorIds,
-    cohortName = c('Elevated risk surgery','Renal impairment creatinine','Ischemic heart disease','Cerebrovascular disease','Heart failure','Insulin')
+    cohortName = c('','','','','','')
     ), 
   valueType = 'binary', 
   startDay = -365, 
@@ -232,197 +233,87 @@ plpModelOMOP$modelDesign$covariateSettings <- list(
 )
 
 # bug that needs fixing in PLP
-attr(plpModelOMOP,"saveType") <- 'RtoJson'
+attr(plpModelOriginal,"saveType") <- 'RtoJson'
 
 # RtoJson
 PatientLevelPrediction::savePlpModel(
-  plpModel = plpModelOMOP, 
-  dirPath = './inst/models/omoped_rcri'
+  plpModel = plpModelOriginal, 
+  dirPath = './inst/models/QRISK2_male'
     )
 
 #QRISK3_male
 #============================================================================
-  canalysisId <- 668
-plpModelRecal <- PatientLevelPrediction::createGlmModel(
-  coefficients = data.frame(
-    covariateId = predictorIds*1000+canalysisId,
-    coefficient = c(1,1,1,1,1,1)
-  ), 
-  intercept = 0, 
-  mapping = RCRIrecalibrated,
-  populationSettings = populationSettings,
-  covariateSettings = list(createCohortCovariateSettings(
-      cohortName = 'Covariate RCRI Cerebrovascular disease',
-      settingId = 1,
-      cohortDatabaseSchema = cohortDatabaseSchema,
-      cohortTable = cohortTableName,
-      cohortId = 19690, 
-      startDay = -9999,
-      endDay = 0,
-      count = F, 
-      ageInteraction = F, 
-      analysisId = 668
-    ), createCohortCovariateSettings(
-      cohortName = 'Covariate RCRI Heart Failure',
-      settingId = 1,
-      cohortDatabaseSchema = cohortDatabaseSchema,
-      cohortTable = cohortTableName,
-      cohortId = 19686,  
-      startDay = -9999,
-      endDay = 0,
-      count = F, 
-      ageInteraction = F, 
-      analysisId = 668
-    ), createCohortCovariateSettings(
-      cohortName = 'Covariate RCRI Insulin treatment',
-      settingId = 1,
-      cohortDatabaseSchema = cohortDatabaseSchema,
-      cohortTable = cohortTableName,
-      cohortId = 19691,  
-      startDay = -30,
-      endDay = 0,
-      count = F, 
-      ageInteraction = F, 
-      analysisId = 668
-    ), createCohortCovariateSettings(
-      cohortName = 'Covariate RCRI Ischemic heart disease',
-      settingId = 1,
-      cohortDatabaseSchema = cohortDatabaseSchema,
-      cohortTable = cohortTableName,
-      cohortId = 19687, 
-      startDay = -9999,
-      endDay = 0,
-      count = F, 
-      ageInteraction = F, 
-      analysisId = 668
-    ), createCohortCovariateSettings(
-      cohortName = 'Covariate RCRI Elevated risk surgery',
-      settingId = 1,
-      cohortDatabaseSchema = cohortDatabaseSchema,
-      cohortTable = cohortTableName,
-      cohortId = 19685, 
-      startDay = -30,
-      endDay = 0,
-      count = F, 
-      ageInteraction = F, 
-      analysisId = 668
-    ), createCohortCovariateSettings(
-      cohortName = 'Covariate RCRI Creatinine including renal impairment',
-      settingId = 1,
-      cohortDatabaseSchema = cohortDatabaseSchema,
-      cohortTable = cohortTableName,
-      cohortId = 19695, 
-      startDay = -9999,
-      endDay = 0,
-      count = F, 
-      ageInteraction = F, 
-      analysisId = 668
-    )
-    )
-)
-
-plpModelRecal$modelDesign$targetId <- targetId
-plpModelRecal$modelDesign$outcomeId <- outcomeId
-plpModelRecal$modelDesign$covariateSettings <- list(
-  FeatureExtraction::createCohortBasedCovariateSettings(
-  analysisId = canalysisId,
-  covariateCohortDatabaseSchema = '', 
-  covariateCohortTable = '', 
-  covariateCohorts = data.frame(
-    cohortId = predictorIds,
-    cohortName = c('Elevated risk surgery','Renal impairment creatinine','Ischemic heart disease','Cerebrovascular disease','Heart failure','Insulin')
-    ), 
-  valueType = 'binary', 
-  startDay = -365, 
-  endDay = 0
-  ),
-  FeatureExtraction::createCovariateSettings(
-    useDemographicsAge = T
-    )
-)
-
-# bug that needs fixing in PLP
-attr(plpModelRecal,"saveType") <- 'RtoJson'
-
-# RtoJson
-PatientLevelPrediction::savePlpModel(
-  plpModel = plpModelRecal, 
-  dirPath = './inst/models/recalibrated_rcri'
-    )
-
-#QRISK4_female
-#============================================================================
-
+# need to add covariateSettings and stuff to this?
 canalysisId <- 668
-plpModelRecal <- PatientLevelPrediction::createGlmModel(
+plpModelOriginal <- PatientLevelPrediction::createGlmModel(
   coefficients = data.frame(
     covariateId = predictorIds*1000+canalysisId,
-    coefficient = c(1,1,1,1,1,1)
+    coefficient = c() #TODO
   ), 
   intercept = 0, 
-  mapping = RCRIrecalibrated,
+  mapping = "logistic", #TODO
   populationSettings = populationSettings,
   covariateSettings = list(createCohortCovariateSettings(
-      cohortName = 'Covariate RCRI Cerebrovascular disease',
+      cohortName = '', #TODO
       settingId = 1,
       cohortDatabaseSchema = cohortDatabaseSchema,
       cohortTable = cohortTableName,
-      cohortId = 19690, 
+      cohortId = , #TODO 
       startDay = -9999,
       endDay = 0,
       count = F, 
       ageInteraction = F, 
       analysisId = 668
     ), createCohortCovariateSettings(
-      cohortName = 'Covariate RCRI Heart Failure',
+      cohortName = '', #TODO
       settingId = 1,
       cohortDatabaseSchema = cohortDatabaseSchema,
       cohortTable = cohortTableName,
-      cohortId = 19686,  
+      cohortId = , #TODO  
       startDay = -9999,
       endDay = 0,
       count = F, 
       ageInteraction = F, 
       analysisId = 668
     ), createCohortCovariateSettings(
-      cohortName = 'Covariate RCRI Insulin treatment',
+      cohortName = '', #TODO
       settingId = 1,
       cohortDatabaseSchema = cohortDatabaseSchema,
       cohortTable = cohortTableName,
-      cohortId = 19691,  
+      cohortId = , #TODO  
       startDay = -30,
       endDay = 0,
       count = F, 
       ageInteraction = F, 
       analysisId = 668
     ), createCohortCovariateSettings(
-      cohortName = 'Covariate RCRI Ischemic heart disease',
+      cohortName = '', #TODO
       settingId = 1,
       cohortDatabaseSchema = cohortDatabaseSchema,
       cohortTable = cohortTableName,
-      cohortId = 19687, 
+      cohortId = , #TODO 
       startDay = -9999,
       endDay = 0,
       count = F, 
       ageInteraction = F, 
       analysisId = 668
     ), createCohortCovariateSettings(
-      cohortName = 'Covariate RCRI Elevated risk surgery',
+      cohortName = '', #TODO
       settingId = 1,
       cohortDatabaseSchema = cohortDatabaseSchema,
       cohortTable = cohortTableName,
-      cohortId = 19685, 
+      cohortId = , #TODO
       startDay = -30,
       endDay = 0,
       count = F, 
       ageInteraction = F, 
       analysisId = 668
     ), createCohortCovariateSettings(
-      cohortName = 'Covariate RCRI Creatinine including renal impairment',
+      cohortName = '', #TODO
       settingId = 1,
       cohortDatabaseSchema = cohortDatabaseSchema,
       cohortTable = cohortTableName,
-      cohortId = 19695, 
+      cohortId = , #TODO 
       startDay = -9999,
       endDay = 0,
       count = F, 
@@ -432,16 +323,16 @@ plpModelRecal <- PatientLevelPrediction::createGlmModel(
     )
 )
 
-plpModelRecal$modelDesign$targetId <- targetId
-plpModelRecal$modelDesign$outcomeId <- outcomeId
-plpModelRecal$modelDesign$covariateSettings <- list(
+plpModelOriginal$modelDesign$targetId <- targetId
+plpModelOriginal$modelDesign$outcomeId <- outcomeId
+plpModelOriginal$modelDesign$covariateSettings <- list(
   FeatureExtraction::createCohortBasedCovariateSettings(
   analysisId = canalysisId,
   covariateCohortDatabaseSchema = '', 
   covariateCohortTable = '', 
   covariateCohorts = data.frame(
     cohortId = predictorIds,
-    cohortName = c('Elevated risk surgery','Renal impairment creatinine','Ischemic heart disease','Cerebrovascular disease','Heart failure','Insulin')
+    cohortName = c('','','','','','')
     ), 
   valueType = 'binary', 
   startDay = -365, 
@@ -453,11 +344,123 @@ plpModelRecal$modelDesign$covariateSettings <- list(
 )
 
 # bug that needs fixing in PLP
-attr(plpModelRecal,"saveType") <- 'RtoJson'
+attr(plpModelOriginal,"saveType") <- 'RtoJson'
 
 # RtoJson
 PatientLevelPrediction::savePlpModel(
-  plpModel = plpModelRecal, 
-  dirPath = './inst/models/recalibrated_rcri'
+  plpModel = plpModelOriginal, 
+  dirPath = './inst/models/QRISK3_male'
     )
+
+#QRISK4_male
+#============================================================================
+# need to add covariateSettings and stuff to this?
+canalysisId <- 668
+plpModelOriginal <- PatientLevelPrediction::createGlmModel(
+  coefficients = data.frame(
+    covariateId = predictorIds*1000+canalysisId,
+    coefficient = c() #TODO
+  ), 
+  intercept = 0, 
+  mapping = "logistic", #TODO
+  populationSettings = populationSettings,
+  covariateSettings = list(createCohortCovariateSettings(
+      cohortName = '', #TODO
+      settingId = 1,
+      cohortDatabaseSchema = cohortDatabaseSchema,
+      cohortTable = cohortTableName,
+      cohortId = , #TODO 
+      startDay = -9999,
+      endDay = 0,
+      count = F, 
+      ageInteraction = F, 
+      analysisId = 668
+    ), createCohortCovariateSettings(
+      cohortName = '', #TODO
+      settingId = 1,
+      cohortDatabaseSchema = cohortDatabaseSchema,
+      cohortTable = cohortTableName,
+      cohortId = , #TODO  
+      startDay = -9999,
+      endDay = 0,
+      count = F, 
+      ageInteraction = F, 
+      analysisId = 668
+    ), createCohortCovariateSettings(
+      cohortName = '', #TODO
+      settingId = 1,
+      cohortDatabaseSchema = cohortDatabaseSchema,
+      cohortTable = cohortTableName,
+      cohortId = , #TODO  
+      startDay = -30,
+      endDay = 0,
+      count = F, 
+      ageInteraction = F, 
+      analysisId = 668
+    ), createCohortCovariateSettings(
+      cohortName = '', #TODO
+      settingId = 1,
+      cohortDatabaseSchema = cohortDatabaseSchema,
+      cohortTable = cohortTableName,
+      cohortId = , #TODO 
+      startDay = -9999,
+      endDay = 0,
+      count = F, 
+      ageInteraction = F, 
+      analysisId = 668
+    ), createCohortCovariateSettings(
+      cohortName = '', #TODO
+      settingId = 1,
+      cohortDatabaseSchema = cohortDatabaseSchema,
+      cohortTable = cohortTableName,
+      cohortId = , #TODO
+      startDay = -30,
+      endDay = 0,
+      count = F, 
+      ageInteraction = F, 
+      analysisId = 668
+    ), createCohortCovariateSettings(
+      cohortName = '', #TODO
+      settingId = 1,
+      cohortDatabaseSchema = cohortDatabaseSchema,
+      cohortTable = cohortTableName,
+      cohortId = , #TODO 
+      startDay = -9999,
+      endDay = 0,
+      count = F, 
+      ageInteraction = F, 
+      analysisId = 668
+    )
+    )
+)
+
+plpModelOriginal$modelDesign$targetId <- targetId
+plpModelOriginal$modelDesign$outcomeId <- outcomeId
+plpModelOriginal$modelDesign$covariateSettings <- list(
+  FeatureExtraction::createCohortBasedCovariateSettings(
+  analysisId = canalysisId,
+  covariateCohortDatabaseSchema = '', 
+  covariateCohortTable = '', 
+  covariateCohorts = data.frame(
+    cohortId = predictorIds,
+    cohortName = c('','','','','','')
+    ), 
+  valueType = 'binary', 
+  startDay = -365, 
+  endDay = 0
+  ),
+  FeatureExtraction::createCovariateSettings(
+    useDemographicsAge = T
+    )
+)
+
+# bug that needs fixing in PLP
+attr(plpModelOriginal,"saveType") <- 'RtoJson'
+
+# RtoJson
+PatientLevelPrediction::savePlpModel(
+  plpModel = plpModelOriginal, 
+  dirPath = './inst/models/QRISK4_male'
+    )
+
 
