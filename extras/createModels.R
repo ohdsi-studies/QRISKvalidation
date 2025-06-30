@@ -759,7 +759,7 @@ canalysisId <- 668
 plpModelQRISK4_male <- PatientLevelPrediction::createGlmModel(
   coefficients = data.frame(
     covariateId = predictorIds*1000+canalysisId,
-    coefficient = c() #TODO
+    coefficient = c(1.30, 1.14, 1.15, 1.11, 1.19, 2.00, 2.08, 2.60, 1.00, 1.19, 1.47, 1.41, 1.04, 0.67, 0.66, 0.72, 0.81, 1.00, 1.17, 2.35, 1.62, 3.28, 2.03, 2.20, 1.19, 2.59, 1.70, 1.41, 1.64, 1.68, 1.18, 1.37, 1.66, 1.49, 2.06, 5.45, 1.40)
   ), 
   intercept = 0, 
   mapping = "logistic", #TODO
