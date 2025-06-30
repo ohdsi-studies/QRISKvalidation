@@ -43,7 +43,7 @@ plpModelQRISK1_male <- PatientLevelPrediction::createGlmModel(
       ageInteraction = F, 
       analysisId = 668
     ), createCohortCovariateSettings(
-      cohortName = 'Total cholesterol/high density lipoprotein cholesterol ratio', 
+      cohortName = 'Total cholesterol/HDL cholesterol ratio', 
       settingId = 1,
       cohortDatabaseSchema = cohortDatabaseSchema,
       cohortTable = cohortTableName,
@@ -187,7 +187,7 @@ plpModelQRISK1_female <- PatientLevelPrediction::createGlmModel(
       ageInteraction = F, 
       analysisId = 668
     ), createCohortCovariateSettings(
-      cohortName = 'Total cholesterol/high density lipoprotein cholesterol ratio', 
+      cohortName = 'Total cholesterol/HDL cholesterol ratio', 
       settingId = 1,
       cohortDatabaseSchema = cohortDatabaseSchema,
       cohortTable = cohortTableName,
