@@ -320,7 +320,7 @@ plpModelQRISK2_male <- PatientLevelPrediction::createGlmModel(
   mapping = "logistic", 
   populationSettings = populationSettings,
   covariateSettings = list(createCohortCovariateSettings(
-      cohortName = '', #TODO
+      cohortName = '', 
       settingId = 1,
       cohortDatabaseSchema = cohortDatabaseSchema,
       cohortTable = cohortTableName,
@@ -331,7 +331,7 @@ plpModelQRISK2_male <- PatientLevelPrediction::createGlmModel(
       ageInteraction = F, 
       analysisId = 668
     ), createCohortCovariateSettings(
-      cohortName = '', #TODO
+      cohortName = '', 
       settingId = 1,
       cohortDatabaseSchema = cohortDatabaseSchema,
       cohortTable = cohortTableName,
@@ -342,7 +342,7 @@ plpModelQRISK2_male <- PatientLevelPrediction::createGlmModel(
       ageInteraction = F, 
       analysisId = 668
     ), createCohortCovariateSettings(
-      cohortName = '', #TODO
+      cohortName = '', 
       settingId = 1,
       cohortDatabaseSchema = cohortDatabaseSchema,
       cohortTable = cohortTableName,
@@ -353,7 +353,7 @@ plpModelQRISK2_male <- PatientLevelPrediction::createGlmModel(
       ageInteraction = F, 
       analysisId = 668
     ), createCohortCovariateSettings(
-      cohortName = '', #TODO
+      cohortName = '', 
       settingId = 1,
       cohortDatabaseSchema = cohortDatabaseSchema,
       cohortTable = cohortTableName,
@@ -364,7 +364,7 @@ plpModelQRISK2_male <- PatientLevelPrediction::createGlmModel(
       ageInteraction = F, 
       analysisId = 668
     ), createCohortCovariateSettings(
-      cohortName = '', #TODO
+      cohortName = '', 
       settingId = 1,
       cohortDatabaseSchema = cohortDatabaseSchema,
       cohortTable = cohortTableName,
@@ -375,7 +375,117 @@ plpModelQRISK2_male <- PatientLevelPrediction::createGlmModel(
       ageInteraction = F, 
       analysisId = 668
     ), createCohortCovariateSettings(
-      cohortName = '', #TODO
+      cohortName = '', 
+      settingId = 1,
+      cohortDatabaseSchema = cohortDatabaseSchema,
+      cohortTable = cohortTableName,
+      cohortId = , #TODO 
+      startDay = -9999,
+      endDay = 0,
+      count = F, 
+      ageInteraction = F, 
+      analysisId = 668
+    ), createCohortCovariateSettings(
+      cohortName = '', 
+      settingId = 1,
+      cohortDatabaseSchema = cohortDatabaseSchema,
+      cohortTable = cohortTableName,
+      cohortId = , #TODO  
+      startDay = -9999,
+      endDay = 0,
+      count = F, 
+      ageInteraction = F, 
+      analysisId = 668
+    ), createCohortCovariateSettings(
+      cohortName = '', 
+      settingId = 1,
+      cohortDatabaseSchema = cohortDatabaseSchema,
+      cohortTable = cohortTableName,
+      cohortId = , #TODO  
+      startDay = -30,
+      endDay = 0,
+      count = F, 
+      ageInteraction = F, 
+      analysisId = 668
+    ), createCohortCovariateSettings(
+      cohortName = '', 
+      settingId = 1,
+      cohortDatabaseSchema = cohortDatabaseSchema,
+      cohortTable = cohortTableName,
+      cohortId = , #TODO 
+      startDay = -9999,
+      endDay = 0,
+      count = F, 
+      ageInteraction = F, 
+      analysisId = 668
+    ), createCohortCovariateSettings(
+      cohortName = '', 
+      settingId = 1,
+      cohortDatabaseSchema = cohortDatabaseSchema,
+      cohortTable = cohortTableName,
+      cohortId = , #TODO
+      startDay = -30,
+      endDay = 0,
+      count = F, 
+      ageInteraction = F, 
+      analysisId = 668
+    ), createCohortCovariateSettings(
+      cohortName = '', 
+      settingId = 1,
+      cohortDatabaseSchema = cohortDatabaseSchema,
+      cohortTable = cohortTableName,
+      cohortId = , #TODO 
+      startDay = -9999,
+      endDay = 0,
+      count = F, 
+      ageInteraction = F, 
+      analysisId = 668
+    ), createCohortCovariateSettings(
+      cohortName = '', 
+      settingId = 1,
+      cohortDatabaseSchema = cohortDatabaseSchema,
+      cohortTable = cohortTableName,
+      cohortId = , #TODO  
+      startDay = -9999,
+      endDay = 0,
+      count = F, 
+      ageInteraction = F, 
+      analysisId = 668
+    ), createCohortCovariateSettings(
+      cohortName = '', 
+      settingId = 1,
+      cohortDatabaseSchema = cohortDatabaseSchema,
+      cohortTable = cohortTableName,
+      cohortId = , #TODO  
+      startDay = -30,
+      endDay = 0,
+      count = F, 
+      ageInteraction = F, 
+      analysisId = 668
+    ), createCohortCovariateSettings(
+      cohortName = '', 
+      settingId = 1,
+      cohortDatabaseSchema = cohortDatabaseSchema,
+      cohortTable = cohortTableName,
+      cohortId = , #TODO 
+      startDay = -9999,
+      endDay = 0,
+      count = F, 
+      ageInteraction = F, 
+      analysisId = 668
+    ), createCohortCovariateSettings(
+      cohortName = '', 
+      settingId = 1,
+      cohortDatabaseSchema = cohortDatabaseSchema,
+      cohortTable = cohortTableName,
+      cohortId = , #TODO
+      startDay = -30,
+      endDay = 0,
+      count = F, 
+      ageInteraction = F, 
+      analysisId = 668
+    ), createCohortCovariateSettings(
+      cohortName = '', 
       settingId = 1,
       cohortDatabaseSchema = cohortDatabaseSchema,
       cohortTable = cohortTableName,
@@ -487,6 +597,61 @@ plpModelQRISK2_female <- PatientLevelPrediction::createGlmModel(
       analysisId = 668
     ), createCohortCovariateSettings(
       cohortName = '', #TODO
+      settingId = 1,
+      cohortDatabaseSchema = cohortDatabaseSchema,
+      cohortTable = cohortTableName,
+      cohortId = , #TODO 
+      startDay = -9999,
+      endDay = 0,
+      count = F, 
+      ageInteraction = F, 
+      analysisId = 668
+    ), createCohortCovariateSettings(
+      cohortName = '', 
+      settingId = 1,
+      cohortDatabaseSchema = cohortDatabaseSchema,
+      cohortTable = cohortTableName,
+      cohortId = , #TODO  
+      startDay = -9999,
+      endDay = 0,
+      count = F, 
+      ageInteraction = F, 
+      analysisId = 668
+    ), createCohortCovariateSettings(
+      cohortName = '', 
+      settingId = 1,
+      cohortDatabaseSchema = cohortDatabaseSchema,
+      cohortTable = cohortTableName,
+      cohortId = , #TODO  
+      startDay = -30,
+      endDay = 0,
+      count = F, 
+      ageInteraction = F, 
+      analysisId = 668
+    ), createCohortCovariateSettings(
+      cohortName = '', 
+      settingId = 1,
+      cohortDatabaseSchema = cohortDatabaseSchema,
+      cohortTable = cohortTableName,
+      cohortId = , #TODO 
+      startDay = -9999,
+      endDay = 0,
+      count = F, 
+      ageInteraction = F, 
+      analysisId = 668
+    ), createCohortCovariateSettings(
+      cohortName = '', 
+      settingId = 1,
+      cohortDatabaseSchema = cohortDatabaseSchema,
+      cohortTable = cohortTableName,
+      cohortId = , #TODO
+      startDay = -30,
+      endDay = 0,
+      count = F, 
+      ageInteraction = F, 
+      analysisId = 668
+    ), createCohortCovariateSettings(
+      cohortName = '', 
       settingId = 1,
       cohortDatabaseSchema = cohortDatabaseSchema,
       cohortTable = cohortTableName,
