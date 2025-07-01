@@ -187,7 +187,7 @@ plpModelQRISK1_female <- PatientLevelPrediction::createGlmModel(
       ageInteraction = F, 
       analysisId = 668
     ), createCohortCovariateSettings(
-      cohortName = 'Total cholesterol/HDL cholesterol ratio', 
+      cohortName = 'Cholesterol/HDL', 
       settingId = 1,
       cohortDatabaseSchema = cohortDatabaseSchema,
       cohortTable = cohortTableName,
@@ -287,7 +287,7 @@ plpModelQRISK1_female$modelDesign$covariateSettings <- list(
   covariateCohortTable = '', 
   covariateCohorts = data.frame(
     cohortId = predictorIds,
-    cohortName = c('','','','','','') #TODO
+    cohortName = c('Age','Cholesterol/HDL','Body mass index','Family history of premature cardiovascular disease','Current smoker','Townsend score', 'Systolic blood pressure', 'Antihypertensive agent','SBPxantihypertensive agent interaction term')
     ), 
   valueType = 'binary', 
   startDay = -365, 
