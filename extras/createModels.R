@@ -1271,7 +1271,7 @@ plpModelQRISK4_male <- PatientLevelPrediction::createGlmModel(
   mapping = "logistic", 
   populationSettings = populationSettings,
   covariateSettings = list(createCohortCovariateSettings(
-      cohortName = '', #TODO
+      cohortName = 'SBP', 
       settingId = 1,
       cohortDatabaseSchema = cohortDatabaseSchema,
       cohortTable = cohortTableName,
@@ -1282,7 +1282,7 @@ plpModelQRISK4_male <- PatientLevelPrediction::createGlmModel(
       ageInteraction = F, 
       analysisId = 668
     ), createCohortCovariateSettings(
-      cohortName = '', #TODO
+      cohortName = 'SD SBP',
       settingId = 1,
       cohortDatabaseSchema = cohortDatabaseSchema,
       cohortTable = cohortTableName,
@@ -1293,7 +1293,7 @@ plpModelQRISK4_male <- PatientLevelPrediction::createGlmModel(
       ageInteraction = F, 
       analysisId = 668
     ), createCohortCovariateSettings(
-      cohortName = '', #TODO
+      cohortName = 'Cholesterol/HDL', 
       settingId = 1,
       cohortDatabaseSchema = cohortDatabaseSchema,
       cohortTable = cohortTableName,
@@ -1304,7 +1304,7 @@ plpModelQRISK4_male <- PatientLevelPrediction::createGlmModel(
       ageInteraction = F, 
       analysisId = 668
     ), createCohortCovariateSettings(
-      cohortName = '', #TODO
+      cohortName = 'Deprivation', 
       settingId = 1,
       cohortDatabaseSchema = cohortDatabaseSchema,
       cohortTable = cohortTableName,
@@ -1315,7 +1315,7 @@ plpModelQRISK4_male <- PatientLevelPrediction::createGlmModel(
       ageInteraction = F, 
       analysisId = 668
     ), createCohortCovariateSettings(
-      cohortName = '', #TODO
+      cohortName = 'Ex-smoker', 
       settingId = 1,
       cohortDatabaseSchema = cohortDatabaseSchema,
       cohortTable = cohortTableName,
@@ -1326,11 +1326,352 @@ plpModelQRISK4_male <- PatientLevelPrediction::createGlmModel(
       ageInteraction = F, 
       analysisId = 668
     ), createCohortCovariateSettings(
-      cohortName = '', #TODO
+      cohortName = 'Light smoker', 
       settingId = 1,
       cohortDatabaseSchema = cohortDatabaseSchema,
       cohortTable = cohortTableName,
       cohortId = , #TODO 
+      startDay = -9999,
+      endDay = 0,
+      count = F, 
+      ageInteraction = F, 
+      analysisId = 668
+    ), createCohortCovariateSettings(
+      cohortName = 'Moderate smoker', 
+      settingId = 1,
+      cohortDatabaseSchema = cohortDatabaseSchema,
+      cohortTable = cohortTableName,
+      cohortId = , #TODO  
+      startDay = -9999,
+      endDay = 0,
+      count = F, 
+      ageInteraction = F, 
+      analysisId = 668
+    ), createCohortCovariateSettings(
+      cohortName = 'Heavy smoker', 
+      settingId = 1,
+      cohortDatabaseSchema = cohortDatabaseSchema,
+      cohortTable = cohortTableName,
+      cohortId = , #TODO  
+      startDay = -30,
+      endDay = 0,
+      count = F, 
+      ageInteraction = F, 
+      analysisId = 668
+    ), createCohortCovariateSettings(
+      cohortName = 'White', 
+      settingId = 1,
+      cohortDatabaseSchema = cohortDatabaseSchema,
+      cohortTable = cohortTableName,
+      cohortId = , #TODO 
+      startDay = -9999,
+      endDay = 0,
+      count = F, 
+      ageInteraction = F, 
+      analysisId = 668
+    ), createCohortCovariateSettings(
+      cohortName = 'Indian', 
+      settingId = 1,
+      cohortDatabaseSchema = cohortDatabaseSchema,
+      cohortTable = cohortTableName,
+      cohortId = , #TODO
+      startDay = -30,
+      endDay = 0,
+      count = F, 
+      ageInteraction = F, 
+      analysisId = 668
+    ), createCohortCovariateSettings(
+      cohortName = 'Pakistani', 
+      settingId = 1,
+      cohortDatabaseSchema = cohortDatabaseSchema,
+      cohortTable = cohortTableName,
+      cohortId = , #TODO 
+      startDay = -9999,
+      endDay = 0,
+      count = F, 
+      ageInteraction = F, 
+      analysisId = 668
+    ), createCohortCovariateSettings(
+      cohortName = 'Bangladeshi', 
+      settingId = 1,
+      cohortDatabaseSchema = cohortDatabaseSchema,
+      cohortTable = cohortTableName,
+      cohortId = , #TODO  
+      startDay = -9999,
+      endDay = 0,
+      count = F, 
+      ageInteraction = F, 
+      analysisId = 668
+    ), createCohortCovariateSettings(
+      cohortName = 'Other Asian', 
+      settingId = 1,
+      cohortDatabaseSchema = cohortDatabaseSchema,
+      cohortTable = cohortTableName,
+      cohortId = , #TODO  
+      startDay = -30,
+      endDay = 0,
+      count = F, 
+      ageInteraction = F, 
+      analysisId = 668
+    ), createCohortCovariateSettings(
+      cohortName = 'Caribbean', 
+      settingId = 1,
+      cohortDatabaseSchema = cohortDatabaseSchema,
+      cohortTable = cohortTableName,
+      cohortId = , #TODO 
+      startDay = -9999,
+      endDay = 0,
+      count = F, 
+      ageInteraction = F, 
+      analysisId = 668
+    ), createCohortCovariateSettings(
+      cohortName = 'Black African', 
+      settingId = 1,
+      cohortDatabaseSchema = cohortDatabaseSchema,
+      cohortTable = cohortTableName,
+      cohortId = , #TODO
+      startDay = -30,
+      endDay = 0,
+      count = F, 
+      ageInteraction = F, 
+      analysisId = 668
+    ), createCohortCovariateSettings(
+      cohortName = 'Chinese', 
+      settingId = 1,
+      cohortDatabaseSchema = cohortDatabaseSchema,
+      cohortTable = cohortTableName,
+      cohortId = , #TODO 
+      startDay = -9999,
+      endDay = 0,
+      count = F, 
+      ageInteraction = F, 
+      analysisId = 668
+    ), createCohortCovariateSettings(
+      cohortName = 'Other ethnic group', 
+      settingId = 1,
+      cohortDatabaseSchema = cohortDatabaseSchema,
+      cohortTable = cohortTableName,
+      cohortId = , #TODO  
+      startDay = -9999,
+      endDay = 0,
+      count = F, 
+      ageInteraction = F, 
+      analysisId = 668
+    ), createCohortCovariateSettings(
+      cohortName = 'No learning disability', 
+      settingId = 1,
+      cohortDatabaseSchema = cohortDatabaseSchema,
+      cohortTable = cohortTableName,
+      cohortId = , #TODO  
+      startDay = -30,
+      endDay = 0,
+      count = F, 
+      ageInteraction = F, 
+      analysisId = 668
+    ), createCohortCovariateSettings(
+      cohortName = 'Learning disability', 
+      settingId = 1,
+      cohortDatabaseSchema = cohortDatabaseSchema,
+      cohortTable = cohortTableName,
+      cohortId = , #TODO 
+      startDay = -9999,
+      endDay = 0,
+      count = F, 
+      ageInteraction = F, 
+      analysisId = 668
+    ), createCohortCovariateSettings(
+      cohortName = 'Down syndrome', 
+      settingId = 1,
+      cohortDatabaseSchema = cohortDatabaseSchema,
+      cohortTable = cohortTableName,
+      cohortId = , #TODO
+      startDay = -30,
+      endDay = 0,
+      count = F, 
+      ageInteraction = F, 
+      analysisId = 668
+    ), createCohortCovariateSettings(
+      cohortName = 'FH of CHD', 
+      settingId = 1,
+      cohortDatabaseSchema = cohortDatabaseSchema,
+      cohortTable = cohortTableName,
+      cohortId = , #TODO 
+      startDay = -9999,
+      endDay = 0,
+      count = F, 
+      ageInteraction = F, 
+      analysisId = 668
+    ), createCohortCovariateSettings(
+      cohortName = 'Type 1 Diabetes', 
+      settingId = 1,
+      cohortDatabaseSchema = cohortDatabaseSchema,
+      cohortTable = cohortTableName,
+      cohortId = , #TODO  
+      startDay = -9999,
+      endDay = 0,
+      count = F, 
+      ageInteraction = F, 
+      analysisId = 668
+    ), createCohortCovariateSettings(
+      cohortName = 'Type 2 Diabetes', 
+      settingId = 1,
+      cohortDatabaseSchema = cohortDatabaseSchema,
+      cohortTable = cohortTableName,
+      cohortId = , #TODO  
+      startDay = -30,
+      endDay = 0,
+      count = F, 
+      ageInteraction = F, 
+      analysisId = 668
+    ), createCohortCovariateSettings(
+      cohortName = 'Treated hypertension', 
+      settingId = 1,
+      cohortDatabaseSchema = cohortDatabaseSchema,
+      cohortTable = cohortTableName,
+      cohortId = , #TODO 
+      startDay = -9999,
+      endDay = 0,
+      count = F, 
+      ageInteraction = F, 
+      analysisId = 668
+    ), createCohortCovariateSettings(
+      cohortName = 'Rheumatoid arthritis', 
+      settingId = 1,
+      cohortDatabaseSchema = cohortDatabaseSchema,
+      cohortTable = cohortTableName,
+      cohortId = , #TODO
+      startDay = -30,
+      endDay = 0,
+      count = F, 
+      ageInteraction = F, 
+      analysisId = 668
+    ), createCohortCovariateSettings(
+      cohortName = 'Atrial fibrillation', 
+      settingId = 1,
+      cohortDatabaseSchema = cohortDatabaseSchema,
+      cohortTable = cohortTableName,
+      cohortId = , #TODO 
+      startDay = -9999,
+      endDay = 0,
+      count = F, 
+      ageInteraction = F, 
+      analysisId = 668
+    ), createCohortCovariateSettings(
+      cohortName = 'Renal failure', 
+      settingId = 1,
+      cohortDatabaseSchema = cohortDatabaseSchema,
+      cohortTable = cohortTableName,
+      cohortId = , #TODO  
+      startDay = -9999,
+      endDay = 0,
+      count = F, 
+      ageInteraction = F, 
+      analysisId = 668
+    ), createCohortCovariateSettings(
+      cohortName = 'Migraine', 
+      settingId = 1,
+      cohortDatabaseSchema = cohortDatabaseSchema,
+      cohortTable = cohortTableName,
+      cohortId = , #TODO  
+      startDay = -30,
+      endDay = 0,
+      count = F, 
+      ageInteraction = F, 
+      analysisId = 668
+    ), createCohortCovariateSettings(
+      cohortName = 'Corticosteroids', 
+      settingId = 1,
+      cohortDatabaseSchema = cohortDatabaseSchema,
+      cohortTable = cohortTableName,
+      cohortId = , #TODO 
+      startDay = -9999,
+      endDay = 0,
+      count = F, 
+      ageInteraction = F, 
+      analysisId = 668
+    ), createCohortCovariateSettings(
+      cohortName = 'Systemic lupus', 
+      settingId = 1,
+      cohortDatabaseSchema = cohortDatabaseSchema,
+      cohortTable = cohortTableName,
+      cohortId = , #TODO
+      startDay = -30,
+      endDay = 0,
+      count = F, 
+      ageInteraction = F, 
+      analysisId = 668
+    ), createCohortCovariateSettings(
+      cohortName = 'Severe mental illness', 
+      settingId = 1,
+      cohortDatabaseSchema = cohortDatabaseSchema,
+      cohortTable = cohortTableName,
+      cohortId = , #TODO 
+      startDay = -9999,
+      endDay = 0,
+      count = F, 
+      ageInteraction = F, 
+      analysisId = 668
+    ), createCohortCovariateSettings(
+      cohortName = 'COPD',
+      settingId = 1,
+      cohortDatabaseSchema = cohortDatabaseSchema,
+      cohortTable = cohortTableName,
+      cohortId = , #TODO  
+      startDay = -9999,
+      endDay = 0,
+      count = F, 
+      ageInteraction = F, 
+      analysisId = 668
+    ), createCohortCovariateSettings(
+      cohortName = 'Lung cancer',
+      settingId = 1,
+      cohortDatabaseSchema = cohortDatabaseSchema,
+      cohortTable = cohortTableName,
+      cohortId = , #TODO  
+      startDay = -30,
+      endDay = 0,
+      count = F, 
+      ageInteraction = F, 
+      analysisId = 668
+    ), createCohortCovariateSettings(
+      cohortName = 'Oral cancer', 
+      settingId = 1,
+      cohortDatabaseSchema = cohortDatabaseSchema,
+      cohortTable = cohortTableName,
+      cohortId = , #TODO 
+      startDay = -9999,
+      endDay = 0,
+      count = F, 
+      ageInteraction = F, 
+      analysisId = 668
+    ), createCohortCovariateSettings(
+      cohortName = 'Blood cancer', 
+      settingId = 1,
+      cohortDatabaseSchema = cohortDatabaseSchema,
+      cohortTable = cohortTableName,
+      cohortId = , #TODO
+      startDay = -30,
+      endDay = 0,
+      count = F, 
+      ageInteraction = F, 
+      analysisId = 668
+    ), createCohortCovariateSettings(
+      cohortName = 'Brain cancer', 
+      settingId = 1,
+      cohortDatabaseSchema = cohortDatabaseSchema,
+      cohortTable = cohortTableName,
+      cohortId = , #TODO 
+      startDay = -9999,
+      endDay = 0,
+      count = F, 
+      ageInteraction = F, 
+      analysisId = 668
+    ), createCohortCovariateSettings(
+      cohortName = 'Erectile dysfunction',
+      settingId = 1,
+      cohortDatabaseSchema = cohortDatabaseSchema,
+      cohortTable = cohortTableName,
+      cohortId = , #TODO  
       startDay = -9999,
       endDay = 0,
       count = F, 
