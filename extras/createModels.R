@@ -1401,7 +1401,7 @@ plpModelQRISK3_male$modelDesign$covariateSettings <- list(
   covariateCohortTable = '', 
   covariateCohorts = data.frame(
     cohortId = predictorIds,
-    cohortName = c('','','','','','') #TODO
+    cohortName = c('Townsend score','White','Indian','Pakistani','Bangladeshi','Other Asian','Black Caribbean','Black African','Chinese','Other','Non-smoker','Former smoker','Light smoker','Moderate smoker','Heavy smoker','Family history of coronary heart disease','Type I Diabetes','Type II Diabetes', 'Treated hypertension', 'Rheumatoid arthritis', 'Atrial fibrillation', 'Chronic kidney disease (stage 3,4 or 5)','Migraine', 'Corticosteroid use', 'Systemic lupus erythematosus', 'Atypical antipsychotic use', 'Severe mental illness', 'Erectile dysfunction or treatment', 'Cholesterol/HDL', 'Systolic blood pressure', 'SD of blood pressure') 
     ), 
   valueType = 'binary', 
   startDay = -365, 
@@ -1512,7 +1512,7 @@ plpModelQRISK3_female$modelDesign$covariateSettings <- list(
   covariateCohortTable = '', 
   covariateCohorts = data.frame(
     cohortId = predictorIds,
-    cohortName = c('','','','','','') #TODO
+    cohortName = c('Townsend score','White','Indian','Pakistani','Bangladeshi','Other Asian','Black Caribbean','Black African','Chinese','Other','Non-smoker','Former smoker','Light smoker','Moderate smoker','Heavy smoker','Family history of coronary heart disease','Type I Diabetes','Type II Diabetes', 'Treated hypertension', 'Rheumatoid arthritis', 'Atrial fibrillation', 'Chronic kidney disease (stage 3,4 or 5)','Migraine', 'Corticosteroid use', 'Systemic lupus erythematosus', 'Atypical antipsychotic use', 'Severe mental illness', 'Cholesterol/HDL', 'Systolic blood pressure', 'SD of blood pressure') 
     ), 
   valueType = 'binary', 
   startDay = -365, 
