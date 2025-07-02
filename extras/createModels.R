@@ -1042,7 +1042,7 @@ canalysisId <- 668
 plpModelQRISK3_male <- PatientLevelPrediction::createGlmModel(
   coefficients = data.frame(
     covariateId = predictorIds*1000+canalysisId,
-    coefficient = c() #TODO
+    coefficient = c(1.18, 1.00, 1.32, 1.61, 1.70, 1.04, 0.699, 0.670, 0.660, 0.769, 1.00, 1.21, 1.74, 1.89, 2.20, 1.72, 3.44, 2.36, 1.68, 1.23, 2.42, 2.05, 1.29, 1.58, 1.55, 1.14, 1.13, 1.25, 1.19, 1.14, 1.11) 
   ), 
   intercept = 0, 
   mapping = "logistic", #TODO
@@ -1153,7 +1153,7 @@ canalysisId <- 668
 plpModelQRISK3_female <- PatientLevelPrediction::createGlmModel(
   coefficients = data.frame(
     covariateId = predictorIds*1000+canalysisId,
-    coefficient = c() #TODO
+    coefficient = c(1.47, 1.00, 1.32, 1.76, 1.34, 1.08, 0.843, 0.675, 0.722, 0.843, 1.00, 1.14, 1.75, 1.95, 2.34, 1.58, 5.62, 2.91, 1.66, 1.24, 4.92, 1.92, 1.35, 1.81, 2.14, 1.29, 1.13, 1.17, 1.14, 1.08)
   ), 
   intercept = 0, 
   mapping = "logistic", #TODO
