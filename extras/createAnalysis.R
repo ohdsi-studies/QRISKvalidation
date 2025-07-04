@@ -88,7 +88,7 @@ createPackageModel <- function(modelFolder, package){
 }
 validationList <- list()
 
-# Code to validate 8 models
+# Code to validate 16 models
 validationList[[length(validationList) + 1]] <- PatientLevelPrediction::createValidationDesign(
   targetId = targetId,
   outcomeId = outcomeId,
@@ -181,6 +181,102 @@ validationList[[length(validationList) + 1]] <- PatientLevelPrediction::createVa
   plpModelList = list(
     createPackageModel(
       modelFolder = 'models/QRISK4_female', 
+      package = 'QRISKvalidation'
+    )),
+  recalibrate = "weakRecalibration"
+)
+validationList[[length(validationList) + 1]] <- PatientLevelPrediction::createValidationDesign(
+  targetId = targetId,
+  outcomeId = outcomeId,
+  populationSettings = NULL, # use models
+  restrictPlpDataSettings = restrictPlpDataSettings,
+  plpModelList = list(
+    createPackageModel(
+      modelFolder = 'models/QRISK1_male_JJ', 
+      package = 'QRISKvalidation'
+    )), # list of locations of models
+  recalibrate = "weakRecalibration"
+)
+validationList[[length(validationList) + 1]] <- PatientLevelPrediction::createValidationDesign(
+  targetId = targetId,
+  outcomeId = outcomeId,
+  populationSettings = NULL, # use models
+  restrictPlpDataSettings = restrictPlpDataSettings,
+  plpModelList = list(
+    createPackageModel(
+      modelFolder = 'models/QRISK1_female_JJ', 
+      package = 'QRISKvalidation'
+    )),
+  recalibrate = "weakRecalibration"
+)
+validationList[[length(validationList) + 1]] <- PatientLevelPrediction::createValidationDesign(
+  targetId = targetId,
+  outcomeId = outcomeId,
+  populationSettings = NULL, # use models
+  restrictPlpDataSettings = restrictPlpDataSettings,
+  plpModelList = list(
+    createPackageModel(
+      modelFolder = 'models/QRISK2_male_JJ', 
+      package = 'QRISKvalidation'
+    )),
+  recalibrate = "weakRecalibration"
+)
+validationList[[length(validationList) + 1]] <- PatientLevelPrediction::createValidationDesign(
+  targetId = targetId,
+  outcomeId = outcomeId,
+  populationSettings = NULL, # use models
+  restrictPlpDataSettings = restrictPlpDataSettings,
+  plpModelList = list(
+    createPackageModel(
+      modelFolder = 'models/QRISK2_female_JJ', 
+      package = 'QRISKvalidation'
+    )),
+  recalibrate = "weakRecalibration"
+)
+validationList[[length(validationList) + 1]] <- PatientLevelPrediction::createValidationDesign(
+  targetId = targetId,
+  outcomeId = outcomeId,
+  populationSettings = NULL, # use models
+  restrictPlpDataSettings = restrictPlpDataSettings,
+  plpModelList = list(
+    createPackageModel(
+      modelFolder = 'models/QRISK3_male_JJ', 
+      package = 'QRISKvalidation'
+    )),
+  recalibrate = "weakRecalibration"
+)
+validationList[[length(validationList) + 1]] <- PatientLevelPrediction::createValidationDesign(
+  targetId = targetId,
+  outcomeId = outcomeId,
+  populationSettings = NULL, # use models
+  restrictPlpDataSettings = restrictPlpDataSettings,
+  plpModelList = list(
+    createPackageModel(
+      modelFolder = 'models/QRISK3_female_JJ',
+      package = 'QRISKvalidation'
+    )),
+  recalibrate = "weakRecalibration"
+)
+validationList[[length(validationList) + 1]] <- PatientLevelPrediction::createValidationDesign(
+  targetId = targetId,
+  outcomeId = outcomeId,
+  populationSettings = NULL, # use models
+  restrictPlpDataSettings = restrictPlpDataSettings,
+  plpModelList = list(
+    createPackageModel(
+      modelFolder = 'models/QRISK4_male_JJ', 
+      package = 'QRISKvalidation'
+    )),
+  recalibrate = "weakRecalibration"
+)
+validationList[[length(validationList) + 1]] <- PatientLevelPrediction::createValidationDesign(
+  targetId = targetId,
+  outcomeId = outcomeId,
+  populationSettings = NULL, # use models
+  restrictPlpDataSettings = restrictPlpDataSettings,
+  plpModelList = list(
+    createPackageModel(
+      modelFolder = 'models/QRISK4_female_JJ', 
       package = 'QRISKvalidation'
     )),
   recalibrate = "weakRecalibration"
