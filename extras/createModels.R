@@ -312,7 +312,7 @@ PatientLevelPrediction::savePlpModel(
 canalysisId <- 668
 plpModelQRISK2_male <- PatientLevelPrediction::createGlmModel(
   coefficients = data.frame(
-    covariateId = predictorIds*1000+canalysisId,
+    covariateId = c("", "", "", "", "", "", "", "", "", "", "", "", 18822, 18779, 18821, 19285, 19280, 18815, 18838, 18841, "", "", "", "", "", "", "", "", "")*1000+canalysisId, #TODO
     coefficient = c(1, 1.45, 1.97, 1.67, 1.37, 0.62, 0.63, 0.51, 0.91, 1.59, 1.09, 1.18, 1.19, 1.19, 2.14, 1.65, 1.68, 2.20, 1.38, 2.40, 1.75, 0.985, 0.973, 0.964, 0.923, 0.932, 0.916, 0.902, 0.893) 
   ), 
   intercept = 0, 
@@ -455,7 +455,7 @@ plpModelQRISK2_male <- PatientLevelPrediction::createGlmModel(
       settingId = 1,
       cohortDatabaseSchema = cohortDatabaseSchema,
       cohortTable = cohortTableName,
-      cohortId = , #TODO  
+      cohortId = 18822,  
       startDay = -30,
       endDay = 0,
       count = F, 
@@ -466,7 +466,7 @@ plpModelQRISK2_male <- PatientLevelPrediction::createGlmModel(
       settingId = 1,
       cohortDatabaseSchema = cohortDatabaseSchema,
       cohortTable = cohortTableName,
-      cohortId = , #TODO 
+      cohortId = 18779,  
       startDay = -9999,
       endDay = 0,
       count = F, 
@@ -477,7 +477,7 @@ plpModelQRISK2_male <- PatientLevelPrediction::createGlmModel(
       settingId = 1,
       cohortDatabaseSchema = cohortDatabaseSchema,
       cohortTable = cohortTableName,
-      cohortId = , #TODO
+      cohortId = 18821, 
       startDay = -30,
       endDay = 0,
       count = F, 
@@ -488,7 +488,7 @@ plpModelQRISK2_male <- PatientLevelPrediction::createGlmModel(
       settingId = 1,
       cohortDatabaseSchema = cohortDatabaseSchema,
       cohortTable = cohortTableName,
-      cohortId = , #TODO 
+      cohortId = 19285,  
       startDay = -9999,
       endDay = 0,
       count = F, 
@@ -499,7 +499,7 @@ plpModelQRISK2_male <- PatientLevelPrediction::createGlmModel(
       settingId = 1,
       cohortDatabaseSchema = cohortDatabaseSchema,
       cohortTable = cohortTableName,
-      cohortId = , #TODO  
+      cohortId = 19280,   
       startDay = -9999,
       endDay = 0,
       count = F, 
@@ -510,7 +510,7 @@ plpModelQRISK2_male <- PatientLevelPrediction::createGlmModel(
       settingId = 1,
       cohortDatabaseSchema = cohortDatabaseSchema,
       cohortTable = cohortTableName,
-      cohortId = , #TODO  
+      cohortId = 18815,   
       startDay = -30,
       endDay = 0,
       count = F, 
@@ -521,7 +521,7 @@ plpModelQRISK2_male <- PatientLevelPrediction::createGlmModel(
       settingId = 1,
       cohortDatabaseSchema = cohortDatabaseSchema,
       cohortTable = cohortTableName,
-      cohortId = , #TODO 
+      cohortId = 18838,
       startDay = -9999,
       endDay = 0,
       count = F, 
@@ -532,7 +532,7 @@ plpModelQRISK2_male <- PatientLevelPrediction::createGlmModel(
       settingId = 1,
       cohortDatabaseSchema = cohortDatabaseSchema,
       cohortTable = cohortTableName,
-      cohortId = , #TODO
+      cohortId = 18841, 
       startDay = -30,
       endDay = 0,
       count = F, 
@@ -676,7 +676,7 @@ PatientLevelPrediction::savePlpModel(
 canalysisId <- 668
 plpModelQRISK2_female <- PatientLevelPrediction::createGlmModel(
   coefficients = data.frame(
-    covariateId = predictorIds*1000+canalysisId,
+    covariateId = ("", "", "", "", "", "", "", "", "", "", "", "", 18822, 18779, 18821, 19285, 19280, 18815, 18838, 18841, "", "", "", "", "", "", "", "", "")*1000+canalysisId, #TODO
     coefficient = c(1, 1.43, 1.80, 1.35, 1.15, 1.08, 0.58, 0.69, 1.04, 1.66, 1.08, 1.37, 1.20, 1.17, 1.99, 1.80, 1.54, 2.54, 1.50, 3.06, 1.70, 0.976, 0.938, 0.966, 0.927, 0.931, 0.952, 0.904, 0.858)
   ), 
   intercept = 0, 
