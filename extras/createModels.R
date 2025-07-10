@@ -29,7 +29,7 @@ plpModelQRISK1_male <- PatientLevelPrediction::createGlmModel(
     coefficient = c(50.634, 1.001, 1.022, 1.300, 1.417, 1.017, 1.004, 1.847, 0.993) 
   ), 
   intercept = 0, 
-  mapping = "logistic", 
+  mapping = "", #TODO 
   populationSettings = populationSettings,
   covariateSettings = list(createCohortCovariateSettings(
       cohortName = 'Age', 
@@ -173,7 +173,7 @@ plpModelQRISK1_female <- PatientLevelPrediction::createGlmModel(
     coefficient = c(87.75, 1.001, 1.015, 1.229, 1.530, 1.035, 1.005, 1.734, 0.996) 
   ), 
   intercept = 0, 
-  mapping = "logistic", 
+  mapping = "", #TODO 
   populationSettings = populationSettings,
     covariateSettings = list(createCohortCovariateSettings(
       cohortName = 'Age', 
@@ -317,7 +317,7 @@ plpModelQRISK2_male <- PatientLevelPrediction::createGlmModel(
     coefficient = c(1, 1.45, 1.97, 1.67, 1.37, 0.62, 0.63, 0.51, 0.91, 1.59, 1.09, 1.18, 1.19, 1.19, 2.14, 1.65, 1.68, 2.20, 1.38, 2.40, 1.75, 0.985, 0.973, 0.964, 0.923, 0.932, 0.916, 0.902, 0.893) 
   ), 
   intercept = 0, 
-  mapping = "logistic", 
+  mapping = "", #TODO 
   populationSettings = populationSettings,
   covariateSettings = list(createCohortCovariateSettings(
       cohortName = 'White', 
@@ -681,7 +681,7 @@ plpModelQRISK2_female <- PatientLevelPrediction::createGlmModel(
     coefficient = c(1, 1.43, 1.80, 1.35, 1.15, 1.08, 0.58, 0.69, 1.04, 1.66, 1.08, 1.37, 1.20, 1.17, 1.99, 1.80, 1.54, 2.54, 1.50, 3.06, 1.70, 0.976, 0.938, 0.966, 0.927, 0.931, 0.952, 0.904, 0.858)
   ), 
   intercept = 0, 
-  mapping = "logistic", 
+  mapping = "", #TODO 
   populationSettings = populationSettings,
   covariateSettings = list(createCohortCovariateSettings(
       cohortName = 'White', 
@@ -1045,7 +1045,7 @@ plpModelQRISK3_male <- PatientLevelPrediction::createGlmModel(
     coefficient = c(1.18, 1.00, 1.32, 1.61, 1.70, 1.04, 0.699, 0.670, 0.660, 0.769, 1.00, 1.21, 1.74, 1.89, 2.20, 1.72, 3.44, 2.36, 1.68, 1.23, 2.42, 2.05, 1.29, 1.58, 1.55, 1.14, 1.13, 1.25, 1.19, 1.14, 1.11) 
   ), 
   intercept = 0, 
-  mapping = "logistic", #TODO
+  mapping = "", #TODO
   populationSettings = populationSettings,
   covariateSettings = list(createCohortCovariateSettings(
       cohortName = 'Townsend score', 
@@ -1431,7 +1431,7 @@ plpModelQRISK3_female <- PatientLevelPrediction::createGlmModel(
     coefficient = c(1.47, 1.00, 1.32, 1.76, 1.34, 1.08, 0.843, 0.675, 0.722, 0.843, 1.00, 1.14, 1.75, 1.95, 2.34, 1.58, 5.62, 2.91, 1.66, 1.24, 4.92, 1.92, 1.35, 1.81, 2.14, 1.29, 1.13, 1.17, 1.14, 1.08)
   ), 
   intercept = 0, 
-  mapping = "logistic", #TODO
+  mapping = "", #TODO
   populationSettings = populationSettings,
   covariateSettings = list(createCohortCovariateSettings(
       cohortName = 'Townsend score', 
@@ -1807,7 +1807,7 @@ plpModelQRISK4_male <- PatientLevelPrediction::createGlmModel(
     coefficient = c(1.30, 1.14, 1.15, 1.11, 1.19, 2.00, 2.08, 2.60, 1.00, 1.19, 1.47, 1.41, 1.04, 0.67, 0.66, 0.72, 0.81, 1.00, 1.17, 2.35, 1.62, 3.28, 2.03, 2.20, 1.19, 2.59, 1.70, 1.41, 1.64, 1.68, 1.18, 1.37, 1.66, 1.49, 2.06, 5.45, 1.40)
   ), 
   intercept = 0, 
-  mapping = "logistic", 
+  mapping = "", #TODO 
   populationSettings = populationSettings,
   covariateSettings = list(createCohortCovariateSettings(
       cohortName = 'SBP', 
@@ -2259,7 +2259,7 @@ plpModelQRISK4_female <- PatientLevelPrediction::createGlmModel(
     coefficient = c(1.27, 1.16, 1.14, 1.26, 1.19, 2.12, 2.30, 2.90, 1.00, 1.13, 1.56, 1.28, 0.98, 0.94, 0.76, 0.68, 0.94, 1.45, 3.18, 1.46, 4.52, 2.49, 2.20, 1.28, 4.50, 1.81, 1.46, 1.70, 2.22, 1.24, 1.22, 1.85, 3.50, 1.55, 2.13, 4.52, 1.18, 1.56) 
   ), 
   intercept = 0, 
-  mapping = "logistic", 
+  mapping = "", #TODO 
   populationSettings = populationSettings,
   covariateSettings = list(createCohortCovariateSettings(
       cohortName = 'SBP', 
@@ -2722,7 +2722,7 @@ plpModelQRISK1_male_JJ <- PatientLevelPrediction::createGlmModel(
     coefficient = c(50.634, 1.001, 1.022, 1.300, 1.417, 1.017, 1.004, 1.847, 0.993) 
   ), 
   intercept = 0, 
-  mapping = "logistic", 
+  mapping = "", #TODO 
   populationSettings = populationSettings,
   covariateSettings = list(createCohortCovariateSettings(
       cohortName = 'Age', 
@@ -2866,7 +2866,7 @@ plpModelQRISK1_female_JJ <- PatientLevelPrediction::createGlmModel(
     coefficient = c(87.75, 1.001, 1.015, 1.229, 1.530, 1.035, 1.005, 1.734, 0.996) 
   ), 
   intercept = 0, 
-  mapping = "logistic", 
+  mapping = "", #TODO 
   populationSettings = populationSettings,
     covariateSettings = list(createCohortCovariateSettings(
       cohortName = 'Age', 
@@ -3010,7 +3010,7 @@ plpModelQRISK2_male_JJ <- PatientLevelPrediction::createGlmModel(
     coefficient = c(1, 1.45, 1.97, 1.67, 1.37, 0.62, 0.63, 0.51, 0.91, 1.59, 1.09, 1.18, 1.19, 1.19, 2.14, 1.65, 1.68, 2.20, 1.38, 2.40, 1.75, 0.985, 0.973, 0.964, 0.923, 0.932, 0.916, 0.902, 0.893) 
   ), 
   intercept = 0, 
-  mapping = "logistic", 
+  mapping = "", #TODO 
   populationSettings = populationSettings,
   covariateSettings = list(createCohortCovariateSettings(
       cohortName = 'White', 
@@ -3374,7 +3374,7 @@ plpModelQRISK2_female_JJ <- PatientLevelPrediction::createGlmModel(
     coefficient = c(1, 1.43, 1.80, 1.35, 1.15, 1.08, 0.58, 0.69, 1.04, 1.66, 1.08, 1.37, 1.20, 1.17, 1.99, 1.80, 1.54, 2.54, 1.50, 3.06, 1.70, 0.976, 0.938, 0.966, 0.927, 0.931, 0.952, 0.904, 0.858)
   ), 
   intercept = 0, 
-  mapping = "logistic", 
+  mapping = "", #TODO 
   populationSettings = populationSettings,
   covariateSettings = list(createCohortCovariateSettings(
       cohortName = 'White', 
@@ -3738,7 +3738,7 @@ plpModelQRISK3_male_JJ <- PatientLevelPrediction::createGlmModel(
     coefficient = c(1.18, 1.00, 1.32, 1.61, 1.70, 1.04, 0.699, 0.670, 0.660, 0.769, 1.00, 1.21, 1.74, 1.89, 2.20, 1.72, 3.44, 2.36, 1.68, 1.23, 2.42, 2.05, 1.29, 1.58, 1.55, 1.14, 1.13, 1.25, 1.19, 1.14, 1.11) 
   ), 
   intercept = 0, 
-  mapping = "logistic", #TODO
+  mapping = "", #TODO
   populationSettings = populationSettings,
   covariateSettings = list(createCohortCovariateSettings(
       cohortName = 'Townsend score', 
@@ -4124,7 +4124,7 @@ plpModelQRISK3_female_JJ <- PatientLevelPrediction::createGlmModel(
     coefficient = c(1.47, 1.00, 1.32, 1.76, 1.34, 1.08, 0.843, 0.675, 0.722, 0.843, 1.00, 1.14, 1.75, 1.95, 2.34, 1.58, 5.62, 2.91, 1.66, 1.24, 4.92, 1.92, 1.35, 1.81, 2.14, 1.29, 1.13, 1.17, 1.14, 1.08)
   ), 
   intercept = 0, 
-  mapping = "logistic", #TODO
+  mapping = "", #TODO
   populationSettings = populationSettings,
   covariateSettings = list(createCohortCovariateSettings(
       cohortName = 'Townsend score', 
@@ -4500,7 +4500,7 @@ plpModelQRISK4_male_JJ <- PatientLevelPrediction::createGlmModel(
     coefficient = c(1.30, 1.14, 1.15, 1.11, 1.19, 2.00, 2.08, 2.60, 1.00, 1.19, 1.47, 1.41, 1.04, 0.67, 0.66, 0.72, 0.81, 1.00, 1.17, 2.35, 1.62, 3.28, 2.03, 2.20, 1.19, 2.59, 1.70, 1.41, 1.64, 1.68, 1.18, 1.37, 1.66, 1.49, 2.06, 5.45, 1.40)
   ), 
   intercept = 0, 
-  mapping = "logistic", 
+  mapping = "", #TODO 
   populationSettings = populationSettings,
   covariateSettings = list(createCohortCovariateSettings(
       cohortName = 'SBP', 
@@ -4952,7 +4952,7 @@ plpModelQRISK4_female_JJ <- PatientLevelPrediction::createGlmModel(
     coefficient = c(1.27, 1.16, 1.14, 1.26, 1.19, 2.12, 2.30, 2.90, 1.00, 1.13, 1.56, 1.28, 0.98, 0.94, 0.76, 0.68, 0.94, 1.45, 3.18, 1.46, 4.52, 2.49, 2.20, 1.28, 4.50, 1.81, 1.46, 1.70, 2.22, 1.24, 1.22, 1.85, 3.50, 1.55, 2.13, 4.52, 1.18, 1.56) 
   ), 
   intercept = 0, 
-  mapping = "logistic", 
+  mapping = "", #TODO 
   populationSettings = populationSettings,
   covariateSettings = list(createCohortCovariateSettings(
       cohortName = 'SBP', 
