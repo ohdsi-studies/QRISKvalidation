@@ -819,7 +819,7 @@ plpModelQRISK2_female <- PatientLevelPrediction::createGlmModel(
       settingId = 1,
       cohortDatabaseSchema = cohortDatabaseSchema,
       cohortTable = cohortTableName,
-      cohortId = , #TODO  
+      cohortId = 18822,   
       startDay = -30,
       endDay = 0,
       count = F, 
@@ -830,7 +830,7 @@ plpModelQRISK2_female <- PatientLevelPrediction::createGlmModel(
       settingId = 1,
       cohortDatabaseSchema = cohortDatabaseSchema,
       cohortTable = cohortTableName,
-      cohortId = , #TODO 
+      cohortId = 18779, 
       startDay = -9999,
       endDay = 0,
       count = F, 
@@ -841,7 +841,7 @@ plpModelQRISK2_female <- PatientLevelPrediction::createGlmModel(
       settingId = 1,
       cohortDatabaseSchema = cohortDatabaseSchema,
       cohortTable = cohortTableName,
-      cohortId = , #TODO
+      cohortId = 18821, 
       startDay = -30,
       endDay = 0,
       count = F, 
@@ -852,7 +852,7 @@ plpModelQRISK2_female <- PatientLevelPrediction::createGlmModel(
       settingId = 1,
       cohortDatabaseSchema = cohortDatabaseSchema,
       cohortTable = cohortTableName,
-      cohortId = , #TODO 
+      cohortId = 19285, 
       startDay = -9999,
       endDay = 0,
       count = F, 
@@ -863,7 +863,7 @@ plpModelQRISK2_female <- PatientLevelPrediction::createGlmModel(
       settingId = 1,
       cohortDatabaseSchema = cohortDatabaseSchema,
       cohortTable = cohortTableName,
-      cohortId = , #TODO  
+      cohortId = 19280,   
       startDay = -9999,
       endDay = 0,
       count = F, 
@@ -874,7 +874,7 @@ plpModelQRISK2_female <- PatientLevelPrediction::createGlmModel(
       settingId = 1,
       cohortDatabaseSchema = cohortDatabaseSchema,
       cohortTable = cohortTableName,
-      cohortId = , #TODO  
+      cohortId = 18815,  
       startDay = -30,
       endDay = 0,
       count = F, 
@@ -885,7 +885,7 @@ plpModelQRISK2_female <- PatientLevelPrediction::createGlmModel(
       settingId = 1,
       cohortDatabaseSchema = cohortDatabaseSchema,
       cohortTable = cohortTableName,
-      cohortId = , #TODO 
+      cohortId = 18838,  
       startDay = -9999,
       endDay = 0,
       count = F, 
@@ -896,7 +896,7 @@ plpModelQRISK2_female <- PatientLevelPrediction::createGlmModel(
       settingId = 1,
       cohortDatabaseSchema = cohortDatabaseSchema,
       cohortTable = cohortTableName,
-      cohortId = , #TODO
+      cohortId = 18841, 
       startDay = -30,
       endDay = 0,
       count = F, 
