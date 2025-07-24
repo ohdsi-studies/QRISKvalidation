@@ -19,7 +19,6 @@ populationSettings <- PatientLevelPrediction::createStudyPopulationSettings(
 #=======================================================================================
 #CREATE
 createInteractionTerm <- function {
-  featureEngineeringSettings <- list ()
   attr(featureEngineeringSettings, "fun") <- "implementInteractionTerm"
   class(FeatureEngineeringSettings) <- "featureEngineeringSettings"
   return(featureEngineeringSettings)
@@ -47,10 +46,10 @@ implementInteractionTerm <- function(trainData, featureEngineeringSettings, mode
   Andromeda::appendToTable( 
     trainData$covariateData$covariateRef,
     data.frame(
-      covariateId = 2002,
+      covariateId = 2002, #CHANGE 2002
       covariateName = "InteractionTerm",
       analysisId = 2,
-      conceptId = 2002
+      conceptId = 2002 #CHANGE 2002
     )
   )
 
