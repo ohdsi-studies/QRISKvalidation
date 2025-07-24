@@ -13,7 +13,67 @@ populationSettings <- PatientLevelPrediction::createStudyPopulationSettings(
   riskWindowEnd = 365, 
   endAnchor = 'cohort start'
   )
-  
+
+#=======================================================================================
+#INTERACTION TERMS
+#=======================================================================================
+#CREATE
+createInteractionTerm <- function {
+  featureEngineeringSettings <- list ()
+  attr(featureEngineeringSettings, "fun") <- "implementInteractionTerm"
+  class(FeatureEngineeringSettings) <- "featureEngineeringSettings"
+  return(featureEngineeringSettings)
+  }
+
+#IMPLEMENT
+implementInteractionTerm <- function(trainData, featureEngineeringSettings, model) {
+    ageData <- trainData$labels
+    X <- trainData$labels$ageYear
+    y <- ageData$outcomeCount
+    newData <- data.frame(y = y, X = X)
+    yHat <- predict(model, newData)
+    newData <- data.frame(
+      rowId = trainData$labels$rowId,
+      covariateId = 2002,
+      covariateValue = yHat
+    )
+  }
+
+ #REMOVE EXISTING COVARIATE
+  trainData$covariateData$covariates <- trainData$covariateData$covariates |>
+    dplyr::filter(!.data$covariateId %in% c(1002)) #CHANGE 1002
+
+#UPDATE COVARIATE REFERENCE
+  Andromeda::appendToTable( 
+    trainData$covariateData$covariateRef,
+    data.frame(
+      covariateId = 2002,
+      covariateName = "InteractionTerm",
+      analysisId = 2,
+      conceptId = 2002
+    )
+  )
+
+  #UPDATE COVARIATE
+  Andromeda::appendToTable(trainData$covariateData$covariates, newData)
+
+  featureEngineering <- list(
+    funct = "implementInteractionTerm",
+    settings = list(
+      featureEngineeringSettings = featureEngineeringSettings,
+      model = model
+    )
+  )
+
+  attr(trainData$covariateData, "metaData")$featureEngineering <- listAppend(
+    attr(trainData$covariateData, "metaData")$featureEngineering,
+    featureEngineering
+  )
+
+  return(trainData)
+}
+
+
 #=======================================================================================
 #CREATE THE MODELS
 #=======================================================================================
