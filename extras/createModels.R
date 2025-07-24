@@ -140,7 +140,7 @@ implementInteractionTerm <- function(trainData, featureEngineeringSettings, mode
 canalysisId <- 668
 plpModelQRISK1_male <- PatientLevelPrediction::createGlmModel(
   coefficients = data.frame(
-    covariateId = c("", 18779, "", 18821, 19285, "", 18822, 19280, "")*1000+canalysisId, #TODO
+    covariateId = c("", 18779, 18778, 18821, 19285, "", 18822, 19280, "")*1000+canalysisId, #TODO
     coefficient = c(50.634, 1.001, 1.022, 1.300, 1.417, 1.017, 1.004, 1.847, 0.993) 
   ), 
   intercept = 0, 
@@ -173,7 +173,7 @@ plpModelQRISK1_male <- PatientLevelPrediction::createGlmModel(
       settingId = 1,
       cohortDatabaseSchema = cohortDatabaseSchema,
       cohortTable = cohortTableName,
-      cohortId = , #TODO  
+      cohortId = 18778,  
       startDay = -30,
       endDay = 0,
       count = F, 
@@ -257,7 +257,7 @@ plpModelQRISK1_male$modelDesign$covariateSettings <- list(
   covariateCohortDatabaseSchema = '', 
   covariateCohortTable = '', 
   covariateCohorts = data.frame(
-    cohortId = c("", 18779, "", 18821, 19285, "", 18822, 19280, ""),
+    cohortId = c("", 18779, 18778, 18821, 19285, "", 18822, 19280, ""),
     cohortName = c('Age','Cholesterol/HDL','Body mass index','Family history of premature cardiovascular disease','Current smoker','Townsend score', 'Systolic blood pressure', 'Antihypertensive agent','SBPxantihypertensive agent interaction term') 
     ), 
   valueType = 'binary', 
@@ -284,7 +284,7 @@ PatientLevelPrediction::savePlpModel(
 canalysisId <- 668
 plpModelQRISK1_female <- PatientLevelPrediction::createGlmModel(
   coefficients = data.frame(
-    covariateId = c("", 18779, "", 18821, 19285, "", 18822, 19280, "")*1000+canalysisId, #TODO
+    covariateId = c("", 18779, 18778, 18821, 19285, "", 18822, 19280, "")*1000+canalysisId, #TODO
     coefficient = c(87.75, 1.001, 1.015, 1.229, 1.530, 1.035, 1.005, 1.734, 0.996) 
   ), 
   intercept = 0, 
@@ -317,7 +317,7 @@ plpModelQRISK1_female <- PatientLevelPrediction::createGlmModel(
       settingId = 1,
       cohortDatabaseSchema = cohortDatabaseSchema,
       cohortTable = cohortTableName,
-      cohortId = , #TODO  
+      cohortId = 18778,   
       startDay = -30,
       endDay = 0,
       count = F, 
@@ -401,7 +401,7 @@ plpModelQRISK1_female$modelDesign$covariateSettings <- list(
   covariateCohortDatabaseSchema = '', 
   covariateCohortTable = '', 
   covariateCohorts = data.frame(
-    cohortId = c("", 18779, "", 18821, 19285, "", 18822, 19280, ""),
+    cohortId = c("", 18779, 18778, 18821, 19285, "", 18822, 19280, ""),
     cohortName = c('Age','Cholesterol/HDL','Body mass index','Family history of premature cardiovascular disease','Current smoker','Townsend score', 'Systolic blood pressure', 'Antihypertensive agent','SBPxantihypertensive agent interaction term')
     ), 
   valueType = 'binary', 
@@ -800,7 +800,7 @@ PatientLevelPrediction::savePlpModel(
 canalysisId <- 668
 plpModelQRISK2_female <- PatientLevelPrediction::createGlmModel(
   coefficients = data.frame(
-    covariateId = c("", "", "", "", "", "", "", "", "", "", "", "", 18822, 18779, 18821, 19285, 19280, 18815, 18838, 18841, 21347, 18778, "", 18822, 18821, 19285, 19280, 18815, 18841)*1000+canalysisId, #TODO
+    covariateId = c("", "", "", "", "", "", "", "", "", "", 18778, "", 18822, 18779, 18821, 19285, 19280, 18815, 18838, 18841, 21347, 18778, "", 18822, 18821, 19285, 19280, 18815, 18841)*1000+canalysisId, #TODO
     coefficient = c(1, 1.43, 1.80, 1.35, 1.15, 1.08, 0.58, 0.69, 1.04, 1.66, 0.216, 0.274, 0.06, 1.17, 1.99, 1.80, 1.54, 2.54, 1.50, 3.06, 1.70, 0.976, 0.1876, 0.0483, 0.927, 0.931, 0.952, 0.904, 0.858)
   ), 
   intercept = 0, 
@@ -921,7 +921,7 @@ plpModelQRISK2_female <- PatientLevelPrediction::createGlmModel(
       settingId = 1,
       cohortDatabaseSchema = cohortDatabaseSchema,
       cohortTable = cohortTableName,
-      cohortId = , #TODO 
+      cohortId = 18778, 
       startDay = -9999,
       endDay = 0,
       count = F, 
@@ -1145,7 +1145,7 @@ plpModelQRISK2_female$modelDesign$covariateSettings <- list(
   covariateCohortDatabaseSchema = '', 
   covariateCohortTable = '', 
   covariateCohorts = data.frame(
-    cohortId = c("", "", "", "", "", "", "", "", "", "", "", "", 18822, 18779, 18821, 19285, 19280, 18815, 18838, 18841, 21347, 18778, "", 18822, 18821, 19285, 19280, 18815, 18841),
+    cohortId = c("", "", "", "", "", "", "", "", "", "", 18778, "", 18822, 18779, 18821, 19285, 19280, 18815, 18838, 18841, 21347, 18778, "", 18822, 18821, 19285, 19280, 18815, 18841),
     cohortName = c('White','Indian','Pakistani','Bangladeshi','Other Asian','Black Caribbean','Black African','Chinese','Other','Age','BMI','Townsend score','Systolic blood pressure','Cholesterol/HDL','Family history coronary heart disease','Current smoker','Treated hypertension','Type 2 diabetes','Rheumatoid arthritis','Atrial fibrillation','Renal disease','AgexBMI interaction','AgexTownsend interaction','Agexsystolicbloodpressure interaction','Agexfamilyhistory interaction','Agexsmoking interaction','Agextreatedhypertension interaction','Agextype2diabetes interaction', 'Agexatrialfibrillation interaction')
     ), 
   valueType = 'binary', 
