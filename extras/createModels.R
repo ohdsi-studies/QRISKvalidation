@@ -132,7 +132,8 @@ plpModelQRISK1_male <- PatientLevelPrediction::createGlmModel(
       ageInteraction = F, 
       analysisId = 668
     )
-    )
+    ),
+  featureEngineeringSettings = createLogAge()
 )
 
 plpModelQRISK1_male$modelDesign$targetId <- targetId
