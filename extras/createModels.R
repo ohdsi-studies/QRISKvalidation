@@ -15,6 +15,180 @@ populationSettings <- PatientLevelPrediction::createStudyPopulationSettings(
   )
 
 
+#========================================================================================
+#ADJUSTMENTS TO THE COHORTS USED
+#========================================================================================
+
+#LOGARITHMIC AGE
+#=======================================================================================
+
+#CREATE
+createLogAge <- function(){
+  # create list of inputs to implement function
+  featureEngineeringSettings <- list()
+  # specify the function that will implement the sampling
+  attr(featureEngineeringSettings, "fun") <- "implementLogAge"
+  # make sure the object returned is of class "sampleSettings"
+  class(featureEngineeringSettings) <- "featureEngineeringSettings"
+  return(featureEngineeringSettings)
+}
+
+#IMPLEMENT
+implementLogAge <- function(trainData, featureEngineeringSettings) {
+  # get covariate 1002 values
+  ageData <- trainData$covariateData$covariates %>%
+    dplyr::filter(.data$covariateId == 1002) %>%
+    dplyr::select("rowId", 'covariateValue') %>%
+    dplyr::collect()
+
+  newData <- data.frame(
+    rowId = ageData$rowId,
+    covariateId = 3002, # this is the covariateId for logAge
+    covariateValue = log(ageData$covariateValue)
+  )
+
+  # remove existing age if in covariates
+  trainData$covariateData$covariates <- trainData$covariateData$covariates |>
+    dplyr::filter(!covariateId %in% c(1002))
+  # update covRef
+  Andromeda::appendToTable(trainData$covariateData$covariateRef,
+                           data.frame(covariateId=3002,
+                                      covariateName='Log age in years',
+                                      analysisId=2,
+                                      conceptId=3002))
+
+  # update covariates
+  Andromeda::appendToTable(trainData$covariateData$covariates, newData)
+
+  featureEngineering <- list(
+    funct = 'implementLogAge',
+    settings = list(
+      featureEngineeringSettings = featureEngineeringSettings
+    )
+  )
+
+  attr(trainData$covariateData, 'metaData')$featureEngineering = listAppend(
+    attr(trainData$covariateData, 'metaData')$featureEngineering,
+    featureEngineering
+  )
+
+  return(trainData)
+}
+
+#INTERACTION TERM SBP x ANTIHYPERTENSIVE TREATMENT #TODO
+#=======================================================================================
+#CREATE
+createInteractionTerm <- function {
+  attr(featureEngineeringSettings, "fun") <- "implementInteractionTerm"
+  class(FeatureEngineeringSettings) <- "featureEngineeringSettings"
+  return(featureEngineeringSettings)
+  }
+
+#IMPLEMENT
+implementInteractionTerm <- function(trainData, featureEngineeringSettings, model) {
+    ageData <- trainData$labels
+    X <- trainData$labels$ageYear
+    y <- ageData$outcomeCount
+    newData <- data.frame(y = y, X = X)
+    yHat <- predict(model, newData)
+    newData <- data.frame(
+      rowId = trainData$labels$rowId,
+      covariateId = 2002,
+      covariateValue = yHat
+    )
+  }
+
+ #REMOVE EXISTING COVARIATE
+  trainData$covariateData$covariates <- trainData$covariateData$covariates |>
+    dplyr::filter(!.data$covariateId %in% c(1002)) #CHANGE 1002
+
+#UPDATE COVARIATE REFERENCE
+  Andromeda::appendToTable( 
+    trainData$covariateData$covariateRef,
+    data.frame(
+      covariateId = 2002, #CHANGE 2002
+      covariateName = "InteractionTerm",
+      analysisId = 2,
+      conceptId = 2002 #CHANGE 2002
+    )
+  )
+
+  #UPDATE COVARIATE
+  Andromeda::appendToTable(trainData$covariateData$covariates, newData)
+
+  featureEngineering <- list(
+    funct = "implementInteractionTerm",
+    settings = list(
+      featureEngineeringSettings = featureEngineeringSettings,
+      model = model
+    )
+  )
+
+  attr(trainData$covariateData, "metaData")$featureEngineering <- listAppend(
+    attr(trainData$covariateData, "metaData")$featureEngineering,
+    featureEngineering
+  )
+
+  return(trainData)
+}
+
+
+#STANDARD DEVIATION OF BLOOD PRESSURE #TODO
+#=======================================================================================
+#CREATE
+createInteractionTerm <- function {
+  attr(featureEngineeringSettings, "fun") <- "implementInteractionTerm"
+  class(FeatureEngineeringSettings) <- "featureEngineeringSettings"
+  return(featureEngineeringSettings)
+  }
+
+#IMPLEMENT
+implementInteractionTerm <- function(trainData, featureEngineeringSettings, model) {
+    ageData <- trainData$labels
+    X <- trainData$labels$ageYear
+    y <- ageData$outcomeCount
+    newData <- data.frame(y = y, X = X)
+    yHat <- predict(model, newData)
+    newData <- data.frame(
+      rowId = trainData$labels$rowId,
+      covariateId = 2002,
+      covariateValue = yHat
+    )
+  }
+
+ #REMOVE EXISTING COVARIATE
+  trainData$covariateData$covariates <- trainData$covariateData$covariates |>
+    dplyr::filter(!.data$covariateId %in% c(1002)) #CHANGE 1002
+
+#UPDATE COVARIATE REFERENCE
+  Andromeda::appendToTable( 
+    trainData$covariateData$covariateRef,
+    data.frame(
+      covariateId = 2002, #CHANGE 2002
+      covariateName = "InteractionTerm",
+      analysisId = 2,
+      conceptId = 2002 #CHANGE 2002
+    )
+  )
+
+  #UPDATE COVARIATE
+  Andromeda::appendToTable(trainData$covariateData$covariates, newData)
+
+  featureEngineering <- list(
+    funct = "implementInteractionTerm",
+    settings = list(
+      featureEngineeringSettings = featureEngineeringSettings,
+      model = model
+    )
+  )
+
+  attr(trainData$covariateData, "metaData")$featureEngineering <- listAppend(
+    attr(trainData$covariateData, "metaData")$featureEngineering,
+    featureEngineering
+  )
+
+  return(trainData)
+}
 
 #=======================================================================================
 #CREATE THE MODELS
@@ -5414,181 +5588,5 @@ PatientLevelPrediction::savePlpModel(
   plpModel = plpModelQRISK4_female_JJ, 
   dirPath = './inst/models/QRISK4_female_JJ'
     )
-
-
-#========================================================================================
-#ADJUSTMENTS TO THE COHORTS USED
-#========================================================================================
-
-#LOGARITHMIC AGE
-#=======================================================================================
-
-#CREATE
-createLogAge <- function(){
-  # create list of inputs to implement function
-  featureEngineeringSettings <- list()
-  # specify the function that will implement the sampling
-  attr(featureEngineeringSettings, "fun") <- "implementLogAge"
-  # make sure the object returned is of class "sampleSettings"
-  class(featureEngineeringSettings) <- "featureEngineeringSettings"
-  return(featureEngineeringSettings)
-}
-
-#IMPLEMENT
-implementLogAge <- function(trainData, featureEngineeringSettings) {
-  # get covariate 1002 values
-  ageData <- trainData$covariateData$covariates %>%
-    dplyr::filter(.data$covariateId == 1002) %>%
-    dplyr::select("rowId", 'covariateValue') %>%
-    dplyr::collect()
-
-  newData <- data.frame(
-    rowId = ageData$rowId,
-    covariateId = 3002, # this is the covariateId for logAge
-    covariateValue = log(ageData$covariateValue)
-  )
-
-  # remove existing age if in covariates
-  trainData$covariateData$covariates <- trainData$covariateData$covariates |>
-    dplyr::filter(!covariateId %in% c(1002))
-  # update covRef
-  Andromeda::appendToTable(trainData$covariateData$covariateRef,
-                           data.frame(covariateId=3002,
-                                      covariateName='Log age in years',
-                                      analysisId=2,
-                                      conceptId=3002))
-
-  # update covariates
-  Andromeda::appendToTable(trainData$covariateData$covariates, newData)
-
-  featureEngineering <- list(
-    funct = 'implementLogAge',
-    settings = list(
-      featureEngineeringSettings = featureEngineeringSettings
-    )
-  )
-
-  attr(trainData$covariateData, 'metaData')$featureEngineering = listAppend(
-    attr(trainData$covariateData, 'metaData')$featureEngineering,
-    featureEngineering
-  )
-
-  return(trainData)
-}
-
-#INTERACTION TERM SBP x ANTIHYPERTENSIVE TREATMENT #TODO
-#=======================================================================================
-#CREATE
-createInteractionTerm <- function {
-  attr(featureEngineeringSettings, "fun") <- "implementInteractionTerm"
-  class(FeatureEngineeringSettings) <- "featureEngineeringSettings"
-  return(featureEngineeringSettings)
-  }
-
-#IMPLEMENT
-implementInteractionTerm <- function(trainData, featureEngineeringSettings, model) {
-    ageData <- trainData$labels
-    X <- trainData$labels$ageYear
-    y <- ageData$outcomeCount
-    newData <- data.frame(y = y, X = X)
-    yHat <- predict(model, newData)
-    newData <- data.frame(
-      rowId = trainData$labels$rowId,
-      covariateId = 2002,
-      covariateValue = yHat
-    )
-  }
-
- #REMOVE EXISTING COVARIATE
-  trainData$covariateData$covariates <- trainData$covariateData$covariates |>
-    dplyr::filter(!.data$covariateId %in% c(1002)) #CHANGE 1002
-
-#UPDATE COVARIATE REFERENCE
-  Andromeda::appendToTable( 
-    trainData$covariateData$covariateRef,
-    data.frame(
-      covariateId = 2002, #CHANGE 2002
-      covariateName = "InteractionTerm",
-      analysisId = 2,
-      conceptId = 2002 #CHANGE 2002
-    )
-  )
-
-  #UPDATE COVARIATE
-  Andromeda::appendToTable(trainData$covariateData$covariates, newData)
-
-  featureEngineering <- list(
-    funct = "implementInteractionTerm",
-    settings = list(
-      featureEngineeringSettings = featureEngineeringSettings,
-      model = model
-    )
-  )
-
-  attr(trainData$covariateData, "metaData")$featureEngineering <- listAppend(
-    attr(trainData$covariateData, "metaData")$featureEngineering,
-    featureEngineering
-  )
-
-  return(trainData)
-}
-
-
-#STANDARD DEVIATION OF BLOOD PRESSURE #TODO
-#=======================================================================================
-#CREATE
-createInteractionTerm <- function {
-  attr(featureEngineeringSettings, "fun") <- "implementInteractionTerm"
-  class(FeatureEngineeringSettings) <- "featureEngineeringSettings"
-  return(featureEngineeringSettings)
-  }
-
-#IMPLEMENT
-implementInteractionTerm <- function(trainData, featureEngineeringSettings, model) {
-    ageData <- trainData$labels
-    X <- trainData$labels$ageYear
-    y <- ageData$outcomeCount
-    newData <- data.frame(y = y, X = X)
-    yHat <- predict(model, newData)
-    newData <- data.frame(
-      rowId = trainData$labels$rowId,
-      covariateId = 2002,
-      covariateValue = yHat
-    )
-  }
-
- #REMOVE EXISTING COVARIATE
-  trainData$covariateData$covariates <- trainData$covariateData$covariates |>
-    dplyr::filter(!.data$covariateId %in% c(1002)) #CHANGE 1002
-
-#UPDATE COVARIATE REFERENCE
-  Andromeda::appendToTable( 
-    trainData$covariateData$covariateRef,
-    data.frame(
-      covariateId = 2002, #CHANGE 2002
-      covariateName = "InteractionTerm",
-      analysisId = 2,
-      conceptId = 2002 #CHANGE 2002
-    )
-  )
-
-  #UPDATE COVARIATE
-  Andromeda::appendToTable(trainData$covariateData$covariates, newData)
-
-  featureEngineering <- list(
-    funct = "implementInteractionTerm",
-    settings = list(
-      featureEngineeringSettings = featureEngineeringSettings,
-      model = model
-    )
-  )
-
-  attr(trainData$covariateData, "metaData")$featureEngineering <- listAppend(
-    attr(trainData$covariateData, "metaData")$featureEngineering,
-    featureEngineering
-  )
-
-  return(trainData)
-}
 
 
