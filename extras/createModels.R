@@ -199,6 +199,8 @@ implementInteractionTerm <- function(trainData, featureEngineeringSettings, mode
 # need to add covariateSettings and stuff to this?
 canalysisId <- 668
 plpModelQRISK1_male <- PatientLevelPrediction::createGlmModel(
+  targetId = , #TODO
+  outcomeId = , #TODO
   coefficients = data.frame(
     covariateId = c(1002, 18779, 18778, 18821, 19285, "", 18822, 19280, "")*1000+canalysisId, #TODO
     coefficient = c(50.634, 1.001, 1.022, 1.300, 1.417, 1.017, 1.004, 1.847, 0.993) 
@@ -344,6 +346,8 @@ PatientLevelPrediction::savePlpModel(
 # need to add covariateSettings and stuff to this?
 canalysisId <- 668
 plpModelQRISK1_female <- PatientLevelPrediction::createGlmModel(
+  targetId = , #TODO
+  outcomeId = , #TODO
   coefficients = data.frame(
     covariateId = c(1002, 18779, 18778, 18821, 19285, "", 18822, 19280, "")*1000+canalysisId, #TODO
     coefficient = c(87.75, 1.001, 1.015, 1.229, 1.530, 1.035, 1.005, 1.734, 0.996) 
@@ -489,6 +493,8 @@ PatientLevelPrediction::savePlpModel(
 # need to add covariateSettings and stuff to this?
 canalysisId <- 668
 plpModelQRISK2_male <- PatientLevelPrediction::createGlmModel(
+  targetId = , #TODO
+  outcomeId = , #TODO
   coefficients = data.frame(
     covariateId = c("", "", "", "", "", "", "", "", "", 1002, 18778, "", 18822, 18779, 18821, 19285, 19280, 18815, 18838, 18841, 21347, 18778, "", 18822, 18821, 19285, 19280, 18815, 18841)*1000+canalysisId, #TODO
     coefficient = c(1, 1.45, 1.97, 1.67, 1.37, 0.62, 0.63, 0.51, 0.91, 1.59, 0.218, 0.236, 0.0595, 1.19, 2.14, 1.65, 1.68, 2.20, 1.38, 2.40, 1.75, 0.985, 0.1946, 0.0482, 0.923, 0.932, 0.916, 0.902, 0.893) 
@@ -862,6 +868,8 @@ PatientLevelPrediction::savePlpModel(
 # need to add covariateSettings and stuff to this?
 canalysisId <- 668
 plpModelQRISK2_female <- PatientLevelPrediction::createGlmModel(
+  targetId = , #TODO
+  outcomeId = , #TODO
   coefficients = data.frame(
     covariateId = c("", "", "", "", "", "", "", "", "", 1002, 18778, "", 18822, 18779, 18821, 19285, 19280, 18815, 18838, 18841, 21347, 18778, "", 18822, 18821, 19285, 19280, 18815, 18841)*1000+canalysisId, #TODO
     coefficient = c(1, 1.43, 1.80, 1.35, 1.15, 1.08, 0.58, 0.69, 1.04, 1.66, 0.216, 0.274, 0.06, 1.17, 1.99, 1.80, 1.54, 2.54, 1.50, 3.06, 1.70, 0.976, 0.1876, 0.0483, 0.927, 0.931, 0.952, 0.904, 0.858)
@@ -1235,6 +1243,8 @@ PatientLevelPrediction::savePlpModel(
 # need to add covariateSettings and stuff to this?
 canalysisId <- 668
 plpModelQRISK3_male <- PatientLevelPrediction::createGlmModel(
+  targetId = , #TODO
+  outcomeId = , #TODO
   coefficients = data.frame(
     covariateId = c("", "", "", "", "", "", "", "", "", "", "", 21288, 21289, 21290, 21291, 18821, 18820, 18815, 19280, 18838, 18841, 21347, 19379, 21371, 19164, 21372, 21294, 19165, 18779, 18822, "")*1000+canalysisId, #TODO
     coefficient = c(0.236, 1.00, 1.32, 1.61, 1.70, 1.04, 0.699, 0.670, 0.660, 0.769, 1.00, 1.21, 1.74, 1.89, 2.20, 1.72, 3.44, 2.36, 1.68, 1.23, 2.42, 2.05, 1.29, 1.58, 1.55, 1.14, 1.13, 1.25, 1.19, 0.057, 0.111) 
@@ -1621,6 +1631,8 @@ PatientLevelPrediction::savePlpModel(
 # need to add covariateSettings and stuff to this?
 canalysisId <- 668
 plpModelQRISK3_female <- PatientLevelPrediction::createGlmModel(
+  targetId = , #TODO
+  outcomeId = , #TODO
   coefficients = data.frame(
     covariateId = c("", "", "", "", "", "", "", "", "", "", "", 21288, 21289, 21290, 21291,18821, 18820, 18815, 19280, 18838, 18841, 21347, 19379, 21371, 19164, 21372, 21294, 18779, 18822, "")*1000+canalysisId, #TODO
     coefficient = c(0.294, 1.00, 1.32, 1.76, 1.34, 1.08, 0.843, 0.675, 0.722, 0.843, 1.00, 1.14, 1.75, 1.95, 2.34, 1.58, 5.62, 2.91, 1.66, 1.24, 4.92, 1.92, 1.35, 1.81, 2.14, 1.29, 1.13, 1.17, 0.057, 0.108)
@@ -1997,6 +2009,8 @@ PatientLevelPrediction::savePlpModel(
 # need to add covariateSettings and stuff to this?
 canalysisId <- 668
 plpModelQRISK4_male <- PatientLevelPrediction::createGlmModel(
+  targetId = , #TODO
+  outcomeId = , #TODO
   coefficients = data.frame(
     covariateId = c(18822,"",18779,"",21288, 21289, 21290, 21291, "", "", "", "", "", "", "", "", "", 21344, 19881, 18821, 18820, 18815, 19280, 18838, 18841, 21347, 19379, 21371, 19164, 21372, 21294, 19380, 19792, 19788, 19787, 19174, 19165)*1000+canalysisId, #TODO
     coefficient = c(0.065, 1.14, 1.15, 0.222, 1.19, 2.00, 2.08, 2.60, 1.00, 1.19, 1.47, 1.41, 1.04, 0.67, 0.66, 0.72, 0.81, 1.17, 2.35, 1.62, 3.28, 2.03, 2.20, 1.19, 2.59, 1.70, 1.41, 1.64, 1.68, 1.18, 1.37, 1.66, 1.49, 2.06, 5.45, 1.40)
@@ -2449,6 +2463,8 @@ PatientLevelPrediction::savePlpModel(
 # need to add covariateSettings and stuff to this?
 canalysisId <- 668
 plpModelQRISK4_female <- PatientLevelPrediction::createGlmModel(
+  targetId = , #TODO
+  outcomeId = , #TODO
   coefficients = data.frame(
     covariateId = c(18822,"",18779,"",21288,21289, 21290, 21291, "", "", "", "", "", "", "", "", "", 21344, 19881, 18821, 18820, 18815, 19280, 18838, 18841, 21347, 19379, 21371, 19164, 21372, 21294, 19380, 19792, 19788, 19787, 19174, 19793, 14512)*1000+canalysisId, #TODO
     coefficient = c(0.0635, 1.16, 1.14, 0.252, 1.19, 2.12, 2.30, 2.90, 1.00, 1.13, 1.56, 1.28, 0.98, 0.94, 0.76, 0.68, 0.94, 1.45, 3.18, 1.46, 4.52, 2.49, 2.20, 1.28, 4.50, 1.81, 1.46, 1.70, 2.22, 1.24, 1.22, 1.85, 3.50, 1.55, 2.13, 4.52, 1.18, 1.56) 
