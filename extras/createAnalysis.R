@@ -474,7 +474,6 @@ validationList[[length(validationList) + 1]] <- PatientLevelPrediction::createVa
   recalibrate = "weakRecalibration"
 )
 
-
 allValList <- do.call('c', validationList)
 
 plpValModuleSettingsCreator <- PatientLevelPredictionValidationModule$new()
