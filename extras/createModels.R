@@ -5,7 +5,7 @@ cohortTableName <- 'cohortTableName'
 targetId <-  # ATLAS id for target cohort TO DO
 outcomeId <-  # ATLAS id for outcome cohort TO DO
 
-# specify the time-at-risk and remove requiring full 365 days
+# specify the time-at-risk 
 #3 years TAR
 populationSettings3 <- PatientLevelPrediction::createStudyPopulationSettings(
   requireTimeAtRisk = FALSE, 
