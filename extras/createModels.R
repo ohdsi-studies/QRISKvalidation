@@ -298,7 +298,7 @@ plpModelQRISK1_male_OG_3 <- PatientLevelPrediction::createGlmModel(
       settingId = 1,
       cohortDatabaseSchema = cohortDatabaseSchema,
       cohortTable = cohortTableName,
-      cohortId = , #TODO 
+      cohortId = , #TODO
       startDay = -365,
       endDay = 0,
       count = F, 
@@ -306,7 +306,7 @@ plpModelQRISK1_male_OG_3 <- PatientLevelPrediction::createGlmModel(
       analysisId = 668
     )
     ),
-  featureEngineeringSettings = list(createLogAge(),)                  #TODO
+  featureEngineeringSettings = list(createLogAge(),createInteractionTermSBPAT())                  
 )
 
 plpModelQRISK1_male$modelDesign$targetId <- targetId                   #TODO
@@ -451,7 +451,7 @@ plpModelQRISK1_female_OG_3 <- PatientLevelPrediction::createGlmModel(
       analysisId = 668
     )
     ),
-  featureEngineeringSettings = list(createLogAge(), )                            #TODO
+  featureEngineeringSettings = list(createLogAge(), createInteractionTermSBPAT())                            
 )
 
 plpModelQRISK1_female$modelDesign$targetId <- targetId                            #TODO
