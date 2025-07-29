@@ -312,7 +312,7 @@ plpModelQRISK1_male_OG_3 <- PatientLevelPrediction::createGlmModel(
       analysisId = 668
     )
     ),
-  featureEngineeringSettings = createLogAge()
+  featureEngineeringSettings = list(createLogAge(),)                  #TODO
 )
 
 plpModelQRISK1_male$modelDesign$targetId <- targetId                   #TODO
@@ -457,7 +457,7 @@ plpModelQRISK1_female_OG_3 <- PatientLevelPrediction::createGlmModel(
       analysisId = 668
     )
     ),
-  featureEngineeringSettings = createLogAge()
+  featureEngineeringSettings = list(createLogAge(), )                            #TODO
 )
 
 plpModelQRISK1_female$modelDesign$targetId <- targetId                            #TODO
