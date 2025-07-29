@@ -6,6 +6,7 @@ targetId <-  # ATLAS id for target cohort TO DO
 outcomeId <-  # ATLAS id for outcome cohort TO DO
 
 # specify the time-at-risk and remove requiring full 365 days
+#10 years TAR
 populationSettings1 <- PatientLevelPrediction::createStudyPopulationSettings(
   requireTimeAtRisk = FALSE, 
   riskWindowStart = 1, 
@@ -14,6 +15,7 @@ populationSettings1 <- PatientLevelPrediction::createStudyPopulationSettings(
   endAnchor = 'cohort start'
   )
 
+#3 years TAR
 populationSettings2 <- PatientLevelPrediction::createStudyPopulationSettings(
   requireTimeAtRisk = FALSE, 
   riskWindowStart = 1, 
@@ -21,7 +23,6 @@ populationSettings2 <- PatientLevelPrediction::createStudyPopulationSettings(
   riskWindowEnd = 1095, 
   endAnchor = 'cohort start'
   )
-
 
 #========================================================================================
 #ADJUSTMENTS TO THE COHORTS USED
