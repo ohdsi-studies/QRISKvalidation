@@ -142,7 +142,7 @@ implementInteractionTerm <- function(trainData, featureEngineeringSettings, mode
 }
 
 
-#STANDARD DEVIATION OF BLOOD PRESSURE #TODO
+#STANDARD DEVIATION OF BLOOD PRESSURE 
 #=======================================================================================
 #CREATE
 createSDBP <- function(){
@@ -169,14 +169,14 @@ implementSDBP <- function(trainData, featureEngineeringSettings) {
     covariateValue = sd(sdData$covariateValue)            
   )
 
-  # remove existing age if in covariates
+  # remove existing SBP if in covariates
   trainData$covariateData$covariates <- trainData$covariateData$covariates |>
     dplyr::filter(!covariateId %in% c())                                     #ADD INITIAL COVARIATE ID
   # update covRef
   Andromeda::appendToTable(trainData$covariateData$covariateRef,
                            data.frame(covariateId=3003, 
                                       covariateName='Standard deviation of blood pressure',
-                                      analysisId=2,
+                                      analysisId=3,
                                       conceptId=3003))
 
   # update covariates
@@ -196,9 +196,6 @@ implementSDBP <- function(trainData, featureEngineeringSettings) {
 
   return(trainData)
 }
-
-
-
 
 #=======================================================================================
 #CREATE THE MODELS
@@ -1560,7 +1557,8 @@ plpModelQRISK3_male <- PatientLevelPrediction::createGlmModel(
       ageInteraction = F, 
       analysisId = 668
     )
-    )
+    ),
+  featureEngineeringSettings = createSDBP()                         
 )
 
 plpModelQRISK3_male$modelDesign$targetId <- targetId
@@ -1915,7 +1913,8 @@ plpModelQRISK3_female <- PatientLevelPrediction::createGlmModel(
       ageInteraction = F, 
       analysisId = 668
     )
-    )
+    ),
+  featureEngineeringSettings = createSDBP() 
 )
 
 plpModelQRISK3_female$modelDesign$targetId <- targetId
@@ -2359,7 +2358,8 @@ plpModelQRISK4_male <- PatientLevelPrediction::createGlmModel(
       ageInteraction = F, 
       analysisId = 668
     )
-    )
+    ),
+  featureEngineeringSettings = createSDBP() 
 )
 
 plpModelQRISK4_male$modelDesign$targetId <- targetId
@@ -2813,7 +2813,8 @@ plpModelQRISK4_female <- PatientLevelPrediction::createGlmModel(
       ageInteraction = F, 
       analysisId = 668
     )
-    )
+    ),
+  featureEngineeringSettings = createSDBP() 
 )
 
 plpModelQRISK4_female$modelDesign$targetId <- targetId
