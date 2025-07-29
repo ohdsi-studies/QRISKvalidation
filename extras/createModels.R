@@ -95,7 +95,7 @@ createInteractionTermSBPAT <- function() {
 implementInteractionTermSBPAT <- function(trainData, featureEngineeringSettings) {
   # get covariate values
   InteractionTermSBPATData <- trainData$covariateData$covariates %>%
-    dplyr::filter(.data$covariateId == ) %>%                            ##TODO
+    dplyr::filter(.data$covariateId == c(21395, ) %>%                            ##TODO
     dplyr::select("rowId", 'covariateValue') %>%
     dplyr::collect()
 
@@ -107,7 +107,7 @@ implementInteractionTermSBPAT <- function(trainData, featureEngineeringSettings)
 
   # remove existing age if in covariates
   trainData$covariateData$covariates <- trainData$covariateData$covariates |>
-    dplyr::filter(!covariateId %in% c())                                  #TODO
+    dplyr::filter(!covariateId %in% c(21395, ))                                  #TODO
   # update covRef
   Andromeda::appendToTable(trainData$covariateData$covariateRef,
                            data.frame(covariateId=3004,
@@ -199,7 +199,7 @@ implementSDBP <- function(trainData, featureEngineeringSettings) {
 canalysisId <- 668
 plpModelQRISK1_male_OG_3 <- PatientLevelPrediction::createGlmModel(
   coefficients = data.frame(
-    covariateId = c(1002, 18779, 18778, 18821, 19285, 21387, 18822, 19280, "")*1000+canalysisId, #TODO
+    covariateId = c(1002, 18779, 18778, 18821, 19285, 21387, 18822, 19280, 21395)*1000+canalysisId, #TODO
     coefficient = c(50.634, 1.001, 1.022, 1.300, 1.417, 1.017, 1.004, 1.847, 0.993) 
   ), 
   intercept = 0, 
@@ -298,7 +298,7 @@ plpModelQRISK1_male_OG_3 <- PatientLevelPrediction::createGlmModel(
       settingId = 1,
       cohortDatabaseSchema = cohortDatabaseSchema,
       cohortTable = cohortTableName,
-      cohortId = , #TODO
+      cohortId = 21395, 
       startDay = -365,
       endDay = 0,
       count = F, 
@@ -344,7 +344,7 @@ PatientLevelPrediction::savePlpModel(
 canalysisId <- 668
 plpModelQRISK1_female_OG_3 <- PatientLevelPrediction::createGlmModel(
   coefficients = data.frame(
-    covariateId = c(1002, 18779, 18778, 18821, 19285, 21387, 18822, 19280, "")*1000+canalysisId, #TODO
+    covariateId = c(1002, 18779, 18778, 18821, 19285, 21387, 18822, 19280, 21395)*1000+canalysisId, #TODO
     coefficient = c(87.75, 1.001, 1.015, 1.229, 1.530, 1.035, 1.005, 1.734, 0.996) 
   ), 
   intercept = 0, 
@@ -443,7 +443,7 @@ plpModelQRISK1_female_OG_3 <- PatientLevelPrediction::createGlmModel(
       settingId = 1,
       cohortDatabaseSchema = cohortDatabaseSchema,
       cohortTable = cohortTableName,
-      cohortId = , #TODO 
+      cohortId = 21395, 
       startDay = -365,
       endDay = 0,
       count = F, 
@@ -462,7 +462,7 @@ plpModelQRISK1_female$modelDesign$covariateSettings <- list(
   covariateCohortDatabaseSchema = '', 
   covariateCohortTable = '', 
   covariateCohorts = data.frame(
-    cohortId = c(1002, 18779, 18778, 18821, 19285, 21387, 18822, 19280, ""),
+    cohortId = c(1002, 18779, 18778, 18821, 19285, 21387, 18822, 19280, 21395),
     cohortName = c('Age','Cholesterol/HDL','Body mass index','Family history of premature cardiovascular disease','Current smoker','Townsend score', 'Systolic blood pressure', 'Antihypertensive agent','SBPxantihypertensive agent interaction term')
     ), 
   valueType = 'binary', 
