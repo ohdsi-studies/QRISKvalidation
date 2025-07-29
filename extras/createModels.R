@@ -92,17 +92,22 @@ createInteractionTermSBPAT <- function() {
   }
 
 #IMPLEMENT
-implementInteractionTermSBPAT <- function(trainData, featureEngineeringSettings) {
+implementInteractionTermSBPATI <- function(trainData, featureEngineeringSettings) {
   # get covariate values
-  InteractionTermSBPATData <- trainData$covariateData$covariates %>%
-    dplyr::filter(.data$covariateId == c(21395, ) %>%                            ##TODO
+  InteractionTermSBPATDataI <- trainData$covariateData$covariates %>%
+    dplyr::filter(.data$covariateId == c(21395) %>%                            
     dplyr::select("rowId", 'covariateValue') %>%
     dplyr::collect()
 
+   InteractionTermSBPATDataII <-   trainData$covariateData$covariates %>%
+    dplyr::filter(.data$covariateId == ) %>%                            ##TODO
+    dplyr::select("rowId", 'covariateValue') %>%
+    dplyr::collect()             
+  
   newData <- data.frame(
-    rowId = InteractionTermSBPATData$rowId,
+    rowIds = c(InteractionTermSBPATDataI$rowId, InteractionTermSBPATDataII)
     covariateId = 3004, 
-    covariateValue = InteractionTermSBPATData$covariateValue
+    covariateValue = InteractionTermSBPATDataI$covariateValue*InteractionTermSBPATDataII$covariateValue
   )
 
   # remove existing age if in covariates
