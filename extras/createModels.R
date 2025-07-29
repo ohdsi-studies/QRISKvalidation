@@ -82,63 +82,56 @@ implementLogAge <- function(trainData, featureEngineeringSettings) {
   return(trainData)
 }
 
-#INTERACTION TERM SBP x ANTIHYPERTENSIVE TREATMENT #TODO
+#INTERACTION TERM SBP x ANTIHYPERTENSIVE TREATMENT                                                          #TODO
 #=======================================================================================
 #CREATE
-createInteractionTerm <- function {
-  attr(featureEngineeringSettings, "fun") <- "implementInteractionTerm"
+createInteractionTermSBPAT <- function() {
+  attr(featureEngineeringSettings, "fun") <- "implementInteractionTermSBPAT"
   class(FeatureEngineeringSettings) <- "featureEngineeringSettings"
   return(featureEngineeringSettings)
   }
 
 #IMPLEMENT
-implementInteractionTerm <- function(trainData, featureEngineeringSettings, model) {
-    ageData <- trainData$labels
-    X <- trainData$labels$ageYear
-    y <- ageData$outcomeCount
-    newData <- data.frame(y = y, X = X)
-    yHat <- predict(model, newData)
-    newData <- data.frame(
-      rowId = trainData$labels$rowId,
-      covariateId = 2002,
-      covariateValue = yHat
-    )
-  }
+implementInteractionTermSBPAT <- function(trainData, featureEngineeringSettings) {
+  # get covariate values
+  InteractionTermSBPATData <- trainData$covariateData$covariates %>%
+    dplyr::filter(.data$covariateId == ) %>%                            ##TODO
+    dplyr::select("rowId", 'covariateValue') %>%
+    dplyr::collect()
 
- #REMOVE EXISTING COVARIATE
-  trainData$covariateData$covariates <- trainData$covariateData$covariates |>
-    dplyr::filter(!.data$covariateId %in% c(1002)) #CHANGE 1002
-
-#UPDATE COVARIATE REFERENCE
-  Andromeda::appendToTable( 
-    trainData$covariateData$covariateRef,
-    data.frame(
-      covariateId = 2002, #CHANGE 2002
-      covariateName = "InteractionTerm",
-      analysisId = 2,
-      conceptId = 2002 #CHANGE 2002
-    )
+  newData <- data.frame(
+    rowId = InteractionTermSBPATData$rowId,
+    covariateId = 3004, 
+    covariateValue = InteractionTermSBPATData$covariateValue
   )
 
-  #UPDATE COVARIATE
+  # remove existing age if in covariates
+  trainData$covariateData$covariates <- trainData$covariateData$covariates |>
+    dplyr::filter(!covariateId %in% c())                                  #TODO
+  # update covRef
+  Andromeda::appendToTable(trainData$covariateData$covariateRef,
+                           data.frame(covariateId=3004,
+                                      covariateName='Interaction term SBPxAntihypertensive treatment',
+                                      analysisId=4,
+                                      conceptId=3004))
+
+  # update covariates
   Andromeda::appendToTable(trainData$covariateData$covariates, newData)
 
   featureEngineering <- list(
-    funct = "implementInteractionTerm",
+    funct = 'InteractionTermSBPAT',
     settings = list(
-      featureEngineeringSettings = featureEngineeringSettings,
-      model = model
+      featureEngineeringSettings = featureEngineeringSettings
     )
   )
 
-  attr(trainData$covariateData, "metaData")$featureEngineering <- listAppend(
-    attr(trainData$covariateData, "metaData")$featureEngineering,
+  attr(trainData$covariateData, 'metaData')$featureEngineering = listAppend(
+    attr(trainData$covariateData, 'metaData')$featureEngineering,
     featureEngineering
   )
 
   return(trainData)
 }
-
 
 #STANDARD DEVIATION OF BLOOD PRESSURE 
 #=======================================================================================
@@ -170,6 +163,7 @@ implementSDBP <- function(trainData, featureEngineeringSettings) {
   # remove existing SBP if in covariates
   trainData$covariateData$covariates <- trainData$covariateData$covariates |>
     dplyr::filter(!covariateId %in% c())                                     #ADD INITIAL COVARIATE ID
+
   # update covRef
   Andromeda::appendToTable(trainData$covariateData$covariateRef,
                            data.frame(covariateId=3003, 
