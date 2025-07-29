@@ -100,19 +100,19 @@ implementInteractionTermSBPATI <- function(trainData, featureEngineeringSettings
     dplyr::collect()
 
    InteractionTermSBPATDataII <-   trainData$covariateData$covariates %>%
-    dplyr::filter(.data$covariateId == ) %>%                            ##TODO
+    dplyr::filter(.data$covariateId == 19280) %>%                            
     dplyr::select("rowId", 'covariateValue') %>%
     dplyr::collect()             
   
   newData <- data.frame(
-    rowIds = c(InteractionTermSBPATDataI$rowId, InteractionTermSBPATDataII)
+    rowIds = c(InteractionTermSBPATDataI$rowId, InteractionTermSBPATDataII$rowId)
     covariateId = 3004, 
     covariateValue = InteractionTermSBPATDataI$covariateValue*InteractionTermSBPATDataII$covariateValue
   )
 
   # remove existing age if in covariates
   trainData$covariateData$covariates <- trainData$covariateData$covariates |>
-    dplyr::filter(!covariateId %in% c(21395, ))                                  #TODO
+    dplyr::filter(!covariateId %in% c(21395))                                  
   # update covRef
   Andromeda::appendToTable(trainData$covariateData$covariateRef,
                            data.frame(covariateId=3004,
