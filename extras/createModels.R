@@ -1590,8 +1590,8 @@ plpModelQRISK3_female <- PatientLevelPrediction::createGlmModel(
   targetId = , #TODO
   outcomeId = , #TODO
   coefficients = data.frame(
-    covariateId = c("", "", "", "", "", "", "", "", "", "", "", 21288, 21289, 21290, 21291,18821, 18820, 18815, 19280, 18838, 18841, 21347, 19379, 21371, 19164, 21372, 21294, 18779, 18822, "")*1000+canalysisId, #TODO
-    coefficient = c(0.294, 1.00, 1.32, 1.76, 1.34, 1.08, 0.843, 0.675, 0.722, 0.843, 1.00, 1.14, 1.75, 1.95, 2.34, 1.58, 5.62, 2.91, 1.66, 1.24, 4.92, 1.92, 1.35, 1.81, 2.14, 1.29, 1.13, 1.17, 0.057, 0.108)
+    covariateId = c(21387, 21377, 21378, 21379, 21380, 21381, 21382, 21383, 21386, "", "", 21288, 21289, 21290, 21291,18821, 18820, 18815, 19280, 18838, 18841, 21347, 19379, 21371, 19164, 21372, 21294, 18779, 18822, "")*1000+canalysisId, #TODO
+    coefficient = c(0.294, 1.32, 1.76, 1.34, 1.08, 0.843, 0.675, 0.722, 0.843, 1.00, 1.14, 1.75, 1.95, 2.34, 1.58, 5.62, 2.91, 1.66, 1.24, 4.92, 1.92, 1.35, 1.81, 2.14, 1.29, 1.13, 1.17, 0.057, 0.108)
   ), 
   intercept = 0
   mapping = "", #TODO
@@ -1601,18 +1601,7 @@ plpModelQRISK3_female <- PatientLevelPrediction::createGlmModel(
       settingId = 1,
       cohortDatabaseSchema = cohortDatabaseSchema,
       cohortTable = cohortTableName,
-      cohortId = , #TODO 
-      startDay = -9999,
-      endDay = 0,
-      count = F, 
-      ageInteraction = F, 
-      analysisId = 668
-    ), createCohortCovariateSettings(
-      cohortName = 'White', 
-      settingId = 1,
-      cohortDatabaseSchema = cohortDatabaseSchema,
-      cohortTable = cohortTableName,
-      cohortId = , #TODO  
+      cohortId = 21387, 
       startDay = -9999,
       endDay = 0,
       count = F, 
