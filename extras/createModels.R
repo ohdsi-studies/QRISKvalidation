@@ -205,7 +205,7 @@ implementSDBP <- function(trainData, featureEngineeringSettings) {
 #=======================================================================================
 # need to add covariateSettings and stuff to this?
 canalysisId <- 668
-plpModelQRISK1_male <- PatientLevelPrediction::createGlmModel(
+plpModelQRISK1_male_OG_3 <- PatientLevelPrediction::createGlmModel(
   targetId = , #TODO
   outcomeId = , #TODO
   coefficients = data.frame(
@@ -214,7 +214,7 @@ plpModelQRISK1_male <- PatientLevelPrediction::createGlmModel(
   ), 
   intercept = 0, 
   mapping = "", #TODO 
-  populationSettings = populationSettings,
+  populationSettings = populationSettings3,
   covariateSettings = list(createCohortCovariateSettings(
       cohortName = 'Age', 
       settingId = 1,
@@ -340,19 +340,19 @@ plpModelQRISK1_male$modelDesign$covariateSettings <- list(
 )
 
 # bug that needs fixing in PLP
-attr(plpModelQRISK1_male,"saveType") <- 'RtoJson'
+attr(plpModelQRISK1_male_OG_3,"saveType") <- 'RtoJson'
 
 # RtoJson
 PatientLevelPrediction::savePlpModel(
-  plpModel = plpModelQRISK1_male, 
-  dirPath = './inst/models/QRISK1_male'
+  plpModel = plpModelQRISK1_male_OG_3, 
+  dirPath = './inst/models/QRISK1_male_OG_3'
     )
 
 #QRISK1_female_OG_3
 #=======================================================================================
 # need to add covariateSettings and stuff to this?
 canalysisId <- 668
-plpModelQRISK1_female <- PatientLevelPrediction::createGlmModel(
+plpModelQRISK1_female_OG_3 <- PatientLevelPrediction::createGlmModel(
   targetId = , #TODO
   outcomeId = , #TODO
   coefficients = data.frame(
@@ -361,7 +361,7 @@ plpModelQRISK1_female <- PatientLevelPrediction::createGlmModel(
   ), 
   intercept = 0, 
   mapping = "", #TODO 
-  populationSettings = populationSettings,
+  populationSettings = populationSettings3,
     covariateSettings = list(createCohortCovariateSettings(
       cohortName = 'Age', 
       settingId = 1,
@@ -487,19 +487,19 @@ plpModelQRISK1_female$modelDesign$covariateSettings <- list(
 )
 
 # bug that needs fixing in PLP
-attr(plpModelQRISK1_female,"saveType") <- 'RtoJson'
+attr(plpModelQRISK1_female_OG_3,"saveType") <- 'RtoJson'
 
 # RtoJson
 PatientLevelPrediction::savePlpModel(
-  plpModel = plpModelQRISK1_female, 
-  dirPath = './inst/models/QRISK1_female'
+  plpModel = plpModelQRISK1_female_OG_3, 
+  dirPath = './inst/models/QRISK1_female_OG_3'
     )
 
 #QRISK2_male_OG_3
 #=============================================================================================
 # need to add covariateSettings and stuff to this?
 canalysisId <- 668
-plpModelQRISK2_male <- PatientLevelPrediction::createGlmModel(
+plpModelQRISK2_male_OG_3 <- PatientLevelPrediction::createGlmModel(
   targetId = , #TODO
   outcomeId = , #TODO
   coefficients = data.frame(
@@ -508,7 +508,7 @@ plpModelQRISK2_male <- PatientLevelPrediction::createGlmModel(
   ), 
   intercept = 0, 
   mapping = "", #TODO 
-  populationSettings = populationSettings,
+  populationSettings = populationSettings3,
   covariateSettings = list(createCohortCovariateSettings(
       cohortName = 'Indian', 
       settingId = 1,
@@ -851,19 +851,19 @@ plpModelQRISK2_male$modelDesign$covariateSettings <- list(
 )
 
 # bug that needs fixing in PLP
-attr(plpModelQRISK2_male,"saveType") <- 'RtoJson'
+attr(plpModelQRISK2_male_OG_3,"saveType") <- 'RtoJson'
 
 # RtoJson
 PatientLevelPrediction::savePlpModel(
-  plpModel = plpModelQRISK2_male, 
-  dirPath = './inst/models/QRISK2_male'
+  plpModel = plpModelQRISK2_male_OG_3, 
+  dirPath = './inst/models/QRISK2_male_OG_3'
     )
 
 #QRISK2_female_OG_3
 #=============================================================================================
 # need to add covariateSettings and stuff to this?
 canalysisId <- 668
-plpModelQRISK2_female <- PatientLevelPrediction::createGlmModel(
+plpModelQRISK2_female_OG_3 <- PatientLevelPrediction::createGlmModel(
   targetId = , #TODO
   outcomeId = , #TODO
   coefficients = data.frame(
@@ -872,7 +872,7 @@ plpModelQRISK2_female <- PatientLevelPrediction::createGlmModel(
   ), 
   intercept = 0, 
   mapping = "", #TODO 
-  populationSettings = populationSettings,
+  populationSettings = populationSettings3,
   covariateSettings = list(createCohortCovariateSettings(
       cohortName = 'Indian', 
       settingId = 1,
@@ -1215,19 +1215,19 @@ plpModelQRISK2_female$modelDesign$covariateSettings <- list(
 )
 
 # bug that needs fixing in PLP
-attr(plpModelQRISK2_female,"saveType") <- 'RtoJson'
+attr(plpModelQRISK2_female_OG_3,"saveType") <- 'RtoJson'
 
 # RtoJson
 PatientLevelPrediction::savePlpModel(
-  plpModel = plpModelQRISK2_female, 
-  dirPath = './inst/models/QRISK2_female'
+  plpModel = plpModelQRISK2_female_OG_3, 
+  dirPath = './inst/models/QRISK2_female_OG_3'
     )
 
 #QRISK3_male_OG_3
 #============================================================================
 # need to add covariateSettings and stuff to this?
 canalysisId <- 668
-plpModelQRISK3_male <- PatientLevelPrediction::createGlmModel(
+plpModelQRISK3_male_OG_3 <- PatientLevelPrediction::createGlmModel(
   targetId = , #TODO
   outcomeId = , #TODO
   coefficients = data.frame(
@@ -1236,7 +1236,7 @@ plpModelQRISK3_male <- PatientLevelPrediction::createGlmModel(
   ), 
   intercept = 0, 
   mapping = "", #TODO
-  populationSettings = populationSettings,
+  populationSettings = populationSettings3,
   covariateSettings = list(createCohortCovariateSettings(
       cohortName = 'Townsend score', 
       settingId = 1,
@@ -1582,19 +1582,19 @@ plpModelQRISK3_male$modelDesign$covariateSettings <- list(
 )
 
 # bug that needs fixing in PLP
-attr(plpModelQRISK3_male,"saveType") <- 'RtoJson'
+attr(plpModelQRISK3_male_OG_3,"saveType") <- 'RtoJson'
 
 # RtoJson
 PatientLevelPrediction::savePlpModel(
-  plpModel = plpModelQRISK3_male, 
-  dirPath = './inst/models/QRISK3_male'
+  plpModel = plpModelQRISK3_male_OG_3, 
+  dirPath = './inst/models/QRISK3_male_OG_3'
     )
 
 #QRISK3_female_OG_3
 #============================================================================
 # need to add covariateSettings and stuff to this?
 canalysisId <- 668
-plpModelQRISK3_female <- PatientLevelPrediction::createGlmModel(
+plpModelQRISK3_female_OG_3 <- PatientLevelPrediction::createGlmModel(
   targetId = , #TODO
   outcomeId = , #TODO
   coefficients = data.frame(
@@ -1603,7 +1603,7 @@ plpModelQRISK3_female <- PatientLevelPrediction::createGlmModel(
   ), 
   intercept = 0
   mapping = "", #TODO
-  populationSettings = populationSettings,
+  populationSettings = populationSettings3,
   covariateSettings = list(createCohortCovariateSettings(
       cohortName = 'Townsend score', 
       settingId = 1,
@@ -1938,12 +1938,12 @@ plpModelQRISK3_female$modelDesign$covariateSettings <- list(
 )
 
 # bug that needs fixing in PLP
-attr(plpModelQRISK3_female,"saveType") <- 'RtoJson'
+attr(plpModelQRISK3_female_OG_3,"saveType") <- 'RtoJson'
 
 # RtoJson
 PatientLevelPrediction::savePlpModel(
-  plpModel = plpModelQRISK3_female, 
-  dirPath = './inst/models/QRISK3_female'
+  plpModel = plpModelQRISK3_female_OG_3, 
+  dirPath = './inst/models/QRISK3_female_OG_3'
     )
 
 
@@ -1951,7 +1951,7 @@ PatientLevelPrediction::savePlpModel(
 #============================================================================
 # need to add covariateSettings and stuff to this?
 canalysisId <- 668
-plpModelQRISK4_male <- PatientLevelPrediction::createGlmModel(
+plpModelQRISK4_male_OG_3 <- PatientLevelPrediction::createGlmModel(
   targetId = , #TODO
   outcomeId = , #TODO
   coefficients = data.frame(
@@ -1960,7 +1960,7 @@ plpModelQRISK4_male <- PatientLevelPrediction::createGlmModel(
   ), 
   intercept = 0, 
   mapping = "", #TODO 
-  populationSettings = populationSettings,
+  populationSettings = populationSettings3,
   covariateSettings = list(createCohortCovariateSettings(
       cohortName = 'SBP', 
       settingId = 1,
@@ -2383,19 +2383,19 @@ plpModelQRISK4_male$modelDesign$covariateSettings <- list(
 )
 
 # bug that needs fixing in PLP
-attr(plpModelQRISK4_male,"saveType") <- 'RtoJson'
+attr(plpModelQRISK4_male_OG_3,"saveType") <- 'RtoJson'
 
 # RtoJson
 PatientLevelPrediction::savePlpModel(
-  plpModel = plpModelQRISK4_male, 
-  dirPath = './inst/models/QRISK4_male'
+  plpModel = plpModelQRISK4_male_OG_3, 
+  dirPath = './inst/models/QRISK4_male_OG_3'
     )
 
 #QRISK4_female_OG_3
 #============================================================================
 # need to add covariateSettings and stuff to this?
 canalysisId <- 668
-plpModelQRISK4_female <- PatientLevelPrediction::createGlmModel(
+plpModelQRISK4_female_OG_3 <- PatientLevelPrediction::createGlmModel(
   targetId = , #TODO
   outcomeId = , #TODO
   coefficients = data.frame(
@@ -2404,7 +2404,7 @@ plpModelQRISK4_female <- PatientLevelPrediction::createGlmModel(
   ), 
   intercept = 0, 
   mapping = "", #TODO 
-  populationSettings = populationSettings,
+  populationSettings = populationSettings3,
   covariateSettings = list(createCohortCovariateSettings(
       cohortName = 'SBP', 
       settingId = 1,
@@ -2838,12 +2838,12 @@ plpModelQRISK4_female$modelDesign$covariateSettings <- list(
 )
 
 # bug that needs fixing in PLP
-attr(plpModelQRISK4_female,"saveType") <- 'RtoJson'
+attr(plpModelQRISK4_female_OG_3,"saveType") <- 'RtoJson'
 
 # RtoJson
 PatientLevelPrediction::savePlpModel(
-  plpModel = plpModelQRISK4_female, 
-  dirPath = './inst/models/QRISK4_female'
+  plpModel = plpModelQRISK4_female_OG_3, 
+  dirPath = './inst/models/QRISK4_female_OG_3'
     )
 
 #QRISK1_male_OG_10
