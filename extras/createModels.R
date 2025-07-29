@@ -496,29 +496,18 @@ plpModelQRISK2_male <- PatientLevelPrediction::createGlmModel(
   targetId = , #TODO
   outcomeId = , #TODO
   coefficients = data.frame(
-    covariateId = c("", "", "", "", "", "", "", "", "", 1002, 18778, "", 18822, 18779, 18821, 19285, 19280, 18815, 18838, 18841, 21347, 18778, "", 18822, 18821, 19285, 19280, 18815, 18841)*1000+canalysisId, #TODO
-    coefficient = c(1, 1.45, 1.97, 1.67, 1.37, 0.62, 0.63, 0.51, 0.91, 1.59, 0.218, 0.236, 0.0595, 1.19, 2.14, 1.65, 1.68, 2.20, 1.38, 2.40, 1.75, 0.985, 0.1946, 0.0482, 0.923, 0.932, 0.916, 0.902, 0.893) 
+    covariateId = c(21377, 21378, 21379, 21380, 21381, 21382, 21383, 21386, 1002, 18778, 21387, 18822, 18779, 18821, 19285, 19280, 18815, 18838, 18841, 21347, 18778, 21387, 18822, 18821, 19285, 19280, 18815, 18841)*1000+canalysisId, #TODO
+    coefficient = c(1.45, 1.97, 1.67, 1.37, 0.62, 0.63, 0.51, 0.91, 1.59, 0.218, 0.236, 0.0595, 1.19, 2.14, 1.65, 1.68, 2.20, 1.38, 2.40, 1.75, 0.985, 0.1946, 0.0482, 0.923, 0.932, 0.916, 0.902, 0.893) 
   ), 
   intercept = 0, 
   mapping = "", #TODO 
   populationSettings = populationSettings,
   covariateSettings = list(createCohortCovariateSettings(
-      cohortName = 'White', 
-      settingId = 1,
-      cohortDatabaseSchema = cohortDatabaseSchema,
-      cohortTable = cohortTableName,
-      cohortId = , #TODO 
-      startDay = -9999,
-      endDay = 0,
-      count = F, 
-      ageInteraction = F, 
-      analysisId = 668
-    ), createCohortCovariateSettings(
       cohortName = 'Indian', 
       settingId = 1,
       cohortDatabaseSchema = cohortDatabaseSchema,
       cohortTable = cohortTableName,
-      cohortId = , #TODO  
+      cohortId = 21377,   
       startDay = -9999,
       endDay = 0,
       count = F, 
@@ -529,7 +518,7 @@ plpModelQRISK2_male <- PatientLevelPrediction::createGlmModel(
       settingId = 1,
       cohortDatabaseSchema = cohortDatabaseSchema,
       cohortTable = cohortTableName,
-      cohortId = , #TODO  
+      cohortId = 21378,   
       startDay = -9999,
       endDay = 0,
       count = F, 
@@ -540,7 +529,7 @@ plpModelQRISK2_male <- PatientLevelPrediction::createGlmModel(
       settingId = 1,
       cohortDatabaseSchema = cohortDatabaseSchema,
       cohortTable = cohortTableName,
-      cohortId = , #TODO 
+      cohortId = 21379, 
       startDay = -9999,
       endDay = 0,
       count = F, 
@@ -551,7 +540,7 @@ plpModelQRISK2_male <- PatientLevelPrediction::createGlmModel(
       settingId = 1,
       cohortDatabaseSchema = cohortDatabaseSchema,
       cohortTable = cohortTableName,
-      cohortId = , #TODO
+      cohortId = 21380, 
       startDay = -9999,
       endDay = 0,
       count = F, 
@@ -562,7 +551,7 @@ plpModelQRISK2_male <- PatientLevelPrediction::createGlmModel(
       settingId = 1,
       cohortDatabaseSchema = cohortDatabaseSchema,
       cohortTable = cohortTableName,
-      cohortId = , #TODO 
+      cohortId = 21381,  
       startDay = -9999,
       endDay = 0,
       count = F, 
@@ -573,7 +562,7 @@ plpModelQRISK2_male <- PatientLevelPrediction::createGlmModel(
       settingId = 1,
       cohortDatabaseSchema = cohortDatabaseSchema,
       cohortTable = cohortTableName,
-      cohortId = , #TODO  
+      cohortId = 21382,  
       startDay = -9999,
       endDay = 0,
       count = F, 
@@ -584,7 +573,7 @@ plpModelQRISK2_male <- PatientLevelPrediction::createGlmModel(
       settingId = 1,
       cohortDatabaseSchema = cohortDatabaseSchema,
       cohortTable = cohortTableName,
-      cohortId = , #TODO  
+      cohortId = 21383, 
       startDay = -9999,
       endDay = 0,
       count = F, 
@@ -595,7 +584,7 @@ plpModelQRISK2_male <- PatientLevelPrediction::createGlmModel(
       settingId = 1,
       cohortDatabaseSchema = cohortDatabaseSchema,
       cohortTable = cohortTableName,
-      cohortId = , #TODO 
+      cohortId = 21386, 
       startDay = -9999,
       endDay = 0,
       count = F, 
@@ -628,7 +617,7 @@ plpModelQRISK2_male <- PatientLevelPrediction::createGlmModel(
       settingId = 1,
       cohortDatabaseSchema = cohortDatabaseSchema,
       cohortTable = cohortTableName,
-      cohortId = , #TODO  
+      cohortId = 21387,
       startDay = -9999,
       endDay = 0,
       count = F, 
@@ -750,7 +739,7 @@ plpModelQRISK2_male <- PatientLevelPrediction::createGlmModel(
       settingId = 1,
       cohortDatabaseSchema = cohortDatabaseSchema,
       cohortTable = cohortTableName,
-      cohortId = , #TODO  
+      cohortId = 21387,  
       startDay = -9999,
       endDay = 0,
       count = F, 
@@ -842,8 +831,8 @@ plpModelQRISK2_male$modelDesign$covariateSettings <- list(
   covariateCohortDatabaseSchema = '', 
   covariateCohortTable = '', 
   covariateCohorts = data.frame(
-    cohortId = c("", "", "", "", "", "", "", "", "", 1002, 18778, "", 18822, 18779, 18821, 19285, 19280, 18815, 18838, 18841, 21347, 18778, "", 18822, 18821, 19285, 19280, 18815, 18841,
-    cohortName = c('White','Indian','Pakistani','Bangladeshi','Other Asian','Black Caribbean','Black African','Chinese','Other','Age','BMI','Townsend score','Systolic blood pressure','Cholesterol/HDL','Family history coronary heart disease','Current smoker','Treated hypertension','Type 2 diabetes','Rheumatoid arthritis','Atrial fibrillation','Renal disease','AgexBMI interaction','AgexTownsend interaction','Agexsystolicbloodpressure interaction','Agexfamilyhistory interaction','Agexsmoking interaction','Agextreatedhypertension interaction','Agextype2diabetes interaction', 'Agexatrialfibrillation interaction') 
+    cohortId = c(21377, 21378, 21379, 21380, 21381, 21382, 21383, 21386, 1002, 18778, 21387, 18822, 18779, 18821, 19285, 19280, 18815, 18838, 18841, 21347, 18778, 21387, 18822, 18821, 19285, 19280, 18815, 18841)
+    cohortName = c('Indian','Pakistani','Bangladeshi','Other Asian','Black Caribbean','Black African','Chinese','Other','Age','BMI','Townsend score','Systolic blood pressure','Cholesterol/HDL','Family history coronary heart disease','Current smoker','Treated hypertension','Type 2 diabetes','Rheumatoid arthritis','Atrial fibrillation','Renal disease','AgexBMI interaction','AgexTownsend interaction','Agexsystolicbloodpressure interaction','Agexfamilyhistory interaction','Agexsmoking interaction','Agextreatedhypertension interaction','Agextype2diabetes interaction', 'Agexatrialfibrillation interaction') 
     ), 
   valueType = 'binary', 
   startDay = -365, 
