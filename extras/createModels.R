@@ -10,7 +10,7 @@ populationSettings1 <- PatientLevelPrediction::createStudyPopulationSettings(
   requireTimeAtRisk = FALSE, 
   riskWindowStart = 1, 
   startAnchor = 'cohort start',
-  riskWindowEnd = 365, 
+  riskWindowEnd = 3650, 
   endAnchor = 'cohort start'
   )
 
@@ -18,7 +18,7 @@ populationSettings2 <- PatientLevelPrediction::createStudyPopulationSettings(
   requireTimeAtRisk = FALSE, 
   riskWindowStart = 1, 
   startAnchor = 'cohort start',
-  riskWindowEnd = 365, 
+  riskWindowEnd = 1095, 
   endAnchor = 'cohort start'
   )
 
