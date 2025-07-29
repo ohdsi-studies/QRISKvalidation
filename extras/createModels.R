@@ -1224,8 +1224,8 @@ plpModelQRISK3_male <- PatientLevelPrediction::createGlmModel(
   targetId = , #TODO
   outcomeId = , #TODO
   coefficients = data.frame(
-    covariateId = c("", "", "", "", "", "", "", "", "", "", "", 21288, 21289, 21290, 21291, 18821, 18820, 18815, 19280, 18838, 18841, 21347, 19379, 21371, 19164, 21372, 21294, 19165, 18779, 18822, "")*1000+canalysisId, #TODO
-    coefficient = c(0.236, 1.00, 1.32, 1.61, 1.70, 1.04, 0.699, 0.670, 0.660, 0.769, 1.00, 1.21, 1.74, 1.89, 2.20, 1.72, 3.44, 2.36, 1.68, 1.23, 2.42, 2.05, 1.29, 1.58, 1.55, 1.14, 1.13, 1.25, 1.19, 0.057, 0.111) 
+    covariateId = c(21387, 21377, 21378, 21379, 21380, 21381, 21382, 21383, 21386, 21288, 21289, 21290, 21291, 18821, 18820, 18815, 19280, 18838, 18841, 21347, 19379, 21371, 19164, 21372, 21294, 19165, 18779, 18822, "")*1000+canalysisId, #TODO
+    coefficient = c(0.236, 1.32, 1.61, 1.70, 1.04, 0.699, 0.670, 0.660, 0.769, 1.21, 1.74, 1.89, 2.20, 1.72, 3.44, 2.36, 1.68, 1.23, 2.42, 2.05, 1.29, 1.58, 1.55, 1.14, 1.13, 1.25, 1.19, 0.057, 0.111) 
   ), 
   intercept = 0, 
   mapping = "", #TODO
@@ -1235,18 +1235,7 @@ plpModelQRISK3_male <- PatientLevelPrediction::createGlmModel(
       settingId = 1,
       cohortDatabaseSchema = cohortDatabaseSchema,
       cohortTable = cohortTableName,
-      cohortId = , #TODO 
-      startDay = -9999,
-      endDay = 0,
-      count = F, 
-      ageInteraction = F, 
-      analysisId = 668
-    ), createCohortCovariateSettings(
-      cohortName = 'White', 
-      settingId = 1,
-      cohortDatabaseSchema = cohortDatabaseSchema,
-      cohortTable = cohortTableName,
-      cohortId = , #TODO  
+      cohortId = 21387,  
       startDay = -9999,
       endDay = 0,
       count = F, 
@@ -1257,7 +1246,7 @@ plpModelQRISK3_male <- PatientLevelPrediction::createGlmModel(
       settingId = 1,
       cohortDatabaseSchema = cohortDatabaseSchema,
       cohortTable = cohortTableName,
-      cohortId = , #TODO  
+      cohortId = 21377, 
       startDay = -9999,
       endDay = 0,
       count = F, 
@@ -1268,7 +1257,7 @@ plpModelQRISK3_male <- PatientLevelPrediction::createGlmModel(
       settingId = 1,
       cohortDatabaseSchema = cohortDatabaseSchema,
       cohortTable = cohortTableName,
-      cohortId = , #TODO 
+      cohortId = 21378, 
       startDay = -9999,
       endDay = 0,
       count = F, 
@@ -1279,7 +1268,7 @@ plpModelQRISK3_male <- PatientLevelPrediction::createGlmModel(
       settingId = 1,
       cohortDatabaseSchema = cohortDatabaseSchema,
       cohortTable = cohortTableName,
-      cohortId = , #TODO
+      cohortId = 21379, 
       startDay = -9999,
       endDay = 0,
       count = F, 
@@ -1290,7 +1279,7 @@ plpModelQRISK3_male <- PatientLevelPrediction::createGlmModel(
       settingId = 1,
       cohortDatabaseSchema = cohortDatabaseSchema,
       cohortTable = cohortTableName,
-      cohortId = , #TODO 
+      cohortId = 21380,
       startDay = -9999,
       endDay = 0,
       count = F, 
@@ -1301,7 +1290,7 @@ plpModelQRISK3_male <- PatientLevelPrediction::createGlmModel(
       settingId = 1,
       cohortDatabaseSchema = cohortDatabaseSchema,
       cohortTable = cohortTableName,
-      cohortId = , #TODO  
+      cohortId = 21381, 
       startDay = -9999,
       endDay = 0,
       count = F, 
@@ -1312,7 +1301,7 @@ plpModelQRISK3_male <- PatientLevelPrediction::createGlmModel(
       settingId = 1,
       cohortDatabaseSchema = cohortDatabaseSchema,
       cohortTable = cohortTableName,
-      cohortId = , #TODO 
+      cohortId = 21382, 
       startDay = -9999,
       endDay = 0,
       count = F, 
@@ -1323,7 +1312,7 @@ plpModelQRISK3_male <- PatientLevelPrediction::createGlmModel(
       settingId = 1,
       cohortDatabaseSchema = cohortDatabaseSchema,
       cohortTable = cohortTableName,
-      cohortId = , #TODO
+      cohortId = 21383, 
       startDay = -9999,
       endDay = 0,
       count = F, 
@@ -1334,19 +1323,8 @@ plpModelQRISK3_male <- PatientLevelPrediction::createGlmModel(
       settingId = 1,
       cohortDatabaseSchema = cohortDatabaseSchema,
       cohortTable = cohortTableName,
-      cohortId = , #TODO 
+      cohortId = 21386, 
       startDay = -9999,
-      endDay = 0,
-      count = F, 
-      ageInteraction = F, 
-      analysisId = 668
-    ), createCohortCovariateSettings(
-      cohortName = 'Non-smoker',
-      settingId = 1,
-      cohortDatabaseSchema = cohortDatabaseSchema,
-      cohortTable = cohortTableName,
-      cohortId = , #TODO  
-      startDay = -365,
       endDay = 0,
       count = F, 
       ageInteraction = F, 
@@ -1583,8 +1561,8 @@ plpModelQRISK3_male$modelDesign$covariateSettings <- list(
   covariateCohortDatabaseSchema = '', 
   covariateCohortTable = '', 
   covariateCohorts = data.frame(
-    cohortId = c("", "", "", "", "", "", "", "", "", "", "", 21288, 21289, 21290, 21291, 18821, 18820, 18815, 19280, 18838, 18841, 21347, 19379, 21371, 19164, 21372, 21294, 19165, 18779, 18822, ""),
-    cohortName = c('Townsend score','White','Indian','Pakistani','Bangladeshi','Other Asian','Black Caribbean','Black African','Chinese','Other','Non-smoker','Former smoker','Light smoker','Moderate smoker','Heavy smoker','Family history of coronary heart disease','Type I Diabetes','Type II Diabetes', 'Treated hypertension', 'Rheumatoid arthritis', 'Atrial fibrillation', 'Chronic kidney disease (stage 3,4 or 5)','Migraine', 'Corticosteroid use', 'Systemic lupus erythematosus', 'Atypical antipsychotic use', 'Severe mental illness', 'Erectile dysfunction or treatment', 'Cholesterol/HDL', 'Systolic blood pressure', 'SD of blood pressure') 
+    cohortId = c(21387, 21377, 21378, 21379, 21380, 21381, 21382, 21383, 21386, 21288, 21289, 21290, 21291, 18821, 18820, 18815, 19280, 18838, 18841, 21347, 19379, 21371, 19164, 21372, 21294, 19165, 18779, 18822, ""),
+    cohortName = c('Townsend score','Indian','Pakistani','Bangladeshi','Other Asian','Black Caribbean','Black African','Chinese','Other','Former smoker','Light smoker','Moderate smoker','Heavy smoker','Family history of coronary heart disease','Type I Diabetes','Type II Diabetes', 'Treated hypertension', 'Rheumatoid arthritis', 'Atrial fibrillation', 'Chronic kidney disease (stage 3,4 or 5)','Migraine', 'Corticosteroid use', 'Systemic lupus erythematosus', 'Atypical antipsychotic use', 'Severe mental illness', 'Erectile dysfunction or treatment', 'Cholesterol/HDL', 'Systolic blood pressure', 'SD of blood pressure') 
     ), 
   valueType = 'binary', 
   startDay = -365, 
