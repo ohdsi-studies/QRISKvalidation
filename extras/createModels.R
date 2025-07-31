@@ -4,12 +4,30 @@ cohortDatabaseSchema <- 'cohortDatabaseSchema'
 cohortTableName <- 'cohortTableName'
 
 # specify the time-at-risk 
+#1 year TAR
+populationSettings1 <- PatientLevelPrediction::createStudyPopulationSettings(
+  requireTimeAtRisk = FALSE, 
+  riskWindowStart = 1, 
+  startAnchor = 'cohort start',
+  riskWindowEnd = 365, 
+  endAnchor = 'cohort start'
+  )
+
 #3 years TAR
 populationSettings3 <- PatientLevelPrediction::createStudyPopulationSettings(
   requireTimeAtRisk = FALSE, 
   riskWindowStart = 1, 
   startAnchor = 'cohort start',
   riskWindowEnd = 1095, 
+  endAnchor = 'cohort start'
+  )
+
+#5 year TAR
+populationSettings5 <- PatientLevelPrediction::createStudyPopulationSettings(
+  requireTimeAtRisk = FALSE, 
+  riskWindowStart = 1, 
+  startAnchor = 'cohort start',
+  riskWindowEnd = 1825, 
   endAnchor = 'cohort start'
   )
 
