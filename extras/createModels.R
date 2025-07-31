@@ -314,15 +314,15 @@ plpModelQRISK1_male_OG_3 <- PatientLevelPrediction::createGlmModel(
   featureEngineeringSettings = list(createLogAge(),createInteractionTermSBPAT())                  
 )
 
-plpModelQRISK1_male$modelDesign$targetId <- targetId                   #TODO
-plpModelQRISK1_male$modelDesign$outcomeId <- outcomeId
+plpModelQRISK1_male$modelDesign$targetId <- 21398                  
+plpModelQRISK1_male$modelDesign$outcomeId <- 21397
 plpModelQRISK1_male$modelDesign$covariateSettings <- list(
   FeatureExtraction::createCohortBasedCovariateSettings(
   analysisId = canalysisId,
   covariateCohortDatabaseSchema = '', 
   covariateCohortTable = '', 
   covariateCohorts = data.frame(
-    cohortId = c(1002, 18779, 18778, 18821, 19285, 21387, 18822, 19280, ""),
+    cohortId = c(1002, 18779, 18778, 18821, 19285, 21387, 18822, 19280, 21395),
     cohortName = c('Age','Cholesterol/HDL','Body mass index','Family history of premature cardiovascular disease','Current smoker','Townsend score', 'Systolic blood pressure', 'Antihypertensive agent','SBPxantihypertensive agent interaction term') 
     ), 
   valueType = 'binary', 
@@ -459,8 +459,8 @@ plpModelQRISK1_female_OG_3 <- PatientLevelPrediction::createGlmModel(
   featureEngineeringSettings = list(createLogAge(), createInteractionTermSBPAT())                            
 )
 
-plpModelQRISK1_female$modelDesign$targetId <- targetId                            #TODO
-plpModelQRISK1_female$modelDesign$outcomeId <- outcomeId
+plpModelQRISK1_female$modelDesign$targetId <- 21399
+plpModelQRISK1_female$modelDesign$outcomeId <- 21397
 plpModelQRISK1_female$modelDesign$covariateSettings <- list(
   FeatureExtraction::createCohortBasedCovariateSettings(
   analysisId = canalysisId,
@@ -821,8 +821,8 @@ plpModelQRISK2_male_OG_3 <- PatientLevelPrediction::createGlmModel(
   featureEngineeringSettings = createLogAge()
 )
 
-plpModelQRISK2_male$modelDesign$targetId <- targetId                                                #TODO
-plpModelQRISK2_male$modelDesign$outcomeId <- outcomeId
+plpModelQRISK2_male$modelDesign$targetId <- 21400
+plpModelQRISK2_male$modelDesign$outcomeId <- 21397
 plpModelQRISK2_male$modelDesign$covariateSettings <- list(
   FeatureExtraction::createCohortBasedCovariateSettings(
   analysisId = canalysisId,
@@ -1183,8 +1183,8 @@ plpModelQRISK2_female_OG_3 <- PatientLevelPrediction::createGlmModel(
   featureEngineeringSettings = createLogAge()
 )
 
-plpModelQRISK2_female$modelDesign$targetId <- targetId                                                                 #TODO
-plpModelQRISK2_female$modelDesign$outcomeId <- outcomeId
+plpModelQRISK2_female$modelDesign$targetId <- 21401
+plpModelQRISK2_female$modelDesign$outcomeId <- 21397
 plpModelQRISK2_female$modelDesign$covariateSettings <- list(
   FeatureExtraction::createCohortBasedCovariateSettings(
   analysisId = canalysisId,
@@ -1548,8 +1548,8 @@ plpModelQRISK3_male_OG_3 <- PatientLevelPrediction::createGlmModel(
   featureEngineeringSettings = createSDBP()                         
 )
 
-plpModelQRISK3_male$modelDesign$targetId <- targetId                                                                       #TODO
-plpModelQRISK3_male$modelDesign$outcomeId <- outcomeId
+plpModelQRISK3_male$modelDesign$targetId <- 21402
+plpModelQRISK3_male$modelDesign$outcomeId <- 21397
 plpModelQRISK3_male$modelDesign$covariateSettings <- list(
   FeatureExtraction::createCohortBasedCovariateSettings(
   analysisId = canalysisId,
@@ -1902,8 +1902,8 @@ plpModelQRISK3_female_OG_3 <- PatientLevelPrediction::createGlmModel(
   featureEngineeringSettings = createSDBP() 
 )
 
-plpModelQRISK3_female$modelDesign$targetId <- targetId                                                                 #TODO
-plpModelQRISK3_female$modelDesign$outcomeId <- outcomeId
+plpModelQRISK3_female$modelDesign$targetId <- 21403
+plpModelQRISK3_female$modelDesign$outcomeId <- 21397
 plpModelQRISK3_female$modelDesign$covariateSettings <- list(
   FeatureExtraction::createCohortBasedCovariateSettings(
   analysisId = canalysisId,
@@ -2345,8 +2345,8 @@ plpModelQRISK4_male_OG_3 <- PatientLevelPrediction::createGlmModel(
   featureEngineeringSettings = createSDBP() 
 )
 
-plpModelQRISK4_male$modelDesign$targetId <- targetId                                                               #TODO
-plpModelQRISK4_male$modelDesign$outcomeId <- outcomeId
+plpModelQRISK4_male$modelDesign$targetId <- 21404
+plpModelQRISK4_male$modelDesign$outcomeId <- 21397
 plpModelQRISK4_male$modelDesign$covariateSettings <- list(
   FeatureExtraction::createCohortBasedCovariateSettings(
   analysisId = canalysisId,
@@ -2798,8 +2798,8 @@ plpModelQRISK4_female_OG_3 <- PatientLevelPrediction::createGlmModel(
   featureEngineeringSettings = createSDBP() 
 )
 
-plpModelQRISK4_female$modelDesign$targetId <- targetId                                                   #TODO
-plpModelQRISK4_female$modelDesign$outcomeId <- outcomeId
+plpModelQRISK4_female$modelDesign$targetId <- 21405
+plpModelQRISK4_female$modelDesign$outcomeId <- 21397
 plpModelQRISK4_female$modelDesign$covariateSettings <- list(
   FeatureExtraction::createCohortBasedCovariateSettings(
   analysisId = canalysisId,
