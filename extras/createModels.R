@@ -2852,15 +2852,1014 @@ PatientLevelPrediction::savePlpModel(
 
 #QRISK1_male_OG_1
 #============================================================================
+canalysisId <- 668
+plpModelQRISK1_male_OG_1 <- PatientLevelPrediction::createGlmModel(
+  coefficients = data.frame(
+    covariateId = c(1002, 18779, 18778, 18821, 19285, 21387, 18822, 19280, 21395)*1000+canalysisId, #TODO
+    coefficient = c(50.634, 1.001, 1.022, 1.300, 1.417, 1.017, 1.004, 1.847, 0.993) 
+  ), 
+  intercept = 0, 
+  mapping = "", #TODO 
+  populationSettings = populationSettings1,
+  covariateSettings = list(createCohortCovariateSettings(
+      cohortName = 'Age', 
+      settingId = 1,
+      cohortDatabaseSchema = cohortDatabaseSchema,
+      cohortTable = cohortTableName,
+      cohortId = 1002,  
+      startDay = -9999,
+      endDay = 0,
+      count = F, 
+      ageInteraction = F, 
+      analysisId = 668
+    ), createCohortCovariateSettings(
+      cohortName = 'Cholesterol/HDL', 
+      settingId = 1,
+      cohortDatabaseSchema = cohortDatabaseSchema,
+      cohortTable = cohortTableName,
+      cohortId = 18779,  
+      startDay = -365,
+      endDay = 0,
+      count = F, 
+      ageInteraction = F, 
+      analysisId = 668
+    ), createCohortCovariateSettings(
+      cohortName = 'Body mass index', 
+      settingId = 1,
+      cohortDatabaseSchema = cohortDatabaseSchema,
+      cohortTable = cohortTableName,
+      cohortId = 18778,  
+      startDay = -365,
+      endDay = 0,
+      count = F, 
+      ageInteraction = F, 
+      analysisId = 668
+    ), createCohortCovariateSettings(
+      cohortName = 'Family history of premature cardiovascular disease', 
+      settingId = 1,
+      cohortDatabaseSchema = cohortDatabaseSchema,
+      cohortTable = cohortTableName,
+      cohortId = 18821,  
+      startDay = -9999,
+      endDay = 0,
+      count = F, 
+      ageInteraction = F, 
+      analysisId = 668
+    ), createCohortCovariateSettings(
+      cohortName = 'Current smoker', 
+      settingId = 1,
+      cohortDatabaseSchema = cohortDatabaseSchema,
+      cohortTable = cohortTableName,
+      cohortId = 19285, 
+      startDay = -365,
+      endDay = 0,
+      count = F, 
+      ageInteraction = F, 
+      analysisId = 668
+    ), createCohortCovariateSettings(
+      cohortName = 'Townsend score', 
+      settingId = 1,
+      cohortDatabaseSchema = cohortDatabaseSchema,
+      cohortTable = cohortTableName,
+      cohortId = 21387,
+      startDay = -9999,
+      endDay = 0,
+      count = F, 
+      ageInteraction = F, 
+      analysisId = 668
+    ), createCohortCovariateSettings(
+      cohortName = 'Systolic blood pressure', 
+      settingId = 1,
+      cohortDatabaseSchema = cohortDatabaseSchema,
+      cohortTable = cohortTableName,
+      cohortId = 18822, 
+      startDay = -365,
+      endDay = 0,
+      count = F, 
+      ageInteraction = F, 
+      analysisId = 668
+    ), createCohortCovariateSettings(
+      cohortName = 'Antihypertensive agent', 
+      settingId = 1,
+      cohortDatabaseSchema = cohortDatabaseSchema,
+      cohortTable = cohortTableName,
+      cohortId = 19280,  
+      startDay = -30,
+      endDay = 0,
+      count = F, 
+      ageInteraction = F, 
+      analysisId = 668
+    ), createCohortCovariateSettings(
+      cohortName = 'SBPxantihypertensive agent interaction term', 
+      settingId = 1,
+      cohortDatabaseSchema = cohortDatabaseSchema,
+      cohortTable = cohortTableName,
+      cohortId = 21395, 
+      startDay = -365,
+      endDay = 0,
+      count = F, 
+      ageInteraction = F, 
+      analysisId = 668
+    )
+    ),
+  featureEngineeringSettings = list(createLogAge(),createInteractionTermSBPAT())                  
+)
+
+plpModelQRISK1_male$modelDesign$targetId <- 21398                  
+plpModelQRISK1_male$modelDesign$outcomeId <- 21397
+plpModelQRISK1_male$modelDesign$covariateSettings <- list(
+  FeatureExtraction::createCohortBasedCovariateSettings(
+  analysisId = canalysisId,
+  covariateCohortDatabaseSchema = '', 
+  covariateCohortTable = '', 
+  covariateCohorts = data.frame(
+    cohortId = c(1002, 18779, 18778, 18821, 19285, 21387, 18822, 19280, 21395),
+    cohortName = c('Age','Cholesterol/HDL','Body mass index','Family history of premature cardiovascular disease','Current smoker','Townsend score', 'Systolic blood pressure', 'Antihypertensive agent','SBPxantihypertensive agent interaction term') 
+    ), 
+  valueType = 'binary', 
+  startDay = -365, 
+  endDay = 0
+  ),
+  FeatureExtraction::createCovariateSettings(
+    useDemographicsAge = T
+    )
+)
+
+# bug that needs fixing in PLP
+attr(plpModelQRISK1_male_OG_1,"saveType") <- 'RtoJson'
+
+# RtoJson
+PatientLevelPrediction::savePlpModel(
+  plpModel = plpModelQRISK1_male_OG_1, 
+  dirPath = './inst/models/QRISK1_male_OG_1'
+    )
 
 #QRISK1_female_OG_1
 #============================================================================
+canalysisId <- 668
+plpModelQRISK1_female_OG_1 <- PatientLevelPrediction::createGlmModel(
+  coefficients = data.frame(
+    covariateId = c(1002, 18779, 18778, 18821, 19285, 21387, 18822, 19280, 21395)*1000+canalysisId, #TODO
+    coefficient = c(87.75, 1.001, 1.015, 1.229, 1.530, 1.035, 1.005, 1.734, 0.996) 
+  ), 
+  intercept = 0, 
+  mapping = "", #TODO 
+  populationSettings = populationSettings1,
+    covariateSettings = list(createCohortCovariateSettings(
+      cohortName = 'Age', 
+      settingId = 1,
+      cohortDatabaseSchema = cohortDatabaseSchema,
+      cohortTable = cohortTableName,
+      cohortId = 1002, 
+      startDay = -9999,
+      endDay = 0,
+      count = F, 
+      ageInteraction = F, 
+      analysisId = 668
+    ), createCohortCovariateSettings(
+      cohortName = 'Cholesterol/HDL', 
+      settingId = 1,
+      cohortDatabaseSchema = cohortDatabaseSchema,
+      cohortTable = cohortTableName,
+      cohortId = 18779,   
+      startDay = -365,
+      endDay = 0,
+      count = F, 
+      ageInteraction = F, 
+      analysisId = 668
+    ), createCohortCovariateSettings(
+      cohortName = 'Body mass index', 
+      settingId = 1,
+      cohortDatabaseSchema = cohortDatabaseSchema,
+      cohortTable = cohortTableName,
+      cohortId = 18778,   
+      startDay = -365,
+      endDay = 0,
+      count = F, 
+      ageInteraction = F, 
+      analysisId = 668
+    ), createCohortCovariateSettings(
+      cohortName = 'Family history of premature cardiovascular disease', 
+      settingId = 1,
+      cohortDatabaseSchema = cohortDatabaseSchema,
+      cohortTable = cohortTableName,
+      cohortId = 18821,  
+      startDay = -9999,
+      endDay = 0,
+      count = F, 
+      ageInteraction = F, 
+      analysisId = 668
+    ), createCohortCovariateSettings(
+      cohortName = 'Current smoker', 
+      settingId = 1,
+      cohortDatabaseSchema = cohortDatabaseSchema,
+      cohortTable = cohortTableName,
+      cohortId = 19285, 
+      startDay = -365,
+      endDay = 0,
+      count = F, 
+      ageInteraction = F, 
+      analysisId = 668
+    ), createCohortCovariateSettings(
+      cohortName = 'Townsend score', 
+      settingId = 1,
+      cohortDatabaseSchema = cohortDatabaseSchema,
+      cohortTable = cohortTableName,
+      cohortId = 21387, 
+      startDay = -9999,
+      endDay = 0,
+      count = F, 
+      ageInteraction = F, 
+      analysisId = 668
+    ), createCohortCovariateSettings(
+      cohortName = 'Systolic blood pressure', 
+      settingId = 1,
+      cohortDatabaseSchema = cohortDatabaseSchema,
+      cohortTable = cohortTableName,
+      cohortId = 18822,  
+      startDay = -365,
+      endDay = 0,
+      count = F, 
+      ageInteraction = F, 
+      analysisId = 668
+    ), createCohortCovariateSettings(
+      cohortName = 'Antihypertensive agent', 
+      settingId = 1,
+      cohortDatabaseSchema = cohortDatabaseSchema,
+      cohortTable = cohortTableName,
+      cohortId = 19280,  
+      startDay = -30,
+      endDay = 0,
+      count = F, 
+      ageInteraction = F, 
+      analysisId = 668
+    ), createCohortCovariateSettings(
+      cohortName = 'SBPxantihypertensive agent interaction term', 
+      settingId = 1,
+      cohortDatabaseSchema = cohortDatabaseSchema,
+      cohortTable = cohortTableName,
+      cohortId = 21395, 
+      startDay = -365,
+      endDay = 0,
+      count = F, 
+      ageInteraction = F, 
+      analysisId = 668
+    )
+    ),
+  featureEngineeringSettings = list(createLogAge(), createInteractionTermSBPAT())                            
+)
+
+plpModelQRISK1_female$modelDesign$targetId <- 21399
+plpModelQRISK1_female$modelDesign$outcomeId <- 21397
+plpModelQRISK1_female$modelDesign$covariateSettings <- list(
+  FeatureExtraction::createCohortBasedCovariateSettings(
+  analysisId = canalysisId,
+  covariateCohortDatabaseSchema = '', 
+  covariateCohortTable = '', 
+  covariateCohorts = data.frame(
+    cohortId = c(1002, 18779, 18778, 18821, 19285, 21387, 18822, 19280, 21395),
+    cohortName = c('Age','Cholesterol/HDL','Body mass index','Family history of premature cardiovascular disease','Current smoker','Townsend score', 'Systolic blood pressure', 'Antihypertensive agent','SBPxantihypertensive agent interaction term')
+    ), 
+  valueType = 'binary', 
+  startDay = -365, 
+  endDay = 0
+  ),
+  FeatureExtraction::createCovariateSettings(
+    useDemographicsAge = T
+    )
+)
+
+# bug that needs fixing in PLP
+attr(plpModelQRISK1_female_OG_1,"saveType") <- 'RtoJson'
+
+# RtoJson
+PatientLevelPrediction::savePlpModel(
+  plpModel = plpModelQRISK1_female_OG_1, 
+  dirPath = './inst/models/QRISK1_female_OG_1'
+    )
 
 #QRISK2_male_OG_1
 #============================================================================
+canalysisId <- 668
+plpModelQRISK2_male_OG_1 <- PatientLevelPrediction::createGlmModel(
+  coefficients = data.frame(
+    covariateId = c(21377, 21378, 21379, 21380, 21381, 21382, 21383, 21386, 1002, 18778, 21387, 18822, 18779, 18821, 19285, 19280, 18815, 18838, 18841, 21347, 18778, 21387, 18822, 18821, 19285, 19280, 18815, 18841)*1000+canalysisId, #TODO
+    coefficient = c(1.45, 1.97, 1.67, 1.37, 0.62, 0.63, 0.51, 0.91, 1.59, 0.218, 0.236, 0.0595, 1.19, 2.14, 1.65, 1.68, 2.20, 1.38, 2.40, 1.75, 0.985, 0.1946, 0.0482, 0.923, 0.932, 0.916, 0.902, 0.893) 
+  ), 
+  intercept = 0, 
+  mapping = "", #TODO 
+  populationSettings = populationSettings1,
+  covariateSettings = list(createCohortCovariateSettings(
+      cohortName = 'Indian', 
+      settingId = 1,
+      cohortDatabaseSchema = cohortDatabaseSchema,
+      cohortTable = cohortTableName,
+      cohortId = 21377,   
+      startDay = -9999,
+      endDay = 0,
+      count = F, 
+      ageInteraction = F, 
+      analysisId = 668
+    ), createCohortCovariateSettings(
+      cohortName = 'Pakistani', 
+      settingId = 1,
+      cohortDatabaseSchema = cohortDatabaseSchema,
+      cohortTable = cohortTableName,
+      cohortId = 21378,   
+      startDay = -9999,
+      endDay = 0,
+      count = F, 
+      ageInteraction = F, 
+      analysisId = 668
+    ), createCohortCovariateSettings(
+      cohortName = 'Bangladeshi', 
+      settingId = 1,
+      cohortDatabaseSchema = cohortDatabaseSchema,
+      cohortTable = cohortTableName,
+      cohortId = 21379, 
+      startDay = -9999,
+      endDay = 0,
+      count = F, 
+      ageInteraction = F, 
+      analysisId = 668
+    ), createCohortCovariateSettings(
+      cohortName = 'Other Asian', 
+      settingId = 1,
+      cohortDatabaseSchema = cohortDatabaseSchema,
+      cohortTable = cohortTableName,
+      cohortId = 21380, 
+      startDay = -9999,
+      endDay = 0,
+      count = F, 
+      ageInteraction = F, 
+      analysisId = 668
+    ), createCohortCovariateSettings(
+      cohortName = 'Black Caribbean', 
+      settingId = 1,
+      cohortDatabaseSchema = cohortDatabaseSchema,
+      cohortTable = cohortTableName,
+      cohortId = 21381,  
+      startDay = -9999,
+      endDay = 0,
+      count = F, 
+      ageInteraction = F, 
+      analysisId = 668
+    ), createCohortCovariateSettings(
+      cohortName = 'Black African', 
+      settingId = 1,
+      cohortDatabaseSchema = cohortDatabaseSchema,
+      cohortTable = cohortTableName,
+      cohortId = 21382,  
+      startDay = -9999,
+      endDay = 0,
+      count = F, 
+      ageInteraction = F, 
+      analysisId = 668
+    ), createCohortCovariateSettings(
+      cohortName = 'Chinese', 
+      settingId = 1,
+      cohortDatabaseSchema = cohortDatabaseSchema,
+      cohortTable = cohortTableName,
+      cohortId = 21383, 
+      startDay = -9999,
+      endDay = 0,
+      count = F, 
+      ageInteraction = F, 
+      analysisId = 668
+    ), createCohortCovariateSettings(
+      cohortName = 'Other', 
+      settingId = 1,
+      cohortDatabaseSchema = cohortDatabaseSchema,
+      cohortTable = cohortTableName,
+      cohortId = 21386, 
+      startDay = -9999,
+      endDay = 0,
+      count = F, 
+      ageInteraction = F, 
+      analysisId = 668
+    ), createCohortCovariateSettings(
+      cohortName = 'Age', 
+      settingId = 1,
+      cohortDatabaseSchema = cohortDatabaseSchema,
+      cohortTable = cohortTableName,
+      cohortId = 1002, 
+      startDay = -9999,
+      endDay = 0,
+      count = F, 
+      ageInteraction = F, 
+      analysisId = 668
+    ), createCohortCovariateSettings(
+      cohortName = 'BMI', 
+      settingId = 1,
+      cohortDatabaseSchema = cohortDatabaseSchema,
+      cohortTable = cohortTableName,
+      cohortId = 18778,
+      startDay = -365,
+      endDay = 0,
+      count = F, 
+      ageInteraction = F, 
+      analysisId = 668
+    ), createCohortCovariateSettings(
+      cohortName = 'Townsend score', 
+      settingId = 1,
+      cohortDatabaseSchema = cohortDatabaseSchema,
+      cohortTable = cohortTableName,
+      cohortId = 21387,
+      startDay = -9999,
+      endDay = 0,
+      count = F, 
+      ageInteraction = F, 
+      analysisId = 668
+    ), createCohortCovariateSettings(
+      cohortName = 'Systolic blood pressure', 
+      settingId = 1,
+      cohortDatabaseSchema = cohortDatabaseSchema,
+      cohortTable = cohortTableName,
+      cohortId = 18822,  
+      startDay = -365,
+      endDay = 0,
+      count = F, 
+      ageInteraction = F, 
+      analysisId = 668
+    ), createCohortCovariateSettings(
+      cohortName = 'Cholesterol/HDL', 
+      settingId = 1,
+      cohortDatabaseSchema = cohortDatabaseSchema,
+      cohortTable = cohortTableName,
+      cohortId = 18779,  
+      startDay = -365,
+      endDay = 0,
+      count = F, 
+      ageInteraction = F, 
+      analysisId = 668
+    ), createCohortCovariateSettings(
+      cohortName = 'Family history coronary heart disease', 
+      settingId = 1,
+      cohortDatabaseSchema = cohortDatabaseSchema,
+      cohortTable = cohortTableName,
+      cohortId = 18821, 
+      startDay = -9999,
+      endDay = 0,
+      count = F, 
+      ageInteraction = F, 
+      analysisId = 668
+    ), createCohortCovariateSettings(
+      cohortName = 'Current smoker', 
+      settingId = 1,
+      cohortDatabaseSchema = cohortDatabaseSchema,
+      cohortTable = cohortTableName,
+      cohortId = 19285,  
+      startDay = -365,
+      endDay = 0,
+      count = F, 
+      ageInteraction = F, 
+      analysisId = 668
+    ), createCohortCovariateSettings(
+      cohortName = 'Treated hypertension', 
+      settingId = 1,
+      cohortDatabaseSchema = cohortDatabaseSchema,
+      cohortTable = cohortTableName,
+      cohortId = 19280,   
+      startDay = -30,
+      endDay = 0,
+      count = F, 
+      ageInteraction = F, 
+      analysisId = 668
+    ), createCohortCovariateSettings(
+      cohortName = 'Type II diabetes', 
+      settingId = 1,
+      cohortDatabaseSchema = cohortDatabaseSchema,
+      cohortTable = cohortTableName,
+      cohortId = 18815,   
+      startDay = -9999,
+      endDay = 0,
+      count = F, 
+      ageInteraction = F, 
+      analysisId = 668
+    ), createCohortCovariateSettings(
+      cohortName = 'Rheumatoid arthritis', 
+      settingId = 1,
+      cohortDatabaseSchema = cohortDatabaseSchema,
+      cohortTable = cohortTableName,
+      cohortId = 18838,
+      startDay = -9999,
+      endDay = 0,
+      count = F, 
+      ageInteraction = F, 
+      analysisId = 668
+    ), createCohortCovariateSettings(
+      cohortName = 'Atrial fibrillation', 
+      settingId = 1,
+      cohortDatabaseSchema = cohortDatabaseSchema,
+      cohortTable = cohortTableName,
+      cohortId = 18841, 
+      startDay = -9999,
+      endDay = 0,
+      count = F, 
+      ageInteraction = F, 
+      analysisId = 668
+    ), createCohortCovariateSettings(
+      cohortName = 'Renal disease', 
+      settingId = 1,
+      cohortDatabaseSchema = cohortDatabaseSchema,
+      cohortTable = cohortTableName,
+      cohortId = 21347,  
+      startDay = -9999,
+      endDay = 0,
+      count = F, 
+      ageInteraction = F, 
+      analysisId = 668
+    ), createCohortCovariateSettings(
+      cohortName = 'AgexBMI interaction', 
+      settingId = 1,
+      cohortDatabaseSchema = cohortDatabaseSchema,
+      cohortTable = cohortTableName,
+      cohortId = 18778,   
+      startDay = -365,
+      endDay = 0,
+      count = F, 
+      ageInteraction = F, 
+      lnAgeInteraction = TRUE,
+      analysisId = 668
+    ), createCohortCovariateSettings(
+      cohortName = 'AgexTownsend interaction', 
+      settingId = 1,
+      cohortDatabaseSchema = cohortDatabaseSchema,
+      cohortTable = cohortTableName,
+      cohortId = 21387,  
+      startDay = -9999,
+      endDay = 0,
+      count = F, 
+      ageInteraction = F, 
+      lnAgeInteraction = TRUE,
+      analysisId = 668
+    ), createCohortCovariateSettings(
+      cohortName = 'Agexsystolicbloodpressure interaction', 
+      settingId = 1,
+      cohortDatabaseSchema = cohortDatabaseSchema,
+      cohortTable = cohortTableName,
+      cohortId = 18822, 
+      startDay = -365,
+      endDay = 0,
+      count = F, 
+      ageInteraction = F,
+      lnAgeInteraction = TRUE,
+      analysisId = 668
+    ), createCohortCovariateSettings(
+      cohortName = 'Agexfamilyhistory interaction', 
+      settingId = 1,
+      cohortDatabaseSchema = cohortDatabaseSchema,
+      cohortTable = cohortTableName,
+      cohortId = 18821, 
+      startDay = -9999,
+      endDay = 0,
+      count = F, 
+      ageInteraction = F, 
+      lnAgeInteraction = TRUE,
+      analysisId = 668
+    ), createCohortCovariateSettings(
+      cohortName = 'Agexsmoking interaction', 
+      settingId = 1,
+      cohortDatabaseSchema = cohortDatabaseSchema,
+      cohortTable = cohortTableName,
+      cohortId = 19285, 
+      startDay = -365,
+      endDay = 0,
+      count = F, 
+      ageInteraction = F, 
+      lnAgeInteraction = TRUE,
+      analysisId = 668
+    ), createCohortCovariateSettings(
+      cohortName = 'Agextreatedhypertension interaction', 
+      settingId = 1,
+      cohortDatabaseSchema = cohortDatabaseSchema,
+      cohortTable = cohortTableName,
+      cohortId = 19280,   
+      startDay = -30,
+      endDay = 0,
+      count = F, 
+      ageInteraction = F, 
+      lnAgeInteraction = TRUE,
+      analysisId = 668
+    ), createCohortCovariateSettings(
+      cohortName = 'AgextypeIIdiabetes interaction', 
+      settingId = 1,
+      cohortDatabaseSchema = cohortDatabaseSchema,
+      cohortTable = cohortTableName,
+      cohortId = 18815, 
+      startDay = -9999,
+      endDay = 0,
+      count = F, 
+      ageInteraction = F, 
+      lnAgeInteraction = TRUE,
+      analysisId = 668
+    ), createCohortCovariateSettings(
+      cohortName = 'Agexatrial fibrillation interaction', 
+      settingId = 1,
+      cohortDatabaseSchema = cohortDatabaseSchema,
+      cohortTable = cohortTableName,
+      cohortId = 18841,  
+      startDay = -9999,
+      endDay = 0,
+      count = F, 
+      ageInteraction = F, 
+      lnAgeInteraction = TRUE,
+      analysisId = 668
+    )
+    ),
+  featureEngineeringSettings = createLogAge()
+)
 
+plpModelQRISK2_male$modelDesign$targetId <- 21400
+plpModelQRISK2_male$modelDesign$outcomeId <- 21397
+plpModelQRISK2_male$modelDesign$covariateSettings <- list(
+  FeatureExtraction::createCohortBasedCovariateSettings(
+  analysisId = canalysisId,
+  covariateCohortDatabaseSchema = '', 
+  covariateCohortTable = '', 
+  covariateCohorts = data.frame(
+    cohortId = c(21377, 21378, 21379, 21380, 21381, 21382, 21383, 21386, 1002, 18778, 21387, 18822, 18779, 18821, 19285, 19280, 18815, 18838, 18841, 21347, 18778, 21387, 18822, 18821, 19285, 19280, 18815, 18841)
+    cohortName = c('Indian','Pakistani','Bangladeshi','Other Asian','Black Caribbean','Black African','Chinese','Other','Age','BMI','Townsend score','Systolic blood pressure','Cholesterol/HDL','Family history coronary heart disease','Current smoker','Treated hypertension','Type 2 diabetes','Rheumatoid arthritis','Atrial fibrillation','Renal disease','AgexBMI interaction','AgexTownsend interaction','Agexsystolicbloodpressure interaction','Agexfamilyhistory interaction','Agexsmoking interaction','Agextreatedhypertension interaction','Agextype2diabetes interaction', 'Agexatrialfibrillation interaction') 
+    ), 
+  valueType = 'binary', 
+  startDay = -365, 
+  endDay = 0
+  ),
+  FeatureExtraction::createCovariateSettings(
+    useDemographicsAge = T
+    )
+)
+
+# bug that needs fixing in PLP
+attr(plpModelQRISK2_male_OG_1,"saveType") <- 'RtoJson'
+
+# RtoJson
+PatientLevelPrediction::savePlpModel(
+  plpModel = plpModelQRISK2_male_OG_1, 
+  dirPath = './inst/models/QRISK2_male_OG_1'
+    )
+  
 #QRISK2_female_OG_1
 #============================================================================
+canalysisId <- 668
+plpModelQRISK2_female_OG_1 <- PatientLevelPrediction::createGlmModel(
+  coefficients = data.frame(
+    covariateId = c(21377, 21378, 21379, 21380, 21381, 21382, 21383, 21386, 1002, 18778, 21387, 18822, 18779, 18821, 19285, 19280, 18815, 18838, 18841, 21347, 18778, 21387, 18822, 18821, 19285, 19280, 18815, 18841)*1000+canalysisId, #TODO
+    coefficient = c(1.43, 1.80, 1.35, 1.15, 1.08, 0.58, 0.69, 1.04, 1.66, 0.216, 0.274, 0.06, 1.17, 1.99, 1.80, 1.54, 2.54, 1.50, 3.06, 1.70, 0.976, 0.1876, 0.0483, 0.927, 0.931, 0.952, 0.904, 0.858)
+  ), 
+  intercept = 0, 
+  mapping = "", #TODO 
+  populationSettings = populationSettings1,
+  covariateSettings = list(createCohortCovariateSettings(
+      cohortName = 'Indian', 
+      settingId = 1,
+      cohortDatabaseSchema = cohortDatabaseSchema,
+      cohortTable = cohortTableName,
+      cohortId = 21377,   
+      startDay = -9999,
+      endDay = 0,
+      count = F, 
+      ageInteraction = F, 
+      analysisId = 668
+    ), createCohortCovariateSettings(
+      cohortName = 'Pakistani', 
+      settingId = 1,
+      cohortDatabaseSchema = cohortDatabaseSchema,
+      cohortTable = cohortTableName,
+      cohortId = 21378,  
+      startDay = -9999,
+      endDay = 0,
+      count = F, 
+      ageInteraction = F, 
+      analysisId = 668
+    ), createCohortCovariateSettings(
+      cohortName = 'Bangladeshi', 
+      settingId = 1,
+      cohortDatabaseSchema = cohortDatabaseSchema,
+      cohortTable = cohortTableName,
+      cohortId = 21379, 
+      startDay = -9999,
+      endDay = 0,
+      count = F, 
+      ageInteraction = F, 
+      analysisId = 668
+    ), createCohortCovariateSettings(
+      cohortName = 'Other Asian', 
+      settingId = 1,
+      cohortDatabaseSchema = cohortDatabaseSchema,
+      cohortTable = cohortTableName,
+      cohortId = 21380, 
+      startDay = -9999,
+      endDay = 0,
+      count = F, 
+      ageInteraction = F, 
+      analysisId = 668
+    ), createCohortCovariateSettings(
+      cohortName = 'Black Caribbean', 
+      settingId = 1,
+      cohortDatabaseSchema = cohortDatabaseSchema,
+      cohortTable = cohortTableName,
+      cohortId = 21381, 
+      startDay = -9999,
+      endDay = 0,
+      count = F, 
+      ageInteraction = F, 
+      analysisId = 668
+    ), createCohortCovariateSettings(
+      cohortName = 'Black African', 
+      settingId = 1,
+      cohortDatabaseSchema = cohortDatabaseSchema,
+      cohortTable = cohortTableName,
+      cohortId = 21382, 
+      startDay = -9999,
+      endDay = 0,
+      count = F, 
+      ageInteraction = F, 
+      analysisId = 668
+    ), createCohortCovariateSettings(
+      cohortName = 'Chinese', 
+      settingId = 1,
+      cohortDatabaseSchema = cohortDatabaseSchema,
+      cohortTable = cohortTableName,
+      cohortId = 21383, 
+      startDay = -9999,
+      endDay = 0,
+      count = F, 
+      ageInteraction = F, 
+      analysisId = 668
+    ), createCohortCovariateSettings(
+      cohortName = 'Other', 
+      settingId = 1,
+      cohortDatabaseSchema = cohortDatabaseSchema,
+      cohortTable = cohortTableName,
+      cohortId = 21386,
+      startDay = -9999,
+      endDay = 0,
+      count = F, 
+      ageInteraction = F, 
+      analysisId = 668
+    ), createCohortCovariateSettings(
+      cohortName = 'Age', 
+      settingId = 1,
+      cohortDatabaseSchema = cohortDatabaseSchema,
+      cohortTable = cohortTableName,
+      cohortId = 1002, 
+      startDay = -9999,
+      endDay = 0,
+      count = F, 
+      ageInteraction = F, 
+      analysisId = 668
+    ), createCohortCovariateSettings(
+      cohortName = 'BMI', 
+      settingId = 1,
+      cohortDatabaseSchema = cohortDatabaseSchema,
+      cohortTable = cohortTableName,
+      cohortId = 18778, 
+      startDay = -365,
+      endDay = 0,
+      count = F, 
+      ageInteraction = F, 
+      analysisId = 668
+    ), createCohortCovariateSettings(
+      cohortName = 'Townsend score', 
+      settingId = 1,
+      cohortDatabaseSchema = cohortDatabaseSchema,
+      cohortTable = cohortTableName,
+      cohortId = 21387,
+      startDay = -9999,
+      endDay = 0,
+      count = F, 
+      ageInteraction = F, 
+      analysisId = 668
+    ), createCohortCovariateSettings(
+      cohortName = 'Systolic blood pressure', 
+      settingId = 1,
+      cohortDatabaseSchema = cohortDatabaseSchema,
+      cohortTable = cohortTableName,
+      cohortId = 18822,   
+      startDay = -365,
+      endDay = 0,
+      count = F, 
+      ageInteraction = F, 
+      analysisId = 668
+    ), createCohortCovariateSettings(
+      cohortName = 'Cholesterol/HDL', 
+      settingId = 1,
+      cohortDatabaseSchema = cohortDatabaseSchema,
+      cohortTable = cohortTableName,
+      cohortId = 18779, 
+      startDay = -365,
+      endDay = 0,
+      count = F, 
+      ageInteraction = F, 
+      analysisId = 668
+    ), createCohortCovariateSettings(
+      cohortName = 'Family history coronary heart disease', 
+      settingId = 1,
+      cohortDatabaseSchema = cohortDatabaseSchema,
+      cohortTable = cohortTableName,
+      cohortId = 18821, 
+      startDay = -9999,
+      endDay = 0,
+      count = F, 
+      ageInteraction = F, 
+      analysisId = 668
+    ), createCohortCovariateSettings(
+      cohortName = 'Current smoker', 
+      settingId = 1,
+      cohortDatabaseSchema = cohortDatabaseSchema,
+      cohortTable = cohortTableName,
+      cohortId = 19285, 
+      startDay = -365,
+      endDay = 0,
+      count = F, 
+      ageInteraction = F, 
+      analysisId = 668
+    ), createCohortCovariateSettings(
+      cohortName = 'Treated hypertension', 
+      settingId = 1,
+      cohortDatabaseSchema = cohortDatabaseSchema,
+      cohortTable = cohortTableName,
+      cohortId = 19280,   
+      startDay = -30,
+      endDay = 0,
+      count = F, 
+      ageInteraction = F, 
+      analysisId = 668
+    ), createCohortCovariateSettings(
+      cohortName = 'Type II diabetes', 
+      settingId = 1,
+      cohortDatabaseSchema = cohortDatabaseSchema,
+      cohortTable = cohortTableName,
+      cohortId = 18815,  
+      startDay = -9999,
+      endDay = 0,
+      count = F, 
+      ageInteraction = F, 
+      analysisId = 668
+    ), createCohortCovariateSettings(
+      cohortName = 'Rheumatoid arthritis', 
+      settingId = 1,
+      cohortDatabaseSchema = cohortDatabaseSchema,
+      cohortTable = cohortTableName,
+      cohortId = 18838,  
+      startDay = -9999,
+      endDay = 0,
+      count = F, 
+      ageInteraction = F, 
+      analysisId = 668
+    ), createCohortCovariateSettings(
+      cohortName = 'Atrial fibrillation', 
+      settingId = 1,
+      cohortDatabaseSchema = cohortDatabaseSchema,
+      cohortTable = cohortTableName,
+      cohortId = 18841, 
+      startDay = -9999,
+      endDay = 0,
+      count = F, 
+      ageInteraction = F, 
+      analysisId = 668
+    ), createCohortCovariateSettings(
+      cohortName = 'Renal disease', 
+      settingId = 1,
+      cohortDatabaseSchema = cohortDatabaseSchema,
+      cohortTable = cohortTableName,
+      cohortId = 21347, 
+      startDay = -9999,
+      endDay = 0,
+      count = F, 
+      ageInteraction = F, 
+      analysisId = 668
+    ), createCohortCovariateSettings(
+      cohortName = 'AgexBMI interaction', 
+      settingId = 1,
+      cohortDatabaseSchema = cohortDatabaseSchema,
+      cohortTable = cohortTableName,
+      cohortId = 18778,   
+      startDay = -365,
+      endDay = 0,
+      count = F, 
+      ageInteraction = F,
+      lnAgeInteraction = TRUE,
+      analysisId = 668
+    ), createCohortCovariateSettings(
+      cohortName = 'AgexTownsend interaction', 
+      settingId = 1,
+      cohortDatabaseSchema = cohortDatabaseSchema,
+      cohortTable = cohortTableName,
+      cohortId = 21387,  
+      startDay = -9999,
+      endDay = 0,
+      count = F, 
+      ageInteraction = F, 
+      lnAgeInteraction = TRUE,
+      analysisId = 668
+    ), createCohortCovariateSettings(
+      cohortName = 'Agexsystolicbloodpressure interaction', 
+      settingId = 1,
+      cohortDatabaseSchema = cohortDatabaseSchema,
+      cohortTable = cohortTableName,
+      cohortId = 18822, 
+      startDay = -365,
+      endDay = 0,
+      count = F, 
+      ageInteraction = F, 
+      lnAgeInteraction = TRUE,
+      analysisId = 668
+    ), createCohortCovariateSettings(
+      cohortName = 'Agexfamilyhistory interaction', 
+      settingId = 1,
+      cohortDatabaseSchema = cohortDatabaseSchema,
+      cohortTable = cohortTableName,
+      cohortId = 18821, 
+      startDay = -9999,
+      endDay = 0,
+      count = F, 
+      ageInteraction = F, 
+      lnAgeInteraction = TRUE,
+      analysisId = 668
+    ), createCohortCovariateSettings(
+      cohortName = 'Agexsmoking interaction', 
+      settingId = 1,
+      cohortDatabaseSchema = cohortDatabaseSchema,
+      cohortTable = cohortTableName,
+      cohortId = 19285, 
+      startDay = -365,
+      endDay = 0,
+      count = F, 
+      ageInteraction = F,
+      lnAgeInteraction = TRUE,
+      analysisId = 668
+    ), createCohortCovariateSettings(
+      cohortName = 'Agextreatedhypertension interaction', 
+      settingId = 1,
+      cohortDatabaseSchema = cohortDatabaseSchema,
+      cohortTable = cohortTableName,
+      cohortId = 19280, 
+      startDay = -30,
+      endDay = 0,
+      count = F, 
+      ageInteraction = F, 
+      lnAgeInteraction = TRUE,
+      analysisId = 668
+    ), createCohortCovariateSettings(
+      cohortName = 'AgextypeIIdiabetes interaction', 
+      settingId = 1,
+      cohortDatabaseSchema = cohortDatabaseSchema,
+      cohortTable = cohortTableName,
+      cohortId = 18815,   
+      startDay = -9999,
+      endDay = 0,
+      count = F, 
+      ageInteraction = F, 
+      lnAgeInteraction = TRUE,
+      analysisId = 668
+    ), createCohortCovariateSettings(
+      cohortName = 'Agexatrial fibrillation interaction', 
+      settingId = 1,
+      cohortDatabaseSchema = cohortDatabaseSchema,
+      cohortTable = cohortTableName,
+      cohortId = 18841,  
+      startDay = -9999,
+      endDay = 0,
+      count = F, 
+      ageInteraction = F, 
+      lnAgeInteraction = TRUE,
+      analysisId = 668
+    )
+    ),
+  featureEngineeringSettings = createLogAge()
+)
+
+plpModelQRISK2_female$modelDesign$targetId <- 21401
+plpModelQRISK2_female$modelDesign$outcomeId <- 21397
+plpModelQRISK2_female$modelDesign$covariateSettings <- list(
+  FeatureExtraction::createCohortBasedCovariateSettings(
+  analysisId = canalysisId,
+  covariateCohortDatabaseSchema = '', 
+  covariateCohortTable = '', 
+  covariateCohorts = data.frame(
+    cohortId = c(21377, 21378, 21379, 21380, 21381, 21382, 21383, 21386, 1002, 18778, 21387, 18822, 18779, 18821, 19285, 19280, 18815, 18838, 18841, 21347, 18778, 21387, 18822, 18821, 19285, 19280, 18815, 18841),
+    cohortName = c('Indian','Pakistani','Bangladeshi','Other Asian','Black Caribbean','Black African','Chinese','Other','Age','BMI','Townsend score','Systolic blood pressure','Cholesterol/HDL','Family history coronary heart disease','Current smoker','Treated hypertension','Type 2 diabetes','Rheumatoid arthritis','Atrial fibrillation','Renal disease','AgexBMI interaction','AgexTownsend interaction','Agexsystolicbloodpressure interaction','Agexfamilyhistory interaction','Agexsmoking interaction','Agextreatedhypertension interaction','Agextype2diabetes interaction', 'Agexatrialfibrillation interaction')
+    ), 
+  valueType = 'binary', 
+  startDay = -365, 
+  endDay = 0
+  ),
+  FeatureExtraction::createCovariateSettings(
+    useDemographicsAge = T
+    )
+)
+
+# bug that needs fixing in PLP
+attr(plpModelQRISK2_female_OG_1,"saveType") <- 'RtoJson'
+
+# RtoJson
+PatientLevelPrediction::savePlpModel(
+  plpModel = plpModelQRISK2_female_OG_1, 
+  dirPath = './inst/models/QRISK2_female_OG_1'
+    )
+
 
 #QRISK3_male_OG_1
 #============================================================================
