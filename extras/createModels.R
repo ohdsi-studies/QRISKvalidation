@@ -47,71 +47,199 @@ populationSettings10 <- PatientLevelPrediction::createStudyPopulationSettings(
 #Mappings for different QRISK models
 #=======================================================================================
 
-#QRISK1_male_1
-QRISK1_male_1 <- updatedQRISKmap <- "function(y){ sapply(y, function(x){
+#ADD THE DIFFERENT BASELINES TO THE FORMULAS
 
+#QRISK1_male_1
+QRISK1_male_1 <- updatedQRISKmap <- "function(x){ sapply(x, function(x){
+baseline <- 
+baseline*exp(x)
 })}"
+
 #QRISK1_female_1
+QRISK1_female_1 <- updatedQRISKmap <- "function(x){ sapply(x, function(x){
+baseline <- 
+baseline*exp(x)
+})}"
 
 #QRISK2_male_1
+QRISK2_male_1 <- updatedQRISKmap <- "function(x){ sapply(x, function(x){
+baseline <- 
+baseline*exp(x)
+})}"
 
 #QRISK2_female_1
+QRISK2_female_1 <- updatedQRISKmap <- "function(x){ sapply(x, function(x){
+baseline <- 
+baseline*exp(x)
+})}"
 
 #QRISK3_male_1
+QRISK3_male_1 <- updatedQRISKmap <- "function(x){ sapply(x, function(x){
+baseline <- 
+baseline*exp(x)
+})}"
 
 #QRISK3_female_1
+QRISK3_female_1 <- updatedQRISKmap <- "function(x){ sapply(x, function(x){
+baseline <- 
+baseline*exp(x)
+})}"
 
 #QRISK4_male_1
+QRISK4_male_1 <- updatedQRISKmap <- "function(x){ sapply(x, function(x){
+baseline <- 
+baseline*exp(x)
+})}"
 
 #QRISK4_female_1
+QRISK4_female_1 <- updatedQRISKmap <- "function(x){ sapply(x, function(x){
+baseline <- 
+baseline*exp(x)
+})}"
 
 #QRISK1_male_3
+QRISK1_male_3 <- updatedQRISKmap <- "function(x){ sapply(x, function(x){
+baseline <- 
+baseline*exp(x)
+})}"
 
 #QRISK1_female_3
+QRISK1_female_3 <- updatedQRISKmap <- "function(x){ sapply(x, function(x){
+baseline <- 
+baseline*exp(x)
+})}"
 
 #QRISK2_male_3
+QRISK2_male_3 <- updatedQRISKmap <- "function(x){ sapply(x, function(x){
+baseline <- 
+baseline*exp(x)
+})}"
 
 #QRISK2_female_3
+QRISK2_female_3 <- updatedQRISKmap <- "function(x){ sapply(x, function(x){
+baseline <- 
+baseline*exp(x)
+})}"
 
 #QRISK3_male_3
+QRISK3_male_3 <- updatedQRISKmap <- "function(x){ sapply(x, function(x){
+baseline <- 
+baseline*exp(x)
+})}"
 
 #QRISK3_female_3
+QRISK3_female_3 <- updatedQRISKmap <- "function(x){ sapply(x, function(x){
+baseline <- 
+baseline*exp(x)
+})}"
 
 #QRISK4_male_3
+QRISK4_male_3 <- updatedQRISKmap <- "function(x){ sapply(x, function(x){
+baseline <- 
+baseline*exp(x)
+})}"
 
 #QRISK4_female_3
+QRISK4_female_3 <- updatedQRISKmap <- "function(x){ sapply(x, function(x){
+baseline <- 
+baseline*exp(x)
+})}"
 
 #QRISK1_male_5
+QRISK1_male_5 <- updatedQRISKmap <- "function(x){ sapply(x, function(x){
+baseline <- 
+baseline*exp(x)
+})}"
 
 #QRISK1_female_5
+QRISK1_female_5 <- updatedQRISKmap <- "function(x){ sapply(x, function(x){
+baseline <- 
+baseline*exp(x)
+})}"
 
 #QRISK2_male_5
+QRISK2_male_5 <- updatedQRISKmap <- "function(x){ sapply(x, function(x){
+baseline <- 
+baseline*exp(x)
+})}"
 
 #QRISK2_female_5
+QRISK2_female_5 <- updatedQRISKmap <- "function(x){ sapply(x, function(x){
+baseline <- 
+baseline*exp(x)
+})}"
 
 #QRISK3_male_5
+QRISK3_male_5 <- updatedQRISKmap <- "function(x){ sapply(x, function(x){
+baseline <- 
+baseline*exp(x)
+})}"
 
 #QRISK3_female_5
+QRISK3_female_5 <- updatedQRISKmap <- "function(x){ sapply(x, function(x){
+baseline <- 
+baseline*exp(x)
+})}"
 
 #QRISK4_male_5
+QRISK4_male_5 <- updatedQRISKmap <- "function(x){ sapply(x, function(x){
+baseline <- 
+baseline*exp(x)
+})}"
 
 #QRISK4_female_5
+QRISK4_female_5 <- updatedQRISKmap <- "function(x){ sapply(x, function(x){
+baseline <- 
+baseline*exp(x)
+})}"
 
 #QRISK1_male_10
+QRISK1_male_10 <- updatedQRISKmap <- "function(x){ sapply(x, function(x){
+baseline <- 
+baseline*exp(x)
+})}"
 
 #QRISK1_female_10
+QRISK1_female_10 <- updatedQRISKmap <- "function(x){ sapply(x, function(x){
+baseline <- 
+baseline*exp(x)
+})}"
 
 #QRISK2_male_10
+QRISK2_male_10 <- updatedQRISKmap <- "function(x){ sapply(x, function(x){
+baseline <- 
+baseline*exp(x)
+})}"
 
 #QRISK2_female_10
+QRISK2_female_10 <- updatedQRISKmap <- "function(x){ sapply(x, function(x){
+baseline <- 
+baseline*exp(x)
+})}"
 
 #QRISK3_male_10
+QRISK3_male_10 <- updatedQRISKmap <- "function(x){ sapply(x, function(x){
+baseline <- 
+baseline*exp(x)
+})}"
 
 #QRISK3_female_10
+QRISK3_female_10 <- updatedQRISKmap <- "function(x){ sapply(x, function(x){
+baseline <- 
+baseline*exp(x)
+})}"
 
 #QRISK4_male_10
+QRISK4_male_10 <- updatedQRISKmap <- "function(x){ sapply(x, function(x){
+baseline <- 
+baseline*exp(x)
+})}"
 
 #QRISK4_female_10
+QRISK4_female_10 <- updatedQRISKmap <- "function(x){ sapply(x, function(x){
+baseline <- 
+baseline*exp(x)
+})}"
 
 
 #========================================================================================
