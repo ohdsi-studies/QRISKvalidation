@@ -73,7 +73,7 @@ generateRestrictDataSettings <- function(start, end, interval = months(6)) {
   
 }
 
-restrictPlpDataSettings <- generateRestrictDataSettings("2010-01-01", "2025-06-01")
+restrictPlpDataSettings <- generateRestrictDataSettings("2007-01-01", "2025-06-01")  
 
 # PatientLevelPredictionValidation -------------------------------
 createPackageModel <- function(modelFolder, package){
