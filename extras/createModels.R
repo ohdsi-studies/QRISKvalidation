@@ -51,25 +51,25 @@ populationSettings10 <- PatientLevelPrediction::createStudyPopulationSettings(
 
 #QRISK1_male_1
 QRISK1_male_1 <- updatedQRISKmap <- "function(x){ sapply(x, function(x){
-baseline <- 0.002106931
+baseline <- 0.0009293994
 baseline*exp(x)
 })}"
 
 #QRISK1_female_1
 QRISK1_female_1 <- updatedQRISKmap <- "function(x){ sapply(x, function(x){
-baseline <- 0.0010823908
+baseline <- 0.0004715117
 baseline*exp(x)
 })}"
 
 #QRISK2_male_1
 QRISK2_male_1 <- updatedQRISKmap <- "function(x){ sapply(x, function(x){
-baseline <- 0.002090537
+baseline <- 0.0008006027
 baseline*exp(x)
 })}"
 
 #QRISK2_female_1
 QRISK2_female_1 <- updatedQRISKmap <- "function(x){ sapply(x, function(x){
-baseline <- 0.0010923664
+baseline <- 0.0004125753
 baseline*exp(x)
 })}"
 
@@ -99,25 +99,25 @@ baseline*exp(x)
 
 #QRISK1_male_3
 QRISK1_male_3 <- updatedQRISKmap <- "function(x){ sapply(x, function(x){
-baseline <- 0.009070424
+baseline <- 0.005023713
 baseline*exp(x)
 })}"
 
 #QRISK1_female_3
 QRISK1_female_3 <- updatedQRISKmap <- "function(x){ sapply(x, function(x){
-baseline <- 0.004860211
+baseline <- 0.002722517
 baseline*exp(x)
 })}"
 
 #QRISK2_male_3
 QRISK2_male_3 <- updatedQRISKmap <- "function(x){ sapply(x, function(x){
-baseline <- 0.009237805
+baseline <- 0.004285459
 baseline*exp(x)
 })}"
 
 #QRISK2_female_3
 QRISK2_female_3 <- updatedQRISKmap <- "function(x){ sapply(x, function(x){
-baseline <- 0.005077620
+baseline <- 0.002345942
 baseline*exp(x)
 })}"
 
@@ -147,25 +147,25 @@ baseline*exp(x)
 
 #QRISK1_male_5
 QRISK1_male_5 <- updatedQRISKmap <- "function(x){ sapply(x, function(x){
-baseline <- 0.01861817
+baseline <- 0.01178898
 baseline*exp(x)
 })}"
 
 #QRISK1_female_5
 QRISK1_female_5 <- updatedQRISKmap <- "function(x){ sapply(x, function(x){
-baseline <- 0.010330395
+baseline <- 0.006423349
 baseline*exp(x)
 })}"
 
 #QRISK2_male_5
 QRISK2_male_5 <- updatedQRISKmap <- "function(x){ sapply(x, function(x){
-baseline <- 0.01927119
+baseline <- 0.010099676
 baseline*exp(x)
 })}"
 
 #QRISK2_female_5
 QRISK2_female_5 <- updatedQRISKmap <- "function(x){ sapply(x, function(x){
-baseline <-  0.010924389
+baseline <-  0.005569924
 baseline*exp(x)
 })}"
 
@@ -195,25 +195,25 @@ baseline*exp(x)
 
 #QRISK1_male_10
 QRISK1_male_10 <- updatedQRISKmap <- "function(x){ sapply(x, function(x){
-baseline <- 0.05538618
+baseline <- 0.04239061
 baseline*exp(x)
 })}"
 
 #QRISK1_female_10
 QRISK1_female_10 <- updatedQRISKmap <- "function(x){ sapply(x, function(x){
-baseline <- 0.03187543
+baseline <- 0.02390315
 baseline*exp(x)
 })}"
 
 #QRISK2_male_10
 QRISK2_male_10 <- updatedQRISKmap <- "function(x){ sapply(x, function(x){
-baseline <- 0.05901506
+baseline <- 0.03680173
 baseline*exp(x)
 })}"
 
 #QRISK2_female_10
 QRISK2_female_10 <- updatedQRISKmap <- "function(x){ sapply(x, function(x){
-baseline <- 0.03464259
+baseline <- 0.02103937
 baseline*exp(x)
 })}"
 
