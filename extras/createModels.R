@@ -264,7 +264,7 @@ m.measurement_concept_id in (3038553, 44783982)
 limit 10000
 ;
 ",
-schema = 'optum_ehr.cdm_optum_ehr_v3765'
+schema = cdmDatabaseSchema
 )
 
 
@@ -290,7 +290,7 @@ m.measurement_concept_id in (3004249)
 limit 10000
 ;
 ",
-  schema = 'optum_ehr.cdm_optum_ehr_v3765'
+  schema = cdmDatabaseSchema
 )
 
 counts <- connectionHandler$queryDb(
@@ -316,7 +316,7 @@ m.measurement_concept_id in (3004249)
 group by m.measurement_concept_id, c2.concept_name, m.unit_concept_id, c.concept_name
 ;
 ",
-  schema = 'optum_ehr.cdm_optum_ehr_v3765'
+  schema = cdmDatabaseSchema
 )
 
 
@@ -342,7 +342,7 @@ m.measurement_concept_id in (4195214, 4042587,4195490,4198116,36314015,36314016,
 limit 50000
 ;
 ",
-  schema = 'optum_ehr.cdm_optum_ehr_v3765'
+  schema = cdmDatabaseSchema
 )
 
 counts <- connectionHandler$queryDb(
@@ -368,13 +368,14 @@ m.measurement_concept_id in (4195214, 4042587,4195490,4198116,36314015,36314016,
 group by m.measurement_concept_id, c2.concept_name, m.unit_concept_id, c.concept_name
 ;
 ",
-  schema = 'optum_ehr.cdm_optum_ehr_v3765'
+  schema = cdmDatabaseSchema
 )
 
 # comments: restrict to units: NA, 0, 8523
 
-
+#==================================================
 # example measurement extraction code
+#=================================================
 
 getMeasurementCovariateData <- function(connection,
                                         oracleTempSchema = NULL,
