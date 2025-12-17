@@ -241,11 +241,397 @@ baseline <- 0.02771843
 baseline*exp(x)
 })}"
 
+#===========================================================
+#CENTERING FUNCTION
+#==========================================================
+connectionHandler <- ResultModelManager::ConnectionHandler$new(connectionDetails)
 
+bmiMeas <- connectionHandler$queryDb(
+"select 
+m.person_id,
+m.measurement_concept_id,
+m.value_as_number,
+m.unit_concept_id,
+c.concept_name as unit_name
+
+from @schema.measurement m 
+left join
+@schema.concept c
+on m.unit_concept_id = c.concept_id
+
+where 
+m.measurement_concept_id in (3038553, 44783982)
+limit 10000
+;
+",
+schema = 'optum_ehr.cdm_optum_ehr_v3765'
+)
+
+# BMI Note there is no unit concept - so I can just extract the values of 3038553
+# you could also use the height/weight if bmi is missing?
+
+#==============================
+# Systolic Blood Pressure - mmHg
+#==============================
+
+bldpMeas <- connectionHandler$queryDb(
+  "select 
+m.person_id,
+m.measurement_concept_id,
+m.value_as_number,
+m.unit_concept_id,
+c.concept_name as unit_name
+
+from @schema.measurement m 
+left join
+@schema.concept c
+on m.unit_concept_id = c.concept_id
+
+where 
+m.measurement_concept_id in (3004249)
+limit 10000
+;
+",
+  schema = 'optum_ehr.cdm_optum_ehr_v3765'
+)
+
+counts <- connectionHandler$queryDb(
+  "select 
+m.measurement_concept_id,
+c2.concept_name as measurement_name,
+m.unit_concept_id,
+c.concept_name as unit_name,
+count(*) as n,
+avg(m.value_as_number) as mean
+
+from @schema.measurement m 
+inner join
+@schema.concept c2
+on m.measurement_concept_id = c2.concept_id
+
+left join
+@schema.concept c
+on m.unit_concept_id = c.concept_id
+
+where 
+m.measurement_concept_id in (3004249)
+group by m.measurement_concept_id, c2.concept_name, m.unit_concept_id, c.concept_name
+;
+",
+  schema = 'optum_ehr.cdm_optum_ehr_v3765'
+)
+
+
+#==============================
+# Chol/HDL ratio - no scale
+#==============================
+
+chdlMeas <- connectionHandler$queryDb(
+  "select 
+m.person_id,
+m.measurement_concept_id,
+m.value_as_number,
+m.unit_concept_id,
+c.concept_name as unit_name
+
+from @schema.measurement m 
+left join
+@schema.concept c
+on m.unit_concept_id = c.concept_id
+
+where 
+m.measurement_concept_id in (4195214, 4042587,4195490,4198116,36314015,36314016,36314017,36314018,36361945,36361947,36361949,36361951)
+limit 50000
+;
+",
+  schema = 'optum_ehr.cdm_optum_ehr_v3765'
+)
+
+counts <- connectionHandler$queryDb(
+  "select 
+m.measurement_concept_id,
+c2.concept_name as measurement_name,
+m.unit_concept_id,
+c.concept_name as unit_name,
+count(*) as n,
+avg(m.value_as_number) as mean
+
+from @schema.measurement m 
+inner join
+@schema.concept c2
+on m.measurement_concept_id = c2.concept_id
+
+left join
+@schema.concept c
+on m.unit_concept_id = c.concept_id
+
+where 
+m.measurement_concept_id in (4195214, 4042587,4195490,4198116,36314015,36314016,36314017,36314018,36361945,36361947,36361949,36361951)
+group by m.measurement_concept_id, c2.concept_name, m.unit_concept_id, c.concept_name
+;
+",
+  schema = 'optum_ehr.cdm_optum_ehr_v3765'
+)
+
+# comments: restrict to units: NA, 0, 8523
+
+
+# example measurement extraction code
+
+getMeasurementCovariateData <- function(connection,
+                                        oracleTempSchema = NULL,
+                                        cdmDatabaseSchema,
+                                        cdmVersion = "5",
+                                        cohortTable = "#cohort_person",
+                                        rowIdField = "row_id",
+                                        aggregated,
+                                        cohortId,
+                                        covariateSettings, 
+                                        ...
+                                        ) {
+  
+  # to get table 1 - take source values and then map them - dont map in SQL
+  
+  # Some SQL to construct the covariate:
+  sql <- paste("SELECT c.@row_id_field AS row_id, 
+               measurement_concept_id, 
+               unit_concept_id,",
+               "value_as_number,",
+               "measurement_date,",
+               "ABS(datediff(dd, measurement_date, c.cohort_start_date)) AS index_time",
+               "FROM @cdm_database_schema.measurement m INNER JOIN @cohort_temp_table c 
+                ON c.subject_id = m.person_id",
+               "AND measurement_date >= dateadd(day, @startDay, cohort_start_date) ",
+               "AND measurement_date <= dateadd(day, @endDay, cohort_start_date) ",
+               "INNER JOIN @cdm_database_schema.person p ON p.person_id=c.subject_id",
+               "WHERE m.measurement_concept_id IN (@concepts) 
+                AND value_as_number IS NOT NULL
+               {@use_min}?{AND value_as_number >= @min_val}
+               {@use_max}?{AND value_as_number <= @max_val}
+               {@restrict_units}?{
+               AND (unit_concept_id IN (@units) {@na_unit}?{OR unit_concept_id  = 'NA'})
+               }
+               ;
+               "
+  )
+  
+  sql <- SqlRender::render(sql,
+                           cohort_temp_table = cohortTable,
+                           row_id_field = rowIdField,
+                           startDay=covariateSettings$startDay,
+                           endDay=covariateSettings$endDay,
+                           concepts = paste(covariateSettings$conceptSet, collapse = ','),
+                           cdm_database_schema = cdmDatabaseSchema,
+                           use_min  = !is.null(covariateSettings$minVal),
+                           min_val  = covariateSettings$minVal,
+                           use_max = !is.null(covariateSettings$maxVal),
+                           max_val  = covariateSettings$maxVal,
+                           restrict_units = !is.null(covariateSettings$unitSet),
+                           na_unit = NA %in% covariateSettings$unitSet,
+                           units = paste(covariateSettings$unitSet[!is.na(covariateSettings$unitSet)], collapse = ',')
+  )
+  sql <- SqlRender::translate(sql, targetDialect = attr(connection, "dbms"),
+                              oracleTempSchema = oracleTempSchema)
+  # Retrieve the covariate:
+  covariates <- DatabaseConnector::querySql(connection, sql)
+  # Convert colum names to camelCase:
+  colnames(covariates) <- SqlRender::snakeCaseToCamelCase(colnames(covariates))
+  
+  # map data:
+  covariates <- covariates[!is.na(covariates$valueAsNumber),]
+  
+  # if scaleMap is a function call it otherwise eval the string function
+  if(inherits(covariateSettings$scaleMap, 'function')){
+    covariates <- covariateSettings$scaleMap(covariates)
+  } else{
+    scaleMap <- eval(parse(text = covariateSettings$scaleMap))
+    covariates <- scaleMap(covariates)
+  }
+  
+  # aggregate data:
+  if(covariateSettings$aggregateMethod == 'max'){
+    covariates <- covariates %>% 
+      dplyr::group_by(.data$rowId) %>%
+      dplyr::summarize(covariateValue = max(.data$valueAsNumber))
+  } else if(covariateSettings$aggregateMethod == 'min'){
+    covariates <- covariates %>% 
+      dplyr::group_by(.data$rowId) %>%
+      dplyr::summarize(covariateValue = min(.data$valueAsNumber))
+  } else if(covariateSettings$aggregateMethod == 'mean'){
+    covariates <- covariates %>% 
+      dplyr::group_by(.data$rowId) %>%
+      dplyr::summarize(covariateValue = mean(.data$valueAsNumber))
+  } else if(covariateSettings$aggregateMethod == 'median'){
+    covariates <- covariates %>% 
+      dplyr::group_by(.data$rowId) %>%
+      dplyr::summarize(covariateValue = median(.data$valueAsNumber))
+  } else{
+    last <- covariates %>% 
+      dplyr::group_by(.data$rowId) %>%
+      dplyr::summarize(lastTime = min(.data$indexTime))
+    
+    covariates <- merge(covariates,last, 
+                        by.x = c('rowId','indexTime'), 
+                        by.y = c('rowId','lastTime') )
+    
+    covariates <- covariates %>% 
+      dplyr::group_by(.data$rowId) %>%
+      dplyr::summarize(
+        covariateValue = mean(.data$valueAsNumber)
+        )
+  }
+  
+  # add covariateID:
+  covariates$covariateId <- covariateSettings$covariateId
+
+  
+  covariates <- covariates %>% dplyr::select(rowId, covariateId, covariateValue)
+
+  
+  # Construct covariate reference:
+  covariateRef <- data.frame(covariateId = covariateSettings$covariateId,
+                             covariateName = paste('Measurement during day',
+                                                   covariateSettings$startDay,
+                                                   'through',
+                                                   covariateSettings$endDay,
+                                                   'days relative to index:',
+                                                   covariateSettings$covariateName
+                                                   ),
+                             analysisId = covariateSettings$analysisId,
+                             conceptId = 0)
+  
+  analysisRef <- data.frame(analysisId = covariateSettings$analysisId,
+                            analysisName = "measurement covariate",
+                            domainId = "measurement covariate",
+                            startDay = covariateSettings$startDay,
+                            endDay = covariateSettings$endDay,
+                            isBinary = "N",
+                            missingMeansZero = "Y")
+  
+  result <- Andromeda::andromeda(covariates = covariates,
+                                 covariateRef = covariateRef,
+                                 analysisRef = analysisRef)
+  class(result) <- "CovariateData"	
+  return(result)
+}
+
+#============================================================
+#CREATE MEASUREMENT COVARIATE SETTINGS
+#============================================================
+
+createMeasurementCovariateSettings <- function(
+    covariateName, 
+    conceptSet,
+    unitSet = NULL,
+    startDay=-30, 
+    endDay=0, 
+    scaleMap = function(x){sapply(x, function(y){y})}, 
+    minVal = NULL,
+    maxVal = NULL,
+    aggregateMethod = 'recent',
+    covariateId = 1466,
+    analysisId = 466
+) {
+  
+  covariateSettings <- list(covariateName=covariateName, 
+                            conceptSet=conceptSet,
+                            unitSet = unitSet,
+                            startDay=startDay,
+                            endDay=endDay,
+                            scaleMap=scaleMap,
+                            aggregateMethod = aggregateMethod,
+                            minVal = minVal,
+                            maxVal = maxVal,
+                            covariateId = covariateId,
+                            analysisId = analysisId
+  )
+  
+  attr(covariateSettings, "fun") <- "getMeasurementCovariateData"
+  class(covariateSettings) <- "covariateSettings"
+  return(covariateSettings)
+
+#=============================================================
+#CHOLESTEROL/HDL ratio CENTERING
+#=============================================================
+
+scaleMapchdl <- function(covariates){
+  covariates$valueAsNumber <- sapply(covariates$valueAsNumber, function(y){y - 4})
+  return(covariates)
+  }
+
+chdlCovSetting <- createMeasurementCovariateSettings(
+    covariateName = 'Chol/HDL ratio', 
+    conceptSet = c(4195214, 4042587,4195490,4198116,36314015,36314016,36314017,36314018,36361945,36361947,36361949,36361951),
+    unitSet = c(NA, 0, 8523),
+    startDay = -365, 
+    endDay = 0, 
+    scaleMap = scaleMapchdl, 
+    minVal = 0,
+    maxVal = 20,
+    aggregateMethod = 'recent',
+    covariateId = 1466, #UNIQUE?
+    analysisId = 466
+)
+
+#======================================================
+#BODY MASS INDEX (BMI) CENTERING
+#======================================================
+  
+scaleMapBmi <- function(covariates){
+  covariates$valueAsNumber <- sapply(covariates$valueAsNumber, function(y){y - 26})
+  return(covariates)
+}
+
+bmiCovSetting <- createMeasurementCovariateSettings(
+  covariateName = 'BMI', 
+  conceptSet = c(3038553),
+  unitSet = NULL, 
+  startDay = -365, 
+  endDay = 0, 
+  scaleMap = scaleMapBmi, 
+  minVal = 5,
+  maxVal = 250, 
+  aggregateMethod = 'recent',
+  covariateId = 2466, #UNIQUE?
+  analysisId = 466
+)
+
+#===============================================
+#BLOOD PRESSURE CENTERING
+#===============================================
+  
+scaleMapBldp <- function(covariates){
+  covariates$valueAsNumber <- sapply(covariates$valueAsNumber, function(y){y - 132.6})
+  return(covariates)
+}
+
+bldpCovSetting <- createMeasurementCovariateSettings(
+  covariateName = 'Systolic Blood Pressure', 
+  conceptSet = c(3004249),
+  unitSet = c(NA, 0, 8876), 
+  startDay = -365, 
+  endDay = 0, 
+  scaleMap = scaleMapBldp, 
+  minVal = 5,
+  maxVal = 250, 
+  aggregateMethod = 'recent',
+  covariateId = 3466, #UNIQUE?
+  analysisId = 466
+)
+
+
+
+# ADD TO COVARIATE SETTINGS IN THE MODEL SPECIFICATION
+  # covariateSettings = list(
+    FeatureExtraction::createCovariateSettings(
+      useDemographicsAge = TRUE, 
+      useDemographicsRace = TRUE
+      ),
+    chdlCovSetting,bmiCovSetting,bldpCovSetting)
 #========================================================================================
 #ADJUSTMENTS TO THE COHORTS USED
 #========================================================================================
-
+  
 #LOGARITHMIC AGE
 #=======================================================================================
 
