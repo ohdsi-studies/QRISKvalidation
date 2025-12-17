@@ -485,18 +485,6 @@ bldpCovSetting <- createMeasurementCovariateSettings(
   analysisId = 466
 )
 
-
-
-# ADD TO COVARIATE SETTINGS IN THE MODEL SPECIFICATION
-  
-  covariateSettings = list(
-    FeatureExtraction::createCovariateSettings(
-      useDemographicsAge = TRUE, 
-      useDemographicsRace = TRUE
-      ),
-    chdlCovSetting,bmiCovSetting,bldpCovSetting)
-
-  #ADD TO COVARIATE SETTINGS IN THE MODEL SPECIFICATION
 #========================================================================================
 #ADJUSTMENTS TO THE COHORTS USED
 #========================================================================================
