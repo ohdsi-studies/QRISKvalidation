@@ -435,7 +435,7 @@ chdlCovSetting <- createMeasurementCovariateSettings(
     minVal = 0,
     maxVal = 20,
     aggregateMethod = 'recent',
-    covariateId = 1466, #UNIQUE?
+    covariateId = 1466, 
     analysisId = 466
 )
 
@@ -458,7 +458,7 @@ bmiCovSetting <- createMeasurementCovariateSettings(
   minVal = 5,
   maxVal = 250, 
   aggregateMethod = 'recent',
-  covariateId = 2466, #UNIQUE?
+  covariateId = 2466, 
   analysisId = 466
 )
 
@@ -481,19 +481,22 @@ bldpCovSetting <- createMeasurementCovariateSettings(
   minVal = 5,
   maxVal = 250, 
   aggregateMethod = 'recent',
-  covariateId = 3466, #UNIQUE?
+  covariateId = 3466, 
   analysisId = 466
 )
 
 
 
 # ADD TO COVARIATE SETTINGS IN THE MODEL SPECIFICATION
-  # covariateSettings = list(
+  
+  covariateSettings = list(
     FeatureExtraction::createCovariateSettings(
       useDemographicsAge = TRUE, 
       useDemographicsRace = TRUE
       ),
     chdlCovSetting,bmiCovSetting,bldpCovSetting)
+
+  #ADD TO COVARIATE SETTINGS IN THE MODEL SPECIFICATION
 #========================================================================================
 #ADJUSTMENTS TO THE COHORTS USED
 #========================================================================================
