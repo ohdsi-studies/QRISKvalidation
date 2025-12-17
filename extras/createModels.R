@@ -787,8 +787,8 @@ plpModelQRISK1_male_OG_1 <- PatientLevelPrediction::createGlmModel(
       count = F, 
       ageInteraction = F, 
       analysisId = 668
-    )
     ),
+    chdlCovSetting,bmiCovSetting,bldpCovSetting,
   featureEngineeringSettings = list(createLogAge(),createInteractionTermSBPAT())                  
 )
 
@@ -808,8 +808,10 @@ plpModelQRISK1_male$modelDesign$covariateSettings <- list(
   endDay = 0
   ),
   FeatureExtraction::createCovariateSettings(
-    useDemographicsAge = T
-    )
+    useDemographicsAge = T,
+    useDemographicsRace = T
+    ),
+  chdlCovSetting,bmiCovSetting,bldpCovSetting
 )
 
 # bug that needs fixing in PLP
@@ -820,7 +822,7 @@ PatientLevelPrediction::savePlpModel(
   plpModel = plpModelQRISK1_male_OG_1, 
   dirPath = './inst/models/QRISK1_male_OG_1'
     )
-
+                  
 #QRISK1_female_OG_1
 #============================================================================
 canalysisId <- 668
