@@ -242,7 +242,7 @@ baseline*exp(x)
 })}"
 
 #===========================================================
-#CENTERING FUNCTION
+#CENTERING VARIABLES
 #==========================================================
 connectionHandler <- ResultModelManager::ConnectionHandler$new(connectionDetails)
 
@@ -267,8 +267,6 @@ limit 10000
 schema = 'optum_ehr.cdm_optum_ehr_v3765'
 )
 
-# BMI Note there is no unit concept - so I can just extract the values of 3038553
-# you could also use the height/weight if bmi is missing?
 
 #==============================
 # Systolic Blood Pressure - mmHg
