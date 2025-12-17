@@ -941,9 +941,11 @@ plpModelQRISK1_female$modelDesign$covariateSettings <- list(
   startDay = -365, 
   endDay = 0
   ),
-  FeatureExtraction::createCovariateSettings(
-    useDemographicsAge = T
-    )
+   FeatureExtraction::createCovariateSettings(
+    useDemographicsAge = T,
+    useDemographicsRace = T
+    ),
+  chdlCovSetting,bmiCovSetting,bldpCovSetting
 )
 
 # bug that needs fixing in PLP
@@ -1303,8 +1305,10 @@ plpModelQRISK2_male$modelDesign$covariateSettings <- list(
   endDay = 0
   ),
   FeatureExtraction::createCovariateSettings(
-    useDemographicsAge = T
-    )
+    useDemographicsAge = T,
+    useDemographicsRace = T
+    ),
+  chdlCovSetting,bmiCovSetting,bldpCovSetting
 )
 
 # bug that needs fixing in PLP
@@ -1664,8 +1668,10 @@ plpModelQRISK2_female$modelDesign$covariateSettings <- list(
   endDay = 0
   ),
   FeatureExtraction::createCovariateSettings(
-    useDemographicsAge = T
-    )
+    useDemographicsAge = T,
+    useDemographicsRace = T
+    ),
+  chdlCovSetting,bmiCovSetting,bldpCovSetting
 )
 
 # bug that needs fixing in PLP
@@ -2030,8 +2036,10 @@ plpModelQRISK3_male$modelDesign$covariateSettings <- list(
   endDay = 0
   ),
   FeatureExtraction::createCovariateSettings(
-    useDemographicsAge = T
-    )
+    useDemographicsAge = T,
+    useDemographicsRace = T
+    ),
+  chdlCovSetting,bmiCovSetting,bldpCovSetting
 )
 
 # bug that needs fixing in PLP
@@ -2385,8 +2393,10 @@ plpModelQRISK3_female$modelDesign$covariateSettings <- list(
   endDay = 0
   ),
   FeatureExtraction::createCovariateSettings(
-    useDemographicsAge = T
-    )
+    useDemographicsAge = T,
+    useDemographicsRace = T
+    ),
+  chdlCovSetting,bmiCovSetting,bldpCovSetting
 )
 
 # bug that needs fixing in PLP
@@ -2829,8 +2839,10 @@ plpModelQRISK4_male$modelDesign$covariateSettings <- list(
   endDay = 0
   ),
   FeatureExtraction::createCovariateSettings(
-    useDemographicsAge = T
-    )
+    useDemographicsAge = T,
+    useDemographicsRace = T
+    ),
+  chdlCovSetting,bmiCovSetting,bldpCovSetting
 )
 
 # bug that needs fixing in PLP
@@ -3284,8 +3296,10 @@ plpModelQRISK4_female$modelDesign$covariateSettings <- list(
   endDay = 0
   ),
   FeatureExtraction::createCovariateSettings(
-    useDemographicsAge = T
-    )
+    useDemographicsAge = T,
+    useDemographicsRace = T
+    ),
+  chdlCovSetting,bmiCovSetting,bldpCovSetting
 )
 
 # bug that needs fixing in PLP
@@ -3429,8 +3443,10 @@ plpModelQRISK1_male$modelDesign$covariateSettings <- list(
   endDay = 0
   ),
   FeatureExtraction::createCovariateSettings(
-    useDemographicsAge = T
-    )
+    useDemographicsAge = T,
+    useDemographicsRace = T
+    ),
+  chdlCovSetting,bmiCovSetting,bldpCovSetting
 )
 
 # bug that needs fixing in PLP
@@ -3574,8 +3590,10 @@ plpModelQRISK1_female$modelDesign$covariateSettings <- list(
   endDay = 0
   ),
   FeatureExtraction::createCovariateSettings(
-    useDemographicsAge = T
-    )
+    useDemographicsAge = T,
+    useDemographicsRace = T
+    ),
+  chdlCovSetting,bmiCovSetting,bldpCovSetting
 )
 
 # bug that needs fixing in PLP
@@ -3936,8 +3954,10 @@ plpModelQRISK2_male$modelDesign$covariateSettings <- list(
   endDay = 0
   ),
   FeatureExtraction::createCovariateSettings(
-    useDemographicsAge = T
-    )
+    useDemographicsAge = T,
+    useDemographicsRace = T
+    ),
+  chdlCovSetting,bmiCovSetting,bldpCovSetting
 )
 
 # bug that needs fixing in PLP
@@ -4298,8 +4318,10 @@ plpModelQRISK2_female$modelDesign$covariateSettings <- list(
   endDay = 0
   ),
   FeatureExtraction::createCovariateSettings(
-    useDemographicsAge = T
-    )
+    useDemographicsAge = T,
+    useDemographicsRace = T
+    ),
+  chdlCovSetting,bmiCovSetting,bldpCovSetting
 )
 
 # bug that needs fixing in PLP
@@ -4663,8 +4685,10 @@ plpModelQRISK3_male$modelDesign$covariateSettings <- list(
   endDay = 0
   ),
   FeatureExtraction::createCovariateSettings(
-    useDemographicsAge = T
-    )
+    useDemographicsAge = T,
+    useDemographicsRace = T
+    ),
+  chdlCovSetting,bmiCovSetting,bldpCovSetting
 )
 
 # bug that needs fixing in PLP
@@ -5017,8 +5041,10 @@ plpModelQRISK3_female$modelDesign$covariateSettings <- list(
   endDay = 0
   ),
   FeatureExtraction::createCovariateSettings(
-    useDemographicsAge = T
-    )
+    useDemographicsAge = T,
+    useDemographicsRace = T
+    ),
+  chdlCovSetting,bmiCovSetting,bldpCovSetting
 )
 
 # bug that needs fixing in PLP
@@ -5460,8 +5486,10 @@ plpModelQRISK4_male$modelDesign$covariateSettings <- list(
   endDay = 0
   ),
   FeatureExtraction::createCovariateSettings(
-    useDemographicsAge = T
-    )
+    useDemographicsAge = T,
+    useDemographicsRace = T
+    ),
+  chdlCovSetting,bmiCovSetting,bldpCovSetting
 )
 
 # bug that needs fixing in PLP
@@ -5913,8 +5941,10 @@ plpModelQRISK4_female$modelDesign$covariateSettings <- list(
   endDay = 0
   ),
   FeatureExtraction::createCovariateSettings(
-    useDemographicsAge = T
-    )
+    useDemographicsAge = T,
+    useDemographicsRace = T
+    ),
+  chdlCovSetting,bmiCovSetting,bldpCovSetting
 )
 
 # bug that needs fixing in PLP
@@ -6058,8 +6088,10 @@ plpModelQRISK1_male$modelDesign$covariateSettings <- list(
   endDay = 0
   ),
   FeatureExtraction::createCovariateSettings(
-    useDemographicsAge = T
-    )
+    useDemographicsAge = T,
+    useDemographicsRace = T
+    ),
+  chdlCovSetting,bmiCovSetting,bldpCovSetting
 )
 
 # bug that needs fixing in PLP
@@ -6202,8 +6234,10 @@ plpModelQRISK1_female$modelDesign$covariateSettings <- list(
   endDay = 0
   ),
   FeatureExtraction::createCovariateSettings(
-    useDemographicsAge = T
-    )
+    useDemographicsAge = T,
+    useDemographicsRace = T
+    ),
+  chdlCovSetting,bmiCovSetting,bldpCovSetting
 )
 
 # bug that needs fixing in PLP
@@ -6563,8 +6597,10 @@ plpModelQRISK2_male$modelDesign$covariateSettings <- list(
   endDay = 0
   ),
   FeatureExtraction::createCovariateSettings(
-    useDemographicsAge = T
-    )
+    useDemographicsAge = T,
+    useDemographicsRace = T
+    ),
+  chdlCovSetting,bmiCovSetting,bldpCovSetting
 )
 
 # bug that needs fixing in PLP
@@ -6924,8 +6960,10 @@ plpModelQRISK2_female$modelDesign$covariateSettings <- list(
   endDay = 0
   ),
   FeatureExtraction::createCovariateSettings(
-    useDemographicsAge = T
-    )
+    useDemographicsAge = T,
+    useDemographicsRace = T
+    ),
+  chdlCovSetting,bmiCovSetting,bldpCovSetting
 )
 
 # bug that needs fixing in PLP
@@ -7290,8 +7328,10 @@ plpModelQRISK3_male$modelDesign$covariateSettings <- list(
   endDay = 0
   ),
   FeatureExtraction::createCovariateSettings(
-    useDemographicsAge = T
-    )
+    useDemographicsAge = T,
+    useDemographicsRace = T
+    ),
+  chdlCovSetting,bmiCovSetting,bldpCovSetting
 )
 
 # bug that needs fixing in PLP
@@ -7645,8 +7685,10 @@ plpModelQRISK3_female$modelDesign$covariateSettings <- list(
   endDay = 0
   ),
   FeatureExtraction::createCovariateSettings(
-    useDemographicsAge = T
-    )
+    useDemographicsAge = T,
+    useDemographicsRace = T
+    ),
+  chdlCovSetting,bmiCovSetting,bldpCovSetting
 )
 
 # bug that needs fixing in PLP
@@ -8089,8 +8131,10 @@ plpModelQRISK4_male$modelDesign$covariateSettings <- list(
   endDay = 0
   ),
   FeatureExtraction::createCovariateSettings(
-    useDemographicsAge = T
-    )
+    useDemographicsAge = T,
+    useDemographicsRace = T
+    ),
+  chdlCovSetting,bmiCovSetting,bldpCovSetting
 )
 
 # bug that needs fixing in PLP
@@ -8544,8 +8588,10 @@ plpModelQRISK4_female$modelDesign$covariateSettings <- list(
   endDay = 0
   ),
   FeatureExtraction::createCovariateSettings(
-    useDemographicsAge = T
-    )
+    useDemographicsAge = T,
+    useDemographicsRace = T
+    ),
+  chdlCovSetting,bmiCovSetting,bldpCovSetting
 )
 
 # bug that needs fixing in PLP
@@ -8690,8 +8736,10 @@ plpModelQRISK1_male$modelDesign$covariateSettings <- list(
   endDay = 0
   ),
   FeatureExtraction::createCovariateSettings(
-    useDemographicsAge = T
-    )
+    useDemographicsAge = T,
+    useDemographicsRace = T
+    ),
+  chdlCovSetting,bmiCovSetting,bldpCovSetting
 )
 
 # bug that needs fixing in PLP
@@ -8834,8 +8882,10 @@ plpModelQRISK1_female$modelDesign$covariateSettings <- list(
   endDay = 0
   ),
   FeatureExtraction::createCovariateSettings(
-    useDemographicsAge = T
-    )
+    useDemographicsAge = T,
+    useDemographicsRace = T
+    ),
+  chdlCovSetting,bmiCovSetting,bldpCovSetting
 )
 
 # bug that needs fixing in PLP
@@ -9195,8 +9245,10 @@ plpModelQRISK2_male$modelDesign$covariateSettings <- list(
   endDay = 0
   ),
   FeatureExtraction::createCovariateSettings(
-    useDemographicsAge = T
-    )
+    useDemographicsAge = T,
+    useDemographicsRace = T
+    ),
+  chdlCovSetting,bmiCovSetting,bldpCovSetting
 )
 
 # bug that needs fixing in PLP
@@ -9556,8 +9608,10 @@ plpModelQRISK2_female$modelDesign$covariateSettings <- list(
   endDay = 0
   ),
   FeatureExtraction::createCovariateSettings(
-    useDemographicsAge = T
-    )
+    useDemographicsAge = T,
+    useDemographicsRace = T
+    ),
+  chdlCovSetting,bmiCovSetting,bldpCovSetting
 )
 
 # bug that needs fixing in PLP
@@ -9922,8 +9976,10 @@ plpModelQRISK3_male$modelDesign$covariateSettings <- list(
   endDay = 0
   ),
   FeatureExtraction::createCovariateSettings(
-    useDemographicsAge = T
-    )
+    useDemographicsAge = T,
+    useDemographicsRace = T
+    ),
+  chdlCovSetting,bmiCovSetting,bldpCovSetting
 )
 
 # bug that needs fixing in PLP
@@ -10277,8 +10333,10 @@ plpModelQRISK3_female$modelDesign$covariateSettings <- list(
   endDay = 0
   ),
   FeatureExtraction::createCovariateSettings(
-    useDemographicsAge = T
-    )
+    useDemographicsAge = T,
+    useDemographicsRace = T
+    ),
+  chdlCovSetting,bmiCovSetting,bldpCovSetting
 )
 
 # bug that needs fixing in PLP
@@ -10721,8 +10779,10 @@ plpModelQRISK4_male$modelDesign$covariateSettings <- list(
   endDay = 0
   ),
   FeatureExtraction::createCovariateSettings(
-    useDemographicsAge = T
-    )
+    useDemographicsAge = T,
+    useDemographicsRace = T
+    ),
+  chdlCovSetting,bmiCovSetting,bldpCovSetting
 )
 
 # bug that needs fixing in PLP
@@ -11176,8 +11236,10 @@ plpModelQRISK4_female$modelDesign$covariateSettings <- list(
   endDay = 0
   ),
   FeatureExtraction::createCovariateSettings(
-    useDemographicsAge = T
-    )
+    useDemographicsAge = T,
+    useDemographicsRace = T
+    ),
+  chdlCovSetting,bmiCovSetting,bldpCovSetting
 )
 
 # bug that needs fixing in PLP
@@ -11335,8 +11397,10 @@ plpModelQRISK1_male$modelDesign$covariateSettings <- list(
   endDay = 0
   ),
   FeatureExtraction::createCovariateSettings(
-    useDemographicsAge = T
-    )
+    useDemographicsAge = T,
+    useDemographicsRace = T
+    ),
+  chdlCovSetting,bmiCovSetting,bldpCovSetting
 )
 
 # bug that needs fixing in PLP
@@ -11479,8 +11543,10 @@ plpModelQRISK1_female$modelDesign$covariateSettings <- list(
   endDay = 0
   ),
   FeatureExtraction::createCovariateSettings(
-    useDemographicsAge = T
-    )
+    useDemographicsAge = T,
+    useDemographicsRace = T
+    ),
+  chdlCovSetting,bmiCovSetting,bldpCovSetting
 )
 
 # bug that needs fixing in PLP
@@ -11840,8 +11906,10 @@ plpModelQRISK2_male$modelDesign$covariateSettings <- list(
   endDay = 0
   ),
   FeatureExtraction::createCovariateSettings(
-    useDemographicsAge = T
-    )
+    useDemographicsAge = T,
+    useDemographicsRace = T
+    ),
+  chdlCovSetting,bmiCovSetting,bldpCovSetting
 )
 
 # bug that needs fixing in PLP
@@ -12201,8 +12269,10 @@ plpModelQRISK2_female$modelDesign$covariateSettings <- list(
   endDay = 0
   ),
   FeatureExtraction::createCovariateSettings(
-    useDemographicsAge = T
-    )
+    useDemographicsAge = T,
+    useDemographicsRace = T
+    ),
+  chdlCovSetting,bmiCovSetting,bldpCovSetting
 )
 
 # bug that needs fixing in PLP
@@ -12567,8 +12637,10 @@ plpModelQRISK3_male$modelDesign$covariateSettings <- list(
   endDay = 0
   ),
   FeatureExtraction::createCovariateSettings(
-    useDemographicsAge = T
-    )
+    useDemographicsAge = T,
+    useDemographicsRace = T
+    ),
+  chdlCovSetting,bmiCovSetting,bldpCovSetting
 )
 
 # bug that needs fixing in PLP
@@ -12921,9 +12993,11 @@ plpModelQRISK3_female$modelDesign$covariateSettings <- list(
   startDay = -365, 
   endDay = 0
   ),
-  FeatureExtraction::createCovariateSettings(
-    useDemographicsAge = T
-    )
+ FeatureExtraction::createCovariateSettings(
+    useDemographicsAge = T,
+    useDemographicsRace = T
+    ),
+  chdlCovSetting,bmiCovSetting,bldpCovSetting
 )
 
 # bug that needs fixing in PLP
@@ -13366,8 +13440,10 @@ plpModelQRISK4_male$modelDesign$covariateSettings <- list(
   endDay = 0
   ),
   FeatureExtraction::createCovariateSettings(
-    useDemographicsAge = T
-    )
+    useDemographicsAge = T,
+    useDemographicsRace = T
+    ),
+  chdlCovSetting,bmiCovSetting,bldpCovSetting
 )
 
 # bug that needs fixing in PLP
@@ -13821,8 +13897,10 @@ plpModelQRISK4_female$modelDesign$covariateSettings <- list(
   endDay = 0
   ),
   FeatureExtraction::createCovariateSettings(
-    useDemographicsAge = T
-    )
+    useDemographicsAge = T,
+    useDemographicsRace = T
+    ),
+  chdlCovSetting,bmiCovSetting,bldpCovSetting
 )
 
 # bug that needs fixing in PLP
@@ -13970,8 +14048,10 @@ plpModelQRISK1_male$modelDesign$covariateSettings <- list(
   endDay = 0
   ),
   FeatureExtraction::createCovariateSettings(
-    useDemographicsAge = T
-    )
+    useDemographicsAge = T,
+    useDemographicsRace = T
+    ),
+  chdlCovSetting,bmiCovSetting,bldpCovSetting
 )
 
 # bug that needs fixing in PLP
@@ -14115,8 +14195,10 @@ plpModelQRISK1_female$modelDesign$covariateSettings <- list(
   endDay = 0
   ),
   FeatureExtraction::createCovariateSettings(
-    useDemographicsAge = T
-    )
+    useDemographicsAge = T,
+    useDemographicsRace = T
+    ),
+  chdlCovSetting,bmiCovSetting,bldpCovSetting
 )
 
 # bug that needs fixing in PLP
@@ -14477,8 +14559,10 @@ plpModelQRISK2_male$modelDesign$covariateSettings <- list(
   endDay = 0
   ),
   FeatureExtraction::createCovariateSettings(
-    useDemographicsAge = T
-    )
+    useDemographicsAge = T,
+    useDemographicsRace = T
+    ),
+  chdlCovSetting,bmiCovSetting,bldpCovSetting
 )
 
 # bug that needs fixing in PLP
@@ -14839,8 +14923,10 @@ plpModelQRISK2_female$modelDesign$covariateSettings <- list(
   endDay = 0
   ),
   FeatureExtraction::createCovariateSettings(
-    useDemographicsAge = T
-    )
+    useDemographicsAge = T,
+    useDemographicsRace = T
+    ),
+  chdlCovSetting,bmiCovSetting,bldpCovSetting
 )
 
 # bug that needs fixing in PLP
@@ -15204,8 +15290,10 @@ plpModelQRISK3_male$modelDesign$covariateSettings <- list(
   endDay = 0
   ),
   FeatureExtraction::createCovariateSettings(
-    useDemographicsAge = T
-    )
+    useDemographicsAge = T,
+    useDemographicsRace = T
+    ),
+  chdlCovSetting,bmiCovSetting,bldpCovSetting
 )
 
 # bug that needs fixing in PLP
@@ -15558,8 +15646,10 @@ plpModelQRISK3_female$modelDesign$covariateSettings <- list(
   endDay = 0
   ),
   FeatureExtraction::createCovariateSettings(
-    useDemographicsAge = T
-    )
+    useDemographicsAge = T,
+    useDemographicsRace = T
+    ),
+  chdlCovSetting,bmiCovSetting,bldpCovSetting
 )
 
 # bug that needs fixing in PLP
@@ -16001,8 +16091,10 @@ plpModelQRISK4_male$modelDesign$covariateSettings <- list(
   endDay = 0
   ),
   FeatureExtraction::createCovariateSettings(
-    useDemographicsAge = T
-    )
+    useDemographicsAge = T,
+    useDemographicsRace = T
+    ),
+  chdlCovSetting,bmiCovSetting,bldpCovSetting
 )
 
 # bug that needs fixing in PLP
@@ -16454,8 +16546,10 @@ plpModelQRISK4_female$modelDesign$covariateSettings <- list(
   endDay = 0
   ),
   FeatureExtraction::createCovariateSettings(
-    useDemographicsAge = T
-    )
+    useDemographicsAge = T,
+    useDemographicsRace = T
+    ),
+  chdlCovSetting,bmiCovSetting,bldpCovSetting
 )
 
 # bug that needs fixing in PLP
@@ -16599,8 +16693,10 @@ plpModelQRISK1_male$modelDesign$covariateSettings <- list(
   endDay = 0
   ),
   FeatureExtraction::createCovariateSettings(
-    useDemographicsAge = T
-    )
+    useDemographicsAge = T,
+    useDemographicsRace = T
+    ),
+  chdlCovSetting,bmiCovSetting,bldpCovSetting
 )
 
 # bug that needs fixing in PLP
@@ -16743,8 +16839,10 @@ plpModelQRISK1_female$modelDesign$covariateSettings <- list(
   endDay = 0
   ),
   FeatureExtraction::createCovariateSettings(
-    useDemographicsAge = T
-    )
+    useDemographicsAge = T,
+    useDemographicsRace = T
+    ),
+  chdlCovSetting,bmiCovSetting,bldpCovSetting
 )
 
 # bug that needs fixing in PLP
@@ -17104,8 +17202,10 @@ plpModelQRISK2_male$modelDesign$covariateSettings <- list(
   endDay = 0
   ),
   FeatureExtraction::createCovariateSettings(
-    useDemographicsAge = T
-    )
+    useDemographicsAge = T,
+    useDemographicsRace = T
+    ),
+  chdlCovSetting,bmiCovSetting,bldpCovSetting
 )
 
 # bug that needs fixing in PLP
@@ -17465,8 +17565,10 @@ plpModelQRISK2_female$modelDesign$covariateSettings <- list(
   endDay = 0
   ),
   FeatureExtraction::createCovariateSettings(
-    useDemographicsAge = T
-    )
+    useDemographicsAge = T,
+    useDemographicsRace = T
+    ),
+  chdlCovSetting,bmiCovSetting,bldpCovSetting
 )
 
 # bug that needs fixing in PLP
@@ -17831,8 +17933,10 @@ plpModelQRISK3_male$modelDesign$covariateSettings <- list(
   endDay = 0
   ),
   FeatureExtraction::createCovariateSettings(
-    useDemographicsAge = T
-    )
+    useDemographicsAge = T,
+    useDemographicsRace = T
+    ),
+  chdlCovSetting,bmiCovSetting,bldpCovSetting
 )
 
 # bug that needs fixing in PLP
@@ -18186,8 +18290,10 @@ plpModelQRISK3_female$modelDesign$covariateSettings <- list(
   endDay = 0
   ),
   FeatureExtraction::createCovariateSettings(
-    useDemographicsAge = T
-    )
+    useDemographicsAge = T,
+    useDemographicsRace = T
+    ),
+  chdlCovSetting,bmiCovSetting,bldpCovSetting
 )
 
 # bug that needs fixing in PLP
@@ -18630,8 +18736,10 @@ plpModelQRISK4_male$modelDesign$covariateSettings <- list(
   endDay = 0
   ),
   FeatureExtraction::createCovariateSettings(
-    useDemographicsAge = T
-    )
+    useDemographicsAge = T,
+    useDemographicsRace = T
+    ),
+  chdlCovSetting,bmiCovSetting,bldpCovSetting
 )
 
 # bug that needs fixing in PLP
@@ -19085,8 +19193,10 @@ plpModelQRISK4_female$modelDesign$covariateSettings <- list(
   endDay = 0
   ),
   FeatureExtraction::createCovariateSettings(
-    useDemographicsAge = T
-    )
+    useDemographicsAge = T,
+    useDemographicsRace = T
+    ),
+  chdlCovSetting,bmiCovSetting,bldpCovSetting
 )
 
 # bug that needs fixing in PLP
@@ -19231,8 +19341,10 @@ plpModelQRISK1_male$modelDesign$covariateSettings <- list(
   endDay = 0
   ),
   FeatureExtraction::createCovariateSettings(
-    useDemographicsAge = T
-    )
+    useDemographicsAge = T,
+    useDemographicsRace = T
+    ),
+  chdlCovSetting,bmiCovSetting,bldpCovSetting
 )
 
 # bug that needs fixing in PLP
@@ -19375,8 +19487,10 @@ plpModelQRISK1_female$modelDesign$covariateSettings <- list(
   endDay = 0
   ),
   FeatureExtraction::createCovariateSettings(
-    useDemographicsAge = T
-    )
+    useDemographicsAge = T,
+    useDemographicsRace = T
+    ),
+  chdlCovSetting,bmiCovSetting,bldpCovSetting
 )
 
 # bug that needs fixing in PLP
@@ -19736,8 +19850,10 @@ plpModelQRISK2_male$modelDesign$covariateSettings <- list(
   endDay = 0
   ),
   FeatureExtraction::createCovariateSettings(
-    useDemographicsAge = T
-    )
+    useDemographicsAge = T,
+    useDemographicsRace = T
+    ),
+  chdlCovSetting,bmiCovSetting,bldpCovSetting
 )
 
 # bug that needs fixing in PLP
@@ -20097,8 +20213,10 @@ plpModelQRISK2_female$modelDesign$covariateSettings <- list(
   endDay = 0
   ),
   FeatureExtraction::createCovariateSettings(
-    useDemographicsAge = T
-    )
+    useDemographicsAge = T,
+    useDemographicsRace = T
+    ),
+  chdlCovSetting,bmiCovSetting,bldpCovSetting
 )
 
 # bug that needs fixing in PLP
@@ -20463,8 +20581,10 @@ plpModelQRISK3_male$modelDesign$covariateSettings <- list(
   endDay = 0
   ),
   FeatureExtraction::createCovariateSettings(
-    useDemographicsAge = T
-    )
+    useDemographicsAge = T,
+    useDemographicsRace = T
+    ),
+  chdlCovSetting,bmiCovSetting,bldpCovSetting
 )
 
 # bug that needs fixing in PLP
@@ -20818,8 +20938,10 @@ plpModelQRISK3_female$modelDesign$covariateSettings <- list(
   endDay = 0
   ),
   FeatureExtraction::createCovariateSettings(
-    useDemographicsAge = T
-    )
+    useDemographicsAge = T,
+    useDemographicsRace = T
+    ),
+  chdlCovSetting,bmiCovSetting,bldpCovSetting
 )
 
 # bug that needs fixing in PLP
@@ -21262,8 +21384,10 @@ plpModelQRISK4_male$modelDesign$covariateSettings <- list(
   endDay = 0
   ),
   FeatureExtraction::createCovariateSettings(
-    useDemographicsAge = T
-    )
+    useDemographicsAge = T,
+    useDemographicsRace = T
+    ),
+  chdlCovSetting,bmiCovSetting,bldpCovSetting
 )
 
 # bug that needs fixing in PLP
@@ -21717,8 +21841,10 @@ plpModelQRISK4_female$modelDesign$covariateSettings <- list(
   endDay = 0
   ),
   FeatureExtraction::createCovariateSettings(
-    useDemographicsAge = T
-    )
+    useDemographicsAge = T,
+    useDemographicsRace = T
+    ),
+  chdlCovSetting,bmiCovSetting,bldpCovSetting
 )
 
 # bug that needs fixing in PLP
