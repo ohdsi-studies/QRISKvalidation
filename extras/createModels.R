@@ -11408,7 +11408,8 @@ plpModelQRISK1_male_JJ_1 <- PatientLevelPrediction::createGlmModel(
       count = F, 
       ageInteraction = F, 
       analysisId = 668
-    )
+    ),
+    chdlCovSetting,bmiCovSetting,bldpCovSetting
     ),
   featureEngineeringSettings = list(createLogAge(),createInteractionTermSBPAT())                  
 )
@@ -11554,7 +11555,8 @@ plpModelQRISK1_female_JJ_1 <- PatientLevelPrediction::createGlmModel(
       count = F, 
       ageInteraction = F, 
       analysisId = 668
-    )
+    ),
+    chdlCovSetting,bmiCovSetting,bldpCovSetting
     ),
   featureEngineeringSettings = list(createLogAge(), createInteractionTermSBPAT())                            
 )
@@ -11917,7 +11919,8 @@ plpModelQRISK2_male_JJ_1 <- PatientLevelPrediction::createGlmModel(
       ageInteraction = F, 
       lnAgeInteraction = TRUE,
       analysisId = 668
-    )
+    ),
+    chdlCovSetting,bmiCovSetting,bldpCovSetting
     ),
   featureEngineeringSettings = createLogAge()
 )
@@ -12280,7 +12283,8 @@ plpModelQRISK2_female_JJ_1 <- PatientLevelPrediction::createGlmModel(
       ageInteraction = F, 
       lnAgeInteraction = TRUE,
       analysisId = 668
-    )
+    ),
+    chdlCovSetting,bmiCovSetting,bldpCovSetting
     ),
   featureEngineeringSettings = createLogAge()
 )
@@ -12648,7 +12652,8 @@ plpModelQRISK3_male_JJ_1 <- PatientLevelPrediction::createGlmModel(
       count = F, 
       ageInteraction = F, 
       analysisId = 668
-    )
+    ),
+    chdlCovSetting,bmiCovSetting,bldpCovSetting
     ),
   featureEngineeringSettings = createSDBP()                         
 )
@@ -13005,7 +13010,8 @@ plpModelQRISK3_female_JJ_1 <- PatientLevelPrediction::createGlmModel(
       count = F, 
       ageInteraction = F, 
       analysisId = 668
-    )
+    ),
+    chdlCovSetting,bmiCovSetting,bldpCovSetting
     ),
   featureEngineeringSettings = createSDBP() 
 )
@@ -13451,7 +13457,8 @@ plpModelQRISK4_male_JJ_1 <- PatientLevelPrediction::createGlmModel(
       count = F, 
       ageInteraction = F, 
       analysisId = 668
-    )
+    ),
+    chdlCovSetting,bmiCovSetting,bldpCovSetting
     ),
   featureEngineeringSettings = createSDBP() 
 )
@@ -13908,7 +13915,8 @@ plpModelQRISK4_female_JJ_1 <- PatientLevelPrediction::createGlmModel(
       count = F, 
       ageInteraction = F, 
       analysisId = 668
-    )
+    ),
+    chdlCovSetting,bmiCovSetting,bldpCovSetting
     ),
   featureEngineeringSettings = createSDBP() 
 )
@@ -14059,7 +14067,8 @@ plpModelQRISK1_male_JJ_3 <- PatientLevelPrediction::createGlmModel(
       count = F, 
       ageInteraction = F, 
       analysisId = 668
-    )
+    ),
+    chdlCovSetting,bmiCovSetting,bldpCovSetting
     ),
   featureEngineeringSettings = list(createLogAge(),createInteractionTermSBPAT())                  
 )
@@ -14206,7 +14215,8 @@ plpModelQRISK1_female_JJ_3 <- PatientLevelPrediction::createGlmModel(
       count = F, 
       ageInteraction = F, 
       analysisId = 668
-    )
+    ),
+    chdlCovSetting,bmiCovSetting,bldpCovSetting
     ),
   featureEngineeringSettings = list(createLogAge(), createInteractionTermSBPAT())                            
 )
@@ -14570,7 +14580,8 @@ plpModelQRISK2_male_JJ_3 <- PatientLevelPrediction::createGlmModel(
       ageInteraction = F, 
       lnAgeInteraction = TRUE,
       analysisId = 668
-    )
+    ),
+    chdlCovSetting,bmiCovSetting,bldpCovSetting
     ),
   featureEngineeringSettings = createLogAge()
 )
@@ -14934,7 +14945,8 @@ plpModelQRISK2_female_JJ_3 <- PatientLevelPrediction::createGlmModel(
       ageInteraction = F, 
       lnAgeInteraction = TRUE,
       analysisId = 668
-    )
+    ),
+    chdlCovSetting,bmiCovSetting,bldpCovSetting
     ),
   featureEngineeringSettings = createLogAge()
 )
@@ -15301,7 +15313,8 @@ plpModelQRISK3_male_JJ_3 <- PatientLevelPrediction::createGlmModel(
       count = F, 
       ageInteraction = F, 
       analysisId = 668
-    )
+    ),
+    chdlCovSetting,bmiCovSetting,bldpCovSetting
     ),
   featureEngineeringSettings = createSDBP()                         
 )
@@ -15657,7 +15670,8 @@ plpModelQRISK3_female_JJ_3 <- PatientLevelPrediction::createGlmModel(
       count = F, 
       ageInteraction = F, 
       analysisId = 668
-    )
+    ),
+    chdlCovSetting,bmiCovSetting,bldpCovSetting
     ),
   featureEngineeringSettings = createSDBP() 
 )
@@ -16102,7 +16116,8 @@ plpModelQRISK4_male_JJ_3 <- PatientLevelPrediction::createGlmModel(
       count = F, 
       ageInteraction = F, 
       analysisId = 668
-    )
+    ),
+    chdlCovSetting,bmiCovSetting,bldpCovSetting
     ),
   featureEngineeringSettings = createSDBP() 
 )
@@ -16557,7 +16572,8 @@ plpModelQRISK4_female_JJ_3 <- PatientLevelPrediction::createGlmModel(
       count = F, 
       ageInteraction = F, 
       analysisId = 668
-    )
+    ),
+    chdlCovSetting,bmiCovSetting,bldpCovSetting
     ),
   featureEngineeringSettings = createSDBP() 
 )
@@ -16704,7 +16720,8 @@ plpModelQRISK1_male_JJ_5 <- PatientLevelPrediction::createGlmModel(
       count = F, 
       ageInteraction = F, 
       analysisId = 668
-    )
+    ),
+    chdlCovSetting,bmiCovSetting,bldpCovSetting
     ),
   featureEngineeringSettings = list(createLogAge(),createInteractionTermSBPAT())                  
 )
@@ -16850,7 +16867,8 @@ plpModelQRISK1_female_JJ_5 <- PatientLevelPrediction::createGlmModel(
       count = F, 
       ageInteraction = F, 
       analysisId = 668
-    )
+    ),
+    chdlCovSetting,bmiCovSetting,bldpCovSetting
     ),
   featureEngineeringSettings = list(createLogAge(), createInteractionTermSBPAT())                            
 )
@@ -17213,7 +17231,8 @@ plpModelQRISK2_male_JJ_5 <- PatientLevelPrediction::createGlmModel(
       ageInteraction = F, 
       lnAgeInteraction = TRUE,
       analysisId = 668
-    )
+    ),
+    chdlCovSetting,bmiCovSetting,bldpCovSetting
     ),
   featureEngineeringSettings = createLogAge()
 )
@@ -17576,7 +17595,8 @@ plpModelQRISK2_female_JJ_5 <- PatientLevelPrediction::createGlmModel(
       ageInteraction = F, 
       lnAgeInteraction = TRUE,
       analysisId = 668
-    )
+    ),
+    chdlCovSetting,bmiCovSetting,bldpCovSetting
     ),
   featureEngineeringSettings = createLogAge()
 )
@@ -17944,7 +17964,8 @@ plpModelQRISK3_male_JJ_5 <- PatientLevelPrediction::createGlmModel(
       count = F, 
       ageInteraction = F, 
       analysisId = 668
-    )
+    ),
+    chdlCovSetting,bmiCovSetting,bldpCovSetting
     ),
   featureEngineeringSettings = createSDBP()                         
 )
@@ -18301,7 +18322,8 @@ plpModelQRISK3_female_JJ_5 <- PatientLevelPrediction::createGlmModel(
       count = F, 
       ageInteraction = F, 
       analysisId = 668
-    )
+    ),
+    chdlCovSetting,bmiCovSetting,bldpCovSetting
     ),
   featureEngineeringSettings = createSDBP() 
 )
@@ -18747,7 +18769,8 @@ plpModelQRISK4_male_JJ_5 <- PatientLevelPrediction::createGlmModel(
       count = F, 
       ageInteraction = F, 
       analysisId = 668
-    )
+    ),
+    chdlCovSetting,bmiCovSetting,bldpCovSetting
     ),
   featureEngineeringSettings = createSDBP() 
 )
@@ -19204,7 +19227,8 @@ plpModelQRISK4_female_JJ_5 <- PatientLevelPrediction::createGlmModel(
       count = F, 
       ageInteraction = F, 
       analysisId = 668
-    )
+    ),
+    chdlCovSetting,bmiCovSetting,bldpCovSetting
     ),
   featureEngineeringSettings = createSDBP() 
 )
@@ -19352,7 +19376,8 @@ plpModelQRISK1_male_JJ_10 <- PatientLevelPrediction::createGlmModel(
       count = F, 
       ageInteraction = F, 
       analysisId = 668
-    )
+   ),
+    chdlCovSetting,bmiCovSetting,bldpCovSetting
     ),
   featureEngineeringSettings = list(createLogAge(),createInteractionTermSBPAT())                  
 )
@@ -19498,7 +19523,8 @@ plpModelQRISK1_female_JJ_10 <- PatientLevelPrediction::createGlmModel(
       count = F, 
       ageInteraction = F, 
       analysisId = 668
-    )
+    ),
+    chdlCovSetting,bmiCovSetting,bldpCovSetting
     ),
   featureEngineeringSettings = list(createLogAge(), createInteractionTermSBPAT())                            
 )
@@ -19861,7 +19887,8 @@ plpModelQRISK2_male_JJ_10 <- PatientLevelPrediction::createGlmModel(
       ageInteraction = F, 
       lnAgeInteraction = TRUE,
       analysisId = 668
-    )
+    ),
+    chdlCovSetting,bmiCovSetting,bldpCovSetting
     ),
   featureEngineeringSettings = createLogAge()
 )
@@ -20224,7 +20251,8 @@ plpModelQRISK2_female_JJ_10 <- PatientLevelPrediction::createGlmModel(
       ageInteraction = F, 
       lnAgeInteraction = TRUE,
       analysisId = 668
-    )
+    ),
+    chdlCovSetting,bmiCovSetting,bldpCovSetting
     ),
   featureEngineeringSettings = createLogAge()
 )
@@ -20592,7 +20620,8 @@ plpModelQRISK3_male_JJ_10 <- PatientLevelPrediction::createGlmModel(
       count = F, 
       ageInteraction = F, 
       analysisId = 668
-    )
+    ),
+    chdlCovSetting,bmiCovSetting,bldpCovSetting
     ),
   featureEngineeringSettings = createSDBP()                         
 )
@@ -20949,7 +20978,8 @@ plpModelQRISK3_female_JJ_10 <- PatientLevelPrediction::createGlmModel(
       count = F, 
       ageInteraction = F, 
       analysisId = 668
-    )
+    ),
+    chdlCovSetting,bmiCovSetting,bldpCovSetting
     ),
   featureEngineeringSettings = createSDBP() 
 )
@@ -21395,7 +21425,8 @@ plpModelQRISK4_male_JJ_10 <- PatientLevelPrediction::createGlmModel(
       count = F, 
       ageInteraction = F, 
       analysisId = 668
-    )
+    ),
+    chdlCovSetting,bmiCovSetting,bldpCovSetting
     ),
   featureEngineeringSettings = createSDBP() 
 )
@@ -21852,7 +21883,8 @@ plpModelQRISK4_female_JJ_10 <- PatientLevelPrediction::createGlmModel(
       count = F, 
       ageInteraction = F, 
       analysisId = 668
-    )
+    ),
+    chdlCovSetting,bmiCovSetting,bldpCovSetting
     ),
   featureEngineeringSettings = createSDBP() 
 )
