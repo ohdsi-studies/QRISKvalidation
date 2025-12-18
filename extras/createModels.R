@@ -2488,8 +2488,8 @@ PatientLevelPrediction::savePlpModel(
 canalysisId <- 668
 plpModelQRISK4_male_OG_1 <- PatientLevelPrediction::createGlmModel(
   coefficients = data.frame(
-    covariateId = c(18822,21395,18779,21387,21288, 21289, 21290, 21291, 21377, 21378, 21379, 21380, 21381, 21382, 21383, 21386, 22465, 21344, 19881, 18821, 18820, 18815, 19280, 18838, 18841, 21347, 19379, 21371, 19164, 21372, 21294, 19380, 19792, 19788, 19787, 19174, 19165)*1000+canalysisId, 
-    coefficient = c(0.065, 1.14, 1.15, 0.222, 1.19, 2.00, 2.08, 2.60, 1.19, 1.47, 1.41, 1.04, 0.67, 0.66, 0.72, 0.81, 1.00, 1.17, 2.35, 1.62, 3.28, 2.03, 2.20, 1.19, 2.59, 1.70, 1.41, 1.64, 1.68, 1.18, 1.37, 1.66, 1.49, 2.06, 5.45, 1.40)
+    covariateId = c(18822,21395,18779,21387,21288, 21289, 21290, 21291, 22466, 21377, 21378, 21379, 21380, 21381, 21382, 21383, 21386, 22465, 21344, 19881, 18821, 18820, 18815, 19280, 18838, 18841, 21347, 19379, 21371, 19164, 21372, 21294, 19380, 19792, 19788, 19787, 19174, 19165)*1000+canalysisId, 
+    coefficient = c(0.065, 1.14, 1.15, 0.222, 1.19, 2.00, 2.08, 2.60, 1.00, 1.19, 1.47, 1.41, 1.04, 0.67, 0.66, 0.72, 0.81, 1.00, 1.17, 2.35, 1.62, 3.28, 2.03, 2.20, 1.19, 2.59, 1.70, 1.41, 1.64, 1.68, 1.18, 1.37, 1.66, 1.49, 2.06, 5.45, 1.40)
   ), 
   intercept = 0, 
   mapping = QRISK4_male_1, 
@@ -2583,6 +2583,17 @@ plpModelQRISK4_male_OG_1 <- PatientLevelPrediction::createGlmModel(
       ageInteraction = F, 
       analysisId = 668
     ), createCohortCovariateSettings(
+      cohortName = 'White or not recorded', 
+      settingId = 1,
+      cohortDatabaseSchema = cohortDatabaseSchema,
+      cohortTable = cohortTableName,
+      cohortId = 22466, 
+      startDay = -9999,
+      endDay = 0,
+      count = F, 
+      ageInteraction = F, 
+      analysisId = 668
+    ),createCohortCovariateSettings(
       cohortName = 'Indian', 
       settingId = 1,
       cohortDatabaseSchema = cohortDatabaseSchema,
@@ -2915,8 +2926,8 @@ plpModelQRISK4_male$modelDesign$covariateSettings <- list(
   covariateCohortDatabaseSchema = '', 
   covariateCohortTable = '', 
   covariateCohorts = data.frame(
-    cohortId = c(18822,21395,18779,21387,21288, 21289, 21290, 21291, 21377, 21378, 21379, 21380, 21381, 21382, 21383, 21386, 22465, 21344, 19881, 18821, 18820, 18815, 19280, 18838, 18841, 21347, 19379, 21371, 19164, 21372, 21294, 19380, 19792, 19788, 19787, 19174, 19165),
-    cohortName = c('SBP', 'SD SBP', 'Cholesterol/HDL', 'Deprivation', 'Ex-smoker', 'Light smoker', 'Moderate smoker', 'Heavy smoker', 'Indian', 'Pakistani', 'Bangladeshi', 'Other Asian', 'Caribbean', 'Black African', 'Chinese', 'Other ethnic group', 'No learning disability','Learning disability', 'Down syndrome', 'FH of CHD', 'Type I Diabetes', 'Type II Diabetes', 'Treated hypertension', 'Rheumatoid arthritis', 'Atrial fibrillation', 'Renal failure', 'Migraine', 'Corticosteroids', 'Systemic lupus', 'Atypical antipsychotics','Severe mental illness', 'COPD', 'Lung cancer', 'Oral cancer', 'Blood cancer', 'Brain cancer', 'Erectile dysfunction') 
+    cohortId = c(18822,21395,18779,21387,21288, 21289, 21290, 21291, 22466, 21377, 21378, 21379, 21380, 21381, 21382, 21383, 21386, 22465, 21344, 19881, 18821, 18820, 18815, 19280, 18838, 18841, 21347, 19379, 21371, 19164, 21372, 21294, 19380, 19792, 19788, 19787, 19174, 19165),
+    cohortName = c('SBP', 'SD SBP', 'Cholesterol/HDL', 'Deprivation', 'Ex-smoker', 'Light smoker', 'Moderate smoker', 'Heavy smoker', 'White or not recorded','Indian', 'Pakistani', 'Bangladeshi', 'Other Asian', 'Caribbean', 'Black African', 'Chinese', 'Other ethnic group', 'No learning disability','Learning disability', 'Down syndrome', 'FH of CHD', 'Type I Diabetes', 'Type II Diabetes', 'Treated hypertension', 'Rheumatoid arthritis', 'Atrial fibrillation', 'Renal failure', 'Migraine', 'Corticosteroids', 'Systemic lupus', 'Atypical antipsychotics','Severe mental illness', 'COPD', 'Lung cancer', 'Oral cancer', 'Blood cancer', 'Brain cancer', 'Erectile dysfunction') 
     ), 
   valueType = 'binary', 
   startDay = -365, 
@@ -2946,8 +2957,8 @@ PatientLevelPrediction::savePlpModel(
 canalysisId <- 668
 plpModelQRISK4_female_OG_1 <- PatientLevelPrediction::createGlmModel(
   coefficients = data.frame(
-    covariateId = c(18822,21395,18779,21387,21288,21289, 21290, 21291, 21377, 21378, 21379, 21380, 21381, 21382, 21383, 21386, 22465, 21344, 19881, 18821, 18820, 18815, 19280, 18838, 18841, 21347, 19379, 21371, 19164, 21372, 21294, 19380, 19792, 19788, 19787, 19174, 19793, 14512)*1000+canalysisId, 
-    coefficient = c(0.0635, 1.16, 1.14, 0.252, 1.19, 2.12, 2.30, 2.90, 1.13, 1.56, 1.28, 0.98, 0.94, 0.76, 0.68, 0.94, 1.00, 1.45, 3.18, 1.46, 4.52, 2.49, 2.20, 1.28, 4.50, 1.81, 1.46, 1.70, 2.22, 1.24, 1.22, 1.85, 3.50, 1.55, 2.13, 4.52, 1.18, 1.56) 
+    covariateId = c(18822,21395,18779,21387,21288,21289, 21290, 21291, 22466, 21377, 21378, 21379, 21380, 21381, 21382, 21383, 21386, 22465, 21344, 19881, 18821, 18820, 18815, 19280, 18838, 18841, 21347, 19379, 21371, 19164, 21372, 21294, 19380, 19792, 19788, 19787, 19174, 19793, 14512)*1000+canalysisId, 
+    coefficient = c(0.0635, 1.16, 1.14, 0.252, 1.19, 2.12, 2.30, 2.90, 1.00, 1.13, 1.56, 1.28, 0.98, 0.94, 0.76, 0.68, 0.94, 1.00, 1.45, 3.18, 1.46, 4.52, 2.49, 2.20, 1.28, 4.50, 1.81, 1.46, 1.70, 2.22, 1.24, 1.22, 1.85, 3.50, 1.55, 2.13, 4.52, 1.18, 1.56) 
   ), 
   intercept = 0, 
   mapping = QRISK4_female_1,  
@@ -3040,7 +3051,18 @@ plpModelQRISK4_female_OG_1 <- PatientLevelPrediction::createGlmModel(
       count = F, 
       ageInteraction = F, 
       analysisId = 668
-    ), createCohortCovariateSettings(
+    ),  createCohortCovariateSettings(
+      cohortName = 'White or not recorded', 
+      settingId = 1,
+      cohortDatabaseSchema = cohortDatabaseSchema,
+      cohortTable = cohortTableName,
+      cohortId = 22466, 
+      startDay = -9999,
+      endDay = 0,
+      count = F, 
+      ageInteraction = F, 
+      analysisId = 668
+    ),createCohortCovariateSettings(
       cohortName = 'Indian', 
       settingId = 1,
       cohortDatabaseSchema = cohortDatabaseSchema,
@@ -3384,8 +3406,8 @@ plpModelQRISK4_female$modelDesign$covariateSettings <- list(
   covariateCohortDatabaseSchema = '', 
   covariateCohortTable = '', 
   covariateCohorts = data.frame(
-    cohortId = c(18822,21395,18779,21387,21288,21289, 21290, 21291, 21377, 21378, 21379, 21380, 21381, 21382, 21383, 21386, 22465, 21344, 19881, 18821, 18820, 18815, 19280, 18838, 18841, 21347, 19379, 21371, 19164, 21372, 21294, 19380, 19792, 19788, 19787, 19174, 19793, 14512), 
-    cohortName = c('SBP', 'SD SBP', 'Cholesterol/HDL', 'Deprivation', 'Ex-smoker', 'Light smoker', 'Moderate smoker', 'Heavy smoker', 'Indian', 'Pakistani', 'Bangladeshi', 'Other Asian', 'Caribbean', 'Black African', 'Chinese', 'Other ethnic group', 'No learning disability', 'Learning disability', 'Down syndrome', 'FH of CHD', 'Type I Diabetes', 'Type II Diabetes', 'Treated hypertension', 'Rheumatoid arthritis', 'Atrial fibrillation', 'Renal failure', 'Migraine', 'Corticosteroids', 'Systemic lupus', 'Atypical antipsychotic', 'Severe mental illness', 'COPD', 'Lung cancer', 'Oral cancer', 'Blood cancer', 'Brain cancer', 'Postnatal depression', 'Pre-eclampsia')
+    cohortId = c(18822,21395,18779,21387,21288,21289, 21290, 21291, 22466 21377, 21378, 21379, 21380, 21381, 21382, 21383, 21386, 22465, 21344, 19881, 18821, 18820, 18815, 19280, 18838, 18841, 21347, 19379, 21371, 19164, 21372, 21294, 19380, 19792, 19788, 19787, 19174, 19793, 14512), 
+    cohortName = c('SBP', 'SD SBP', 'Cholesterol/HDL', 'Deprivation', 'Ex-smoker', 'Light smoker', 'Moderate smoker', 'Heavy smoker', 'White or not recorded','Indian', 'Pakistani', 'Bangladeshi', 'Other Asian', 'Caribbean', 'Black African', 'Chinese', 'Other ethnic group', 'No learning disability', 'Learning disability', 'Down syndrome', 'FH of CHD', 'Type I Diabetes', 'Type II Diabetes', 'Treated hypertension', 'Rheumatoid arthritis', 'Atrial fibrillation', 'Renal failure', 'Migraine', 'Corticosteroids', 'Systemic lupus', 'Atypical antipsychotic', 'Severe mental illness', 'COPD', 'Lung cancer', 'Oral cancer', 'Blood cancer', 'Brain cancer', 'Postnatal depression', 'Pre-eclampsia')
     ), 
   valueType = 'binary', 
   startDay = -365, 
@@ -5231,8 +5253,8 @@ PatientLevelPrediction::savePlpModel(
 canalysisId <- 668
 plpModelQRISK4_male_OG_3 <- PatientLevelPrediction::createGlmModel(
   coefficients = data.frame(
-    covariateId = c(18822,21395,18779,21387,21288, 21289, 21290, 21291, 21377, 21378, 21379, 21380, 21381, 21382, 21383, 21386, 22465, 21344, 19881, 18821, 18820, 18815, 19280, 18838, 18841, 21347, 19379, 21371, 19164, 21372, 21294, 19380, 19792, 19788, 19787, 19174, 19165)*1000+canalysisId, 
-    coefficient = c(0.065, 1.14, 1.15, 0.222, 1.19, 2.00, 2.08, 2.60, 1.19, 1.47, 1.41, 1.04, 0.67, 0.66, 0.72, 0.81, 1.00, 1.17, 2.35, 1.62, 3.28, 2.03, 2.20, 1.19, 2.59, 1.70, 1.41, 1.64, 1.68, 1.18, 1.37, 1.66, 1.49, 2.06, 5.45, 1.40)
+    covariateId = c(18822,21395,18779,21387,21288, 21289, 21290, 21291, 22466, 21377, 21378, 21379, 21380, 21381, 21382, 21383, 21386, 22465, 21344, 19881, 18821, 18820, 18815, 19280, 18838, 18841, 21347, 19379, 21371, 19164, 21372, 21294, 19380, 19792, 19788, 19787, 19174, 19165)*1000+canalysisId, 
+    coefficient = c(0.065, 1.14, 1.15, 0.222, 1.19, 2.00, 2.08, 2.60, 1.00, 1.19, 1.47, 1.41, 1.04, 0.67, 0.66, 0.72, 0.81, 1.00, 1.17, 2.35, 1.62, 3.28, 2.03, 2.20, 1.19, 2.59, 1.70, 1.41, 1.64, 1.68, 1.18, 1.37, 1.66, 1.49, 2.06, 5.45, 1.40)
   ), 
   intercept = 0, 
   mapping = QRISK4_male_3, 
@@ -5325,7 +5347,18 @@ plpModelQRISK4_male_OG_3 <- PatientLevelPrediction::createGlmModel(
       count = F, 
       ageInteraction = F, 
       analysisId = 668
-    ), createCohortCovariateSettings(
+    ),  createCohortCovariateSettings(
+      cohortName = 'White or not recorded', 
+      settingId = 1,
+      cohortDatabaseSchema = cohortDatabaseSchema,
+      cohortTable = cohortTableName,
+      cohortId = 22466, 
+      startDay = -9999,
+      endDay = 0,
+      count = F, 
+      ageInteraction = F, 
+      analysisId = 668
+    ),createCohortCovariateSettings(
       cohortName = 'Indian', 
       settingId = 1,
       cohortDatabaseSchema = cohortDatabaseSchema,
@@ -5658,8 +5691,8 @@ plpModelQRISK4_male$modelDesign$covariateSettings <- list(
   covariateCohortDatabaseSchema = '', 
   covariateCohortTable = '', 
   covariateCohorts = data.frame(
-    cohortId = c(18822,21395,18779,21387,21288, 21289, 21290, 21291, 21377, 21378, 21379, 21380, 21381, 21382, 21383, 21386, 22465, 21344, 19881, 18821, 18820, 18815, 19280, 18838, 18841, 21347, 19379, 21371, 19164, 21372, 21294, 19380, 19792, 19788, 19787, 19174, 19165),
-    cohortName = c('SBP', 'SD SBP', 'Cholesterol/HDL', 'Deprivation', 'Ex-smoker', 'Light smoker', 'Moderate smoker', 'Heavy smoker', 'Indian', 'Pakistani', 'Bangladeshi', 'Other Asian', 'Caribbean', 'Black African', 'Chinese', 'Other ethnic group', 'No learning disability', 'Learning disability', 'Down syndrome', 'FH of CHD', 'Type I Diabetes', 'Type II Diabetes', 'Treated hypertension', 'Rheumatoid arthritis', 'Atrial fibrillation', 'Renal failure', 'Migraine', 'Corticosteroids', 'Systemic lupus', 'Atypical antipsychotics','Severe mental illness', 'COPD', 'Lung cancer', 'Oral cancer', 'Blood cancer', 'Brain cancer', 'Erectile dysfunction') 
+    cohortId = c(18822,21395,18779,21387,21288, 21289, 21290, 21291, 22466, 21377, 21378, 21379, 21380, 21381, 21382, 21383, 21386, 22465, 21344, 19881, 18821, 18820, 18815, 19280, 18838, 18841, 21347, 19379, 21371, 19164, 21372, 21294, 19380, 19792, 19788, 19787, 19174, 19165),
+    cohortName = c('SBP', 'SD SBP', 'Cholesterol/HDL', 'Deprivation', 'Ex-smoker', 'Light smoker', 'Moderate smoker', 'Heavy smoker', 'White or not recorded', 'Indian', 'Pakistani', 'Bangladeshi', 'Other Asian', 'Caribbean', 'Black African', 'Chinese', 'Other ethnic group', 'No learning disability', 'Learning disability', 'Down syndrome', 'FH of CHD', 'Type I Diabetes', 'Type II Diabetes', 'Treated hypertension', 'Rheumatoid arthritis', 'Atrial fibrillation', 'Renal failure', 'Migraine', 'Corticosteroids', 'Systemic lupus', 'Atypical antipsychotics','Severe mental illness', 'COPD', 'Lung cancer', 'Oral cancer', 'Blood cancer', 'Brain cancer', 'Erectile dysfunction') 
     ), 
   valueType = 'binary', 
   startDay = -365, 
@@ -5687,8 +5720,8 @@ PatientLevelPrediction::savePlpModel(
 canalysisId <- 668
 plpModelQRISK4_female_OG_3 <- PatientLevelPrediction::createGlmModel(
   coefficients = data.frame(
-    covariateId = c(18822,21395,18779,21387,21288,21289, 21290, 21291, 21377, 21378, 21379, 21380, 21381, 21382, 21383, 21386, 22465, 21344, 19881, 18821, 18820, 18815, 19280, 18838, 18841, 21347, 19379, 21371, 19164, 21372, 21294, 19380, 19792, 19788, 19787, 19174, 19793, 14512)*1000+canalysisId, 
-    coefficient = c(0.0635, 1.16, 1.14, 0.252, 1.19, 2.12, 2.30, 2.90, 1.13, 1.56, 1.28, 0.98, 0.94, 0.76, 0.68, 0.94, 1.00, 1.45, 3.18, 1.46, 4.52, 2.49, 2.20, 1.28, 4.50, 1.81, 1.46, 1.70, 2.22, 1.24, 1.22, 1.85, 3.50, 1.55, 2.13, 4.52, 1.18, 1.56) 
+    covariateId = c(18822,21395,18779,21387,21288,21289, 21290, 21291, 22466, 21377, 21378, 21379, 21380, 21381, 21382, 21383, 21386, 22465, 21344, 19881, 18821, 18820, 18815, 19280, 18838, 18841, 21347, 19379, 21371, 19164, 21372, 21294, 19380, 19792, 19788, 19787, 19174, 19793, 14512)*1000+canalysisId, 
+    coefficient = c(0.0635, 1.16, 1.14, 0.252, 1.19, 2.12, 2.30, 2.90, 1.00, 1.13, 1.56, 1.28, 0.98, 0.94, 0.76, 0.68, 0.94, 1.00, 1.45, 3.18, 1.46, 4.52, 2.49, 2.20, 1.28, 4.50, 1.81, 1.46, 1.70, 2.22, 1.24, 1.22, 1.85, 3.50, 1.55, 2.13, 4.52, 1.18, 1.56) 
   ), 
   intercept = 0, 
   mapping = QRISK4_female_3, 
@@ -5781,7 +5814,18 @@ plpModelQRISK4_female_OG_3 <- PatientLevelPrediction::createGlmModel(
       count = F, 
       ageInteraction = F, 
       analysisId = 668
-    ), createCohortCovariateSettings(
+    ),  createCohortCovariateSettings(
+      cohortName = 'White or not recorded', 
+      settingId = 1,
+      cohortDatabaseSchema = cohortDatabaseSchema,
+      cohortTable = cohortTableName,
+      cohortId = 22466, 
+      startDay = -9999,
+      endDay = 0,
+      count = F, 
+      ageInteraction = F, 
+      analysisId = 668
+    ),createCohortCovariateSettings(
       cohortName = 'Indian', 
       settingId = 1,
       cohortDatabaseSchema = cohortDatabaseSchema,
@@ -6125,8 +6169,8 @@ plpModelQRISK4_female$modelDesign$covariateSettings <- list(
   covariateCohortDatabaseSchema = '', 
   covariateCohortTable = '', 
   covariateCohorts = data.frame(
-    cohortId = c(18822,21395,18779,21387,21288,21289, 21290, 21291, 21377, 21378, 21379, 21380, 21381, 21382, 21383, 21386, 22465, 21344, 19881, 18821, 18820, 18815, 19280, 18838, 18841, 21347, 19379, 21371, 19164, 21372, 21294, 19380, 19792, 19788, 19787, 19174, 19793, 14512), 
-    cohortName = c('SBP', 'SD SBP', 'Cholesterol/HDL', 'Deprivation', 'Ex-smoker', 'Light smoker', 'Moderate smoker', 'Heavy smoker', 'Indian', 'Pakistani', 'Bangladeshi', 'Other Asian', 'Caribbean', 'Black African', 'Chinese', 'Other ethnic group','No learning disability', 'Learning disability', 'Down syndrome', 'FH of CHD', 'Type I Diabetes', 'Type II Diabetes', 'Treated hypertension', 'Rheumatoid arthritis', 'Atrial fibrillation', 'Renal failure', 'Migraine', 'Corticosteroids', 'Systemic lupus', 'Atypical antipsychotic', 'Severe mental illness', 'COPD', 'Lung cancer', 'Oral cancer', 'Blood cancer', 'Brain cancer', 'Postnatal depression', 'Pre-eclampsia')
+    cohortId = c(18822,21395,18779,21387,21288,21289, 21290, 21291, 22466, 21377, 21378, 21379, 21380, 21381, 21382, 21383, 21386, 22465, 21344, 19881, 18821, 18820, 18815, 19280, 18838, 18841, 21347, 19379, 21371, 19164, 21372, 21294, 19380, 19792, 19788, 19787, 19174, 19793, 14512), 
+    cohortName = c('SBP', 'SD SBP', 'Cholesterol/HDL', 'Deprivation', 'Ex-smoker', 'Light smoker', 'Moderate smoker', 'Heavy smoker', 'White or not recorded', 'Indian', 'Pakistani', 'Bangladeshi', 'Other Asian', 'Caribbean', 'Black African', 'Chinese', 'Other ethnic group','No learning disability', 'Learning disability', 'Down syndrome', 'FH of CHD', 'Type I Diabetes', 'Type II Diabetes', 'Treated hypertension', 'Rheumatoid arthritis', 'Atrial fibrillation', 'Renal failure', 'Migraine', 'Corticosteroids', 'Systemic lupus', 'Atypical antipsychotic', 'Severe mental illness', 'COPD', 'Lung cancer', 'Oral cancer', 'Blood cancer', 'Brain cancer', 'Postnatal depression', 'Pre-eclampsia')
     ), 
   valueType = 'binary', 
   startDay = -365, 
@@ -7972,8 +8016,8 @@ PatientLevelPrediction::savePlpModel(
 canalysisId <- 668
 plpModelQRISK4_male_OG_5 <- PatientLevelPrediction::createGlmModel(
   coefficients = data.frame(
-    covariateId = c(18822,21395,18779,21387,21288, 21289, 21290, 21291, 21377, 21378, 21379, 21380, 21381, 21382, 21383, 21386, 22465, 21344, 19881, 18821, 18820, 18815, 19280, 18838, 18841, 21347, 19379, 21371, 19164, 21372, 21294, 19380, 19792, 19788, 19787, 19174, 19165)*1000+canalysisId, #TODO
-    coefficient = c(0.065, 1.14, 1.15, 0.222, 1.19, 2.00, 2.08, 2.60, 1.19, 1.47, 1.41, 1.04, 0.67, 0.66, 0.72, 0.81, 1.00, 1.17, 2.35, 1.62, 3.28, 2.03, 2.20, 1.19, 2.59, 1.70, 1.41, 1.64, 1.68, 1.18, 1.37, 1.66, 1.49, 2.06, 5.45, 1.40)
+    covariateId = c(18822,21395,18779,21387,21288, 21289, 21290, 21291, 22466, 21377, 21378, 21379, 21380, 21381, 21382, 21383, 21386, 22465, 21344, 19881, 18821, 18820, 18815, 19280, 18838, 18841, 21347, 19379, 21371, 19164, 21372, 21294, 19380, 19792, 19788, 19787, 19174, 19165)*1000+canalysisId, #TODO
+    coefficient = c(0.065, 1.14, 1.15, 0.222, 1.19, 2.00, 2.08, 2.60, 1.00, 1.19, 1.47, 1.41, 1.04, 0.67, 0.66, 0.72, 0.81, 1.00, 1.17, 2.35, 1.62, 3.28, 2.03, 2.20, 1.19, 2.59, 1.70, 1.41, 1.64, 1.68, 1.18, 1.37, 1.66, 1.49, 2.06, 5.45, 1.40)
   ), 
   intercept = 0, 
   mapping = QRISK4_male_5,  
@@ -8066,7 +8110,18 @@ plpModelQRISK4_male_OG_5 <- PatientLevelPrediction::createGlmModel(
       count = F, 
       ageInteraction = F, 
       analysisId = 668
-    ), createCohortCovariateSettings(
+    ),  createCohortCovariateSettings(
+      cohortName = 'White or not recorded', 
+      settingId = 1,
+      cohortDatabaseSchema = cohortDatabaseSchema,
+      cohortTable = cohortTableName,
+      cohortId = 22466, 
+      startDay = -9999,
+      endDay = 0,
+      count = F, 
+      ageInteraction = F, 
+      analysisId = 668
+    ),createCohortCovariateSettings(
       cohortName = 'Indian', 
       settingId = 1,
       cohortDatabaseSchema = cohortDatabaseSchema,
@@ -8399,8 +8454,8 @@ plpModelQRISK4_male$modelDesign$covariateSettings <- list(
   covariateCohortDatabaseSchema = '', 
   covariateCohortTable = '', 
   covariateCohorts = data.frame(
-    cohortId = c(18822,21395,18779,21387,21288, 21289, 21290, 21291, 21377, 21378, 21379, 21380, 21381, 21382, 21383, 21386, 22465, 21344, 19881, 18821, 18820, 18815, 19280, 18838, 18841, 21347, 19379, 21371, 19164, 21372, 21294, 19380, 19792, 19788, 19787, 19174, 19165),
-    cohortName = c('SBP', 'SD SBP', 'Cholesterol/HDL', 'Deprivation', 'Ex-smoker', 'Light smoker', 'Moderate smoker', 'Heavy smoker', 'Indian', 'Pakistani', 'Bangladeshi', 'Other Asian', 'Caribbean', 'Black African', 'Chinese', 'Other ethnic group', 'No learning disability', 'Learning disability', 'Down syndrome', 'FH of CHD', 'Type I Diabetes', 'Type II Diabetes', 'Treated hypertension', 'Rheumatoid arthritis', 'Atrial fibrillation', 'Renal failure', 'Migraine', 'Corticosteroids', 'Systemic lupus', 'Atypical antipsychotics','Severe mental illness', 'COPD', 'Lung cancer', 'Oral cancer', 'Blood cancer', 'Brain cancer', 'Erectile dysfunction') 
+    cohortId = c(18822,21395,18779,21387,21288, 21289, 21290, 21291, 22466, 21377, 21378, 21379, 21380, 21381, 21382, 21383, 21386, 22465, 21344, 19881, 18821, 18820, 18815, 19280, 18838, 18841, 21347, 19379, 21371, 19164, 21372, 21294, 19380, 19792, 19788, 19787, 19174, 19165),
+    cohortName = c('SBP', 'SD SBP', 'Cholesterol/HDL', 'Deprivation', 'Ex-smoker', 'Light smoker', 'Moderate smoker', 'Heavy smoker', 'White or not recorded','Indian', 'Pakistani', 'Bangladeshi', 'Other Asian', 'Caribbean', 'Black African', 'Chinese', 'Other ethnic group', 'No learning disability', 'Learning disability', 'Down syndrome', 'FH of CHD', 'Type I Diabetes', 'Type II Diabetes', 'Treated hypertension', 'Rheumatoid arthritis', 'Atrial fibrillation', 'Renal failure', 'Migraine', 'Corticosteroids', 'Systemic lupus', 'Atypical antipsychotics','Severe mental illness', 'COPD', 'Lung cancer', 'Oral cancer', 'Blood cancer', 'Brain cancer', 'Erectile dysfunction') 
     ), 
   valueType = 'binary', 
   startDay = -365, 
@@ -8430,8 +8485,8 @@ PatientLevelPrediction::savePlpModel(
 canalysisId <- 668
 plpModelQRISK4_female_OG_5 <- PatientLevelPrediction::createGlmModel(
   coefficients = data.frame(
-    covariateId = c(18822,21395,18779,21387,21288,21289, 21290, 21291, 21377, 21378, 21379, 21380, 21381, 21382, 21383, 21386, 22465, 21344, 19881, 18821, 18820, 18815, 19280, 18838, 18841, 21347, 19379, 21371, 19164, 21372, 21294, 19380, 19792, 19788, 19787, 19174, 19793, 14512)*1000+canalysisId, 
-    coefficient = c(0.0635, 1.16, 1.14, 0.252, 1.19, 2.12, 2.30, 2.90, 1.13, 1.56, 1.28, 0.98, 0.94, 0.76, 0.68, 0.94, 1.00, 1.45, 3.18, 1.46, 4.52, 2.49, 2.20, 1.28, 4.50, 1.81, 1.46, 1.70, 2.22, 1.24, 1.22, 1.85, 3.50, 1.55, 2.13, 4.52, 1.18, 1.56) 
+    covariateId = c(18822,21395,18779,21387,21288,21289, 21290, 21291, 22466, 21377, 21378, 21379, 21380, 21381, 21382, 21383, 21386, 22465, 21344, 19881, 18821, 18820, 18815, 19280, 18838, 18841, 21347, 19379, 21371, 19164, 21372, 21294, 19380, 19792, 19788, 19787, 19174, 19793, 14512)*1000+canalysisId, 
+    coefficient = c(0.0635, 1.16, 1.14, 0.252, 1.19, 2.12, 2.30, 2.90, 1.00, 1.13, 1.56, 1.28, 0.98, 0.94, 0.76, 0.68, 0.94, 1.00, 1.45, 3.18, 1.46, 4.52, 2.49, 2.20, 1.28, 4.50, 1.81, 1.46, 1.70, 2.22, 1.24, 1.22, 1.85, 3.50, 1.55, 2.13, 4.52, 1.18, 1.56) 
   ), 
   intercept = 0, 
   mapping = QRISK4_female_5, 
@@ -8524,7 +8579,18 @@ plpModelQRISK4_female_OG_5 <- PatientLevelPrediction::createGlmModel(
       count = F, 
       ageInteraction = F, 
       analysisId = 668
-    ), createCohortCovariateSettings(
+    ),  createCohortCovariateSettings(
+      cohortName = 'White or not recorded', 
+      settingId = 1,
+      cohortDatabaseSchema = cohortDatabaseSchema,
+      cohortTable = cohortTableName,
+      cohortId = 22466, 
+      startDay = -9999,
+      endDay = 0,
+      count = F, 
+      ageInteraction = F, 
+      analysisId = 668
+    ),createCohortCovariateSettings(
       cohortName = 'Indian', 
       settingId = 1,
       cohortDatabaseSchema = cohortDatabaseSchema,
@@ -8868,8 +8934,8 @@ plpModelQRISK4_female$modelDesign$covariateSettings <- list(
   covariateCohortDatabaseSchema = '', 
   covariateCohortTable = '', 
   covariateCohorts = data.frame(
-    cohortId = c(18822,21395,18779,21387,21288,21289, 21290, 21291, 21377, 21378, 21379, 21380, 21381, 21382, 21383, 21386, 22465, 21344, 19881, 18821, 18820, 18815, 19280, 18838, 18841, 21347, 19379, 21371, 19164, 21372, 21294, 19380, 19792, 19788, 19787, 19174, 19793, 14512), 
-    cohortName = c('SBP', 'SD SBP', 'Cholesterol/HDL', 'Deprivation', 'Ex-smoker', 'Light smoker', 'Moderate smoker', 'Heavy smoker', 'Indian', 'Pakistani', 'Bangladeshi', 'Other Asian', 'Caribbean', 'Black African', 'Chinese', 'Other ethnic group', 'No learning disability', 'Learning disability', 'Down syndrome', 'FH of CHD', 'Type I Diabetes', 'Type II Diabetes', 'Treated hypertension', 'Rheumatoid arthritis', 'Atrial fibrillation', 'Renal failure', 'Migraine', 'Corticosteroids', 'Systemic lupus', 'Atypical antipsychotic', 'Severe mental illness', 'COPD', 'Lung cancer', 'Oral cancer', 'Blood cancer', 'Brain cancer', 'Postnatal depression', 'Pre-eclampsia')
+    cohortId = c(18822,21395,18779,21387,21288,21289, 21290, 21291, 22466, 21377, 21378, 21379, 21380, 21381, 21382, 21383, 21386, 22465, 21344, 19881, 18821, 18820, 18815, 19280, 18838, 18841, 21347, 19379, 21371, 19164, 21372, 21294, 19380, 19792, 19788, 19787, 19174, 19793, 14512), 
+    cohortName = c('SBP', 'SD SBP', 'Cholesterol/HDL', 'Deprivation', 'Ex-smoker', 'Light smoker', 'Moderate smoker', 'Heavy smoker', 'White or not recorded', 'Indian', 'Pakistani', 'Bangladeshi', 'Other Asian', 'Caribbean', 'Black African', 'Chinese', 'Other ethnic group', 'No learning disability', 'Learning disability', 'Down syndrome', 'FH of CHD', 'Type I Diabetes', 'Type II Diabetes', 'Treated hypertension', 'Rheumatoid arthritis', 'Atrial fibrillation', 'Renal failure', 'Migraine', 'Corticosteroids', 'Systemic lupus', 'Atypical antipsychotic', 'Severe mental illness', 'COPD', 'Lung cancer', 'Oral cancer', 'Blood cancer', 'Brain cancer', 'Postnatal depression', 'Pre-eclampsia')
     ), 
   valueType = 'binary', 
   startDay = -365, 
@@ -10716,8 +10782,8 @@ PatientLevelPrediction::savePlpModel(
 canalysisId <- 668
 plpModelQRISK4_male_OG_10 <- PatientLevelPrediction::createGlmModel(
   coefficients = data.frame(
-    covariateId = c(18822,21395,18779,21387,21288, 21289, 21290, 21291, 21377, 21378, 21379, 21380, 21381, 21382, 21383, 21386, 22465, 21344, 19881, 18821, 18820, 18815, 19280, 18838, 18841, 21347, 19379, 21371, 19164, 21372, 21294, 19380, 19792, 19788, 19787, 19174, 19165)*1000+canalysisId, 
-    coefficient = c(0.065, 1.14, 1.15, 0.222, 1.19, 2.00, 2.08, 2.60, 1.19, 1.47, 1.41, 1.04, 0.67, 0.66, 0.72, 0.81, 1.00, 1.17, 2.35, 1.62, 3.28, 2.03, 2.20, 1.19, 2.59, 1.70, 1.41, 1.64, 1.68, 1.18, 1.37, 1.66, 1.49, 2.06, 5.45, 1.40)
+    covariateId = c(18822,21395,18779,21387,21288, 21289, 21290, 21291, 22466, 21377, 21378, 21379, 21380, 21381, 21382, 21383, 21386, 22465, 21344, 19881, 18821, 18820, 18815, 19280, 18838, 18841, 21347, 19379, 21371, 19164, 21372, 21294, 19380, 19792, 19788, 19787, 19174, 19165)*1000+canalysisId, 
+    coefficient = c(0.065, 1.14, 1.15, 0.222, 1.19, 2.00, 2.08, 2.60, 1.00, 1.19, 1.47, 1.41, 1.04, 0.67, 0.66, 0.72, 0.81, 1.00, 1.17, 2.35, 1.62, 3.28, 2.03, 2.20, 1.19, 2.59, 1.70, 1.41, 1.64, 1.68, 1.18, 1.37, 1.66, 1.49, 2.06, 5.45, 1.40)
   ), 
   intercept = 0, 
   mapping = QRISK4_male_10, 
@@ -10810,7 +10876,18 @@ plpModelQRISK4_male_OG_10 <- PatientLevelPrediction::createGlmModel(
       count = F, 
       ageInteraction = F, 
       analysisId = 668
-    ), createCohortCovariateSettings(
+    ),  createCohortCovariateSettings(
+      cohortName = 'White or not recorded', 
+      settingId = 1,
+      cohortDatabaseSchema = cohortDatabaseSchema,
+      cohortTable = cohortTableName,
+      cohortId = 22466, 
+      startDay = -9999,
+      endDay = 0,
+      count = F, 
+      ageInteraction = F, 
+      analysisId = 668
+    ),createCohortCovariateSettings(
       cohortName = 'Indian', 
       settingId = 1,
       cohortDatabaseSchema = cohortDatabaseSchema,
@@ -11143,8 +11220,8 @@ plpModelQRISK4_male$modelDesign$covariateSettings <- list(
   covariateCohortDatabaseSchema = '', 
   covariateCohortTable = '', 
   covariateCohorts = data.frame(
-    cohortId = c(18822,21395,18779,21387,21288, 21289, 21290, 21291, 21377, 21378, 21379, 21380, 21381, 21382, 21383, 21386, 22465, 21344, 19881, 18821, 18820, 18815, 19280, 18838, 18841, 21347, 19379, 21371, 19164, 21372, 21294, 19380, 19792, 19788, 19787, 19174, 19165),
-    cohortName = c('SBP', 'SD SBP', 'Cholesterol/HDL', 'Deprivation', 'Ex-smoker', 'Light smoker', 'Moderate smoker', 'Heavy smoker', 'Indian', 'Pakistani', 'Bangladeshi', 'Other Asian', 'Caribbean', 'Black African', 'Chinese', 'Other ethnic group', 'No learning disability', 'Learning disability', 'Down syndrome', 'FH of CHD', 'Type I Diabetes', 'Type II Diabetes', 'Treated hypertension', 'Rheumatoid arthritis', 'Atrial fibrillation', 'Renal failure', 'Migraine', 'Corticosteroids', 'Systemic lupus', 'Atypical antipsychotics','Severe mental illness', 'COPD', 'Lung cancer', 'Oral cancer', 'Blood cancer', 'Brain cancer', 'Erectile dysfunction') 
+    cohortId = c(18822,21395,18779,21387,21288, 21289, 21290, 21291, 22466, 21377, 21378, 21379, 21380, 21381, 21382, 21383, 21386, 22465, 21344, 19881, 18821, 18820, 18815, 19280, 18838, 18841, 21347, 19379, 21371, 19164, 21372, 21294, 19380, 19792, 19788, 19787, 19174, 19165),
+    cohortName = c('SBP', 'SD SBP', 'Cholesterol/HDL', 'Deprivation', 'Ex-smoker', 'Light smoker', 'Moderate smoker', 'Heavy smoker', 'White or not recorded', 'Indian', 'Pakistani', 'Bangladeshi', 'Other Asian', 'Caribbean', 'Black African', 'Chinese', 'Other ethnic group', 'No learning disability', 'Learning disability', 'Down syndrome', 'FH of CHD', 'Type I Diabetes', 'Type II Diabetes', 'Treated hypertension', 'Rheumatoid arthritis', 'Atrial fibrillation', 'Renal failure', 'Migraine', 'Corticosteroids', 'Systemic lupus', 'Atypical antipsychotics','Severe mental illness', 'COPD', 'Lung cancer', 'Oral cancer', 'Blood cancer', 'Brain cancer', 'Erectile dysfunction') 
     ), 
   valueType = 'binary', 
   startDay = -365, 
@@ -11174,8 +11251,8 @@ PatientLevelPrediction::savePlpModel(
 canalysisId <- 668
 plpModelQRISK4_female_OG_10 <- PatientLevelPrediction::createGlmModel(
   coefficients = data.frame(
-    covariateId = c(18822,21395,18779,21387,21288,21289, 21290, 21291, 21377, 21378, 21379, 21380, 21381, 21382, 21383, 21386, 22465, 21344, 19881, 18821, 18820, 18815, 19280, 18838, 18841, 21347, 19379, 21371, 19164, 21372, 21294, 19380, 19792, 19788, 19787, 19174, 19793, 14512)*1000+canalysisId, 
-    coefficient = c(0.0635, 1.16, 1.14, 0.252, 1.19, 2.12, 2.30, 2.90, 1.13, 1.56, 1.28, 0.98, 0.94, 0.76, 0.68, 0.94, 1.00, 1.45, 3.18, 1.46, 4.52, 2.49, 2.20, 1.28, 4.50, 1.81, 1.46, 1.70, 2.22, 1.24, 1.22, 1.85, 3.50, 1.55, 2.13, 4.52, 1.18, 1.56) 
+    covariateId = c(18822,21395,18779,21387,21288,21289, 21290, 21291, 22466,21377, 21378, 21379, 21380, 21381, 21382, 21383, 21386, 22465, 21344, 19881, 18821, 18820, 18815, 19280, 18838, 18841, 21347, 19379, 21371, 19164, 21372, 21294, 19380, 19792, 19788, 19787, 19174, 19793, 14512)*1000+canalysisId, 
+    coefficient = c(0.0635, 1.16, 1.14, 0.252, 1.19, 2.12, 2.30, 2.90, 1.00, 1.13, 1.56, 1.28, 0.98, 0.94, 0.76, 0.68, 0.94, 1.00, 1.45, 3.18, 1.46, 4.52, 2.49, 2.20, 1.28, 4.50, 1.81, 1.46, 1.70, 2.22, 1.24, 1.22, 1.85, 3.50, 1.55, 2.13, 4.52, 1.18, 1.56) 
   ), 
   intercept = 0, 
   mapping = QRISK4_female_10, 
@@ -11268,7 +11345,18 @@ plpModelQRISK4_female_OG_10 <- PatientLevelPrediction::createGlmModel(
       count = F, 
       ageInteraction = F, 
       analysisId = 668
-    ), createCohortCovariateSettings(
+    ),  createCohortCovariateSettings(
+      cohortName = 'White or not recorded', 
+      settingId = 1,
+      cohortDatabaseSchema = cohortDatabaseSchema,
+      cohortTable = cohortTableName,
+      cohortId = 22466, 
+      startDay = -9999,
+      endDay = 0,
+      count = F, 
+      ageInteraction = F, 
+      analysisId = 668
+    ),createCohortCovariateSettings(
       cohortName = 'Indian', 
       settingId = 1,
       cohortDatabaseSchema = cohortDatabaseSchema,
@@ -13473,8 +13561,8 @@ PatientLevelPrediction::savePlpModel(
 canalysisId <- 668
 plpModelQRISK4_male_JJ_1 <- PatientLevelPrediction::createGlmModel(
   coefficients = data.frame(
-    covariateId = c(18822,21395,18779,21387,21288, 21289, 21290, 21291, 21377, 21378, 21379, 21380, 21381, 21382, 21383, 21386, 22465, 21344, 14949, 18821, 19893, 18815, 19280, 19882, 19884, 21347, 12467, 21371, 19880, 21372, 21294, 19380, 19888, 19788, 19787, 19174, 19887)*1000+canalysisId, 
-    coefficient = c(0.065, 1.14, 1.15, 0.222, 1.19, 2.00, 2.08, 2.60, 1.19, 1.47, 1.41, 1.04, 0.67, 0.66, 0.72, 0.81, 1.00 1.17, 2.35, 1.62, 3.28, 2.03, 2.20, 1.19, 2.59, 1.70, 1.41, 1.64, 1.68, 1.18, 1.37, 1.66, 1.49, 2.06, 5.45, 1.40)
+    covariateId = c(18822,21395,18779,21387,21288, 21289, 21290, 21291, 22466, 21377, 21378, 21379, 21380, 21381, 21382, 21383, 21386, 22465, 21344, 14949, 18821, 19893, 18815, 19280, 19882, 19884, 21347, 12467, 21371, 19880, 21372, 21294, 19380, 19888, 19788, 19787, 19174, 19887)*1000+canalysisId, 
+    coefficient = c(0.065, 1.14, 1.15, 0.222, 1.19, 2.00, 2.08, 2.60, 1.00, 1.19, 1.47, 1.41, 1.04, 0.67, 0.66, 0.72, 0.81, 1.00 1.17, 2.35, 1.62, 3.28, 2.03, 2.20, 1.19, 2.59, 1.70, 1.41, 1.64, 1.68, 1.18, 1.37, 1.66, 1.49, 2.06, 5.45, 1.40)
   ), 
   intercept = 0, 
   mapping = QRISK4_male_1, 
@@ -13567,7 +13655,18 @@ plpModelQRISK4_male_JJ_1 <- PatientLevelPrediction::createGlmModel(
       count = F, 
       ageInteraction = F, 
       analysisId = 668
-    ), createCohortCovariateSettings(
+    ),  createCohortCovariateSettings(
+      cohortName = 'White or not recorded', 
+      settingId = 1,
+      cohortDatabaseSchema = cohortDatabaseSchema,
+      cohortTable = cohortTableName,
+      cohortId = 22466, 
+      startDay = -9999,
+      endDay = 0,
+      count = F, 
+      ageInteraction = F, 
+      analysisId = 668
+    ),createCohortCovariateSettings(
       cohortName = 'Indian', 
       settingId = 1,
       cohortDatabaseSchema = cohortDatabaseSchema,
@@ -13900,8 +13999,8 @@ plpModelQRISK4_male$modelDesign$covariateSettings <- list(
   covariateCohortDatabaseSchema = '', 
   covariateCohortTable = '', 
   covariateCohorts = data.frame(
-    cohortId = c(18822,21395,18779,21387,21288, 21289, 21290, 21291, 21377, 21378, 21379, 21380, 21381, 21382, 21383, 21386, 22465, 21344, 14949, 18821, 19893, 18815, 19280, 19882, 19884, 21347, 12467, 21371, 19880, 21372, 21294, 19380, 19888, 19788, 19787, 19174, 19887),
-    cohortName = c('SBP', 'SD SBP', 'Cholesterol/HDL', 'Deprivation', 'Ex-smoker', 'Light smoker', 'Moderate smoker', 'Heavy smoker', 'Indian', 'Pakistani', 'Bangladeshi', 'Other Asian', 'Caribbean', 'Black African', 'Chinese', 'Other ethnic group', 'No learning disability', 'Learning disability', 'Down syndrome', 'FH of CHD', 'Type I Diabetes', 'Type II Diabetes', 'Treated hypertension', 'Rheumatoid arthritis', 'Atrial fibrillation', 'Renal failure', 'Migraine', 'Corticosteroids', 'Systemic lupus', 'Atypical antipsychotics','Severe mental illness', 'COPD', 'Lung cancer', 'Oral cancer', 'Blood cancer', 'Brain cancer', 'Erectile dysfunction') 
+    cohortId = c(18822,21395,18779,21387,21288, 21289, 21290, 21291, 22466, 21377, 21378, 21379, 21380, 21381, 21382, 21383, 21386, 22465, 21344, 14949, 18821, 19893, 18815, 19280, 19882, 19884, 21347, 12467, 21371, 19880, 21372, 21294, 19380, 19888, 19788, 19787, 19174, 19887),
+    cohortName = c('SBP', 'SD SBP', 'Cholesterol/HDL', 'Deprivation', 'Ex-smoker', 'Light smoker', 'Moderate smoker', 'Heavy smoker', 'White or not recorded','Indian', 'Pakistani', 'Bangladeshi', 'Other Asian', 'Caribbean', 'Black African', 'Chinese', 'Other ethnic group', 'No learning disability', 'Learning disability', 'Down syndrome', 'FH of CHD', 'Type I Diabetes', 'Type II Diabetes', 'Treated hypertension', 'Rheumatoid arthritis', 'Atrial fibrillation', 'Renal failure', 'Migraine', 'Corticosteroids', 'Systemic lupus', 'Atypical antipsychotics','Severe mental illness', 'COPD', 'Lung cancer', 'Oral cancer', 'Blood cancer', 'Brain cancer', 'Erectile dysfunction') 
     ), 
   valueType = 'binary', 
   startDay = -365, 
@@ -13931,8 +14030,8 @@ PatientLevelPrediction::savePlpModel(
 canalysisId <- 668
 plpModelQRISK4_female_JJ_1 <- PatientLevelPrediction::createGlmModel(
   coefficients = data.frame(
-    covariateId = c(18822,21395,18779,21387,21288,21289, 21290, 21291, 21377, 21378, 21379, 21380, 21381, 21382, 21383, 21386, 22465, 21344, 14949, 18821, 19893, 18815, 19280, 19882, 19884, 21347, 12467, 21371, 19880, 21372, 21294, 19380, 19888, 19788, 19787, 19174, 19793, 14512)*1000+canalysisId, 
-    coefficient = c(0.0635, 1.16, 1.14, 0.252, 1.19, 2.12, 2.30, 2.90, 1.13, 1.56, 1.28, 0.98, 0.94, 0.76, 0.68, 0.94, 1.00, 1.45, 3.18, 1.46, 4.52, 2.49, 2.20, 1.28, 4.50, 1.81, 1.46, 1.70, 2.22, 1.24, 1.22, 1.85, 3.50, 1.55, 2.13, 4.52, 1.18, 1.56) 
+    covariateId = c(18822,21395,18779,21387,21288,21289, 21290, 21291, 22466, 21377, 21378, 21379, 21380, 21381, 21382, 21383, 21386, 22465, 21344, 14949, 18821, 19893, 18815, 19280, 19882, 19884, 21347, 12467, 21371, 19880, 21372, 21294, 19380, 19888, 19788, 19787, 19174, 19793, 14512)*1000+canalysisId, 
+    coefficient = c(0.0635, 1.16, 1.14, 0.252, 1.19, 2.12, 2.30, 2.90, 1.00, 1.13, 1.56, 1.28, 0.98, 0.94, 0.76, 0.68, 0.94, 1.00, 1.45, 3.18, 1.46, 4.52, 2.49, 2.20, 1.28, 4.50, 1.81, 1.46, 1.70, 2.22, 1.24, 1.22, 1.85, 3.50, 1.55, 2.13, 4.52, 1.18, 1.56) 
   ), 
   intercept = 0, 
   mapping = QRISK4_female_1, 
@@ -14025,7 +14124,18 @@ plpModelQRISK4_female_JJ_1 <- PatientLevelPrediction::createGlmModel(
       count = F, 
       ageInteraction = F, 
       analysisId = 668
-    ), createCohortCovariateSettings(
+    ),  createCohortCovariateSettings(
+      cohortName = 'White or not recorded', 
+      settingId = 1,
+      cohortDatabaseSchema = cohortDatabaseSchema,
+      cohortTable = cohortTableName,
+      cohortId = 22466, 
+      startDay = -9999,
+      endDay = 0,
+      count = F, 
+      ageInteraction = F, 
+      analysisId = 668
+    ),createCohortCovariateSettings(
       cohortName = 'Indian', 
       settingId = 1,
       cohortDatabaseSchema = cohortDatabaseSchema,
@@ -14369,8 +14479,8 @@ plpModelQRISK4_female$modelDesign$covariateSettings <- list(
   covariateCohortDatabaseSchema = '', 
   covariateCohortTable = '', 
   covariateCohorts = data.frame(
-    cohortId = c(18822,21395,18779,21387,21288,21289, 21290, 21291, 21377, 21378, 21379, 21380, 21381, 21382, 21383, 21386, 22465 21344, 14949, 18821, 19893, 18815, 19280, 19882, 19884, 21347, 12467, 21371, 19880, 21372, 21294, 19380, 19888, 19788, 19787, 19174, 19793, 14512), 
-    cohortName = c('SBP', 'SD SBP', 'Cholesterol/HDL', 'Deprivation', 'Ex-smoker', 'Light smoker', 'Moderate smoker', 'Heavy smoker', 'Indian', 'Pakistani', 'Bangladeshi', 'Other Asian', 'Caribbean', 'Black African', 'Chinese', 'Other ethnic group', 'No learning disability','Learning disability', 'Down syndrome', 'FH of CHD', 'Type I Diabetes', 'Type II Diabetes', 'Treated hypertension', 'Rheumatoid arthritis', 'Atrial fibrillation', 'Renal failure', 'Migraine', 'Corticosteroids', 'Systemic lupus', 'Atypical antipsychotic', 'Severe mental illness', 'COPD', 'Lung cancer', 'Oral cancer', 'Blood cancer', 'Brain cancer', 'Postnatal depression', 'Pre-eclampsia')
+    cohortId = c(18822,21395,18779,21387,21288,21289, 21290, 21291, 22466, 21377, 21378, 21379, 21380, 21381, 21382, 21383, 21386, 22465 21344, 14949, 18821, 19893, 18815, 19280, 19882, 19884, 21347, 12467, 21371, 19880, 21372, 21294, 19380, 19888, 19788, 19787, 19174, 19793, 14512), 
+    cohortName = c('SBP', 'SD SBP', 'Cholesterol/HDL', 'Deprivation', 'Ex-smoker', 'Light smoker', 'Moderate smoker', 'Heavy smoker', 'White or not recorded', 'Indian', 'Pakistani', 'Bangladeshi', 'Other Asian', 'Caribbean', 'Black African', 'Chinese', 'Other ethnic group', 'No learning disability','Learning disability', 'Down syndrome', 'FH of CHD', 'Type I Diabetes', 'Type II Diabetes', 'Treated hypertension', 'Rheumatoid arthritis', 'Atrial fibrillation', 'Renal failure', 'Migraine', 'Corticosteroids', 'Systemic lupus', 'Atypical antipsychotic', 'Severe mental illness', 'COPD', 'Lung cancer', 'Oral cancer', 'Blood cancer', 'Brain cancer', 'Postnatal depression', 'Pre-eclampsia')
     ), 
   valueType = 'binary', 
   startDay = -365, 
@@ -16220,8 +16330,8 @@ PatientLevelPrediction::savePlpModel(
 canalysisId <- 668
 plpModelQRISK4_male_JJ_3 <- PatientLevelPrediction::createGlmModel(
   coefficients = data.frame(
-    covariateId = c(18822,21395,18779,21387,21288, 21289, 21290, 21291, 21377, 21378, 21379, 21380, 21381, 21382, 21383, 21386, 22465, 21344, 14949, 18821, 19893, 18815, 19280, 19882, 19884, 21347, 12467, 21371, 19880, 21372, 21294, 19380, 19888, 19788, 19787, 19174, 19887)*1000+canalysisId, 
-    coefficient = c(0.065, 1.14, 1.15, 0.222, 1.19, 2.00, 2.08, 2.60, 1.19, 1.47, 1.41, 1.04, 0.67, 0.66, 0.72, 0.81, 1.00, 1.17, 2.35, 1.62, 3.28, 2.03, 2.20, 1.19, 2.59, 1.70, 1.41, 1.64, 1.68, 1.18, 1.37, 1.66, 1.49, 2.06, 5.45, 1.40)
+    covariateId = c(18822,21395,18779,21387,21288, 21289, 21290, 21291, 22466, 21377, 21378, 21379, 21380, 21381, 21382, 21383, 21386, 22465, 21344, 14949, 18821, 19893, 18815, 19280, 19882, 19884, 21347, 12467, 21371, 19880, 21372, 21294, 19380, 19888, 19788, 19787, 19174, 19887)*1000+canalysisId, 
+    coefficient = c(0.065, 1.14, 1.15, 0.222, 1.19, 2.00, 2.08, 2.60, 1.00, 1.19, 1.47, 1.41, 1.04, 0.67, 0.66, 0.72, 0.81, 1.00, 1.17, 2.35, 1.62, 3.28, 2.03, 2.20, 1.19, 2.59, 1.70, 1.41, 1.64, 1.68, 1.18, 1.37, 1.66, 1.49, 2.06, 5.45, 1.40)
   ), 
   intercept = 0, 
   mapping = QRISK4_male_3, 
@@ -16314,7 +16424,18 @@ plpModelQRISK4_male_JJ_3 <- PatientLevelPrediction::createGlmModel(
       count = F, 
       ageInteraction = F, 
       analysisId = 668
-    ), createCohortCovariateSettings(
+    ),  createCohortCovariateSettings(
+      cohortName = 'White or not recorded', 
+      settingId = 1,
+      cohortDatabaseSchema = cohortDatabaseSchema,
+      cohortTable = cohortTableName,
+      cohortId = 22466, 
+      startDay = -9999,
+      endDay = 0,
+      count = F, 
+      ageInteraction = F, 
+      analysisId = 668
+    ),createCohortCovariateSettings(
       cohortName = 'Indian', 
       settingId = 1,
       cohortDatabaseSchema = cohortDatabaseSchema,
@@ -16647,8 +16768,8 @@ plpModelQRISK4_male$modelDesign$covariateSettings <- list(
   covariateCohortDatabaseSchema = '', 
   covariateCohortTable = '', 
   covariateCohorts = data.frame(
-    cohortId = c(18822,21395,18779,21387,21288, 21289, 21290, 21291, 21377, 21378, 21379, 21380, 21381, 21382, 21383, 21386, 22465, 21344, 14949, 18821, 19893, 18815, 19280, 19882, 19884, 21347, 12467, 21371, 19880, 21372, 21294, 19380, 19888, 19788, 19787, 19174, 19887),
-    cohortName = c('SBP', 'SD SBP', 'Cholesterol/HDL', 'Deprivation', 'Ex-smoker', 'Light smoker', 'Moderate smoker', 'Heavy smoker', 'Indian', 'Pakistani', 'Bangladeshi', 'Other Asian', 'Caribbean', 'Black African', 'Chinese', 'Other ethnic group', 'No learning disability', 'Learning disability', 'Down syndrome', 'FH of CHD', 'Type I Diabetes', 'Type II Diabetes', 'Treated hypertension', 'Rheumatoid arthritis', 'Atrial fibrillation', 'Renal failure', 'Migraine', 'Corticosteroids', 'Systemic lupus', 'Atypical antipsychotics','Severe mental illness', 'COPD', 'Lung cancer', 'Oral cancer', 'Blood cancer', 'Brain cancer', 'Erectile dysfunction') 
+    cohortId = c(18822,21395,18779,21387,21288, 21289, 21290, 21291, 22466, 21377, 21378, 21379, 21380, 21381, 21382, 21383, 21386, 22465, 21344, 14949, 18821, 19893, 18815, 19280, 19882, 19884, 21347, 12467, 21371, 19880, 21372, 21294, 19380, 19888, 19788, 19787, 19174, 19887),
+    cohortName = c('SBP', 'SD SBP', 'Cholesterol/HDL', 'Deprivation', 'Ex-smoker', 'Light smoker', 'Moderate smoker', 'Heavy smoker', 'White or not recorded', 'Indian', 'Pakistani', 'Bangladeshi', 'Other Asian', 'Caribbean', 'Black African', 'Chinese', 'Other ethnic group', 'No learning disability', 'Learning disability', 'Down syndrome', 'FH of CHD', 'Type I Diabetes', 'Type II Diabetes', 'Treated hypertension', 'Rheumatoid arthritis', 'Atrial fibrillation', 'Renal failure', 'Migraine', 'Corticosteroids', 'Systemic lupus', 'Atypical antipsychotics','Severe mental illness', 'COPD', 'Lung cancer', 'Oral cancer', 'Blood cancer', 'Brain cancer', 'Erectile dysfunction') 
     ), 
   valueType = 'binary', 
   startDay = -365, 
@@ -16676,8 +16797,8 @@ PatientLevelPrediction::savePlpModel(
 canalysisId <- 668
 plpModelQRISK4_female_JJ_3 <- PatientLevelPrediction::createGlmModel(
   coefficients = data.frame(
-    covariateId = c(18822,21395,18779,21387,21288,21289, 21290, 21291, 21377, 21378, 21379, 21380, 21381, 21382, 21383, 21386, 22465, 21344, 14949, 18821, 19893, 18815, 19280, 19882, 19884, 21347, 12467, 21371, 19880, 21372, 21294, 19380, 19888, 19788, 19787, 19174, 19793, 14512)*1000+canalysisId, 
-    coefficient = c(0.0635, 1.16, 1.14, 0.252, 1.19, 2.12, 2.30, 2.90, 1.13, 1.56, 1.28, 0.98, 0.94, 0.76, 0.68, 0.94, 1.00, 1.45, 3.18, 1.46, 4.52, 2.49, 2.20, 1.28, 4.50, 1.81, 1.46, 1.70, 2.22, 1.24, 1.22, 1.85, 3.50, 1.55, 2.13, 4.52, 1.18, 1.56) 
+    covariateId = c(18822,21395,18779,21387,21288,21289, 21290, 21291, 22466, 21377, 21378, 21379, 21380, 21381, 21382, 21383, 21386, 22465, 21344, 14949, 18821, 19893, 18815, 19280, 19882, 19884, 21347, 12467, 21371, 19880, 21372, 21294, 19380, 19888, 19788, 19787, 19174, 19793, 14512)*1000+canalysisId, 
+    coefficient = c(0.0635, 1.16, 1.14, 0.252, 1.19, 2.12, 2.30, 2.90, 1.00, 1.13, 1.56, 1.28, 0.98, 0.94, 0.76, 0.68, 0.94, 1.00, 1.45, 3.18, 1.46, 4.52, 2.49, 2.20, 1.28, 4.50, 1.81, 1.46, 1.70, 2.22, 1.24, 1.22, 1.85, 3.50, 1.55, 2.13, 4.52, 1.18, 1.56) 
   ), 
   intercept = 0, 
   mapping = QRISK4_female_3, 
@@ -16770,7 +16891,18 @@ plpModelQRISK4_female_JJ_3 <- PatientLevelPrediction::createGlmModel(
       count = F, 
       ageInteraction = F, 
       analysisId = 668
-    ), createCohortCovariateSettings(
+    ),  createCohortCovariateSettings(
+      cohortName = 'White or not recorded', 
+      settingId = 1,
+      cohortDatabaseSchema = cohortDatabaseSchema,
+      cohortTable = cohortTableName,
+      cohortId = 22466, 
+      startDay = -9999,
+      endDay = 0,
+      count = F, 
+      ageInteraction = F, 
+      analysisId = 668
+    ),createCohortCovariateSettings(
       cohortName = 'Indian', 
       settingId = 1,
       cohortDatabaseSchema = cohortDatabaseSchema,
@@ -17114,8 +17246,8 @@ plpModelQRISK4_female$modelDesign$covariateSettings <- list(
   covariateCohortDatabaseSchema = '', 
   covariateCohortTable = '', 
   covariateCohorts = data.frame(
-    cohortId = c(18822,21395,18779,21387,21288,21289, 21290, 21291, 21377, 21378, 21379, 21380, 21381, 21382, 21383, 21386, 21344, 14949, 18821, 19893, 18815, 19280, 19882, 19884, 21347, 12467, 21371, 19880, 21372, 21294, 19380, 19888, 19788, 19787, 19174, 19793, 14512), 
-    cohortName = c('SBP', 'SD SBP', 'Cholesterol/HDL', 'Deprivation', 'Ex-smoker', 'Light smoker', 'Moderate smoker', 'Heavy smoker', 'Indian', 'Pakistani', 'Bangladeshi', 'Other Asian', 'Caribbean', 'Black African', 'Chinese', 'Other ethnic group', 'Learning disability', 'Down syndrome', 'FH of CHD', 'Type I Diabetes', 'Type II Diabetes', 'Treated hypertension', 'Rheumatoid arthritis', 'Atrial fibrillation', 'Renal failure', 'Migraine', 'Corticosteroids', 'Systemic lupus', 'Atypical antipsychotic', 'Severe mental illness', 'COPD', 'Lung cancer', 'Oral cancer', 'Blood cancer', 'Brain cancer', 'Postnatal depression', 'Pre-eclampsia')
+    cohortId = c(18822,21395,18779,21387,21288,21289, 21290, 21291, 22466, 21377, 21378, 21379, 21380, 21381, 21382, 21383, 21386, 21344, 14949, 18821, 19893, 18815, 19280, 19882, 19884, 21347, 12467, 21371, 19880, 21372, 21294, 19380, 19888, 19788, 19787, 19174, 19793, 14512), 
+    cohortName = c('SBP', 'SD SBP', 'Cholesterol/HDL', 'Deprivation', 'Ex-smoker', 'Light smoker', 'Moderate smoker', 'Heavy smoker', 'White or not recorded', 'Indian', 'Pakistani', 'Bangladeshi', 'Other Asian', 'Caribbean', 'Black African', 'Chinese', 'Other ethnic group', 'Learning disability', 'Down syndrome', 'FH of CHD', 'Type I Diabetes', 'Type II Diabetes', 'Treated hypertension', 'Rheumatoid arthritis', 'Atrial fibrillation', 'Renal failure', 'Migraine', 'Corticosteroids', 'Systemic lupus', 'Atypical antipsychotic', 'Severe mental illness', 'COPD', 'Lung cancer', 'Oral cancer', 'Blood cancer', 'Brain cancer', 'Postnatal depression', 'Pre-eclampsia')
     ), 
   valueType = 'binary', 
   startDay = -365, 
@@ -18961,8 +19093,8 @@ PatientLevelPrediction::savePlpModel(
 canalysisId <- 668
 plpModelQRISK4_male_JJ_5 <- PatientLevelPrediction::createGlmModel(
   coefficients = data.frame(
-    covariateId = c(18822,21395,18779,21387,21288, 21289, 21290, 21291, 21377, 21378, 21379, 21380, 21381, 21382, 21383, 21386, 22465, 21344, 14949, 18821, 19893, 18815, 19280, 19882, 19884, 21347, 12467, 21371, 19880, 21372, 21294, 19380, 19888, 19788, 19787, 19174, 19887)*1000+canalysisId, 
-    coefficient = c(0.065, 1.14, 1.15, 0.222, 1.19, 2.00, 2.08, 2.60, 1.19, 1.47, 1.41, 1.04, 0.67, 0.66, 0.72, 0.81, 1.00, 1.17, 2.35, 1.62, 3.28, 2.03, 2.20, 1.19, 2.59, 1.70, 1.41, 1.64, 1.68, 1.18, 1.37, 1.66, 1.49, 2.06, 5.45, 1.40)
+    covariateId = c(18822,21395,18779,21387,21288, 21289, 21290, 21291, 22466, 21377, 21378, 21379, 21380, 21381, 21382, 21383, 21386, 22465, 21344, 14949, 18821, 19893, 18815, 19280, 19882, 19884, 21347, 12467, 21371, 19880, 21372, 21294, 19380, 19888, 19788, 19787, 19174, 19887)*1000+canalysisId, 
+    coefficient = c(0.065, 1.14, 1.15, 0.222, 1.19, 2.00, 2.08, 2.60, 1.00, 1.19, 1.47, 1.41, 1.04, 0.67, 0.66, 0.72, 0.81, 1.00, 1.17, 2.35, 1.62, 3.28, 2.03, 2.20, 1.19, 2.59, 1.70, 1.41, 1.64, 1.68, 1.18, 1.37, 1.66, 1.49, 2.06, 5.45, 1.40)
   ), 
   intercept = 0, 
   mapping = QRISK4_male_5, 
@@ -19055,7 +19187,18 @@ plpModelQRISK4_male_JJ_5 <- PatientLevelPrediction::createGlmModel(
       count = F, 
       ageInteraction = F, 
       analysisId = 668
-    ), createCohortCovariateSettings(
+    ),  createCohortCovariateSettings(
+      cohortName = 'White or not recorded', 
+      settingId = 1,
+      cohortDatabaseSchema = cohortDatabaseSchema,
+      cohortTable = cohortTableName,
+      cohortId = 22466, 
+      startDay = -9999,
+      endDay = 0,
+      count = F, 
+      ageInteraction = F, 
+      analysisId = 668
+    ),createCohortCovariateSettings(
       cohortName = 'Indian', 
       settingId = 1,
       cohortDatabaseSchema = cohortDatabaseSchema,
@@ -19388,8 +19531,8 @@ plpModelQRISK4_male$modelDesign$covariateSettings <- list(
   covariateCohortDatabaseSchema = '', 
   covariateCohortTable = '', 
   covariateCohorts = data.frame(
-    cohortId = c(18822,21395,18779,21387,21288, 21289, 21290, 21291, 21377, 21378, 21379, 21380, 21381, 21382, 21383, 21386, 22465, 21344, 14949, 18821, 19893, 18815, 19280, 19882, 19884, 21347, 12467, 21371, 19880, 21372, 21294, 19380, 19888, 19788, 19787, 19174, 19887),
-    cohortName = c('SBP', 'SD SBP', 'Cholesterol/HDL', 'Deprivation', 'Ex-smoker', 'Light smoker', 'Moderate smoker', 'Heavy smoker', 'Indian', 'Pakistani', 'Bangladeshi', 'Other Asian', 'Caribbean', 'Black African', 'Chinese', 'Other ethnic group', 'No learning disability', 'Learning disability', 'Down syndrome', 'FH of CHD', 'Type I Diabetes', 'Type II Diabetes', 'Treated hypertension', 'Rheumatoid arthritis', 'Atrial fibrillation', 'Renal failure', 'Migraine', 'Corticosteroids', 'Systemic lupus', 'Atypical antipsychotics','Severe mental illness', 'COPD', 'Lung cancer', 'Oral cancer', 'Blood cancer', 'Brain cancer', 'Erectile dysfunction') 
+    cohortId = c(18822,21395,18779,21387,21288, 21289, 21290, 21291, 22466, 21377, 21378, 21379, 21380, 21381, 21382, 21383, 21386, 22465, 21344, 14949, 18821, 19893, 18815, 19280, 19882, 19884, 21347, 12467, 21371, 19880, 21372, 21294, 19380, 19888, 19788, 19787, 19174, 19887),
+    cohortName = c('SBP', 'SD SBP', 'Cholesterol/HDL', 'Deprivation', 'Ex-smoker', 'Light smoker', 'Moderate smoker', 'Heavy smoker', 'White or not recorded', 'Indian', 'Pakistani', 'Bangladeshi', 'Other Asian', 'Caribbean', 'Black African', 'Chinese', 'Other ethnic group', 'No learning disability', 'Learning disability', 'Down syndrome', 'FH of CHD', 'Type I Diabetes', 'Type II Diabetes', 'Treated hypertension', 'Rheumatoid arthritis', 'Atrial fibrillation', 'Renal failure', 'Migraine', 'Corticosteroids', 'Systemic lupus', 'Atypical antipsychotics','Severe mental illness', 'COPD', 'Lung cancer', 'Oral cancer', 'Blood cancer', 'Brain cancer', 'Erectile dysfunction') 
     ), 
   valueType = 'binary', 
   startDay = -365, 
@@ -19419,8 +19562,8 @@ PatientLevelPrediction::savePlpModel(
 canalysisId <- 668
 plpModelQRISK4_female_JJ_5 <- PatientLevelPrediction::createGlmModel(
   coefficients = data.frame(
-    covariateId = c(18822,21395,18779,21387,21288,21289, 21290, 21291, 21377, 21378, 21379, 21380, 21381, 21382, 21383, 21386, 22465, 21344, 14949, 18821, 19893, 18815, 19280, 19882, 19884, 21347, 12467, 21371, 19880, 21372, 21294, 19380, 19888, 19788, 19787, 19174, 19793, 14512)*1000+canalysisId, 
-    coefficient = c(0.0635, 1.16, 1.14, 0.252, 1.19, 2.12, 2.30, 2.90, 1.13, 1.56, 1.28, 0.98, 0.94, 0.76, 0.68, 0.94, 1.00, 1.45, 3.18, 1.46, 4.52, 2.49, 2.20, 1.28, 4.50, 1.81, 1.46, 1.70, 2.22, 1.24, 1.22, 1.85, 3.50, 1.55, 2.13, 4.52, 1.18, 1.56) 
+    covariateId = c(18822,21395,18779,21387,21288,21289, 21290, 21291, 22466, 21377, 21378, 21379, 21380, 21381, 21382, 21383, 21386, 22465, 21344, 14949, 18821, 19893, 18815, 19280, 19882, 19884, 21347, 12467, 21371, 19880, 21372, 21294, 19380, 19888, 19788, 19787, 19174, 19793, 14512)*1000+canalysisId, 
+    coefficient = c(0.0635, 1.16, 1.14, 0.252, 1.19, 2.12, 2.30, 2.90, 1.00, 1.13, 1.56, 1.28, 0.98, 0.94, 0.76, 0.68, 0.94, 1.00, 1.45, 3.18, 1.46, 4.52, 2.49, 2.20, 1.28, 4.50, 1.81, 1.46, 1.70, 2.22, 1.24, 1.22, 1.85, 3.50, 1.55, 2.13, 4.52, 1.18, 1.56) 
   ), 
   intercept = 0, 
   mapping = QRISK4_female_5, 
@@ -19513,7 +19656,18 @@ plpModelQRISK4_female_JJ_5 <- PatientLevelPrediction::createGlmModel(
       count = F, 
       ageInteraction = F, 
       analysisId = 668
-    ), createCohortCovariateSettings(
+    ),  createCohortCovariateSettings(
+      cohortName = 'White or not recorded', 
+      settingId = 1,
+      cohortDatabaseSchema = cohortDatabaseSchema,
+      cohortTable = cohortTableName,
+      cohortId = 22466, 
+      startDay = -9999,
+      endDay = 0,
+      count = F, 
+      ageInteraction = F, 
+      analysisId = 668
+    ),createCohortCovariateSettings(
       cohortName = 'Indian', 
       settingId = 1,
       cohortDatabaseSchema = cohortDatabaseSchema,
@@ -19857,8 +20011,8 @@ plpModelQRISK4_female$modelDesign$covariateSettings <- list(
   covariateCohortDatabaseSchema = '', 
   covariateCohortTable = '', 
   covariateCohorts = data.frame(
-    cohortId = c(18822,21395,18779,21387,21288,21289, 21290, 21291, 21377, 21378, 21379, 21380, 21381, 21382, 21383, 21386, 22465, 21344, 14949, 18821, 19893, 18815, 19280, 19882, 19884, 21347, 12467, 21371, 19880, 21372, 21294, 19380, 19888, 19788, 19787, 19174, 19793, 14512), 
-    cohortName = c('SBP', 'SD SBP', 'Cholesterol/HDL', 'Deprivation', 'Ex-smoker', 'Light smoker', 'Moderate smoker', 'Heavy smoker', 'Indian', 'Pakistani', 'Bangladeshi', 'Other Asian', 'Caribbean', 'Black African', 'Chinese', 'Other ethnic group', 'No learning disability', 'Learning disability', 'Down syndrome', 'FH of CHD', 'Type I Diabetes', 'Type II Diabetes', 'Treated hypertension', 'Rheumatoid arthritis', 'Atrial fibrillation', 'Renal failure', 'Migraine', 'Corticosteroids', 'Systemic lupus', 'Atypical antipsychotic', 'Severe mental illness', 'COPD', 'Lung cancer', 'Oral cancer', 'Blood cancer', 'Brain cancer', 'Postnatal depression', 'Pre-eclampsia')
+    cohortId = c(18822,21395,18779,21387,21288,21289, 21290, 21291, 22466, 21377, 21378, 21379, 21380, 21381, 21382, 21383, 21386, 22465, 21344, 14949, 18821, 19893, 18815, 19280, 19882, 19884, 21347, 12467, 21371, 19880, 21372, 21294, 19380, 19888, 19788, 19787, 19174, 19793, 14512), 
+    cohortName = c('SBP', 'SD SBP', 'Cholesterol/HDL', 'Deprivation', 'Ex-smoker', 'Light smoker', 'Moderate smoker', 'Heavy smoker', 'White or not recorded', 'Indian', 'Pakistani', 'Bangladeshi', 'Other Asian', 'Caribbean', 'Black African', 'Chinese', 'Other ethnic group', 'No learning disability', 'Learning disability', 'Down syndrome', 'FH of CHD', 'Type I Diabetes', 'Type II Diabetes', 'Treated hypertension', 'Rheumatoid arthritis', 'Atrial fibrillation', 'Renal failure', 'Migraine', 'Corticosteroids', 'Systemic lupus', 'Atypical antipsychotic', 'Severe mental illness', 'COPD', 'Lung cancer', 'Oral cancer', 'Blood cancer', 'Brain cancer', 'Postnatal depression', 'Pre-eclampsia')
     ), 
   valueType = 'binary', 
   startDay = -365, 
@@ -21705,8 +21859,8 @@ PatientLevelPrediction::savePlpModel(
 canalysisId <- 668
 plpModelQRISK4_male_JJ_10 <- PatientLevelPrediction::createGlmModel(
   coefficients = data.frame(
-    covariateId = c(18822,21395,18779,21387,21288, 21289, 21290, 21291, 21377, 21378, 21379, 21380, 21381, 21382, 21383, 21386, 22465, 21344, 14949, 18821, 19893, 18815, 19280, 19882, 19884, 21347, 12467, 21371, 19880, 21372, 21294, 19380, 19888, 19788, 19787, 19174, 19887)*1000+canalysisId, 
-    coefficient = c(0.065, 1.14, 1.15, 0.222, 1.19, 2.00, 2.08, 2.60, 1.19, 1.47, 1.41, 1.04, 0.67, 0.66, 0.72, 0.81, 1.00, 1.17, 2.35, 1.62, 3.28, 2.03, 2.20, 1.19, 2.59, 1.70, 1.41, 1.64, 1.68, 1.18, 1.37, 1.66, 1.49, 2.06, 5.45, 1.40)
+    covariateId = c(18822,21395,18779,21387,21288, 21289, 21290, 21291, 22466, 21377, 21378, 21379, 21380, 21381, 21382, 21383, 21386, 22465, 21344, 14949, 18821, 19893, 18815, 19280, 19882, 19884, 21347, 12467, 21371, 19880, 21372, 21294, 19380, 19888, 19788, 19787, 19174, 19887)*1000+canalysisId, 
+    coefficient = c(0.065, 1.14, 1.15, 0.222, 1.19, 2.00, 2.08, 2.60, 1.00,  1.19, 1.47, 1.41, 1.04, 0.67, 0.66, 0.72, 0.81, 1.00, 1.17, 2.35, 1.62, 3.28, 2.03, 2.20, 1.19, 2.59, 1.70, 1.41, 1.64, 1.68, 1.18, 1.37, 1.66, 1.49, 2.06, 5.45, 1.40)
   ), 
   intercept = 0, 
   mapping = QRISK4_male_10, 
@@ -21799,7 +21953,18 @@ plpModelQRISK4_male_JJ_10 <- PatientLevelPrediction::createGlmModel(
       count = F, 
       ageInteraction = F, 
       analysisId = 668
-    ), createCohortCovariateSettings(
+    ),  createCohortCovariateSettings(
+      cohortName = 'White or not recorded', 
+      settingId = 1,
+      cohortDatabaseSchema = cohortDatabaseSchema,
+      cohortTable = cohortTableName,
+      cohortId = 22466, 
+      startDay = -9999,
+      endDay = 0,
+      count = F, 
+      ageInteraction = F, 
+      analysisId = 668
+    ),createCohortCovariateSettings(
       cohortName = 'Indian', 
       settingId = 1,
       cohortDatabaseSchema = cohortDatabaseSchema,
@@ -22132,8 +22297,8 @@ plpModelQRISK4_male$modelDesign$covariateSettings <- list(
   covariateCohortDatabaseSchema = '', 
   covariateCohortTable = '', 
   covariateCohorts = data.frame(
-    cohortId = c(18822,21395,18779,21387,21288, 21289, 21290, 21291, 21377, 21378, 21379, 21380, 21381, 21382, 21383, 21386, 22465, 21344, 14949, 18821, 19893, 18815, 19280, 19882, 19884, 21347, 12467, 21371, 19880, 21372, 21294, 19380, 19888, 19788, 19787, 19174, 19887),
-    cohortName = c('SBP', 'SD SBP', 'Cholesterol/HDL', 'Deprivation', 'Ex-smoker', 'Light smoker', 'Moderate smoker', 'Heavy smoker', 'Indian', 'Pakistani', 'Bangladeshi', 'Other Asian', 'Caribbean', 'Black African', 'Chinese', 'Other ethnic group', 'No learning disability', 'Learning disability', 'Down syndrome', 'FH of CHD', 'Type I Diabetes', 'Type II Diabetes', 'Treated hypertension', 'Rheumatoid arthritis', 'Atrial fibrillation', 'Renal failure', 'Migraine', 'Corticosteroids', 'Systemic lupus', 'Atypical antipsychotics','Severe mental illness', 'COPD', 'Lung cancer', 'Oral cancer', 'Blood cancer', 'Brain cancer', 'Erectile dysfunction') 
+    cohortId = c(18822,21395,18779,21387,21288, 21289, 21290, 21291, 22466, 21377, 21378, 21379, 21380, 21381, 21382, 21383, 21386, 22465, 21344, 14949, 18821, 19893, 18815, 19280, 19882, 19884, 21347, 12467, 21371, 19880, 21372, 21294, 19380, 19888, 19788, 19787, 19174, 19887),
+    cohortName = c('SBP', 'SD SBP', 'Cholesterol/HDL', 'Deprivation', 'Ex-smoker', 'Light smoker', 'Moderate smoker', 'Heavy smoker', 'White or not recorded', 'Indian', 'Pakistani', 'Bangladeshi', 'Other Asian', 'Caribbean', 'Black African', 'Chinese', 'Other ethnic group', 'No learning disability', 'Learning disability', 'Down syndrome', 'FH of CHD', 'Type I Diabetes', 'Type II Diabetes', 'Treated hypertension', 'Rheumatoid arthritis', 'Atrial fibrillation', 'Renal failure', 'Migraine', 'Corticosteroids', 'Systemic lupus', 'Atypical antipsychotics','Severe mental illness', 'COPD', 'Lung cancer', 'Oral cancer', 'Blood cancer', 'Brain cancer', 'Erectile dysfunction') 
     ), 
   valueType = 'binary', 
   startDay = -365, 
@@ -22163,8 +22328,8 @@ PatientLevelPrediction::savePlpModel(
 canalysisId <- 668
 plpModelQRISK4_female_JJ_10 <- PatientLevelPrediction::createGlmModel(
   coefficients = data.frame(
-    covariateId = c(18822,21395,18779,21387,21288,21289, 21290, 21291, 21377, 21378, 21379, 21380, 21381, 21382, 21383, 21386, 22465, 21344, 14949, 18821, 19893, 18815, 19280, 19882, 19884, 21347, 12467, 21371, 19880, 21372, 21294, 19380, 19888, 19788, 19787, 19174, 19793, 14512)*1000+canalysisId, 
-    coefficient = c(0.0635, 1.16, 1.14, 0.252, 1.19, 2.12, 2.30, 2.90, 1.13, 1.56, 1.28, 0.98, 0.94, 0.76, 0.68, 0.94, 1.00, 1.45, 3.18, 1.46, 4.52, 2.49, 2.20, 1.28, 4.50, 1.81, 1.46, 1.70, 2.22, 1.24, 1.22, 1.85, 3.50, 1.55, 2.13, 4.52, 1.18, 1.56) 
+    covariateId = c(18822,21395,18779,21387,21288,21289, 21290, 21291, 22466, 21377, 21378, 21379, 21380, 21381, 21382, 21383, 21386, 22465, 21344, 14949, 18821, 19893, 18815, 19280, 19882, 19884, 21347, 12467, 21371, 19880, 21372, 21294, 19380, 19888, 19788, 19787, 19174, 19793, 14512)*1000+canalysisId, 
+    coefficient = c(0.0635, 1.16, 1.14, 0.252, 1.19, 2.12, 2.30, 2.90, 1.00, 1.13, 1.56, 1.28, 0.98, 0.94, 0.76, 0.68, 0.94, 1.00, 1.45, 3.18, 1.46, 4.52, 2.49, 2.20, 1.28, 4.50, 1.81, 1.46, 1.70, 2.22, 1.24, 1.22, 1.85, 3.50, 1.55, 2.13, 4.52, 1.18, 1.56) 
   ), 
   intercept = 0, 
   mapping = QRISK4_female_10, 
@@ -22257,7 +22422,18 @@ plpModelQRISK4_female_JJ_10 <- PatientLevelPrediction::createGlmModel(
       count = F, 
       ageInteraction = F, 
       analysisId = 668
-    ), createCohortCovariateSettings(
+    ),  createCohortCovariateSettings(
+      cohortName = 'White or not recorded', 
+      settingId = 1,
+      cohortDatabaseSchema = cohortDatabaseSchema,
+      cohortTable = cohortTableName,
+      cohortId = 22466, 
+      startDay = -9999,
+      endDay = 0,
+      count = F, 
+      ageInteraction = F, 
+      analysisId = 668
+    ),createCohortCovariateSettings(
       cohortName = 'Indian', 
       settingId = 1,
       cohortDatabaseSchema = cohortDatabaseSchema,
@@ -22593,16 +22769,16 @@ plpModelQRISK4_female_JJ_10 <- PatientLevelPrediction::createGlmModel(
   featureEngineeringSettings = createSDBP() 
 )
 
-plpModelQRISK4_female$modelDesign$targetId <- 21405
-plpModelQRISK4_female$modelDesign$outcomeId <- 21397
-plpModelQRISK4_female$modelDesign$covariateSettings <- list(
+plpModelQRISK4_female_JJ_10$modelDesign$targetId <- 21405
+plpModelQRISK4_female_JJ_10$modelDesign$outcomeId <- 21397
+plpModelQRISK4_female_JJ_10$modelDesign$covariateSettings <- list(
   FeatureExtraction::createCohortBasedCovariateSettings(
   analysisId = canalysisId,
   covariateCohortDatabaseSchema = '', 
   covariateCohortTable = '', 
   covariateCohorts = data.frame(
-    cohortId = c(18822,21395,18779,21387,21288,21289, 21290, 21291, 21377, 21378, 21379, 21380, 21381, 21382, 21383, 21386, 22465, 21344, 14949, 18821, 19893, 18815, 19280, 19882, 19884, 21347, 12467, 21371, 19880, 21372, 21294, 19380, 19888, 19788, 19787, 19174, 19793, 14512), 
-    cohortName = c('SBP', 'SD SBP', 'Cholesterol/HDL', 'Deprivation', 'Ex-smoker', 'Light smoker', 'Moderate smoker', 'Heavy smoker', 'Indian', 'Pakistani', 'Bangladeshi', 'Other Asian', 'Caribbean', 'Black African', 'Chinese', 'Other ethnic group', 'No learning disability', 'Learning disability', 'Down syndrome', 'FH of CHD', 'Type I Diabetes', 'Type II Diabetes', 'Treated hypertension', 'Rheumatoid arthritis', 'Atrial fibrillation', 'Renal failure', 'Migraine', 'Corticosteroids', 'Systemic lupus', 'Atypical antipsychotic', 'Severe mental illness', 'COPD', 'Lung cancer', 'Oral cancer', 'Blood cancer', 'Brain cancer', 'Postnatal depression', 'Pre-eclampsia')
+    cohortId = c(18822,21395,18779,21387,21288,21289, 21290, 21291, 22466, 21377, 21378, 21379, 21380, 21381, 21382, 21383, 21386, 22465, 21344, 14949, 18821, 19893, 18815, 19280, 19882, 19884, 21347, 12467, 21371, 19880, 21372, 21294, 19380, 19888, 19788, 19787, 19174, 19793, 14512), 
+    cohortName = c('SBP', 'SD SBP', 'Cholesterol/HDL', 'Deprivation', 'Ex-smoker', 'Light smoker', 'Moderate smoker', 'Heavy smoker', 'White or not recorded', 'Indian', 'Pakistani', 'Bangladeshi', 'Other Asian', 'Caribbean', 'Black African', 'Chinese', 'Other ethnic group', 'No learning disability', 'Learning disability', 'Down syndrome', 'FH of CHD', 'Type I Diabetes', 'Type II Diabetes', 'Treated hypertension', 'Rheumatoid arthritis', 'Atrial fibrillation', 'Renal failure', 'Migraine', 'Corticosteroids', 'Systemic lupus', 'Atypical antipsychotic', 'Severe mental illness', 'COPD', 'Lung cancer', 'Oral cancer', 'Blood cancer', 'Brain cancer', 'Postnatal depression', 'Pre-eclampsia')
     ), 
   valueType = 'binary', 
   startDay = -365, 
