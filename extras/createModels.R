@@ -507,7 +507,7 @@ createLogAge <- function(){
 implementLogAge <- function(trainData, featureEngineeringSettings) {
   # get covariate 1002 values
   ageData <- trainData$covariateData$covariates %>%
-    dplyr::filter(.data$covariateId == 1002) %>%
+    dplyr::filter(.data$covariateId == 1002668) %>%
     dplyr::select("rowId", 'covariateValue') %>%
     dplyr::collect()
 
@@ -519,7 +519,7 @@ implementLogAge <- function(trainData, featureEngineeringSettings) {
 
   # remove existing age if in covariates
   trainData$covariateData$covariates <- trainData$covariateData$covariates |>
-    dplyr::filter(!covariateId %in% c(1002))
+    dplyr::filter(!covariateId %in% c(1002668))
   # update covRef
   Andromeda::appendToTable(trainData$covariateData$covariateRef,
                            data.frame(covariateId=3002,
@@ -558,12 +558,12 @@ createInteractionTermSBPAT <- function() {
 implementInteractionTermSBPATI <- function(trainData, featureEngineeringSettings) {
   # get covariate values
   InteractionTermSBPATDataI <- trainData$covariateData$covariates %>%
-    dplyr::filter(.data$covariateId == c(21395) %>%                            
+    dplyr::filter(.data$covariateId == c(21395668) %>%                            
     dplyr::select("rowId", 'covariateValue') %>%
     dplyr::collect()
 
    InteractionTermSBPATDataII <-   trainData$covariateData$covariates %>%
-    dplyr::filter(.data$covariateId == 19280) %>%                            
+    dplyr::filter(.data$covariateId == 19280668) %>%                            
     dplyr::select("rowId", 'covariateValue') %>%
     dplyr::collect()             
   
@@ -575,7 +575,7 @@ implementInteractionTermSBPATI <- function(trainData, featureEngineeringSettings
 
   # remove existing age if in covariates
   trainData$covariateData$covariates <- trainData$covariateData$covariates |>
-    dplyr::filter(!covariateId %in% c(21395))                                  
+    dplyr::filter(!covariateId %in% c(21395668))                                  
   # update covRef
   Andromeda::appendToTable(trainData$covariateData$covariateRef,
                            data.frame(covariateId=3004,
@@ -618,7 +618,7 @@ createSDBP <- function(){
 implementSDBP <- function(trainData, featureEngineeringSettings) {
   # get initial covariate values
   sdData <- trainData$covariateData$covariates %>%
-    dplyr::filter(.data$covariateId == 21395) %>%                                  
+    dplyr::filter(.data$covariateId == 21395668) %>%                                  
     dplyr::select("rowId", 'covariateValue') %>%
     dplyr::collect()
 
@@ -630,7 +630,7 @@ implementSDBP <- function(trainData, featureEngineeringSettings) {
 
   # remove existing SBP if in covariates
   trainData$covariateData$covariates <- trainData$covariateData$covariates |>
-    dplyr::filter(!covariateId %in% c(21395))                                     
+    dplyr::filter(!covariateId %in% c(21395668))                                     
 
   # update covRef
   Andromeda::appendToTable(trainData$covariateData$covariateRef,
