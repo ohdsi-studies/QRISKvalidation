@@ -88,7 +88,7 @@ createPackageModel <- function(modelFolder, package){
 }
 validationList <- list()
 
-# Code to validate 32 models
+# Code to validate 64 models
 validationList[[length(validationList) + 1]] <- PatientLevelPrediction::createValidationDesign(
   targetId = 21398,
   outcomeId = outcomeId,
