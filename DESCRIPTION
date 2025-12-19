@@ -1,4 +1,4 @@
-Package: RCRIvalidation
+Package: QRISKvalidation
 Type: Package
 Title: Network QRISK Temporal Validation Study
 Version: 0.0.0.9000
@@ -14,9 +14,12 @@ Depends:
   R (>= 3.3.0)
 Imports:
   DatabaseConnector,
+  CohortGenerator,
+  FeatureExtraction,
   dplyr,
   ggplot2,
   ParallelLogger,
+  ResultModelManager,
   Strategus
 Suggests:
   knitr,
