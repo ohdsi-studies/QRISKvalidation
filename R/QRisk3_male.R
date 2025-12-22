@@ -172,5 +172,5 @@ baseline*exp(x)
   )                 
 )
 
-return(plpModelQRISK2_male_OG_10)
+return(plpModelQRISK3_male_OG_10)
 }
