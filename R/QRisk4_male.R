@@ -41,10 +41,10 @@ plpModelQRISK4_male_OG_10 <- PatientLevelPrediction::createGlmModel(
         21381, # Black Caribbean
         21382, # Black African
         21383, # Chinese
-        21386, # Other
-        22465, # No learning disability
-        21344, # Learning disability
-        19881, # Down syndrome
+        21386, # Other                                  # TO DO
+        22465654, # No learning disability
+        21344664, # Learning disability
+        19881674, # Down syndrome
         18821668, # Family history of coronary heart disease
         18820657, # Type I Diabetes
         18815698, # Type II Diabetes
@@ -57,11 +57,11 @@ plpModelQRISK4_male_OG_10 <- PatientLevelPrediction::createGlmModel(
         19164687, # Systemic lupus erythematosus
         21372697, # Atypical antipsychotic use
         21294707, # Severe mental illness
-        19380, # COPD
-        19792, # Lung cancer
-        19788, # Oral cancer
-        19787, # Blood cancer
-        19174, # Brain cancer
+        19380684, # COPD
+        19792694, # Lung cancer
+        19788704, # Oral cancer
+        19787714, # Blood cancer
+        19174724, # Brain cancer
         19165717, # Erectile dysfunction or treatment
     ),       
     coefficient = c(0.065, 1.14, 1.15, 0.222, 1.19, 2.00, 2.08, 2.60, 1.00, 1.19, 1.47, 1.41, 1.04, 0.67, 0.66, 0.72, 0.81, 1.00, 1.17, 2.35, 1.62, 3.28, 2.03, 2.20, 1.19, 2.59, 1.70, 1.41, 1.64, 1.68, 1.18, 1.37, 1.66, 1.49, 2.06, 5.45, 1.40
@@ -331,28 +331,116 @@ baseline*exp(x)
     ),
 
     #No learning disability 22465654
-    22465, # No learning disability
+    FeatureExtraction::createCohortBasedCovariateSettings(
+      analysisId = 654, 
+      covariateCohortDatabaseSchema = cohortDatabaseSchema,
+      covariateCohortTable = cohortTableName, 
+      covariateCohorts = data.frame(
+        cohortId = c(22465), 
+        cohortName = c('No learning disability')
+      ), 
+      valueType = 'binary', 
+      startDay = -9999, 
+      endDay = 0
+    ),
 
     #Learning disability 21344664
-    21344, # Learning disability
-
+    FeatureExtraction::createCohortBasedCovariateSettings(
+      analysisId = 664, 
+      covariateCohortDatabaseSchema = cohortDatabaseSchema,
+      covariateCohortTable = cohortTableName, 
+      covariateCohorts = data.frame(
+        cohortId = c(21344), 
+        cohortName = c('Learning disability')
+      ), 
+      valueType = 'binary', 
+      startDay = -9999, 
+      endDay = 0
+    ),
+      
     #Down syndrome 19881674
-    19881, # Down syndrome
+    FeatureExtraction::createCohortBasedCovariateSettings(
+      analysisId = 674, 
+      covariateCohortDatabaseSchema = cohortDatabaseSchema,
+      covariateCohortTable = cohortTableName, 
+      covariateCohorts = data.frame(
+        cohortId = c(19881), 
+        cohortName = c('Down syndrome')
+      ), 
+      valueType = 'binary', 
+      startDay = -9999, 
+      endDay = 0
+    ),
 
     #COPD 19380684
-    19380, # COPD
+    FeatureExtraction::createCohortBasedCovariateSettings(
+      analysisId = 684, 
+      covariateCohortDatabaseSchema = cohortDatabaseSchema,
+      covariateCohortTable = cohortTableName, 
+      covariateCohorts = data.frame(
+        cohortId = c(19380), 
+        cohortName = c('COPD')
+      ), 
+      valueType = 'binary', 
+      startDay = -9999, 
+      endDay = 0
+    ),
 
     #Lung cancer 19792694
-    19792, # Lung cancer
+    FeatureExtraction::createCohortBasedCovariateSettings(
+      analysisId = 694, 
+      covariateCohortDatabaseSchema = cohortDatabaseSchema,
+      covariateCohortTable = cohortTableName, 
+      covariateCohorts = data.frame(
+        cohortId = c(19792), 
+        cohortName = c('Lung cancer')
+      ), 
+      valueType = 'binary', 
+      startDay = -9999, 
+      endDay = 0
+    ),
 
     #Oral cancer 19788704
-    19788, # Oral cancer
+    FeatureExtraction::createCohortBasedCovariateSettings(
+      analysisId = 704, 
+      covariateCohortDatabaseSchema = cohortDatabaseSchema,
+      covariateCohortTable = cohortTableName, 
+      covariateCohorts = data.frame(
+        cohortId = c(19788), 
+        cohortName = c('Oral cancer')
+      ), 
+      valueType = 'binary', 
+      startDay = -9999, 
+      endDay = 0
+    ),
 
     #Blood cancer 19787714
-    19787, # Blood cancer
+    FeatureExtraction::createCohortBasedCovariateSettings(
+      analysisId = 714, 
+      covariateCohortDatabaseSchema = cohortDatabaseSchema,
+      covariateCohortTable = cohortTableName, 
+      covariateCohorts = data.frame(
+        cohortId = c(19787), 
+        cohortName = c('Blood cancer')
+      ), 
+      valueType = 'binary', 
+      startDay = -9999, 
+      endDay = 0
+    ),
 
     #Brain cancer 19174724
-    19174, # Brain cancer
+    FeatureExtraction::createCohortBasedCovariateSettings(
+      analysisId = 724, 
+      covariateCohortDatabaseSchema = cohortDatabaseSchema,
+      covariateCohortTable = cohortTableName, 
+      covariateCohorts = data.frame(
+        cohortId = c(19174), 
+        cohortName = c('Brain cancer')
+      ), 
+      valueType = 'binary', 
+      startDay = -9999, 
+      endDay = 0
+    ),
   )                 
 )
 
