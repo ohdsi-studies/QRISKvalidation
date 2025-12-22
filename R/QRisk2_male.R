@@ -25,15 +25,15 @@ plpModelQRISK2_male_OG_10 <- PatientLevelPrediction::createGlmModel(
     ),# can use this to restrict dates as well
   coefficients = data.frame(
     covariateId = c(
-        22466, # White or not recorded               #TODO
-        21377, # Indian
-        21378, # Pakistani
-        21379, # Bangladeshi
-        21380, # Other Asian
-        21381, # Black Caribbean
-        21382, # Black African
-        21383, # Chinese
-        21386, # Other
+        22466652, # White or not recorded               
+        21377662, # Indian
+        21378672, # Pakistani
+        21379682, # Bangladeshi
+        21380692, # Other Asian
+        21381702, # Black Caribbean
+        21382712, # Black African
+        21383722, # Chinese
+        21386732, # Other
         1020,  # Age
         2466, # BMI 
         4466, # Townsend score
@@ -244,31 +244,40 @@ baseline*exp(x)
       endDay = 0
     ),
 
-    # white or not recorded
+    # white or not recorded 22466652
+      
     22466, # White or not recorded
 
-    # indian
+    # indian 21377662
+      
     21377, # Indian
 
-    #Pakistani
+    #Pakistani 21378672
+      
     21378, # Pakistani
 
-    #Bangladeshi
+    #Bangladeshi 21379682
+      
     21379, # Bangladeshi
 
-    #Other Asian
+    #Other Asian 21380692
+    
     21380, # Other Asian
 
-    #Black Caribbean
+    #Black Caribbean 21381702
+      
     21381, # Black Caribbean
 
-    #Black African
+    #Black African 21382712
+      
     21382, # Black African
 
-    #Chinese
+    #Chinese 21383722
+      
     21383, # Chinese
 
-    #Other
+    #Other 21386732
+      
     21386, # Other
 
     # Age x BMI Interaction
