@@ -46,7 +46,7 @@ plpModelQRISK2_male_OG_10 <- PatientLevelPrediction::createGlmModel(
         18838, # Rheumatoid arthritis
         18841, # Atrial fibrillation
         21347, # Renal disease
-        18778, # AgexBMI interaction              
+        18778, # AgexBMI interaction              #LOOK AT INTERACTIONS
         21387, # AgexTownsend interaction
         18822, # Agexsystolicbloodpressure interaction
         18821, # Agexfamilyhistory interaction
@@ -126,7 +126,7 @@ baseline*exp(x)
     
     # current smoker - covariateId 19285678
     FeatureExtraction::createCohortBasedCovariateSettings(
-      analysisId = 668, 
+      analysisId = 678, 
       covariateCohortDatabaseSchema = cohortDatabaseSchema,
       covariateCohortTable = cohortTableName, 
       covariateCohorts = data.frame(
@@ -187,6 +187,23 @@ baseline*exp(x)
       startDay = -30, 
       endDay = 0
     ),
+
+    # Age x BMI Interaction
+
+    # Age x Townsend Interaction
+
+    # Age x SBP Interaction
+
+    # Age x Family History of cardiovascular disease Interaction
+
+    # Age x Smoking Interaction Interaction
+
+    # Age x Treated Hypertension Interaction
+
+    # Age x Type II DM Interaction 
+
+    # Age x Atrial Fibrillation Interaction
+
     
   )                 
 )
