@@ -16,16 +16,7 @@ createQRISK2MaleOG10 <- function(
   ){
   
   # Male qrisk2
-  # 50.634* log(age/10)
-  # 1.001*Ratio of total serum cholesterol to high density lipoprotein cholesterol levels
-  # 1.022*BMI
-  # 1.300*Family history of premature cardiovascular disease
-  # 1.417*smoking
-  # 1.017*townsend
-  # 1.004*sys blood pressure
-  # 1.847* treatment blood pressure at index
-  # 0.993*Interaction terms for systolic blood pressure×blood pressure treatment
-  
+    
 plpModelQRISK2_male_OG_10 <- PatientLevelPrediction::createGlmModel(
   targetId = 3, # the first cohort I create manually
   outcomeId = 21397, 
@@ -34,19 +25,38 @@ plpModelQRISK2_male_OG_10 <- PatientLevelPrediction::createGlmModel(
     ),# can use this to restrict dates as well
   coefficients = data.frame(
     covariateId = c(
-      1020, # logAge id 
-      1466, # chol ratio measurement
-      2466, # BMI measurement
-      18821668, # family history cohort cov - all prior
-      19285678, # smoker cohort cov - 365 prior
-      4466, # townsend measurement - need to make using conceptId 715996
-      3466, # sys blood pressure
-      19280688, # treatment blood pressure needs to be on index - 30 prior
-      19280768 # interaction for systolic blood pressure×blood pressure treatment
+        22466, # white or not recorded
+        21377, # Indian
+        21378, # Pakistani
+        21379, # Bangladeshi
+        21380, # Other Asian
+        21381, # Black Caribbean
+        21382, # Black African
+        21383, # Chinese
+        21386, # Other
+        1020,  # Age
+        2466, # BMI 
+        4466, # Townsend score
+        3466, # Systolic blood pressure 
+        1466, # Cholesterol/HDL 
+        18821668, # Family history coronary heart disease
+        19285678, # Current smoker
+        19280688, # Treated hypertension
+        18815, # Type 2 diabetes
+        18838, # Rheumatoid arthritis
+        18841, # Atrial fibrillation
+        21347, # Renal disease
+        18778, # AgexBMI interaction              
+        21387, # AgexTownsend interaction
+        18822, # Agexsystolicbloodpressure interaction
+        18821, # Agexfamilyhistory interaction
+        19285, # Agexsmoking interaction
+        19280, # Agextreatedhypertension interaction
+        18815, # Agextype2diabetes interaction
+        18841  # Agexatrialfibrillation interaction
     ), 
-    coefficient = c(50.634, 
-                    1.001, 1.022, 1.300, 1.417, 1.017, 1.004, 1.847, 0.993
-    ) 
+    coefficient = c(1.00, 1.45, 1.97, 1.67, 1.37, 0.62, 0.63, 0.51, 0.91, 1.59, 0.218, 0.236, 0.0595, 1.19, 2.14, 1.65, 1.68, 2.20, 1.38, 2.40, 1.75, 0.985, 0.1946, 0.0482, 0.923, 0.932, 0.916, 0.902, 0.893
+                   )  
   ), 
   intercept = 0, 
   mapping = "function(x){ sapply(x, function(x){
@@ -178,28 +188,6 @@ baseline*exp(x)
       endDay = 0
     ),
     
-    # interaction for treatment and SBP - covariate 19280768
-    QRISKvalidation::createCohortMeasurementCovariateSettings(
-      covariateName = 'SBPxantihypertensive agent interaction term', 
-      cohortDatabaseSchema = cohortDatabaseSchema,
-      cohortTable = cohortTableName,
-      cohortId = 19280, 
-      cohortStartDay = -30,
-      cohortEndDay = 0,
-      measurementConceptSet = c(3004249),
-      measurementUnitSet = c(NA, 0, 8876), 
-      measurementStartDay = -365, 
-      measurementEndDay = 0, 
-      measurementScaleMap = function(covariates){
-        covariates$valueAsNumber <- sapply(covariates$valueAsNumber, function(y){y - 132.6})
-        return(covariates)
-      }, 
-      measurementMinVal = 5,
-      measurementMaxVal = 250, 
-      measurementAggregateMethod = 'recent',
-      covariateId = 19280768,
-      analysisId = 768
-    )
   )                 
 )
 
