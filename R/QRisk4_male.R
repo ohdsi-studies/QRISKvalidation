@@ -175,6 +175,62 @@ baseline*exp(x)
       startDay = -30, 
       endDay = 0
     ),
+
+       # type 2 diabetes 18815698
+    FeatureExtraction::createCohortBasedCovariateSettings(
+      analysisId = 698, 
+      covariateCohortDatabaseSchema = cohortDatabaseSchema,
+      covariateCohortTable = cohortTableName, 
+      covariateCohorts = data.frame(
+        cohortId = c(18815), 
+        cohortName = c('Type 2 diabetes')
+      ), 
+      valueType = 'binary', 
+      startDay = -9999, 
+      endDay = 0
+    ),
+    
+    # rheumatoid arthritis 18838708
+    FeatureExtraction::createCohortBasedCovariateSettings(
+      analysisId = 708, 
+      covariateCohortDatabaseSchema = cohortDatabaseSchema,
+      covariateCohortTable = cohortTableName, 
+      covariateCohorts = data.frame(
+        cohortId = c(18838), 
+        cohortName = c('Rheumatoid arthritis')
+      ), 
+      valueType = 'binary', 
+      startDay = -9999, 
+      endDay = 0
+    ),
+   
+    # atrial fibrillation 18841718
+    FeatureExtraction::createCohortBasedCovariateSettings(
+      analysisId = 718, 
+      covariateCohortDatabaseSchema = cohortDatabaseSchema,
+      covariateCohortTable = cohortTableName, 
+      covariateCohorts = data.frame(
+        cohortId = c(18841), 
+        cohortName = c('Atrial fibrillation')
+      ), 
+      valueType = 'binary', 
+      startDay = -9999, 
+      endDay = 0
+    ),
+   
+    # renal disease 21347728
+    FeatureExtraction::createCohortBasedCovariateSettings(
+      analysisId = 728, 
+      covariateCohortDatabaseSchema = cohortDatabaseSchema,
+      covariateCohortTable = cohortTableName, 
+      covariateCohorts = data.frame(
+        cohortId = c(21347), 
+        cohortName = c('Renal disease')
+      ), 
+      valueType = 'binary', 
+      startDay = -9999, 
+      endDay = 0
+    ),
     
   )                 
 )
