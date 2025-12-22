@@ -27,7 +27,7 @@ createQRISK1FemaleOG10 <- function(
   # 0.993*Interaction terms for systolic blood pressure×blood pressure treatment
   
 plpModelQRISK1_female_OG_10 <- PatientLevelPrediction::createGlmModel(
-  targetId = 1, # the first cohort I create manually
+  targetId = 2, # the first cohort I create manually
   outcomeId = 21397, 
   restrictPlpDataSettings = PatientLevelPrediction::createRestrictPlpDataSettings(
     sampleSize = 10000 # sampling for testing
