@@ -26,7 +26,7 @@ plpModelQRISK3_male_OG_10 <- PatientLevelPrediction::createGlmModel(
   coefficients = data.frame(
     covariateId = c(
         4466, # Townsend
-        22466, # White or not recorded
+        22466, # White or not recorded             #TO DO
         21377, # Indian
         21378, # Pakistani
         21379, # Bangladeshi
@@ -39,20 +39,20 @@ plpModelQRISK3_male_OG_10 <- PatientLevelPrediction::createGlmModel(
         21288, # Former smoker
         21289, # Light smoker
         21290, # Moderate smoker
-        21291, # Heavy smoker
+        21291, # Heavy smoker                    #TO DO
         18821668, # Family history of coronary heart disease
-        18820, # Type I Diabetes
+        18820657, # Type I Diabetes
         18815698, # Type II Diabetes
         19280688, #Treated hypertension
         18838708, # Rheumatoid arthritis
         18841718, # Atrial fibrillation
         21347728, # Renal disease
-        19379, # Migraine
-        21371, # Corticosteroid use
-        19164, # Systemic lupus erythematosus
-        21372, # Atypical antipsychotic use
-        21294, # Severe mental illness
-        19165, # Erectile dysfunction or treatment
+        19379667, # Migraine
+        21371677, # Corticosteroid use
+        19164687, # Systemic lupus erythematosus
+        21372697, # Atypical antipsychotic use
+        21294707, # Severe mental illness
+        19165717, # Erectile dysfunction or treatment
         1466, # Cholesterol/HDL
         3466, # Systolic blood pressure
         21395 # SD of blood pressure                                                           #TO DO
@@ -224,6 +224,132 @@ baseline*exp(x)
       startDay = -9999, 
       endDay = 0
     ),
+
+     # white or not recorded
+    22466, # White or not recorded
+
+    # indian
+    21377, # Indian
+
+    #Pakistani
+    21378, # Pakistani
+
+    #Bangladeshi
+    21379, # Bangladeshi
+
+    #Other Asian
+    21380, # Other Asian
+
+    #Black Caribbean
+    21381, # Black Caribbean
+
+    #Black African
+    21382, # Black African
+
+    #Chinese
+    21383, # Chinese
+
+    #Other
+    21386, # Other
+
+    #Type I diabetes 18820657
+    FeatureExtraction::createCohortBasedCovariateSettings(
+      analysisId = 657, 
+      covariateCohortDatabaseSchema = cohortDatabaseSchema,
+      covariateCohortTable = cohortTableName, 
+      covariateCohorts = data.frame(
+        cohortId = c(18820), 
+        cohortName = c('Type I Diabetes')
+      ), 
+      valueType = 'binary', 
+      startDay = -9999, 
+      endDay = 0
+    ),
+      
+    #Migraine 19379667
+    FeatureExtraction::createCohortBasedCovariateSettings(
+      analysisId = 667, 
+      covariateCohortDatabaseSchema = cohortDatabaseSchema,
+      covariateCohortTable = cohortTableName, 
+      covariateCohorts = data.frame(
+        cohortId = c(19379), 
+        cohortName = c('Migraine')
+      ), 
+      valueType = 'binary', 
+      startDay = -9999, 
+      endDay = 0
+    ),
+
+    #Corticosteroid use 21371677
+    FeatureExtraction::createCohortBasedCovariateSettings(
+      analysisId = 677, 
+      covariateCohortDatabaseSchema = cohortDatabaseSchema,
+      covariateCohortTable = cohortTableName, 
+      covariateCohorts = data.frame(
+        cohortId = c(21371), 
+        cohortName = c('Corticosteroids')
+      ), 
+      valueType = 'binary', 
+      startDay = -9999, 
+      endDay = 0
+    ),
+
+    #SLE 19164687
+    FeatureExtraction::createCohortBasedCovariateSettings(
+      analysisId = 687, 
+      covariateCohortDatabaseSchema = cohortDatabaseSchema,
+      covariateCohortTable = cohortTableName, 
+      covariateCohorts = data.frame(
+        cohortId = c(19164), 
+        cohortName = c('SLE')
+      ), 
+      valueType = 'binary', 
+      startDay = -9999, 
+      endDay = 0
+    ),
+
+    #Atypical antipsychotic use 21372697
+    FeatureExtraction::createCohortBasedCovariateSettings(
+      analysisId = 697, 
+      covariateCohortDatabaseSchema = cohortDatabaseSchema,
+      covariateCohortTable = cohortTableName, 
+      covariateCohorts = data.frame(
+        cohortId = c(21372), 
+        cohortName = c('Atypical antipsychotic use')
+      ), 
+      valueType = 'binary', 
+      startDay = -9999, 
+      endDay = 0
+    ),
+
+    #Severe mental illness 21294707
+      FeatureExtraction::createCohortBasedCovariateSettings(
+      analysisId = 707, 
+      covariateCohortDatabaseSchema = cohortDatabaseSchema,
+      covariateCohortTable = cohortTableName, 
+      covariateCohorts = data.frame(
+        cohortId = c(21294), 
+        cohortName = c('Severe mental illness')
+      ), 
+      valueType = 'binary', 
+      startDay = -9999, 
+      endDay = 0
+    ),
+
+    #Erectile dysfunction or treatment 19165717
+    FeatureExtraction::createCohortBasedCovariateSettings(
+      analysisId = 717, 
+      covariateCohortDatabaseSchema = cohortDatabaseSchema,
+      covariateCohortTable = cohortTableName, 
+      covariateCohorts = data.frame(
+        cohortId = c(19164), 
+        cohortName = c('Erectile dysfunction')
+      ), 
+      valueType = 'binary', 
+      startDay = -9999, 
+      endDay = 0
+    ),
+      
   )                 
 )
 
