@@ -1,4 +1,4 @@
-#' Create qrisk 1 model for males usign Qrisk cohorts
+#' Create qrisk 1 model for males using Qrisk cohorts
 #'
 #' @details
 #' The user specifies 
