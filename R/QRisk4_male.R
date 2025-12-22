@@ -5,6 +5,7 @@
 #'
 #' @param cohortDatabaseSchema the schema where the cohorts are generated into
 #' @param cohortTableName the cohort table name
+#' @param sampleSize the sample size to take of the target cohort if it is too large
 #'
 #' @return
 #' An plpModel
@@ -12,7 +13,8 @@
 #' @export
 createQRISK4MaleOG10 <- function(
     cohortDatabaseSchema,
-    cohortTableName = 'qrisk_cprd'
+    cohortTableName = 'qrisk_cprd',
+    sampleSize = 10000
   ){
   
   # Male qrisk4
@@ -21,48 +23,52 @@ plpModelQRISK4_male_OG_10 <- PatientLevelPrediction::createGlmModel(
   targetId = 7, # the first cohort I create manually
   outcomeId = 21397, 
   restrictPlpDataSettings = PatientLevelPrediction::createRestrictPlpDataSettings(
-    sampleSize = 10000 # sampling for testing
+    sampleSize = sampleSize # sampling for testing
     ),# can use this to restrict dates as well
   coefficients = data.frame(
     covariateId = c(
         3466, # Systolic blood pressure
-        21395, # SD of blood pressure                     # TO DO
-        1466, # Cholesterol/HDL
+        3467, # SD of blood pressure                     # TO DO
+        1486, # Cholesterol/HDL
         4466, # Deprivation (Townsend)
-        21288665, # Former smoker
-        21289675, # Light smoker
-        21290685, # Moderate smoker
-        21291695, # Heavy smoker
+        
+        21288655, # Former smoker
+        21289655, # Light smoker
+        21290655, # Moderate smoker
+        21291655, # Heavy smoker
+        
         22466652, # White or not recorded               
-        21377662, # Indian
-        21378672, # Pakistani
-        21379682, # Bangladeshi
-        21380692, # Other Asian
-        21381702, # Black Caribbean
-        21382712, # Black African
-        21383722, # Chinese
-        21386732, # Other                                 
-        22465654, # No learning disability
-        21344664, # Learning disability
-        19881674, # Down syndrome
+        21377652, # Indian
+        21378652, # Pakistani
+        21379652, # Bangladeshi
+        21380652, # Other Asian
+        21381652, # Black Caribbean
+        21382652, # Black African
+        21383652, # Chinese
+        21386652, # Other  
+        
+        22465668, # No learning disability
+        21344668, # Learning disability - Jenna note: is this recorded?
+        19881668, # Down syndrome
+        
         18821668, # Family history of coronary heart disease
-        18820657, # Type I Diabetes
-        18815698, # Type II Diabetes
-        19280688, #Treated hypertension
-        18838708, # Rheumatoid arthritis
-        18841718, # Atrial fibrillation
-        21347728, # Renal disease
-        19379667, # Migraine
-        21371677, # Corticosteroid use
-        19164687, # Systemic lupus erythematosus
-        21372697, # Atypical antipsychotic use
-        21294707, # Severe mental illness
-        19380684, # COPD
-        19792694, # Lung cancer
-        19788704, # Oral cancer
-        19787714, # Blood cancer
-        19174724, # Brain cancer
-        19165717, # Erectile dysfunction or treatment
+        18820668, # Type I Diabetes
+        18815668, # Type II Diabetes
+        19280688, # Treated hypertension - recent 
+        18838668, # Rheumatoid arthritis
+        18841668, # Atrial fibrillation
+        21347668, # Renal disease
+        19379668, # Migraine
+        21371668, # Corticosteroid use
+        19164668, # Systemic lupus erythematosus
+        21372668, # Atypical antipsychotic use
+        21294668, # Severe mental illness
+        19380668, # COPD
+        19792668, # Lung cancer
+        19788668, # Oral cancer
+        19787668, # Blood cancer
+        19174668, # Brain cancer
+        19165668 # Erectile dysfunction or treatment
     ),       
     coefficient = c(0.065, 1.14, 1.15, 0.222, 1.19, 2.00, 2.08, 2.60, 1.00, 1.19, 1.47, 1.41, 1.04, 0.67, 0.66, 0.72, 0.81, 1.00, 1.17, 2.35, 1.62, 3.28, 2.03, 2.20, 1.19, 2.59, 1.70, 1.41, 1.64, 1.68, 1.18, 1.37, 1.66, 1.49, 2.06, 5.45, 1.40
                    )
@@ -81,49 +87,25 @@ baseline*exp(x)
   ),
   covariateSettings = list(
     # creates a Chol/HDL ratio covariate with id 1466
-    QRISKvalidation::createMeasurementCovariateSettings(
+    QRISKvalidation::createMeasurementRatioCovariateSettings(
       covariateName = 'Chol/HDL ratio', 
-      conceptSet = c(4195214, 4042587,4195490,4198116,36314015,36314016,36314017,36314018,36361945,36361947,36361949,36361951),
-      unitSet = c(NA, 0, 8523),
-      startDay = -365, 
+      conceptSet1 = c(4260765), # first measurement
+      conceptSet2 = c(4042059,4076704), # second measurement 
+      unitSet1 = NULL, # may need to edit this if units can be different across network
+      unitSet2 = NULL, # may need to edit this if units can be different across network
+      startDay = -365*3, # last three years - TODO edit this
       endDay = 0, 
-      scaleMap = function(covariates) {
-        covariates$valueAsNumber <- sapply(covariates$valueAsNumber, function(y){y - 4})
+      centeringMap = function(covariates){
+        covariates$covariateValue <- sapply(covariates$covariateValue, function(y){y - 4})
         return(covariates)
       }, 
-      minVal = 0,
-      maxVal = 20,
+      minVal1 = 0,
+      maxVal1 = 5000, # is there a max value that past this must be an error?
+      minVal2 =  0,
+      maxVal2 = NULL, # is there a max value that past this must be an error?
       aggregateMethod = 'recent',
-      covariateId = 1466, 
-      analysisId = 466
-    ),
-    
-    # family history of CVD covariate 18821668
-    FeatureExtraction::createCohortBasedCovariateSettings(
-      analysisId = 668, 
-      covariateCohortDatabaseSchema = cohortDatabaseSchema,
-      covariateCohortTable = cohortTableName, 
-      covariateCohorts = data.frame(
-        cohortId = c(18821), 
-        cohortName = c('Family history of premature cardiovascular disease')
-      ), 
-      valueType = 'binary', 
-      startDay = -9999, 
-      endDay = 0
-    ),
-    
-    # current smoker - covariateId 19285678
-    FeatureExtraction::createCohortBasedCovariateSettings(
-      analysisId = 678, 
-      covariateCohortDatabaseSchema = cohortDatabaseSchema,
-      covariateCohortTable = cohortTableName, 
-      covariateCohorts = data.frame(
-        cohortId = c(19285), 
-        cohortName = c('Current smoker')
-      ), 
-      valueType = 'binary', 
-      startDay = -365, 
-      endDay = 0
+      covariateId = 1486, 
+      analysisId = 486
     ),
     
     # townsend measurement covariate 4466
@@ -148,7 +130,7 @@ baseline*exp(x)
     QRISKvalidation::createMeasurementCovariateSettings(
       covariateName = 'Systolic Blood Pressure', 
       conceptSet = c(3004249),
-      unitSet = c(NA, 0, 8876), 
+      unitSet = NULL, 
       startDay = -365, 
       endDay = 0, 
       scaleMap = function(covariates){
@@ -160,6 +142,23 @@ baseline*exp(x)
       aggregateMethod = 'recent',
       covariateId = 3466, 
       analysisId = 466
+    ),
+    
+    QRISKvalidation::createMeasurementCovariateSettings(
+      covariateName = 'Systolic Blood Pressure', 
+      conceptSet = c(3004249),
+      unitSet = NULL, 
+      startDay = -365, 
+      endDay = 0, 
+      scaleMap = function(covariates){
+        covariates$valueAsNumber <- sapply(covariates$valueAsNumber, function(y){y - 132.6})
+        return(covariates)
+      }, 
+      minVal = 5,
+      maxVal = 250, 
+      aggregateMethod = 'stdev', 
+      covariateId = 3467, 
+      analysisId = 467
     ),
     
     # treatment for blood pressure 19280688
@@ -175,454 +174,133 @@ baseline*exp(x)
       startDay = -30, 
       endDay = 0
     ),
-
-       # type 2 diabetes 18815698
-    FeatureExtraction::createCohortBasedCovariateSettings(
-      analysisId = 698, 
-      covariateCohortDatabaseSchema = cohortDatabaseSchema,
-      covariateCohortTable = cohortTableName, 
-      covariateCohorts = data.frame(
-        cohortId = c(18815), 
-        cohortName = c('Type 2 diabetes')
-      ), 
-      valueType = 'binary', 
-      startDay = -9999, 
-      endDay = 0
-    ),
     
-    # rheumatoid arthritis 18838708
+    # family history of CVD covariate 18821668
+    # type 2 diabetes 18815668
+    # rheumatoid arthritis 18838668
+    # atrial fibrillation 18841668
+    # renal disease 21347668
+    # Type I diabetes 18820668
+    # Migraine 19379668
+    # Corticosteroid use 21371668
+    # SLE 19164668
+    # Atypical antipsychotic use 21372668
+    # Severe mental illness 21294668
+    # Erectile dysfunction or treatment 19165668
+    # No learning disability 22465668
+    # Learning disability 21344668
+    # Down syndrome 19881668
+    # COPD 19380668
+    # Lung cancer 19792668
+    # Oral cancer 19788668
+    # Blood cancer 19787668
+    # Brain cancer 19174668
+    
     FeatureExtraction::createCohortBasedCovariateSettings(
-      analysisId = 708, 
+      analysisId = 668, 
       covariateCohortDatabaseSchema = cohortDatabaseSchema,
       covariateCohortTable = cohortTableName, 
       covariateCohorts = data.frame(
-        cohortId = c(18838), 
-        cohortName = c('Rheumatoid arthritis')
-      ), 
-      valueType = 'binary', 
-      startDay = -9999, 
-      endDay = 0
-    ),
-   
-    # atrial fibrillation 18841718
-    FeatureExtraction::createCohortBasedCovariateSettings(
-      analysisId = 718, 
-      covariateCohortDatabaseSchema = cohortDatabaseSchema,
-      covariateCohortTable = cohortTableName, 
-      covariateCohorts = data.frame(
-        cohortId = c(18841), 
-        cohortName = c('Atrial fibrillation')
-      ), 
-      valueType = 'binary', 
-      startDay = -9999, 
-      endDay = 0
-    ),
-   
-    # renal disease 21347728
-    FeatureExtraction::createCohortBasedCovariateSettings(
-      analysisId = 728, 
-      covariateCohortDatabaseSchema = cohortDatabaseSchema,
-      covariateCohortTable = cohortTableName, 
-      covariateCohorts = data.frame(
-        cohortId = c(21347), 
-        cohortName = c('Renal disease')
-      ), 
-      valueType = 'binary', 
-      startDay = -9999, 
-      endDay = 0
-    ),
-
-   #Type I diabetes 18820657
-    FeatureExtraction::createCohortBasedCovariateSettings(
-      analysisId = 657, 
-      covariateCohortDatabaseSchema = cohortDatabaseSchema,
-      covariateCohortTable = cohortTableName, 
-      covariateCohorts = data.frame(
-        cohortId = c(18820), 
-        cohortName = c('Type I Diabetes')
-      ), 
-      valueType = 'binary', 
-      startDay = -9999, 
-      endDay = 0
-    ),
-      
-    #Migraine 19379667
-    FeatureExtraction::createCohortBasedCovariateSettings(
-      analysisId = 667, 
-      covariateCohortDatabaseSchema = cohortDatabaseSchema,
-      covariateCohortTable = cohortTableName, 
-      covariateCohorts = data.frame(
-        cohortId = c(19379), 
-        cohortName = c('Migraine')
+        cohortId = c(18821, 18815, 18838, 18841,
+                     21347, 18820, 19379, 21371,
+                     19164, 21372, 21294, 19164,
+                     22465, 21344, 19881, 
+                     19380, 19792, 19788, 19787,
+                     19174), 
+        cohortName = c('Family history of premature cardiovascular disease',
+                       'Type 2 diabetes',
+                       'Rheumatoid arthritis',
+                       'Atrial fibrillation',
+                       'Renal disease',
+                       'Type I Diabetes',
+                       'Migraine',
+                       'Corticosteroids',
+                       'SLE',
+                       'Atypical antipsychotic use',
+                       'Severe mental illness',
+                       'Erectile dysfunction',
+                       'No learning disability',
+                       'Learning disability',
+                       'Down syndrome',
+                       'COPD',
+                       'Lung cancer',
+                       'Oral cancer',
+                       'Blood cancer',
+                       'Brain cancer'
+                       )
       ), 
       valueType = 'binary', 
       startDay = -9999, 
       endDay = 0
     ),
 
-    #Corticosteroid use 21371677
-    FeatureExtraction::createCohortBasedCovariateSettings(
-      analysisId = 677, 
-      covariateCohortDatabaseSchema = cohortDatabaseSchema,
-      covariateCohortTable = cohortTableName, 
-      covariateCohorts = data.frame(
-        cohortId = c(21371), 
-        cohortName = c('Corticosteroids')
-      ), 
-      valueType = 'binary', 
-      startDay = -9999, 
-      endDay = 0
-    ),
 
-    #SLE 19164687
+    # current smoker - covariateId 19285678
     FeatureExtraction::createCohortBasedCovariateSettings(
-      analysisId = 687, 
+      analysisId = 678, 
       covariateCohortDatabaseSchema = cohortDatabaseSchema,
       covariateCohortTable = cohortTableName, 
       covariateCohorts = data.frame(
-        cohortId = c(19164), 
-        cohortName = c('SLE')
-      ), 
-      valueType = 'binary', 
-      startDay = -9999, 
-      endDay = 0
-    ),
-
-    #Atypical antipsychotic use 21372697
-    FeatureExtraction::createCohortBasedCovariateSettings(
-      analysisId = 697, 
-      covariateCohortDatabaseSchema = cohortDatabaseSchema,
-      covariateCohortTable = cohortTableName, 
-      covariateCohorts = data.frame(
-        cohortId = c(21372), 
-        cohortName = c('Atypical antipsychotic use')
-      ), 
-      valueType = 'binary', 
-      startDay = -9999, 
-      endDay = 0
-    ),
-
-    #Severe mental illness 21294707
-      FeatureExtraction::createCohortBasedCovariateSettings(
-      analysisId = 707, 
-      covariateCohortDatabaseSchema = cohortDatabaseSchema,
-      covariateCohortTable = cohortTableName, 
-      covariateCohorts = data.frame(
-        cohortId = c(21294), 
-        cohortName = c('Severe mental illness')
-      ), 
-      valueType = 'binary', 
-      startDay = -9999, 
-      endDay = 0
-    ),
-
-    #Erectile dysfunction or treatment 19165717
-    FeatureExtraction::createCohortBasedCovariateSettings(
-      analysisId = 717, 
-      covariateCohortDatabaseSchema = cohortDatabaseSchema,
-      covariateCohortTable = cohortTableName, 
-      covariateCohorts = data.frame(
-        cohortId = c(19164), 
-        cohortName = c('Erectile dysfunction')
-      ), 
-      valueType = 'binary', 
-      startDay = -9999, 
-      endDay = 0
-    ),
-
-    #No learning disability 22465654
-    FeatureExtraction::createCohortBasedCovariateSettings(
-      analysisId = 654, 
-      covariateCohortDatabaseSchema = cohortDatabaseSchema,
-      covariateCohortTable = cohortTableName, 
-      covariateCohorts = data.frame(
-        cohortId = c(22465), 
-        cohortName = c('No learning disability')
-      ), 
-      valueType = 'binary', 
-      startDay = -9999, 
-      endDay = 0
-    ),
-
-    #Learning disability 21344664
-    FeatureExtraction::createCohortBasedCovariateSettings(
-      analysisId = 664, 
-      covariateCohortDatabaseSchema = cohortDatabaseSchema,
-      covariateCohortTable = cohortTableName, 
-      covariateCohorts = data.frame(
-        cohortId = c(21344), 
-        cohortName = c('Learning disability')
-      ), 
-      valueType = 'binary', 
-      startDay = -9999, 
-      endDay = 0
-    ),
-      
-    #Down syndrome 19881674
-    FeatureExtraction::createCohortBasedCovariateSettings(
-      analysisId = 674, 
-      covariateCohortDatabaseSchema = cohortDatabaseSchema,
-      covariateCohortTable = cohortTableName, 
-      covariateCohorts = data.frame(
-        cohortId = c(19881), 
-        cohortName = c('Down syndrome')
-      ), 
-      valueType = 'binary', 
-      startDay = -9999, 
-      endDay = 0
-    ),
-
-    #COPD 19380684
-    FeatureExtraction::createCohortBasedCovariateSettings(
-      analysisId = 684, 
-      covariateCohortDatabaseSchema = cohortDatabaseSchema,
-      covariateCohortTable = cohortTableName, 
-      covariateCohorts = data.frame(
-        cohortId = c(19380), 
-        cohortName = c('COPD')
-      ), 
-      valueType = 'binary', 
-      startDay = -9999, 
-      endDay = 0
-    ),
-
-    #Lung cancer 19792694
-    FeatureExtraction::createCohortBasedCovariateSettings(
-      analysisId = 694, 
-      covariateCohortDatabaseSchema = cohortDatabaseSchema,
-      covariateCohortTable = cohortTableName, 
-      covariateCohorts = data.frame(
-        cohortId = c(19792), 
-        cohortName = c('Lung cancer')
-      ), 
-      valueType = 'binary', 
-      startDay = -9999, 
-      endDay = 0
-    ),
-
-    #Oral cancer 19788704
-    FeatureExtraction::createCohortBasedCovariateSettings(
-      analysisId = 704, 
-      covariateCohortDatabaseSchema = cohortDatabaseSchema,
-      covariateCohortTable = cohortTableName, 
-      covariateCohorts = data.frame(
-        cohortId = c(19788), 
-        cohortName = c('Oral cancer')
-      ), 
-      valueType = 'binary', 
-      startDay = -9999, 
-      endDay = 0
-    ),
-
-    #Blood cancer 19787714
-    FeatureExtraction::createCohortBasedCovariateSettings(
-      analysisId = 714, 
-      covariateCohortDatabaseSchema = cohortDatabaseSchema,
-      covariateCohortTable = cohortTableName, 
-      covariateCohorts = data.frame(
-        cohortId = c(19787), 
-        cohortName = c('Blood cancer')
-      ), 
-      valueType = 'binary', 
-      startDay = -9999, 
-      endDay = 0
-    ),
-
-    #Brain cancer 19174724
-    FeatureExtraction::createCohortBasedCovariateSettings(
-      analysisId = 724, 
-      covariateCohortDatabaseSchema = cohortDatabaseSchema,
-      covariateCohortTable = cohortTableName, 
-      covariateCohorts = data.frame(
-        cohortId = c(19174), 
-        cohortName = c('Brain cancer')
-      ), 
-      valueType = 'binary', 
-      startDay = -9999, 
-      endDay = 0
-    ),
-
-    #Former smoker 21288665
-    FeatureExtraction::createCohortBasedCovariateSettings(
-      analysisId = 665, 
-      covariateCohortDatabaseSchema = cohortDatabaseSchema,
-      covariateCohortTable = cohortTableName, 
-      covariateCohorts = data.frame(
-        cohortId = c(21288), 
-        cohortName = c('Former smoker')
+        cohortId = c(19285), 
+        cohortName = c('Current smoker')
       ), 
       valueType = 'binary', 
       startDay = -365, 
       endDay = 0
     ),
-
-    #Light smoker 21289675
-    FeatureExtraction::createCohortBasedCovariateSettings(
-      analysisId = 675, 
-      covariateCohortDatabaseSchema = cohortDatabaseSchema,
-      covariateCohortTable = cohortTableName, 
-      covariateCohorts = data.frame(
-        cohortId = c(21289), 
-        cohortName = c('Light smoker')
-      ), 
-      valueType = 'binary', 
-      startDay = -365, 
-      endDay = 0
-    ),
-
-    #Moderate smoker 21290685
-    FeatureExtraction::createCohortBasedCovariateSettings(
-      analysisId = 685, 
-      covariateCohortDatabaseSchema = cohortDatabaseSchema,
-      covariateCohortTable = cohortTableName, 
-      covariateCohorts = data.frame(
-        cohortId = c(21290), 
-        cohortName = c('Moderate smoker')
-      ), 
-      valueType = 'binary', 
-      startDay = -365, 
-      endDay = 0
-    ),
-
-    #Heavy smoker 21291695
-    FeatureExtraction::createCohortBasedCovariateSettings(
-      analysisId = 695, 
-      covariateCohortDatabaseSchema = cohortDatabaseSchema,
-      covariateCohortTable = cohortTableName, 
-      covariateCohorts = data.frame(
-        cohortId = c(21291), 
-        cohortName = c('Heavy smoker')
-      ), 
-      valueType = 'binary', 
-      startDay = -365, 
-      endDay = 0
-    ),
-
     # white or not recorded 22466652
+    # indian 21377652
+    # Pakistani 21378652
+    # Bangladeshi 21379652
+    # Other Asian 21380652
+    # Black Caribbean 21381652
+    # Black African 21382652
+    # Chinese 21383652
+    # Other 21386652
     FeatureExtraction::createCohortBasedCovariateSettings(
       analysisId = 652, 
       covariateCohortDatabaseSchema = cohortDatabaseSchema,
       covariateCohortTable = cohortTableName, 
       covariateCohorts = data.frame(
-        cohortId = c(22466), 
-        cohortName = c('White or not recorded')
-      ), 
-      valueType = 'binary', 
-      startDay = -9999, 
-      endDay = 0
-    ),
-
-    # indian 21377662
-    FeatureExtraction::createCohortBasedCovariateSettings(
-      analysisId = 662, 
-      covariateCohortDatabaseSchema = cohortDatabaseSchema,
-      covariateCohortTable = cohortTableName, 
-      covariateCohorts = data.frame(
-        cohortId = c(21377), 
-        cohortName = c('Indian')
-      ), 
-      valueType = 'binary', 
-      startDay = -9999, 
-      endDay = 0
-    ),
-
-    #Pakistani 21378672
-    FeatureExtraction::createCohortBasedCovariateSettings(
-      analysisId = 672, 
-      covariateCohortDatabaseSchema = cohortDatabaseSchema,
-      covariateCohortTable = cohortTableName, 
-      covariateCohorts = data.frame(
-        cohortId = c(21378), 
-        cohortName = c('Pakistani')
-      ), 
-      valueType = 'binary', 
-      startDay = -9999, 
-      endDay = 0
-    ),
-
-    #Bangladeshi 21379682
-    FeatureExtraction::createCohortBasedCovariateSettings(
-      analysisId = 682, 
-      covariateCohortDatabaseSchema = cohortDatabaseSchema,
-      covariateCohortTable = cohortTableName, 
-      covariateCohorts = data.frame(
-        cohortId = c(21379), 
-        cohortName = c('Bangladeshi')
-      ), 
-      valueType = 'binary', 
-      startDay = -9999, 
-      endDay = 0
-    ),
-   
-    #Other Asian 21380692
-    FeatureExtraction::createCohortBasedCovariateSettings(
-      analysisId = 692, 
-      covariateCohortDatabaseSchema = cohortDatabaseSchema,
-      covariateCohortTable = cohortTableName, 
-      covariateCohorts = data.frame(
-        cohortId = c(21380), 
-        cohortName = c('Other Asian')
+        cohortId = c(22466, 21377, 21378,
+                     21379, 21380, 21381,
+                     21382, 21383, 21386), 
+        cohortName = c('White or not recorded',
+                       'Indian', 'Pakistani',
+                       'Bangladeshi',
+                       'Other Asian',
+                       'Black Caribbean',
+                       'Black African',
+                       'Chinese',
+                       'Other')
       ), 
       valueType = 'binary', 
       startDay = -9999, 
       endDay = 0
     ),
     
-    #Black Caribbean 21381702
+    
+    # Non smoker 21287655
+    # Former smoker 21288655
+    # Light smoker 21289655
+    # Moderate smoker 21290655
+    # Heavy smoker 21291655
     FeatureExtraction::createCohortBasedCovariateSettings(
-      analysisId = 702, 
+      analysisId = 655, 
       covariateCohortDatabaseSchema = cohortDatabaseSchema,
       covariateCohortTable = cohortTableName, 
       covariateCohorts = data.frame(
-        cohortId = c(21381), 
-        cohortName = c('Black Caribbean')
+        cohortId = c(21287, 21288, 21289,
+                     21290, 21291), 
+        cohortName = c('Non smoker', 'Former smoker',
+                       'Light smoker', 'Moderate smoker',
+                       'Heavy smoker')
       ), 
       valueType = 'binary', 
-      startDay = -9999, 
+      startDay = -365, 
       endDay = 0
-    ),
-
-    #Black African 21382712
-    FeatureExtraction::createCohortBasedCovariateSettings(
-      analysisId = 712, 
-      covariateCohortDatabaseSchema = cohortDatabaseSchema,
-      covariateCohortTable = cohortTableName, 
-      covariateCohorts = data.frame(
-        cohortId = c(21382), 
-        cohortName = c('Black African')
-      ), 
-      valueType = 'binary', 
-      startDay = -9999, 
-      endDay = 0
-    ),
-
-    #Chinese 21383722
-    FeatureExtraction::createCohortBasedCovariateSettings(
-      analysisId = 722, 
-      covariateCohortDatabaseSchema = cohortDatabaseSchema,
-      covariateCohortTable = cohortTableName, 
-      covariateCohorts = data.frame(
-        cohortId = c(21383), 
-        cohortName = c('Chinese')
-      ), 
-      valueType = 'binary', 
-      startDay = -9999, 
-      endDay = 0
-    ),
-
-    #Other 21386732
-    FeatureExtraction::createCohortBasedCovariateSettings(
-      analysisId = 732, 
-      covariateCohortDatabaseSchema = cohortDatabaseSchema,
-      covariateCohortTable = cohortTableName, 
-      covariateCohorts = data.frame(
-        cohortId = c(21386), 
-        cohortName = c('Other')
-      ), 
-      valueType = 'binary', 
-      startDay = -9999, 
-      endDay = 0
-    ),
+    )
+    
   )                 
 )
 

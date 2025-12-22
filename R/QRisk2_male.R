@@ -5,6 +5,7 @@
 #'
 #' @param cohortDatabaseSchema the schema where the cohorts are generated into
 #' @param cohortTableName the cohort table name
+#' @param sampleSize the sample size to take of the target cohort if it is too large
 #'
 #' @return
 #' An plpModel
@@ -12,7 +13,8 @@
 #' @export
 createQRISK2MaleOG10 <- function(
     cohortDatabaseSchema,
-    cohortTableName = 'qrisk_cprd'
+    cohortTableName = 'qrisk_cprd',
+    sampleSize = 10000
   ){
   
   # Male qrisk2
@@ -21,39 +23,39 @@ plpModelQRISK2_male_OG_10 <- PatientLevelPrediction::createGlmModel(
   targetId = 3, # the first cohort I create manually
   outcomeId = 21397, 
   restrictPlpDataSettings = PatientLevelPrediction::createRestrictPlpDataSettings(
-    sampleSize = 10000 # sampling for testing
+    sampleSize = sampleSize # sampling for testing
     ),# can use this to restrict dates as well
   coefficients = data.frame(
     covariateId = c(
         22466652, # White or not recorded               
-        21377662, # Indian
-        21378672, # Pakistani
-        21379682, # Bangladeshi
-        21380692, # Other Asian
-        21381702, # Black Caribbean
-        21382712, # Black African
-        21383722, # Chinese
-        21386732, # Other
+        21377652, # Indian
+        21378652, # Pakistani
+        21379652, # Bangladeshi
+        21380652, # Other Asian
+        21381652, # Black Caribbean
+        21382652, # Black African
+        21383652, # Chinese
+        21386652, # Other
         1020,  # Age
         2466, # BMI 
         4466, # Townsend score
         3466, # Systolic blood pressure 
-        1466, # Cholesterol/HDL 
+        1486, # Cholesterol/HDL 
         18821668, # Family history coronary heart disease
         19285678, # Current smoker
         19280688, # Treated hypertension
         18815698, # Type 2 diabetes
-        18838708, # Rheumatoid arthritis
-        18841718, # Atrial fibrillation
-        21347728, # Renal disease
-        18778, # AgexBMI interaction             #TO DO 
-        21387, # AgexTownsend interaction        #TO DO
-        18822, # Agexsystolicbloodpressure interaction #TO DO
-        18821651, # Agexfamilyhistory interaction
-        19285661, # Agexsmoking interaction
-        19280671, # Agextreatedhypertension interaction
-        18815681, # Agextype2diabetes interaction
-        18841691  # Agexatrialfibrillation interaction
+        18838698, # Rheumatoid arthritis
+        18841698, # Atrial fibrillation
+        21347698, # Renal disease
+        1333, # AgexBMI interaction             #TO DO 
+        0, # AgexTownsend interaction        #TO DO
+        2333, # Agexsystolicbloodpressure interaction #TO DO
+        1882101651, # Agexfamilyhistory interaction
+        1928501661, # Agexsmoking interaction
+        1928001671, # Agextreatedhypertension interaction
+        1881501651, # Agextype2diabetes interaction
+        1884101651  # Agexatrialfibrillation interaction
     ), 
     coefficient = c(1.00, 1.45, 1.97, 1.67, 1.37, 0.62, 0.63, 0.51, 0.91, 1.59, 0.218, 0.236, 0.0595, 1.19, 2.14, 1.65, 1.68, 2.20, 1.38, 2.40, 1.75, 0.985, 0.1946, 0.0482, 0.923, 0.932, 0.916, 0.902, 0.893
                    )  
@@ -75,21 +77,25 @@ baseline*exp(x)
     QRISKvalidation::createLogAgeCovariateSettings(ageMultiply = 1/10),
     
     # creates a Chol/HDL ratio covariate with id 1466
-    QRISKvalidation::createMeasurementCovariateSettings(
+    QRISKvalidation::createMeasurementRatioCovariateSettings(
       covariateName = 'Chol/HDL ratio', 
-      conceptSet = c(4195214, 4042587,4195490,4198116,36314015,36314016,36314017,36314018,36361945,36361947,36361949,36361951),
-      unitSet = c(NA, 0, 8523),
-      startDay = -365, 
+      conceptSet1 = c(4260765), # first measurement
+      conceptSet2 = c(4042059,4076704), # second measurement 
+      unitSet1 = NULL, # may need to edit this if units can be different across network
+      unitSet2 = NULL, # may need to edit this if units can be different across network
+      startDay = -365*3, # last three years - TODO edit this
       endDay = 0, 
-      scaleMap = function(covariates){
-        covariates$valueAsNumber <- sapply(covariates$valueAsNumber, function(y){y - 4})
+      centeringMap = function(covariates){
+        covariates$covariateValue <- sapply(covariates$covariateValue, function(y){y - 4})
         return(covariates)
       }, 
-      minVal = 0,
-      maxVal = 20,
+      minVal1 = 0,
+      maxVal1 = 5000, # is there a max value that past this must be an error?
+      minVal2 =  0,
+      maxVal2 = NULL, # is there a max value that past this must be an error?
       aggregateMethod = 'recent',
-      covariateId = 1466, 
-      analysisId = 466
+      covariateId = 1486, 
+      analysisId = 486
     ),
     
     # BMI cov with id 2466
@@ -160,9 +166,9 @@ baseline*exp(x)
       analysisId = 466
     ),
 
-    # current smoker - covariateId 19285678
+    # current smoker - covariateId 19285668
     FeatureExtraction::createCohortBasedCovariateSettings(
-      analysisId = 668, 
+      analysisId = 678, 
       covariateCohortDatabaseSchema = cohortDatabaseSchema,
       covariateCohortTable = cohortTableName, 
       covariateCohorts = data.frame(
@@ -189,182 +195,51 @@ baseline*exp(x)
     ),
 
     # type 2 diabetes 18815698
+    # rheumatoid arthritis 18838698
+    # atrial fibrillation 18841698
+    # renal disease 21347698
     FeatureExtraction::createCohortBasedCovariateSettings(
       analysisId = 698, 
       covariateCohortDatabaseSchema = cohortDatabaseSchema,
       covariateCohortTable = cohortTableName, 
       covariateCohorts = data.frame(
-        cohortId = c(18815), 
-        cohortName = c('Type 2 diabetes')
-      ), 
-      valueType = 'binary', 
-      startDay = -9999, 
-      endDay = 0
-    ),
-    
-    # rheumatoid arthritis 18838708
-    FeatureExtraction::createCohortBasedCovariateSettings(
-      analysisId = 708, 
-      covariateCohortDatabaseSchema = cohortDatabaseSchema,
-      covariateCohortTable = cohortTableName, 
-      covariateCohorts = data.frame(
-        cohortId = c(18838), 
-        cohortName = c('Rheumatoid arthritis')
+        cohortId = c(18815,18838, 18841, 21347), 
+        cohortName = c('Type 2 diabetes',
+                       'Rheumatoid arthritis',
+                       'Atrial fibrillation',
+                       'Renal disease')
       ), 
       valueType = 'binary', 
       startDay = -9999, 
       endDay = 0
     ),
    
-    # atrial fibrillation 18841718
-    FeatureExtraction::createCohortBasedCovariateSettings(
-      analysisId = 718, 
-      covariateCohortDatabaseSchema = cohortDatabaseSchema,
-      covariateCohortTable = cohortTableName, 
-      covariateCohorts = data.frame(
-        cohortId = c(18841), 
-        cohortName = c('Atrial fibrillation')
-      ), 
-      valueType = 'binary', 
-      startDay = -9999, 
-      endDay = 0
-    ),
-   
-    # renal disease 21347728
-    FeatureExtraction::createCohortBasedCovariateSettings(
-      analysisId = 728, 
-      covariateCohortDatabaseSchema = cohortDatabaseSchema,
-      covariateCohortTable = cohortTableName, 
-      covariateCohorts = data.frame(
-        cohortId = c(21347), 
-        cohortName = c('Renal disease')
-      ), 
-      valueType = 'binary', 
-      startDay = -9999, 
-      endDay = 0
-    ),
 
     # white or not recorded 22466652
+    # indian 21377652
+    # Pakistani 21378652
+    # Bangladeshi 21379652
+    # Other Asian 21380652
+    # Black Caribbean 21381652
+    # Black African 21382652
+    # Chinese 21383652
+    # Other 21386652
     FeatureExtraction::createCohortBasedCovariateSettings(
       analysisId = 652, 
       covariateCohortDatabaseSchema = cohortDatabaseSchema,
       covariateCohortTable = cohortTableName, 
       covariateCohorts = data.frame(
-        cohortId = c(22466), 
-        cohortName = c('White or not recorded')
-      ), 
-      valueType = 'binary', 
-      startDay = -9999, 
-      endDay = 0
-    ),
-      
-
-    # indian 21377662
-    FeatureExtraction::createCohortBasedCovariateSettings(
-      analysisId = 662, 
-      covariateCohortDatabaseSchema = cohortDatabaseSchema,
-      covariateCohortTable = cohortTableName, 
-      covariateCohorts = data.frame(
-        cohortId = c(21377), 
-        cohortName = c('Indian')
-      ), 
-      valueType = 'binary', 
-      startDay = -9999, 
-      endDay = 0
-    ),
-
-    #Pakistani 21378672
-    FeatureExtraction::createCohortBasedCovariateSettings(
-      analysisId = 672, 
-      covariateCohortDatabaseSchema = cohortDatabaseSchema,
-      covariateCohortTable = cohortTableName, 
-      covariateCohorts = data.frame(
-        cohortId = c(21378), 
-        cohortName = c('Pakistani')
-      ), 
-      valueType = 'binary', 
-      startDay = -9999, 
-      endDay = 0
-    ),
-
-    #Bangladeshi 21379682
-    FeatureExtraction::createCohortBasedCovariateSettings(
-      analysisId = 682, 
-      covariateCohortDatabaseSchema = cohortDatabaseSchema,
-      covariateCohortTable = cohortTableName, 
-      covariateCohorts = data.frame(
-        cohortId = c(21379), 
-        cohortName = c('Bangladeshi')
-      ), 
-      valueType = 'binary', 
-      startDay = -9999, 
-      endDay = 0
-    ),
-   
-    #Other Asian 21380692
-    FeatureExtraction::createCohortBasedCovariateSettings(
-      analysisId = 692, 
-      covariateCohortDatabaseSchema = cohortDatabaseSchema,
-      covariateCohortTable = cohortTableName, 
-      covariateCohorts = data.frame(
-        cohortId = c(21380), 
-        cohortName = c('Other Asian')
-      ), 
-      valueType = 'binary', 
-      startDay = -9999, 
-      endDay = 0
-    ),
-    
-    #Black Caribbean 21381702
-    FeatureExtraction::createCohortBasedCovariateSettings(
-      analysisId = 702, 
-      covariateCohortDatabaseSchema = cohortDatabaseSchema,
-      covariateCohortTable = cohortTableName, 
-      covariateCohorts = data.frame(
-        cohortId = c(21381), 
-        cohortName = c('Black Caribbean')
-      ), 
-      valueType = 'binary', 
-      startDay = -9999, 
-      endDay = 0
-    ),
-
-    #Black African 21382712
-    FeatureExtraction::createCohortBasedCovariateSettings(
-      analysisId = 712, 
-      covariateCohortDatabaseSchema = cohortDatabaseSchema,
-      covariateCohortTable = cohortTableName, 
-      covariateCohorts = data.frame(
-        cohortId = c(21382), 
-        cohortName = c('Black African')
-      ), 
-      valueType = 'binary', 
-      startDay = -9999, 
-      endDay = 0
-    ),
-
-    #Chinese 21383722
-    FeatureExtraction::createCohortBasedCovariateSettings(
-      analysisId = 722, 
-      covariateCohortDatabaseSchema = cohortDatabaseSchema,
-      covariateCohortTable = cohortTableName, 
-      covariateCohorts = data.frame(
-        cohortId = c(21383), 
-        cohortName = c('Chinese')
-      ), 
-      valueType = 'binary', 
-      startDay = -9999, 
-      endDay = 0
-    ),
-
-    #Other 21386732
-    FeatureExtraction::createCohortBasedCovariateSettings(
-      analysisId = 732, 
-      covariateCohortDatabaseSchema = cohortDatabaseSchema,
-      covariateCohortTable = cohortTableName, 
-      covariateCohorts = data.frame(
-        cohortId = c(21386), 
-        cohortName = c('Other')
+        cohortId = c(22466, 21377, 21378,
+                     21379, 21380, 21381,
+                     21382, 21383, 21386), 
+        cohortName = c('White or not recorded',
+                       'Indian', 'Pakistani',
+                       'Bangladeshi',
+                       'Other Asian',
+                       'Black Caribbean',
+                       'Black African',
+                       'Chinese',
+                       'Other')
       ), 
       valueType = 'binary', 
       startDay = -9999, 
@@ -372,13 +247,46 @@ baseline*exp(x)
     ),
 
     # Age x BMI Interaction
-
+    QRISKvalidation::createMeasurementCovariateSettings(
+      covariateName = 'Age x BMI Interaction', 
+      conceptSet = c(3038553),
+      unitSet = NULL, 
+      startDay = -365, 
+      endDay = 0, 
+      scaleMap = function(covariates){
+        covariates$valueAsNumber <- sapply(covariates$valueAsNumber, function(y){y - 26})
+        return(covariates)
+      }, 
+      ageInteract = TRUE, # NOTE: this is not log - does it need to be?
+      minVal = 5,
+      maxVal = 250, 
+      aggregateMethod = 'recent',
+      covariateId = 1333, 
+      analysisId = 333
+      ),
     # Age x Townsend Interaction
 
     # Age x SBP Interaction
+    QRISKvalidation::createMeasurementCovariateSettings(
+      covariateName = 'Age x SBP Interaction', 
+      conceptSet = c(3004249),
+      unitSet = NULL, 
+      startDay = -365*1, # last 1 years - check how long to look back
+      endDay = 0, 
+      scaleMap = function(covariates){
+        covariates$valueAsNumber <- sapply(covariates$valueAsNumber, function(y){y - 132.6})
+        return(covariates)
+      }, 
+      ageInteract = TRUE, # NOTE: this is not log - does it need to be?
+      minVal = 5,
+      maxVal = 250, 
+      aggregateMethod = 'recent',
+      covariateId = 2333, 
+      analysisId = 333
+    ),
 
-    # Age x Family History of cardiovascular disease Interaction 18821651
-    createCohortCovariateSettings(
+    # Age x Family History of cardiovascular disease Interaction 1882101651
+    PatientLevelPrediction::createCohortCovariateSettings(
       cohortName = 'Agexfamilyhistory interaction', 
       settingId = 1,
       cohortDatabaseSchema = cohortDatabaseSchema,
@@ -389,10 +297,11 @@ baseline*exp(x)
       count = F, 
       ageInteraction = F, 
       lnAgeInteraction = TRUE,
-      analysisId = 651),
+      analysisId = 651
+      ),
 
-    # Age x Smoking Interaction 19285661
-    createCohortCovariateSettings(
+    # Age x Smoking Interaction 1928510661
+    PatientLevelPrediction::createCohortCovariateSettings(
       cohortName = 'Agexsmoking interaction', 
       settingId = 1,
       cohortDatabaseSchema = cohortDatabaseSchema,
@@ -406,8 +315,8 @@ baseline*exp(x)
       analysisId = 661
     ),
 
-    # Age x Treated Hypertension Interaction 19280671
-     createCohortCovariateSettings(
+    # Age x Treated Hypertension Interaction 1928001671
+    PatientLevelPrediction::createCohortCovariateSettings(
       cohortName = 'Agextreatedhypertension interaction', 
       settingId = 1,
       cohortDatabaseSchema = cohortDatabaseSchema,
@@ -421,8 +330,8 @@ baseline*exp(x)
       analysisId = 671
     ),
 
-    # Age x Type II DM Interaction 18815681
-    createCohortCovariateSettings(
+    # Age x Type II DM Interaction 1881501651
+    PatientLevelPrediction::createCohortCovariateSettings(
       cohortName = 'AgextypeIIdiabetes interaction', 
       settingId = 1,
       cohortDatabaseSchema = cohortDatabaseSchema,
@@ -433,11 +342,11 @@ baseline*exp(x)
       count = F, 
       ageInteraction = F, 
       lnAgeInteraction = TRUE,
-      analysisId = 681
+      analysisId = 651
     ),
 
-    # Age x Atrial Fibrillation  Interaction 18841691
-     createCohortCovariateSettings(
+    # Age x Atrial Fibrillation  Interaction 1884101651
+    PatientLevelPrediction::createCohortCovariateSettings(
       cohortName = 'Agexatrial fibrillation interaction', 
       settingId = 1,
       cohortDatabaseSchema = cohortDatabaseSchema,
@@ -448,7 +357,7 @@ baseline*exp(x)
       count = F, 
       ageInteraction = F, 
       lnAgeInteraction = TRUE,
-      analysisId = 691
+      analysisId = 651
     )
     
   )                 

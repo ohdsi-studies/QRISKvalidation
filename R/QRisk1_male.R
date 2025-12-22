@@ -5,6 +5,7 @@
 #'
 #' @param cohortDatabaseSchema the schema where the cohorts are generated into
 #' @param cohortTableName the cohort table name
+#' @param sampleSize the sample size to take of the target cohort if it is too large
 #'
 #' @return
 #' An plpModel
@@ -12,7 +13,8 @@
 #' @export
 createQRISK1MaleOG10 <- function(
     cohortDatabaseSchema,
-    cohortTableName = 'qrisk_cprd'
+    cohortTableName = 'qrisk_cprd',
+    sampleSize = 10000
   ){
   
   # Male qrisk
@@ -30,7 +32,7 @@ plpModelQRISK1_male_OG_10 <- PatientLevelPrediction::createGlmModel(
   targetId = 1, # the first cohort I create manually
   outcomeId = 21397, 
   restrictPlpDataSettings = PatientLevelPrediction::createRestrictPlpDataSettings(
-    sampleSize = 10000 # sampling for testing
+    sampleSize = sampleSize # sampling for testing
     ),# can use this to restrict dates as well
   coefficients = data.frame(
     covariateId = c(
