@@ -34,7 +34,7 @@ plpModelQRISK3_male_OG_10 <- PatientLevelPrediction::createGlmModel(
         21381, # Black Caribbean
         21382, # Black African
         21383, # Chinese
-        21386, # Other                            #TO DO
+        21386, # Other                            
         21287655, # Non smoker
         21288665, # Former smoker
         21289675, # Light smoker
