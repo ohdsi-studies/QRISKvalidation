@@ -39,7 +39,7 @@ plpModelQRISK3_male_OG_10 <- PatientLevelPrediction::createGlmModel(
         21288, # Former smoker
         21289, # Light smoker
         21290, # Moderate smoker
-        21291, # Heavy smoker                    #TO DO
+        21291, # Heavy smoker                    
         18821668, # Family history of coronary heart disease
         18820657, # Type I Diabetes
         18815698, # Type II Diabetes
@@ -349,6 +349,21 @@ baseline*exp(x)
       startDay = -9999, 
       endDay = 0
     ),
+
+    #Non smoker
+    21287, # Non smoker
+
+    #Former smoker
+    21288, # Former smoker
+
+    #Light smoker
+    21289, # Light smoker
+
+    #Moderate smoker
+    21290, # Moderate smoker
+
+    #Heavy smoker
+    21291, # Heavy smoker 
       
   )                 
 )
