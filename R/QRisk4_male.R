@@ -47,11 +47,11 @@ plpModelQRISK4_male_OG_10 <- PatientLevelPrediction::createGlmModel(
         19881, # Down syndrome
         18821668, # Family history of coronary heart disease
         18820, # Type I Diabetes
-        18815, # Type II Diabetes
+        18815698, # Type II Diabetes
         19280688, #Treated hypertension
-        18838, # Rheumatoid arthritis
-        18841, # Atrial fibrillation
-        21347, # Renal disease
+        18838708, # Rheumatoid arthritis
+        18841718, # Atrial fibrillation
+        21347728, # Renal disease
         19379, # Migraine
         21371, # Corticosteroid use
         19164, # Systemic lupus erythematosus
