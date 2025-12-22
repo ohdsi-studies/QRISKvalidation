@@ -34,12 +34,12 @@ plpModelQRISK3_male_OG_10 <- PatientLevelPrediction::createGlmModel(
         21381, # Black Caribbean
         21382, # Black African
         21383, # Chinese
-        21386, # Other
-        21287, # Non smoker
-        21288, # Former smoker
-        21289, # Light smoker
-        21290, # Moderate smoker
-        21291, # Heavy smoker                    
+        21386, # Other                            #TO DO
+        21287655, # Non smoker
+        21288665, # Former smoker
+        21289675, # Light smoker
+        21290685, # Moderate smoker
+        21291695, # Heavy smoker                    
         18821668, # Family history of coronary heart disease
         18820657, # Type I Diabetes
         18815698, # Type II Diabetes
@@ -350,20 +350,75 @@ baseline*exp(x)
       endDay = 0
     ),
 
-    #Non smoker
-    21287, # Non smoker
+    #Non smoker 21287655
+    FeatureExtraction::createCohortBasedCovariateSettings(
+      analysisId = 655, 
+      covariateCohortDatabaseSchema = cohortDatabaseSchema,
+      covariateCohortTable = cohortTableName, 
+      covariateCohorts = data.frame(
+        cohortId = c(21287), 
+        cohortName = c('Non smoker')
+      ), 
+      valueType = 'binary', 
+      startDay = -365, 
+      endDay = 0
+    ),
 
-    #Former smoker
-    21288, # Former smoker
+    #Former smoker 21288665
+    FeatureExtraction::createCohortBasedCovariateSettings(
+      analysisId = 665, 
+      covariateCohortDatabaseSchema = cohortDatabaseSchema,
+      covariateCohortTable = cohortTableName, 
+      covariateCohorts = data.frame(
+        cohortId = c(21288), 
+        cohortName = c('Former smoker')
+      ), 
+      valueType = 'binary', 
+      startDay = -365, 
+      endDay = 0
+    ),
 
-    #Light smoker
-    21289, # Light smoker
+    #Light smoker 21289675
+    FeatureExtraction::createCohortBasedCovariateSettings(
+      analysisId = 675, 
+      covariateCohortDatabaseSchema = cohortDatabaseSchema,
+      covariateCohortTable = cohortTableName, 
+      covariateCohorts = data.frame(
+        cohortId = c(21289), 
+        cohortName = c('Light smoker')
+      ), 
+      valueType = 'binary', 
+      startDay = -365, 
+      endDay = 0
+    ),
 
-    #Moderate smoker
-    21290, # Moderate smoker
+    #Moderate smoker 21290685
+    FeatureExtraction::createCohortBasedCovariateSettings(
+      analysisId = 685, 
+      covariateCohortDatabaseSchema = cohortDatabaseSchema,
+      covariateCohortTable = cohortTableName, 
+      covariateCohorts = data.frame(
+        cohortId = c(21290), 
+        cohortName = c('Moderate smoker')
+      ), 
+      valueType = 'binary', 
+      startDay = -365, 
+      endDay = 0
+    ),
 
-    #Heavy smoker
-    21291, # Heavy smoker 
+    #Heavy smoker 21291695
+    FeatureExtraction::createCohortBasedCovariateSettings(
+      analysisId = 695, 
+      covariateCohortDatabaseSchema = cohortDatabaseSchema,
+      covariateCohortTable = cohortTableName, 
+      covariateCohorts = data.frame(
+        cohortId = c(21291), 
+        cohortName = c('Heavy smoker')
+      ), 
+      valueType = 'binary', 
+      startDay = -365, 
+      endDay = 0
+    ),
       
   )                 
 )
