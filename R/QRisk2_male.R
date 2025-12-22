@@ -46,14 +46,14 @@ plpModelQRISK2_male_OG_10 <- PatientLevelPrediction::createGlmModel(
         18838708, # Rheumatoid arthritis
         18841718, # Atrial fibrillation
         21347728, # Renal disease
-        18778, # AgexBMI interaction              
-        21387, # AgexTownsend interaction
-        18822, # Agexsystolicbloodpressure interaction
-        18821, # Agexfamilyhistory interaction
-        19285, # Agexsmoking interaction
-        19280, # Agextreatedhypertension interaction
-        18815, # Agextype2diabetes interaction
-        18841  # Agexatrialfibrillation interaction
+        18778, # AgexBMI interaction             #TO DO 
+        21387, # AgexTownsend interaction        #TO DO
+        18822, # Agexsystolicbloodpressure interaction #TO DO
+        18821651, # Agexfamilyhistory interaction
+        19285661, # Agexsmoking interaction
+        19280671, # Agextreatedhypertension interaction
+        18815681, # Agextype2diabetes interaction
+        18841691  # Agexatrialfibrillation interaction
     ), 
     coefficient = c(1.00, 1.45, 1.97, 1.67, 1.37, 0.62, 0.63, 0.51, 0.91, 1.59, 0.218, 0.236, 0.0595, 1.19, 2.14, 1.65, 1.68, 2.20, 1.38, 2.40, 1.75, 0.985, 0.1946, 0.0482, 0.923, 0.932, 0.916, 0.902, 0.893
                    )  
@@ -377,16 +377,79 @@ baseline*exp(x)
 
     # Age x SBP Interaction
 
-    # Age x Family History of cardiovascular disease Interaction
+    # Age x Family History of cardiovascular disease Interaction 18821651
+    createCohortCovariateSettings(
+      cohortName = 'Agexfamilyhistory interaction', 
+      settingId = 1,
+      cohortDatabaseSchema = cohortDatabaseSchema,
+      cohortTable = cohortTableName,
+      cohortId = 18821, 
+      startDay = -9999,
+      endDay = 0,
+      count = F, 
+      ageInteraction = F, 
+      lnAgeInteraction = TRUE,
+      analysisId = 651),
 
-    # Age x Smoking Interaction Interaction
+    # Age x Smoking Interaction 19285661
+    createCohortCovariateSettings(
+      cohortName = 'Agexsmoking interaction', 
+      settingId = 1,
+      cohortDatabaseSchema = cohortDatabaseSchema,
+      cohortTable = cohortTableName,
+      cohortId = 19285, 
+      startDay = -365,
+      endDay = 0,
+      count = F, 
+      ageInteraction = F, 
+      lnAgeInteraction = TRUE,
+      analysisId = 661
+    ),
 
-    # Age x Treated Hypertension Interaction
+    # Age x Treated Hypertension Interaction 19280671
+     createCohortCovariateSettings(
+      cohortName = 'Agextreatedhypertension interaction', 
+      settingId = 1,
+      cohortDatabaseSchema = cohortDatabaseSchema,
+      cohortTable = cohortTableName,
+      cohortId = 19280,   
+      startDay = -30,
+      endDay = 0,
+      count = F, 
+      ageInteraction = F, 
+      lnAgeInteraction = TRUE,
+      analysisId = 671
+    ),
 
-    # Age x Type II DM Interaction 
+    # Age x Type II DM Interaction 18815681
+    createCohortCovariateSettings(
+      cohortName = 'AgextypeIIdiabetes interaction', 
+      settingId = 1,
+      cohortDatabaseSchema = cohortDatabaseSchema,
+      cohortTable = cohortTableName,
+      cohortId = 18815, 
+      startDay = -9999,
+      endDay = 0,
+      count = F, 
+      ageInteraction = F, 
+      lnAgeInteraction = TRUE,
+      analysisId = 681
+    ),
 
-    # Age x Atrial Fibrillation Interaction
-
+    # Age x Atrial Fibrillation  Interaction 18841691
+     createCohortCovariateSettings(
+      cohortName = 'Agexatrial fibrillation interaction', 
+      settingId = 1,
+      cohortDatabaseSchema = cohortDatabaseSchema,
+      cohortTable = cohortTableName,
+      cohortId = 18841,  
+      startDay = -9999,
+      endDay = 0,
+      count = F, 
+      ageInteraction = F, 
+      lnAgeInteraction = TRUE,
+      analysisId = 691
+    )
     
   )                 
 )
