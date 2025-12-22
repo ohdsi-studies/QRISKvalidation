@@ -25,7 +25,7 @@ plpModelQRISK2_male_OG_10 <- PatientLevelPrediction::createGlmModel(
     ),# can use this to restrict dates as well
   coefficients = data.frame(
     covariateId = c(
-        22466, # White or not recorded
+        22466, # White or not recorded               #TODO
         21377, # Indian
         21378, # Pakistani
         21379, # Bangladeshi
