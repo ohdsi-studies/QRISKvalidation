@@ -231,7 +231,105 @@ baseline*exp(x)
       startDay = -9999, 
       endDay = 0
     ),
-    
+
+   #Type I diabetes 18820657
+    FeatureExtraction::createCohortBasedCovariateSettings(
+      analysisId = 657, 
+      covariateCohortDatabaseSchema = cohortDatabaseSchema,
+      covariateCohortTable = cohortTableName, 
+      covariateCohorts = data.frame(
+        cohortId = c(18820), 
+        cohortName = c('Type I Diabetes')
+      ), 
+      valueType = 'binary', 
+      startDay = -9999, 
+      endDay = 0
+    ),
+      
+    #Migraine 19379667
+    FeatureExtraction::createCohortBasedCovariateSettings(
+      analysisId = 667, 
+      covariateCohortDatabaseSchema = cohortDatabaseSchema,
+      covariateCohortTable = cohortTableName, 
+      covariateCohorts = data.frame(
+        cohortId = c(19379), 
+        cohortName = c('Migraine')
+      ), 
+      valueType = 'binary', 
+      startDay = -9999, 
+      endDay = 0
+    ),
+
+    #Corticosteroid use 21371677
+    FeatureExtraction::createCohortBasedCovariateSettings(
+      analysisId = 677, 
+      covariateCohortDatabaseSchema = cohortDatabaseSchema,
+      covariateCohortTable = cohortTableName, 
+      covariateCohorts = data.frame(
+        cohortId = c(21371), 
+        cohortName = c('Corticosteroids')
+      ), 
+      valueType = 'binary', 
+      startDay = -9999, 
+      endDay = 0
+    ),
+
+    #SLE 19164687
+    FeatureExtraction::createCohortBasedCovariateSettings(
+      analysisId = 687, 
+      covariateCohortDatabaseSchema = cohortDatabaseSchema,
+      covariateCohortTable = cohortTableName, 
+      covariateCohorts = data.frame(
+        cohortId = c(19164), 
+        cohortName = c('SLE')
+      ), 
+      valueType = 'binary', 
+      startDay = -9999, 
+      endDay = 0
+    ),
+
+    #Atypical antipsychotic use 21372697
+    FeatureExtraction::createCohortBasedCovariateSettings(
+      analysisId = 697, 
+      covariateCohortDatabaseSchema = cohortDatabaseSchema,
+      covariateCohortTable = cohortTableName, 
+      covariateCohorts = data.frame(
+        cohortId = c(21372), 
+        cohortName = c('Atypical antipsychotic use')
+      ), 
+      valueType = 'binary', 
+      startDay = -9999, 
+      endDay = 0
+    ),
+
+    #Severe mental illness 21294707
+      FeatureExtraction::createCohortBasedCovariateSettings(
+      analysisId = 707, 
+      covariateCohortDatabaseSchema = cohortDatabaseSchema,
+      covariateCohortTable = cohortTableName, 
+      covariateCohorts = data.frame(
+        cohortId = c(21294), 
+        cohortName = c('Severe mental illness')
+      ), 
+      valueType = 'binary', 
+      startDay = -9999, 
+      endDay = 0
+    ),
+
+    #Erectile dysfunction or treatment 19165717
+    FeatureExtraction::createCohortBasedCovariateSettings(
+      analysisId = 717, 
+      covariateCohortDatabaseSchema = cohortDatabaseSchema,
+      covariateCohortTable = cohortTableName, 
+      covariateCohorts = data.frame(
+        cohortId = c(19164), 
+        cohortName = c('Erectile dysfunction')
+      ), 
+      valueType = 'binary', 
+      startDay = -9999, 
+      endDay = 0
+    ),
+      
   )                 
 )
 
