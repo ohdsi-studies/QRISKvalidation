@@ -159,6 +159,20 @@ baseline*exp(x)
       covariateId = 3466, 
       analysisId = 466
     ),
+
+    # current smoker - covariateId 19285678
+    FeatureExtraction::createCohortBasedCovariateSettings(
+      analysisId = 668, 
+      covariateCohortDatabaseSchema = cohortDatabaseSchema,
+      covariateCohortTable = cohortTableName, 
+      covariateCohorts = data.frame(
+        cohortId = c(19285), 
+        cohortName = c('Current smoker')
+      ), 
+      valueType = 'binary', 
+      startDay = -365, 
+      endDay = 0
+    ),
     
     # treatment for blood pressure 19280688
     FeatureExtraction::createCohortBasedCovariateSettings(
