@@ -42,11 +42,11 @@ plpModelQRISK2_male_OG_10 <- PatientLevelPrediction::createGlmModel(
         18821668, # Family history coronary heart disease
         19285678, # Current smoker
         19280688, # Treated hypertension
-        18815, # Type 2 diabetes
-        18838, # Rheumatoid arthritis
-        18841, # Atrial fibrillation
-        21347, # Renal disease
-        18778, # AgexBMI interaction              #LOOK AT INTERACTIONS
+        18815698, # Type 2 diabetes
+        18838708, # Rheumatoid arthritis
+        18841718, # Atrial fibrillation
+        21347728, # Renal disease
+        18778, # AgexBMI interaction              
         21387, # AgexTownsend interaction
         18822, # Agexsystolicbloodpressure interaction
         18821, # Agexfamilyhistory interaction
@@ -124,20 +124,6 @@ baseline*exp(x)
       endDay = 0
     ),
     
-    # current smoker - covariateId 19285678
-    FeatureExtraction::createCohortBasedCovariateSettings(
-      analysisId = 678, 
-      covariateCohortDatabaseSchema = cohortDatabaseSchema,
-      covariateCohortTable = cohortTableName, 
-      covariateCohorts = data.frame(
-        cohortId = c(19285), 
-        cohortName = c('Current smoker')
-      ), 
-      valueType = 'binary', 
-      startDay = -365, 
-      endDay = 0
-    ),
-    
     # townsend measurement covariate 4466
     QRISKvalidation::createMeasurementCovariateSettings(
       covariateName = 'Townsend', 
@@ -187,6 +173,89 @@ baseline*exp(x)
       startDay = -30, 
       endDay = 0
     ),
+
+    # type 2 diabetes 18815698
+    FeatureExtraction::createCohortBasedCovariateSettings(
+      analysisId = 698, 
+      covariateCohortDatabaseSchema = cohortDatabaseSchema,
+      covariateCohortTable = cohortTableName, 
+      covariateCohorts = data.frame(
+        cohortId = c(18815), 
+        cohortName = c('Type 2 diabetes')
+      ), 
+      valueType = 'binary', 
+      startDay = -9999, 
+      endDay = 0
+    ),
+    
+    # rheumatoid arthritis 18838708
+    FeatureExtraction::createCohortBasedCovariateSettings(
+      analysisId = 708, 
+      covariateCohortDatabaseSchema = cohortDatabaseSchema,
+      covariateCohortTable = cohortTableName, 
+      covariateCohorts = data.frame(
+        cohortId = c(18838), 
+        cohortName = c('Rheumatoid arthritis')
+      ), 
+      valueType = 'binary', 
+      startDay = -9999, 
+      endDay = 0
+    ),
+   
+    # atrial fibrillation 18841718
+    FeatureExtraction::createCohortBasedCovariateSettings(
+      analysisId = 718, 
+      covariateCohortDatabaseSchema = cohortDatabaseSchema,
+      covariateCohortTable = cohortTableName, 
+      covariateCohorts = data.frame(
+        cohortId = c(18841), 
+        cohortName = c('Atrial fibrillation')
+      ), 
+      valueType = 'binary', 
+      startDay = -9999, 
+      endDay = 0
+    ),
+   
+    # renal disease 21347728
+    FeatureExtraction::createCohortBasedCovariateSettings(
+      analysisId = 728, 
+      covariateCohortDatabaseSchema = cohortDatabaseSchema,
+      covariateCohortTable = cohortTableName, 
+      covariateCohorts = data.frame(
+        cohortId = c(21347), 
+        cohortName = c('Renal disease')
+      ), 
+      valueType = 'binary', 
+      startDay = -9999, 
+      endDay = 0
+    ),
+
+    # white or not recorded
+    22466, # White or not recorded
+
+    # indian
+    21377, # Indian
+
+    #Pakistani
+    21378, # Pakistani
+
+    #Bangladeshi
+    21379, # Bangladeshi
+
+    #Other Asian
+    21380, # Other Asian
+
+    #Black Caribbean
+    21381, # Black Caribbean
+
+    #Black African
+    21382, # Black African
+
+    #Chinese
+    21383, # Chinese
+
+    #Other
+    21386, # Other
 
     # Age x BMI Interaction
 
