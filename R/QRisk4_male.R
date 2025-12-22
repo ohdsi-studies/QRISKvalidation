@@ -41,7 +41,7 @@ plpModelQRISK4_male_OG_10 <- PatientLevelPrediction::createGlmModel(
         21381, # Black Caribbean
         21382, # Black African
         21383, # Chinese
-        21386, # Other                                  # TO DO
+        21386, # Other                                  
         22465654, # No learning disability
         21344664, # Learning disability
         19881674, # Down syndrome
