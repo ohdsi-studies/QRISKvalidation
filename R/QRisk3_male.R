@@ -419,7 +419,132 @@ baseline*exp(x)
       startDay = -365, 
       endDay = 0
     ),
+
+    # white or not recorded 22466652
+    FeatureExtraction::createCohortBasedCovariateSettings(
+      analysisId = 652, 
+      covariateCohortDatabaseSchema = cohortDatabaseSchema,
+      covariateCohortTable = cohortTableName, 
+      covariateCohorts = data.frame(
+        cohortId = c(22466), 
+        cohortName = c('White or not recorded')
+      ), 
+      valueType = 'binary', 
+      startDay = -9999, 
+      endDay = 0
+    ),
       
+    # indian 21377662
+    FeatureExtraction::createCohortBasedCovariateSettings(
+      analysisId = 662, 
+      covariateCohortDatabaseSchema = cohortDatabaseSchema,
+      covariateCohortTable = cohortTableName, 
+      covariateCohorts = data.frame(
+        cohortId = c(21377), 
+        cohortName = c('Indian')
+      ), 
+      valueType = 'binary', 
+      startDay = -9999, 
+      endDay = 0
+    ),
+
+    #Pakistani 21378672
+    FeatureExtraction::createCohortBasedCovariateSettings(
+      analysisId = 672, 
+      covariateCohortDatabaseSchema = cohortDatabaseSchema,
+      covariateCohortTable = cohortTableName, 
+      covariateCohorts = data.frame(
+        cohortId = c(21378), 
+        cohortName = c('Pakistani')
+      ), 
+      valueType = 'binary', 
+      startDay = -9999, 
+      endDay = 0
+    ),
+
+    #Bangladeshi 21379682
+    FeatureExtraction::createCohortBasedCovariateSettings(
+      analysisId = 682, 
+      covariateCohortDatabaseSchema = cohortDatabaseSchema,
+      covariateCohortTable = cohortTableName, 
+      covariateCohorts = data.frame(
+        cohortId = c(21379), 
+        cohortName = c('Bangladeshi')
+      ), 
+      valueType = 'binary', 
+      startDay = -9999, 
+      endDay = 0
+    ),
+   
+    #Other Asian 21380692
+    FeatureExtraction::createCohortBasedCovariateSettings(
+      analysisId = 692, 
+      covariateCohortDatabaseSchema = cohortDatabaseSchema,
+      covariateCohortTable = cohortTableName, 
+      covariateCohorts = data.frame(
+        cohortId = c(21380), 
+        cohortName = c('Other Asian')
+      ), 
+      valueType = 'binary', 
+      startDay = -9999, 
+      endDay = 0
+    ),
+    
+    #Black Caribbean 21381702
+    FeatureExtraction::createCohortBasedCovariateSettings(
+      analysisId = 702, 
+      covariateCohortDatabaseSchema = cohortDatabaseSchema,
+      covariateCohortTable = cohortTableName, 
+      covariateCohorts = data.frame(
+        cohortId = c(21381), 
+        cohortName = c('Black Caribbean')
+      ), 
+      valueType = 'binary', 
+      startDay = -9999, 
+      endDay = 0
+    ),
+
+    #Black African 21382712
+    FeatureExtraction::createCohortBasedCovariateSettings(
+      analysisId = 712, 
+      covariateCohortDatabaseSchema = cohortDatabaseSchema,
+      covariateCohortTable = cohortTableName, 
+      covariateCohorts = data.frame(
+        cohortId = c(21382), 
+        cohortName = c('Black African')
+      ), 
+      valueType = 'binary', 
+      startDay = -9999, 
+      endDay = 0
+    ),
+
+    #Chinese 21383722
+    FeatureExtraction::createCohortBasedCovariateSettings(
+      analysisId = 722, 
+      covariateCohortDatabaseSchema = cohortDatabaseSchema,
+      covariateCohortTable = cohortTableName, 
+      covariateCohorts = data.frame(
+        cohortId = c(21383), 
+        cohortName = c('Chinese')
+      ), 
+      valueType = 'binary', 
+      startDay = -9999, 
+      endDay = 0
+    ),
+
+    #Other 21386732
+    FeatureExtraction::createCohortBasedCovariateSettings(
+      analysisId = 732, 
+      covariateCohortDatabaseSchema = cohortDatabaseSchema,
+      covariateCohortTable = cohortTableName, 
+      covariateCohorts = data.frame(
+        cohortId = c(21386), 
+        cohortName = c('Other')
+      ), 
+      valueType = 'binary', 
+      startDay = -9999, 
+      endDay = 0
+    ),
   )                 
 )
 
