@@ -10,7 +10,7 @@
 #' An plpModel
 #' 
 #' @export
-createQRISK1MaleOG1 <- function(
+createQRISK1MaleOG10 <- function(
     cohortDatabaseSchema,
     cohortTableName = 'qrisk_cprd'
   ){
@@ -26,7 +26,7 @@ createQRISK1MaleOG1 <- function(
   # 1.847* treatment blood pressure at index
   # 0.993*Interaction terms for systolic blood pressure×blood pressure treatment
   
-plpModelQRISK1_male_OG_1 <- PatientLevelPrediction::createGlmModel(
+plpModelQRISK1_male_OG_10 <- PatientLevelPrediction::createGlmModel(
   targetId = 1, # the first cohort I create manually
   outcomeId = 21397, 
   restrictPlpDataSettings = PatientLevelPrediction::createRestrictPlpDataSettings(
@@ -57,7 +57,7 @@ baseline*exp(x)
     requireTimeAtRisk = FALSE, 
     riskWindowStart = 1, 
     startAnchor = 'cohort start',
-    riskWindowEnd = 365, 
+    riskWindowEnd = 3650, 
     endAnchor = 'cohort start'
   ),
   covariateSettings = list(
@@ -203,7 +203,7 @@ baseline*exp(x)
   )                 
 )
 
-return(plpModelQRISK1_male_OG_1)
+return(plpModelQRISK1_male_OG_10)
 }
 
 
