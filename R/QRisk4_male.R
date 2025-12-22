@@ -25,7 +25,14 @@ plpModelQRISK4_male_OG_10 <- PatientLevelPrediction::createGlmModel(
     ),# can use this to restrict dates as well
   coefficients = data.frame(
     covariateId = c(
-        4466, # Townsend
+        3466, # Systolic blood pressure
+        21395 # SD of blood pressure                     # TO DO
+        1466, # Cholesterol/HDL
+        4466, # Deprivation (Townsend)
+        21288, # Former smoker
+        21289, # Light smoker
+        21290, # Moderate smoker
+        21291, # Heavy smoker
         22466, # White or not recorded
         21377, # Indian
         21378, # Pakistani
@@ -35,11 +42,9 @@ plpModelQRISK4_male_OG_10 <- PatientLevelPrediction::createGlmModel(
         21382, # Black African
         21383, # Chinese
         21386, # Other
-        21287, # Non smoker
-        21288, # Former smoker
-        21289, # Light smoker
-        21290, # Moderate smoker
-        21291, # Heavy smoker
+        22465, # No learning disability
+        21344, # Learning disability
+        19881, # Down syndrome
         18821668, # Family history of coronary heart disease
         18820, # Type I Diabetes
         18815, # Type II Diabetes
@@ -52,13 +57,15 @@ plpModelQRISK4_male_OG_10 <- PatientLevelPrediction::createGlmModel(
         19164, # Systemic lupus erythematosus
         21372, # Atypical antipsychotic use
         21294, # Severe mental illness
+        19380, # COPD
+        19792, # Lung cancer
+        19788, # Oral cancer
+        19787, # Blood cancer
+        19174, # Brain cancer
         19165, # Erectile dysfunction or treatment
-        1466, # Cholesterol/HDL
-        3466, # Systolic blood pressure
-        21395 # SD of blood pressure                                                           #TO DO
     ), 
-    coefficient = c(0.236, 1.00, 1.32, 1.61, 1.70, 1.04, 0.699, 0.670, 0.660, 0.769, 1.00, 1.21, 1.74, 1.89, 2.20, 1.72, 3.44, 2.36, 1.68, 1.23, 2.42, 2.05, 1.29, 1.58, 1.55, 1.14, 1.13, 1.25, 1.19, 0.057, 0.111
-                   )  
+    coefficient = c(0.065, 1.14, 1.15, 0.222, 1.19, 2.00, 2.08, 2.60, 1.00, 1.19, 1.47, 1.41, 1.04, 0.67, 0.66, 0.72, 0.81, 1.00, 1.17, 2.35, 1.62, 3.28, 2.03, 2.20, 1.19, 2.59, 1.70, 1.41, 1.64, 1.68, 1.18, 1.37, 1.66, 1.49, 2.06, 5.45, 1.40
+                   )
   ), 
   intercept = 0, 
   mapping = "function(x){ sapply(x, function(x){
