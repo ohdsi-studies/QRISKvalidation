@@ -26,15 +26,15 @@ plpModelQRISK3_male_OG_10 <- PatientLevelPrediction::createGlmModel(
   coefficients = data.frame(
     covariateId = c(
         4466, # Townsend
-        22466, # White or not recorded             #TO DO
-        21377, # Indian
-        21378, # Pakistani
-        21379, # Bangladeshi
-        21380, # Other Asian
-        21381, # Black Caribbean
-        21382, # Black African
-        21383, # Chinese
-        21386, # Other                            
+        22466652, # White or not recorded               
+        21377662, # Indian
+        21378672, # Pakistani
+        21379682, # Bangladeshi
+        21380692, # Other Asian
+        21381702, # Black Caribbean
+        21382712, # Black African
+        21383722, # Chinese
+        21386732, # Other                          
         21287655, # Non smoker
         21288665, # Former smoker
         21289675, # Light smoker
