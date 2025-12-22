@@ -33,6 +33,7 @@ getLogAgeCovariateData <- function(connection,
 ) {
   
   # to get table 1 - take source values and then map them - dont map in SQL
+  message('Extracting log age')
   
   # Some SQL to construct the covariate:
   sql <- paste("SELECT c.@row_id_field AS row_id, ",

@@ -35,7 +35,7 @@ plpModelQRISK1_male_OG_10 <- PatientLevelPrediction::createGlmModel(
   coefficients = data.frame(
     covariateId = c(
       1020, # logAge id 
-      1466, # chol ratio measurement
+      1486, # chol ratio measurement
       2466, # BMI measurement
       18821668, # family history cohort cov - all prior
       19285678, # smoker cohort cov - 365 prior
@@ -50,7 +50,7 @@ plpModelQRISK1_male_OG_10 <- PatientLevelPrediction::createGlmModel(
   ), 
   intercept = 0, 
   mapping = "function(x){ sapply(x, function(x){
-baseline <- 0.1225593
+baseline <- 0.0009293994
 baseline*exp(x)
 })}", 
   populationSettings = PatientLevelPrediction::createStudyPopulationSettings(
@@ -65,21 +65,25 @@ baseline*exp(x)
     QRISKvalidation::createLogAgeCovariateSettings(ageMultiply = 1/10),
     
     # creates a Chol/HDL ratio covariate with id 1466
-    QRISKvalidation::createMeasurementCovariateSettings(
+    QRISKvalidation::createMeasurementRatioCovariateSettings(
       covariateName = 'Chol/HDL ratio', 
-      conceptSet = c(4195214, 4042587,4195490,4198116,36314015,36314016,36314017,36314018,36361945,36361947,36361949,36361951),
-      unitSet = c(NA, 0, 8523),
-      startDay = -365, 
+      conceptSet1 = c(4260765), # first measurement
+      conceptSet2 = c(4042059,4076704), # second measurement 
+      unitSet1 = NULL, # may need to edit this if units can be different across network
+      unitSet2 = NULL, # may need to edit this if units can be different across network
+      startDay = -365*3, # last three years - TODO edit this
       endDay = 0, 
-      scaleMap = function(covariates){
-        covariates$valueAsNumber <- sapply(covariates$valueAsNumber, function(y){y - 4})
+      centeringMap = function(covariates){
+        covariates$covariateValue <- sapply(covariates$covariateValue, function(y){y - 4})
         return(covariates)
       }, 
-      minVal = 0,
-      maxVal = 20,
+      minVal1 = 0,
+      maxVal1 = 5000, # is there a max value that past this must be an error?
+      minVal2 =  0,
+      maxVal2 = NULL, # is there a max value that past this must be an error?
       aggregateMethod = 'recent',
-      covariateId = 1466, 
-      analysisId = 466
+      covariateId = 1486, 
+      analysisId = 486
     ),
     
     # BMI cov with id 2466
@@ -150,8 +154,8 @@ baseline*exp(x)
     QRISKvalidation::createMeasurementCovariateSettings(
       covariateName = 'Systolic Blood Pressure', 
       conceptSet = c(3004249),
-      unitSet = c(NA, 0, 8876), 
-      startDay = -365, 
+      unitSet = NULL, 
+      startDay = -365*1, # last 1 years - check how long to look back
       endDay = 0, 
       scaleMap = function(covariates){
         covariates$valueAsNumber <- sapply(covariates$valueAsNumber, function(y){y - 132.6})
@@ -187,8 +191,8 @@ baseline*exp(x)
       cohortStartDay = -30,
       cohortEndDay = 0,
       measurementConceptSet = c(3004249),
-      measurementUnitSet = c(NA, 0, 8876), 
-      measurementStartDay = -365, 
+      measurementUnitSet =  NULL, 
+      measurementStartDay = -365*1, # last 1 years - check how long to look back
       measurementEndDay = 0, 
       measurementScaleMap = function(covariates){
         covariates$valueAsNumber <- sapply(covariates$valueAsNumber, function(y){y - 132.6})

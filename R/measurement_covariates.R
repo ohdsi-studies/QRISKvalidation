@@ -33,13 +33,14 @@ getMeasurementCovariateData <- function(connection,
 ) {
   
   # to get table 1 - take source values and then map them - dont map in SQL
-  
+  message(paste0('running getMeasurementCovariateData'))
   # Some SQL to construct the covariate:
   sql <- paste("SELECT c.@row_id_field AS row_id, 
                measurement_concept_id, 
                unit_concept_id,",
                "value_as_number,",
                "measurement_date,",
+               "YEAR(GETDATE()) - p.year_of_birth AS age_in_years,",
                "ABS(datediff(dd, measurement_date, c.cohort_start_date)) AS index_time",
                "FROM @cdm_database_schema.measurement m INNER JOIN @cohort_temp_table c 
                 ON c.subject_id = m.person_id",
@@ -51,7 +52,7 @@ getMeasurementCovariateData <- function(connection,
                {@use_min}?{AND value_as_number >= @min_val}
                {@use_max}?{AND value_as_number <= @max_val}
                {@restrict_units}?{
-               AND (unit_concept_id IN (@units) {@na_unit}?{OR unit_concept_id  = 'NA'})
+               AND (unit_concept_id IN (@units) {@na_unit}?{OR unit_concept_id  is NULL})
                }
                ;
                "
@@ -93,34 +94,44 @@ getMeasurementCovariateData <- function(connection,
   # aggregate data:
   if(covariateSettings$aggregateMethod == 'max'){
     covariates <- covariates %>% 
-      dplyr::group_by(.data$rowId) %>%
-      dplyr::summarize(covariateValue = max(.data$valueAsNumber))
+      dplyr::group_by(.data$rowId, .data$ageInYears) %>%
+      dplyr::summarize(covariateValue = max(.data$valueAsNumber,na.rm = TRUE))
   } else if(covariateSettings$aggregateMethod == 'min'){
     covariates <- covariates %>% 
-      dplyr::group_by(.data$rowId) %>%
-      dplyr::summarize(covariateValue = min(.data$valueAsNumber))
+      dplyr::group_by(.data$rowId, .data$ageInYears) %>%
+      dplyr::summarize(covariateValue = min(.data$valueAsNumber,na.rm = TRUE))
   } else if(covariateSettings$aggregateMethod == 'mean'){
     covariates <- covariates %>% 
-      dplyr::group_by(.data$rowId) %>%
-      dplyr::summarize(covariateValue = mean(.data$valueAsNumber))
+      dplyr::group_by(.data$rowId, .data$ageInYears) %>%
+      dplyr::summarize(covariateValue = mean(.data$valueAsNumber,na.rm = TRUE))
   } else if(covariateSettings$aggregateMethod == 'median'){
     covariates <- covariates %>% 
-      dplyr::group_by(.data$rowId) %>%
-      dplyr::summarize(covariateValue = median(.data$valueAsNumber))
+      dplyr::group_by(.data$rowId, .data$ageInYears) %>%
+      dplyr::summarize(covariateValue = median(.data$valueAsNumber,na.rm = TRUE))
+  } else if(covariateSettings$aggregateMethod == 'stdev'){
+    covariates <- covariates %>% 
+      dplyr::group_by(.data$rowId, .data$ageInYears) %>%
+      dplyr::summarize(covariateValue = sd(.data$valueAsNumber,na.rm = TRUE))
   } else{
     last <- covariates %>% 
       dplyr::group_by(.data$rowId) %>%
-      dplyr::summarize(lastTime = min(.data$indexTime))
+      dplyr::summarize(lastTime = min(.data$indexTime, na.rm = TRUE))
     
     covariates <- merge(covariates,last, 
                         by.x = c('rowId','indexTime'), 
                         by.y = c('rowId','lastTime') )
     
     covariates <- covariates %>% 
-      dplyr::group_by(.data$rowId) %>%
+      dplyr::group_by(.data$rowId, .data$ageInYears) %>%
       dplyr::summarize(
         covariateValue = mean(.data$valueAsNumber)
       )
+  }
+  
+  # do age interaction
+  if(covariateSettings$ageInteract){
+    covariates <- covariates %>% 
+      dplyr::mutate(covariateValue = .data$covariateValue*.data$ageInYears)
   }
   
   # add covariateID:
@@ -171,6 +182,7 @@ getMeasurementCovariateData <- function(connection,
 #' @param startDay the start time before index to look for the measurement
 #' @param endDay the end time before index to look for the measurement
 #' @param scaleMap A function that lets you concept units into a standard unit and do any scaling
+#' @param ageInteract Whether to do interaction with age in years
 #' @param minVal NULL or the min valid value for the measurements (value less than this are excluded)
 #' @param maxVal NULL or the max valid value for the measurements (value more than this are excluded)
 #' @param aggregateMethod one of max/min/mean/median/recent how to handle multiple measurements
@@ -188,7 +200,8 @@ createMeasurementCovariateSettings <- function(
     unitSet = NULL,
     startDay=-30, 
     endDay=0, 
-    scaleMap = function(x){sapply(x, function(y){y})}, 
+    scaleMap = function(x){return(x)}, 
+    ageInteract = FALSE,
     minVal = NULL,
     maxVal = NULL,
     aggregateMethod = 'recent',
@@ -202,6 +215,7 @@ createMeasurementCovariateSettings <- function(
                             startDay=startDay,
                             endDay=endDay,
                             scaleMap=scaleMap,
+                            ageInteract = ageInteract,
                             aggregateMethod = aggregateMethod,
                             minVal = minVal,
                             maxVal = maxVal,

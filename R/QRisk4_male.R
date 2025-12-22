@@ -26,7 +26,7 @@ plpModelQRISK4_male_OG_10 <- PatientLevelPrediction::createGlmModel(
   coefficients = data.frame(
     covariateId = c(
         3466, # Systolic blood pressure
-        21395 # SD of blood pressure                     # TO DO
+        21395, # SD of blood pressure                     # TO DO
         1466, # Cholesterol/HDL
         4466, # Deprivation (Townsend)
         21288665, # Former smoker

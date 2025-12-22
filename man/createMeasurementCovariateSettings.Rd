@@ -11,10 +11,9 @@ createMeasurementCovariateSettings(
   startDay = -30,
   endDay = 0,
   scaleMap = function(x) {
-     sapply(x, function(y) {
-         y
-     })
+     return(x)
  },
+  ageInteract = FALSE,
   minVal = NULL,
   maxVal = NULL,
   aggregateMethod = "recent",
@@ -34,6 +33,8 @@ createMeasurementCovariateSettings(
 \item{endDay}{the end time before index to look for the measurement}
 
 \item{scaleMap}{A function that lets you concept units into a standard unit and do any scaling}
+
+\item{ageInteract}{Whether to do interaction with age in years}
 
 \item{minVal}{NULL or the min valid value for the measurements (value less than this are excluded)}
 

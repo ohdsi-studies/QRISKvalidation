@@ -39,8 +39,8 @@ getCohortMeasurementCovariateData <- function(connection,
                @covariate_id as covariate_id,
                measurement_concept_id, 
                unit_concept_id,",
-               "value_as_number,",
-               "measurement_date,",
+               "m.value_as_number,",
+               "m.measurement_date,",
                "ABS(datediff(dd, measurement_date, c.cohort_start_date)) AS index_time",
                "FROM @cdm_database_schema.measurement m INNER JOIN @cohort_temp_table c 
                 ON c.subject_id = m.person_id",
@@ -57,7 +57,7 @@ getCohortMeasurementCovariateData <- function(connection,
                {@use_min}?{AND value_as_number >= @min_val}
                {@use_max}?{AND value_as_number <= @max_val}
                {@restrict_units}?{
-               AND (unit_concept_id IN (@units) {@na_unit}?{OR unit_concept_id  = 'NA'})
+               AND (unit_concept_id IN (@units) {@na_unit}?{OR unit_concept_id  is NULL})
                }
                ;
                "
@@ -137,7 +137,7 @@ getCohortMeasurementCovariateData <- function(connection,
       )
   }
   
-  covariates <- covariates %>% dplyr::select(rowId, covariateId, covariateValue)
+  covariates <- covariates %>% dplyr::select("rowId", "covariateId", "covariateValue")
   
   
   # Construct covariate reference:
