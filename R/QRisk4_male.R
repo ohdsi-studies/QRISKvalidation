@@ -46,24 +46,24 @@ plpModelQRISK4_male_OG_10 <- PatientLevelPrediction::createGlmModel(
         21344, # Learning disability
         19881, # Down syndrome
         18821668, # Family history of coronary heart disease
-        18820, # Type I Diabetes
+        18820657, # Type I Diabetes
         18815698, # Type II Diabetes
         19280688, #Treated hypertension
         18838708, # Rheumatoid arthritis
         18841718, # Atrial fibrillation
         21347728, # Renal disease
-        19379, # Migraine
-        21371, # Corticosteroid use
-        19164, # Systemic lupus erythematosus
-        21372, # Atypical antipsychotic use
-        21294, # Severe mental illness
+        19379667, # Migraine
+        21371677, # Corticosteroid use
+        19164687, # Systemic lupus erythematosus
+        21372697, # Atypical antipsychotic use
+        21294707, # Severe mental illness
         19380, # COPD
         19792, # Lung cancer
         19788, # Oral cancer
         19787, # Blood cancer
         19174, # Brain cancer
-        19165, # Erectile dysfunction or treatment
-    ), 
+        19165717, # Erectile dysfunction or treatment
+    ),       
     coefficient = c(0.065, 1.14, 1.15, 0.222, 1.19, 2.00, 2.08, 2.60, 1.00, 1.19, 1.47, 1.41, 1.04, 0.67, 0.66, 0.72, 0.81, 1.00, 1.17, 2.35, 1.62, 3.28, 2.03, 2.20, 1.19, 2.59, 1.70, 1.41, 1.64, 1.68, 1.18, 1.37, 1.66, 1.49, 2.06, 5.45, 1.40
                    )
   ), 
@@ -329,7 +329,30 @@ baseline*exp(x)
       startDay = -9999, 
       endDay = 0
     ),
-      
+
+    #No learning disability 22465654
+    22465, # No learning disability
+
+    #Learning disability 21344664
+    21344, # Learning disability
+
+    #Down syndrome 19881674
+    19881, # Down syndrome
+
+    #COPD 19380684
+    19380, # COPD
+
+    #Lung cancer 19792694
+    19792, # Lung cancer
+
+    #Oral cancer 19788704
+    19788, # Oral cancer
+
+    #Blood cancer 19787714
+    19787, # Blood cancer
+
+    #Brain cancer 19174724
+    19174, # Brain cancer
   )                 
 )
 
