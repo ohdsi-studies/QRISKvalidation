@@ -204,7 +204,7 @@ baseline*exp(x)
                      18820, 19379,
                      21371, 19164,
                      21372, 21294,
-                     19164), 
+                     19165), 
         cohortName = c('Type 2 diabetes','Rheumatoid arthritis',
                        'Atrial fibrillation', 'Renal disease',
                        'Type I Diabetes', 'Migraine',
