@@ -112,7 +112,7 @@ baseline*exp(x)
     
     # current smoker - covariateId 19285678
     FeatureExtraction::createCohortBasedCovariateSettings(
-      analysisId = 668, 
+      analysisId = 678, 
       covariateCohortDatabaseSchema = cohortDatabaseSchema,
       covariateCohortTable = cohortTableName, 
       covariateCohorts = data.frame(
