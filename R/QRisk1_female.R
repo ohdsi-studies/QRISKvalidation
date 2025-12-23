@@ -46,13 +46,12 @@ plpModelQRISK1_female_OG_10 <- PatientLevelPrediction::createGlmModel(
       19280688, # treatment blood pressure needs to be on index - 30 prior
       19280768 # interaction for systolic blood pressure×blood pressure treatment
     ), 
-    coefficient = c(50.634, 
-                    1.001, 1.022, 1.300, 1.417, 1.017, 1.004, 1.847, 0.993
-    ) 
+    coefficient = c(87.75, 1.001, 1.015, 1.229, 1.530, 1.035, 1.005, 1.734, 0.996
+                   ) 
   ), 
   intercept = 0, 
   mapping = "function(x){ sapply(x, function(x){
-baseline <- 0.1225593
+baseline <- 0.07464244
 baseline*exp(x)
 })}", 
   populationSettings = PatientLevelPrediction::createStudyPopulationSettings(
