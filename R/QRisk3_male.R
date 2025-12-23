@@ -61,7 +61,7 @@ plpModelQRISK3_male_OG_10 <- PatientLevelPrediction::createGlmModel(
         
         1486, # Cholesterol/HDL
         3466, # Systolic blood pressure
-        3467 # SD of blood pressure                                                           #TO DO
+        3467 # SD of blood pressure                                                           
     ), 
     coefficient = c(0.236, 1.00, 1.32, 1.61, 1.70, 1.04, 0.699, 0.670, 0.660, 0.769, 1.00, 1.21, 1.74, 1.89, 2.20, 1.72, 3.44, 2.36, 1.68, 1.23, 2.42, 2.05, 1.29, 1.58, 1.55, 1.14, 1.13, 1.25, 1.19, 0.057, 0.111
                    )  
