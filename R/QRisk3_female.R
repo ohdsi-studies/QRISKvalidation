@@ -57,7 +57,6 @@ plpModelQRISK3_female_OG_10 <- PatientLevelPrediction::createGlmModel(
         19164668, # Systemic lupus erythematosus
         21372668, # Atypical antipsychotic use
         21294668, # Severe mental illness
-        19165668, # Erectile dysfunction or treatment
         
         1486, # Cholesterol/HDL
         3466, # Systolic blood pressure
@@ -193,7 +192,6 @@ baseline*exp(x)
     # SLE 19164668
     # Atypical antipsychotic use 21372668
     # Severe mental illness 21294668
-    # Erectile dysfunction or treatment 19165668
     FeatureExtraction::createCohortBasedCovariateSettings(
       analysisId = 668, 
       covariateCohortDatabaseSchema = cohortDatabaseSchema,
@@ -203,15 +201,14 @@ baseline*exp(x)
                      18841, 21347,
                      18820, 19379,
                      21371, 19164,
-                     21372, 21294,
-                     19164), 
+                     21372, 21294
+                     )
         cohortName = c('Type 2 diabetes','Rheumatoid arthritis',
                        'Atrial fibrillation', 'Renal disease',
                        'Type I Diabetes', 'Migraine',
                        'Corticosteroids', 'SLE',
                        'Atypical antipsychotic use',
-                       'Severe mental illness',
-                       'Erectile dysfunction'
+                       'Severe mental illness'
                        )
       ), 
       valueType = 'binary', 
