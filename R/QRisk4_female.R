@@ -1,4 +1,4 @@
-#' Create qrisk 4 model for males using Qrisk cohorts
+#' Create qrisk 4 model for females using Qrisk cohorts
 #'
 #' @details
 #' The user specifies 
@@ -11,16 +11,16 @@
 #' An plpModel
 #' 
 #' @export
-createQRISK4MaleOG10 <- function(
+createQRISK4FemaleOG10 <- function(
     cohortDatabaseSchema,
     cohortTableName = 'qrisk_cprd',
     sampleSize = 10000
   ){
   
-  # Male qrisk4
+  # Female qrisk4
     
-plpModelQRISK4_male_OG_10 <- PatientLevelPrediction::createGlmModel(
-  targetId = 7, # the first cohort I create manually
+plpModelQRISK4_female_OG_10 <- PatientLevelPrediction::createGlmModel(
+  targetId = 8, 
   outcomeId = 21397, 
   restrictPlpDataSettings = PatientLevelPrediction::createRestrictPlpDataSettings(
     sampleSize = sampleSize # sampling for testing
@@ -75,7 +75,7 @@ plpModelQRISK4_male_OG_10 <- PatientLevelPrediction::createGlmModel(
   ), 
   intercept = 0, 
   mapping = "function(x){ sapply(x, function(x){
-baseline <- 0.03550895
+baseline <- 0.02123679
 baseline*exp(x)
 })}", 
   populationSettings = PatientLevelPrediction::createStudyPopulationSettings(
@@ -306,5 +306,5 @@ baseline*exp(x)
   )                 
 )
 
-return(plpModelQRISK4_male_OG_10)
+return(plpModelQRISK4_female_OG_10)
 }
