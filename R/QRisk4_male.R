@@ -99,9 +99,9 @@ baseline*exp(x)
         return(covariates)
       }, 
       minVal1 = 0,
-      maxVal1 = 5000, # is there a max value that past this must be an error?
+      maxVal1 = 1000, 
       minVal2 =  0,
-      maxVal2 = NULL, # is there a max value that past this must be an error?
+      maxVal2 = 250, 
       aggregateMethod = 'recent',
       covariateId = 1486, 
       analysisId = 486
