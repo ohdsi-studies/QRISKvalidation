@@ -69,7 +69,7 @@ plpModelQRISK4_female_OG_10 <- PatientLevelPrediction::createGlmModel(
         19787668, # Blood cancer
         19174668, # Brain cancer
         19793668, # Post natal depression
-        14512668 # Pre eclampsia
+        14512668  # Pre eclampsia
     ),       
     coefficient = c(0.0635, 1.16, 1.14, 0.252, 1.19, 2.12, 2.30, 2.90, 1.00, 1.13, 1.56, 1.28, 0.98, 0.94, 0.76, 0.68, 0.94, 1.00, 1.45, 3.18, 1.46, 4.52, 2.49, 2.20, 1.28, 4.50, 1.81, 1.46, 1.70, 2.22, 1.24, 1.22, 1.85, 3.50, 1.55, 2.13, 4.52, 1.18, 1.56) 
   ), 
