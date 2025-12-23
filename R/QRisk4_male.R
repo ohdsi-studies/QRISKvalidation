@@ -61,7 +61,6 @@ plpModelQRISK4_male_OG_10 <- PatientLevelPrediction::createGlmModel(
         19379668, # Migraine
         21371668, # Corticosteroid use
         19164668, # Systemic lupus erythematosus
-        21372668, # Atypical antipsychotic use
         21294668, # Severe mental illness
         19380668, # COPD
         19792668, # Lung cancer
