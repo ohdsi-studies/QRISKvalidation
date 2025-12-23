@@ -20,7 +20,7 @@ createQRISK3FemaleOG10 <- function(
   # Female qrisk3
     
 plpModelQRISK3_female_OG_10 <- PatientLevelPrediction::createGlmModel(
-  targetId = 5, # the first cohort I create manually
+  targetId = 6, # the first cohort I create manually
   outcomeId = 21397, 
   restrictPlpDataSettings = PatientLevelPrediction::createRestrictPlpDataSettings(
     sampleSize = sampleSize # sampling for testing
