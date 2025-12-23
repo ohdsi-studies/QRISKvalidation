@@ -18,15 +18,6 @@ createQRISK1FemaleOG10 <- function(
   ){
   
   # Female qrisk
-  # 50.634* log(age/10)
-  # 1.001*Ratio of total serum cholesterol to high density lipoprotein cholesterol levels
-  # 1.022*BMI
-  # 1.300*Family history of premature cardiovascular disease
-  # 1.417*smoking
-  # 1.017*townsend
-  # 1.004*sys blood pressure
-  # 1.847* treatment blood pressure at index
-  # 0.993*Interaction terms for systolic blood pressure×blood pressure treatment
   
 plpModelQRISK1_female_OG_10 <- PatientLevelPrediction::createGlmModel(
   targetId = 2, 
