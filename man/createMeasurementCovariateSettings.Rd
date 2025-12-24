@@ -14,6 +14,8 @@ createMeasurementCovariateSettings(
      return(x)
  },
   ageInteract = FALSE,
+  logAgeInteract = FALSE,
+  ageScale = 1,
   minVal = NULL,
   maxVal = NULL,
   aggregateMethod = "recent",
@@ -34,7 +36,11 @@ createMeasurementCovariateSettings(
 
 \item{scaleMap}{A function that lets you concept units into a standard unit and do any scaling}
 
-\item{ageInteract}{Whether to do interaction with age in years}
+\item{ageInteract}{Whether to do interaction with age/ageScale in years}
+
+\item{logAgeInteract}{Whether to do interaction with log(age/ageScale) in years}
+
+\item{ageScale}{A value to divide age by for the age/logAge interaction}
 
 \item{minVal}{NULL or the min valid value for the measurements (value less than this are excluded)}
 

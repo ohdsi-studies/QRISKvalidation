@@ -128,10 +128,14 @@ getMeasurementCovariateData <- function(connection,
       )
   }
   
-  # do age interaction
+  # do age interaction or log age 
   if(covariateSettings$ageInteract){
     covariates <- covariates %>% 
-      dplyr::mutate(covariateValue = .data$covariateValue*.data$ageInYears)
+      dplyr::mutate(covariateValue = .data$covariateValue*.data$ageInYears/covariateSettings$ageScale)
+  }
+  if(covariateSettings$logAgeInteract){
+    covariates <- covariates %>% 
+      dplyr::mutate(covariateValue = .data$covariateValue*log(.data$ageInYears/covariateSettings$ageScale))
   }
   
   # add covariateID:
@@ -182,7 +186,9 @@ getMeasurementCovariateData <- function(connection,
 #' @param startDay the start time before index to look for the measurement
 #' @param endDay the end time before index to look for the measurement
 #' @param scaleMap A function that lets you concept units into a standard unit and do any scaling
-#' @param ageInteract Whether to do interaction with age in years
+#' @param ageInteract Whether to do interaction with age/ageScale in years
+#' @param logAgeInteract Whether to do interaction with log(age/ageScale) in years
+#' @param ageScale A value to divide age by for the age/logAge interaction
 #' @param minVal NULL or the min valid value for the measurements (value less than this are excluded)
 #' @param maxVal NULL or the max valid value for the measurements (value more than this are excluded)
 #' @param aggregateMethod one of max/min/mean/median/recent how to handle multiple measurements
@@ -202,12 +208,25 @@ createMeasurementCovariateSettings <- function(
     endDay=0, 
     scaleMap = function(x){return(x)}, 
     ageInteract = FALSE,
+    logAgeInteract = FALSE,
+    ageScale = 1,
     minVal = NULL,
     maxVal = NULL,
     aggregateMethod = 'recent',
     covariateId = 1466,
     analysisId = 466
 ) {
+  
+  if(ageInteract & logAgeInteract){
+    stop(paste0('Error - max of one of logAgeInteract and ageInteract can be TRUE'))
+  }
+  
+  if(!inherits(ageScale, 'numeric')){
+    stop('ageScale must be numeric')
+  }
+  if(ageScale == 0){
+    stop('ageScale cannot be 0')
+  }
   
   covariateSettings <- list(covariateName=covariateName, 
                             conceptSet=conceptSet,
@@ -216,6 +235,8 @@ createMeasurementCovariateSettings <- function(
                             endDay=endDay,
                             scaleMap=scaleMap,
                             ageInteract = ageInteract,
+                            logAgeInteract = logAgeInteract,
+                            ageScale = ageScale,
                             aggregateMethod = aggregateMethod,
                             minVal = minVal,
                             maxVal = maxVal,

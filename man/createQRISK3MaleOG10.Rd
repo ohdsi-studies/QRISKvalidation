@@ -4,12 +4,18 @@
 \alias{createQRISK3MaleOG10}
 \title{Create qrisk 3 model for males using Qrisk cohorts}
 \usage{
-createQRISK3MaleOG10(cohortDatabaseSchema, cohortTableName = "qrisk_cprd")
+createQRISK3MaleOG10(
+  cohortDatabaseSchema,
+  cohortTableName = "qrisk_cprd",
+  sampleSize = 10000
+)
 }
 \arguments{
 \item{cohortDatabaseSchema}{the schema where the cohorts are generated into}
 
 \item{cohortTableName}{the cohort table name}
+
+\item{sampleSize}{the sample size to take of the target cohort if it is too large}
 }
 \value{
 An plpModel

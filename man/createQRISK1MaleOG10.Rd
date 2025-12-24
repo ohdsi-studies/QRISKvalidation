@@ -2,20 +2,26 @@
 % Please edit documentation in R/QRisk1_male.R
 \name{createQRISK1MaleOG10}
 \alias{createQRISK1MaleOG10}
-\title{Create qrisk 1 model for males usign Qrisk cohorts}
+\title{Create qrisk 1 model for males using Qrisk cohorts}
 \usage{
-createQRISK1MaleOG10(cohortDatabaseSchema, cohortTableName = "qrisk_cprd")
+createQRISK1MaleOG10(
+  cohortDatabaseSchema,
+  cohortTableName = "qrisk_cprd",
+  sampleSize = 10000
+)
 }
 \arguments{
 \item{cohortDatabaseSchema}{the schema where the cohorts are generated into}
 
 \item{cohortTableName}{the cohort table name}
+
+\item{sampleSize}{the sample size to take of the target cohort if it is too large}
 }
 \value{
 An plpModel
 }
 \description{
-Create qrisk 1 model for males usign Qrisk cohorts
+Create qrisk 1 model for males using Qrisk cohorts
 }
 \details{
 The user specifies
