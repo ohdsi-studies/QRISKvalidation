@@ -17,10 +17,8 @@ createQRISK1FemaleOG10 <- function(
     sampleSize = 10000
   ){
   
-  # Female qrisk
-  
 plpModelQRISK1_female_OG_10 <- PatientLevelPrediction::createGlmModel(
-  targetId = 2, 
+  targetId = 2, # the first cohort I create manually
   outcomeId = 21397, 
   restrictPlpDataSettings = PatientLevelPrediction::createRestrictPlpDataSettings(
     sampleSize = sampleSize # sampling for testing
@@ -37,12 +35,13 @@ plpModelQRISK1_female_OG_10 <- PatientLevelPrediction::createGlmModel(
       19280688, # treatment blood pressure needs to be on index - 30 prior
       19280768 # interaction for systolic blood pressure×blood pressure treatment
     ), 
-    coefficient = c(87.75, 1.001, 1.015, 1.229, 1.530, 1.035, 1.005, 1.734, 0.996
-                   ) 
+    coefficient = c(87.75, 
+                    1.001, 1.015, 1.229, 1.530, 1.035, 1.005, 1.734, 0.996
+    ) 
   ), 
   intercept = 0, 
   mapping = "function(x){ sapply(x, function(x){
-baseline <- 0.07464244
+baseline <- 0.07464244                 
 baseline*exp(x)
 })}", 
   populationSettings = PatientLevelPrediction::createStudyPopulationSettings(
