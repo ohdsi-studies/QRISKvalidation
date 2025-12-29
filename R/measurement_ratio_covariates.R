@@ -53,7 +53,7 @@ getMeasurementRatioCovariateData <- function(connection,
                {@use_min}?{AND value_as_number >= @min_val}
                {@use_max}?{AND value_as_number <= @max_val}
                {@restrict_units}?{
-               AND (unit_concept_id IN (@units) {@na_unit}?{OR unit_concept_id  = 'NA'})
+               AND (unit_concept_id IN (@units) {@na_unit}?{OR unit_concept_id is NULL})
                }
                ;
                "
@@ -85,6 +85,9 @@ getMeasurementRatioCovariateData <- function(connection,
   colnames(covariates1) <- SqlRender::snakeCaseToCamelCase(colnames(covariates1))
   
   # map data:
+  if(nrow(covariates1) == 0){
+    return(NULL)
+  } else {
   covariates1 <- covariates1[!is.na(covariates1$valueAsNumber),]
   
   #==================
@@ -113,6 +116,9 @@ getMeasurementRatioCovariateData <- function(connection,
   colnames(covariates2) <- SqlRender::snakeCaseToCamelCase(colnames(covariates2))
   
   # map data:
+  if(nrow(covariates2) == 0){
+    return(NULL)
+    } else{
   covariates2 <- covariates2[!is.na(covariates2$valueAsNumber),]
   
   #==================
@@ -256,6 +262,8 @@ getMeasurementRatioCovariateData <- function(connection,
                                  analysisRef = analysisRef)
   class(result) <- "CovariateData"	
   return(result)
+  }
+  } 
 }
 
 #' Create covariates settings for measurements
