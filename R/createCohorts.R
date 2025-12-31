@@ -19,8 +19,7 @@ generateCohorts <- function(
   
   cohortDefinitionSet <- readRDS(system.file('cohortDefinitionSet.rds', package = 'QRISKvalidation'))
   
-  21397
-  
+
   cohortTableNames <- CohortGenerator::getCohortTableNames(
     cohortTable = cohortTable
   )
@@ -110,8 +109,8 @@ generateCohorts <- function(
       gender = male,
       minAge = 18,
       maxAge = 84,
-      startDate = '1998-01-01',
-      endDate = '2015-12-31',
+      startDate = '2010-01-01',
+      endDate = '2021-12-31',
       exclusions = c(statins, cardio) # also needs townsend?
     ),
     
