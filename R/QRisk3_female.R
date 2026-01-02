@@ -83,7 +83,7 @@ plpModelQRISK3_female_OG_10 <- PatientLevelPrediction::createGlmModel(
         #18838668, # Rheumatoid arthritis
         21347668123, # Renal disease
         #21294668, # Severe mental illness
-        #19164668, # Systemic lupus erythematosus
+        19164668, # Systemic lupus erythematosus
         19280688123, # TODO- Treated hypertension
         18820668123, # Type I Diabetes
         18815668123, # Type II Diabetes
@@ -106,7 +106,7 @@ plpModelQRISK3_female_OG_10 <- PatientLevelPrediction::createGlmModel(
         #18838668, # Rheumatoid arthritis
         21347668124, # Renal disease
         #21294668, # Severe mental illness
-        #19164668, # Systemic lupus erythematosus
+        19164668, # Systemic lupus erythematosus
         19280688124, # TODO- Treated hypertension
         18820668124, # Type I Diabetes
         18815668124, # Type II Diabetes
@@ -163,7 +163,7 @@ plpModelQRISK3_female_OG_10 <- PatientLevelPrediction::createGlmModel(
       -0.9840804523593628100000000, #steroids
       1.7634979587872999000000000, #migraine
       -3.5874047731694114000000000, # renal          
-        #SLE?
+      19.6903037386382920000000000, #SLE
       11.8728097339218120000000000, #treated hyper
       -1.2444332714320747000000000, # type 1
       6.8652342000009599000000000, # type 2
@@ -181,7 +181,8 @@ plpModelQRISK3_female_OG_10 <- PatientLevelPrediction::createGlmModel(
       -0.0761826510111625050000000, #afib
       -0.1200536494674247200000000, #steriods
       -0.0655869178986998590000000, #migraine
-      -0.2268887308644250700000000, #renale              #SLE
+      -0.2268887308644250700000000, #renale              
+       0.0773479496790162730000000, #SLE
       0.0009685782358817443600000, #treated hypertension
       -0.2872406462448894900000000, # type 1
       -0.0971122525906954890000000, #type 2
