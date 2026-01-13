@@ -413,6 +413,39 @@ plpModelQRISK4_male_OG_10 <- PatientLevelPrediction::createGlmModel(
       startDay = -9999, 
       endDay = 0
     ),
+
+    #QRISK4 extras
+    # No learning disability 22465668
+    # Learning disability 21344668
+    # Down syndrome 19881668
+    # COPD 19380668
+    # Lung cancer 19792668
+    # Oral cancer 19788668
+    # Blood cancer 19787668
+    # Brain cancer 19174668
+    
+    FeatureExtraction::createCohortBasedCovariateSettings(
+      analysisId = 668, 
+      covariateCohortDatabaseSchema = cohortDatabaseSchema,
+      covariateCohortTable = cohortTableName, 
+      covariateCohorts = data.frame(
+        cohortId = c(22465, 21344, 19881, 
+                     19380, 19792, 19788, 19787,
+                     19174), 
+        cohortName = c('No learning disability',
+                       'Learning disability',
+                       'Down syndrome',
+                       'COPD',
+                       'Lung cancer',
+                       'Oral cancer',
+                       'Blood cancer',
+                       'Brain cancer'
+                       )
+      ), 
+      valueType = 'binary', 
+      startDay = -9999, 
+      endDay = 0
+    ),
     
     # Non smoker 21287655
     # Former smoker 21288655
