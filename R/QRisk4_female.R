@@ -47,21 +47,23 @@ plpModelQRISK4_female_OG_10 <- PatientLevelPrediction::createGlmModel(
         21344668, # Learning disability 
         19881668, # Down syndrome
         
-        #21287655, # Non smoker
+        21287655, # Non smoker
         21288655, # Former smoker
         21289655, # Light smoker
         21290655, # Moderate smoker
         21291655, # Heavy smoker 
         
         18841668, # Atrial fibrillation
+        21372668, #Atypical antipsychotic use
         19787668, # Blood cancer
         19174668, # Brain cancer
         19380668, # COPD
         21371668, # Corticosteroid use
-        19165668, # Erectile dysfunction or treatment
         19792668, # Lung cancer
         19379668, # Migraine
         19788668, # Oral cancer
+        19793668, # Post natal depression
+        14512668, # Pre eclampsia
         18838668, # Rheumatoid arthritis
         21347668, # Renal disease
         21294668, # Severe mental illness
@@ -70,9 +72,6 @@ plpModelQRISK4_female_OG_10 <- PatientLevelPrediction::createGlmModel(
         18820668, # Type I Diabetes
         18815668, # Type II Diabetes
         18821668, # Family history of coronary heart disease
-
-        19793668, # Post natal depression
-        14512668  # Pre eclampsia
         
         1020, #age1
         2020, #age2
