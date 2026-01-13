@@ -111,6 +111,8 @@ plpModelQRISK4_male_OG_10 <- PatientLevelPrediction::createGlmModel(
         21290655124, # Moderate smoker
         21291655124, # Heavy smoker 
         18841668124, # Atrial fibrillation
+        #Blood cancer
+        #Brain cancer
         #21372668124, # Atypical antipsychotic use
         21371668124, # Corticosteroid use
         19165668124, # Erectile dysfunction or treatment
