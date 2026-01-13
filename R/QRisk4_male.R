@@ -203,7 +203,7 @@ plpModelQRISK4_male_OG_10 <- PatientLevelPrediction::createGlmModel(
       -0.0000712446284345675926895  #Townsend
                    )  
   ), 
-  intercept = 0, 
+  intercept = 0,          #STILL LOOK AT MAPPING
   mapping = "function(x){ sapply(x, function(x){
   (1 - (0.977268040180206)^exp(x) )
 })}", 
