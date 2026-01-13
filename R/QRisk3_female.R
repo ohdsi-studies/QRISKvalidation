@@ -433,8 +433,8 @@ plpModelQRISK3_female_OG_10 <- PatientLevelPrediction::createGlmModel(
       covariateId = 1002, 
       analysisId = 20, 
       mappings = list(
-        function(x){sapply(x, function(x) (x/10)^(-1))},
-        function(x){sapply(x, function(x) (x/10)^3)}
+        function(x){sapply(x, function(x) (x/10)^(-2))},
+        function(x){sapply(x, function(x) (x/10))}
       )
         ),
     
