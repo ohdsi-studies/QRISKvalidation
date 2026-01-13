@@ -47,7 +47,7 @@ plpModelQRISK4_male_OG_10 <- PatientLevelPrediction::createGlmModel(
         21344668, # Learning disability 
         19881668, # Down syndrome
         
-        #21287655, # Non smoker
+        21287655, # Non smoker
         21288655, # Former smoker
         21289655, # Light smoker
         21290655, # Moderate smoker
