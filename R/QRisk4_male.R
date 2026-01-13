@@ -54,10 +54,14 @@ plpModelQRISK4_male_OG_10 <- PatientLevelPrediction::createGlmModel(
         21291655, # Heavy smoker 
         
         18841668, # Atrial fibrillation
-        21372668, # Atypical antipsychotic use
+        19787668, # Blood cancer
+        19174668, # Brain cancer
+        19380668, # COPD
         21371668, # Corticosteroid use
         19165668, # Erectile dysfunction or treatment
+        19792668, # Lung cancer
         19379668, # Migraine
+        19788668, # Oral cancer
         18838668, # Rheumatoid arthritis
         21347668, # Renal disease
         21294668, # Severe mental illness
@@ -66,11 +70,6 @@ plpModelQRISK4_male_OG_10 <- PatientLevelPrediction::createGlmModel(
         18820668, # Type I Diabetes
         18815668, # Type II Diabetes
         18821668, # Family history of coronary heart disease
-        19380668, # COPD
-        19792668, # Lung cancer
-        19788668, # Oral cancer
-        19787668, # Blood cancer
-        19174668, # Brain cancer
         
         1020, #age1
         2020, #age2
@@ -144,19 +143,23 @@ plpModelQRISK4_male_OG_10 <- PatientLevelPrediction::createGlmModel(
       0.7336346084621455654328770, 0.9543555923524250639289335,
       
       # binary
-      0.8820923692805465700000000,
-      0.1304687985517351300000000,
-      0.4548539975044554300000000,
-      0.2225185908670538300000000,
-      0.2558417807415991300000000,
-      0.2097065801395656700000000,
-      0.7185326128827438400000000,
-      0.1213303988204716400000000,
-      0.4401572174457522000000000,
-      0.5165987108269547400000000,
-      1.2343425521675175000000000,
-      0.8594207143093222100000000,
-      0.5405546900939015600000000,
+      0.9499228826197083641602603;
+            double cb_bloodcancer = 0.7234457495597065301851103;
+            double cb_braincancer = 1.6950927431790501209718514;
+            double cb_copd = 0.3130585676582609000462298;
+            double cb_corticosteroids = 0.4960617445738730868498578;
+            double cb_impotence2 = 0.3332089730365202506767730;
+            double cb_lungcancer = 0.5097969118514203978875798;
+            double cb_migraine = 0.3401370244733452619101399;
+            double cb_oralcancer = 0.3973168187492682745798334;
+            double cb_ra = 0.1741572314252004538559504;
+            double cb_renal = 0.5323571529843488248090466;
+            double cb_semi = 0.1666852562198190002007436;
+            double cb_sle = 0.5176501988771743389960989;
+            double cb_treatedhyp = 0.7878502537263655236543514;
+            double cb_type1 = 1.1876309028842588766394783;
+            double cb_type2 = 0.7082139892808299030946273;
+            double cfh_cvd = 0.4819917453481203373222286
       
       # measurements
       -17.8397816660055750000000000,
@@ -403,11 +406,12 @@ plpModelQRISK4_male_OG_10 <- PatientLevelPrediction::createGlmModel(
       covariateCohorts = data.frame(
         cohortId = c(18820, 19379,
                      21371, 19164,
-                     21372, 21294,
+                     #21372, 
+                     21294,
                      19165), 
         cohortName = c('Type I Diabetes', 'Migraine',
                        'Corticosteroids', 'SLE',
-                       'Atypical antipsychotic use',
+                       #'Atypical antipsychotic use',
                        'Severe mental illness',
                        'Erectile dysfunction'
         )
