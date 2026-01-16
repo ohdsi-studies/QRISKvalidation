@@ -11,7 +11,7 @@
 #' An plpModel
 #' 
 #' @export
-createQRISK1MaleOG10 <- function(
+createQRISK2AMaleOG10 <- function(
     cohortDatabaseSchema,
     cohortTableName = 'qrisk_cprd',
     sampleSize = 10000
@@ -19,7 +19,7 @@ createQRISK1MaleOG10 <- function(
   
   # Male qrisk2 2015
     
-plpModelQRISK1_male_OG_10 <- PatientLevelPrediction::createGlmModel(
+plpModelQRISK2A_male_OG_10 <- PatientLevelPrediction::createGlmModel(
   targetId = 3, # the first cohort I create manually
   outcomeId = 21397, 
   restrictPlpDataSettings = PatientLevelPrediction::createRestrictPlpDataSettings(
@@ -449,5 +449,5 @@ plpModelQRISK1_male_OG_10 <- PatientLevelPrediction::createGlmModel(
     
 )
 
-return(plpModelQRISK1_male_OG_10)
+return(plpModelQRISK2A_male_OG_10)
 }
