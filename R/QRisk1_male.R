@@ -52,9 +52,8 @@ plpModelQRISK1_male_OG_10 <- PatientLevelPrediction::createGlmModel(
   ), 
   intercept = 0, 
   mapping = "function(x){ sapply(x, function(x){
-baselineSurv <- 1-0.1225593 # not correct but need a value for now
-1-baselineSurv^exp(x)
-})}", 
+  (1 - (0.8774407)^exp(x) )
+})}",
   populationSettings = PatientLevelPrediction::createStudyPopulationSettings(
     requireTimeAtRisk = FALSE, 
     riskWindowStart = 1, 
