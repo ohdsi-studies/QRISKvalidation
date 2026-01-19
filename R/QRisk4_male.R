@@ -205,7 +205,7 @@ plpModelQRISK4_male_OG_10 <- PatientLevelPrediction::createGlmModel(
   ), 
   intercept = 0,          #STILL LOOK AT MAPPING
   mapping = "function(x){ sapply(x, function(x){
-  (1 - (0.977268040180206)^exp(x) )
+  (1 - (0.9874057)^exp(x) )
 })}", 
   populationSettings = PatientLevelPrediction::createStudyPopulationSettings(
     requireTimeAtRisk = FALSE, 
