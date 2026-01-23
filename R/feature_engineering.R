@@ -1,3 +1,32 @@
+#' Feature engineering that replaces fallback covariate values with preferred values
+#'
+#' @details
+#' For rowIds where both fallback and preferred exist, fallback value is replaced by preferred value.
+#' Optionally drop the preferred covariate after replacement.
+#'
+#' @param fallbackCovariateId covariateId to overwrite (1466)
+#' @param preferredCovariateId covariateId to copy from (8466)
+#' @param dropPreferred whether to remove preferred covariate after replacement
+#' 
+#' @return feature engineering settings list for runPlp()
+#' The feature engineering settings that can be used in runPlp to make a selection between 1466 and 8466 with 8466 being preferred
+#' @export
+createPreferValueAndFillFe <- function(
+    fallbackCovariateId = 1466,
+    preferredCovariateId = 8466,
+    dropPreferred = TRUE
+) {
+  fe <- list(
+    funct = "QRISKvalidation::preferValueAndFillFeFunc",
+    settings = list(
+      fallbackCovariateId = fallbackCovariateId,
+      preferredCovariateId = preferredCovariateId,
+      dropPreferred = dropPreferred
+    )
+    )
+    return(fe)
+}
+
 #' Feature engineering that can add interaction terms for any covariate 
 #'
 #' @details
@@ -91,6 +120,93 @@ createMeasurementFe <- function(
 }
 
 
+#' Prefer preferredCovariateId values; ensure fallbackCovariateId exists and is filled
+#'
+#' @details
+#' This takes the FeatureEngineering settings for preferred value enabling the selection of the preferred value
+#'
+#'
+#' @param trainDate The data to perform the feature engineering to
+#' @param selects a preferred value between two, or ensures one exists
+#' 
+#' @return
+#' The data with a selection made between 1466 and 8466
+#' @export
+                  
+preferValueAndFillFeFunc <- function(trainData,
+                                     fallbackCovariateId,
+                                     preferredCovariateId,
+                                     dropPreferred = TRUE) {
+
+  metaData <- attr(trainData, "metaData")
+  covs <- trainData$covariateData$covariates
+
+  # Collect preferred (8466)
+  preferred <- covs %>%
+    dplyr::filter(.data$covariateId == !!preferredCovariateId) %>%
+    dplyr::select(.data$rowId, preferredValue = .data$covariateValue) %>%
+    dplyr::collect()
+
+  if (nrow(preferred) == 0) {
+    message("Prefer+Fill: no preferred covariate rows found; nothing to do.")
+    attr(trainData, "metaData") <- metaData
+    return(trainData)
+  }
+
+  # Collect fallback (1466) rowIds that exist
+  fallbackRows <- covs %>%
+    dplyr::filter(.data$covariateId == !!fallbackCovariateId) %>%
+    dplyr::select(.data$rowId, fallbackValue = .data$covariateValue) %>%
+    dplyr::collect()
+
+  # 1) Update existing fallback rows using preferred where available
+  updatedFallback <- fallbackRows %>%
+    dplyr::left_join(preferred, by = "rowId") %>%
+    dplyr::mutate(
+      covariateValue = dplyr::if_else(!is.na(.data$preferredValue),
+                                      .data$preferredValue,
+                                      .data$fallbackValue),
+      covariateId = fallbackCovariateId
+    ) %>%
+    dplyr::select(.data$rowId, .data$covariateId, .data$covariateValue)
+
+  # 2) Create fallback rows for rowIds that have preferred but no fallback
+  missingFallback <- preferred %>%
+    dplyr::anti_join(fallbackRows %>% dplyr::select(.data$rowId), by = "rowId") %>%
+    dplyr::transmute(
+      rowId = .data$rowId,
+      covariateId = fallbackCovariateId,
+      covariateValue = .data$preferredValue
+    )
+
+  message(paste0("Prefer+Fill: updating ", nrow(updatedFallback),
+                 " fallback rows; creating ", nrow(missingFallback),
+                 " fallback rows from preferred."))
+
+  # Remove old fallback rows from Andromeda table
+  trainData$covariateData$covariates <- covs %>%
+    dplyr::filter(.data$covariateId != !!fallbackCovariateId)
+
+  # Append updated fallback rows
+  if (nrow(updatedFallback) > 0) {
+    Andromeda::appendToTable(trainData$covariateData$covariates, updatedFallback)
+  }
+
+  # Append newly created fallback rows
+  if (nrow(missingFallback) > 0) {
+    Andromeda::appendToTable(trainData$covariateData$covariates, missingFallback)
+  }
+
+  # Optionally drop preferred rows to avoid having both 1466 and 8466
+  if (isTRUE(dropPreferred)) {
+    trainData$covariateData$covariates <- trainData$covariateData$covariates %>%
+      dplyr::filter(.data$covariateId != !!preferredCovariateId)
+  }
+
+  attr(trainData, "metaData") <- metaData
+  return(trainData)
+}
+               
 
 #' Performs feature engineering that can subtract values enabling centering
 #'
