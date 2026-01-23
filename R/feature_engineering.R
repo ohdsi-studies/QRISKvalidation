@@ -141,7 +141,7 @@ preferValueAndFillFeFunc <- function(trainData,
   metaData <- attr(trainData, "metaData")
   covs <- trainData$covariateData$covariates
 
-  # Collect preferred (8466)
+  #collect preferred (8466)
   preferred <- covs %>%
     dplyr::filter(.data$covariateId == !!preferredCovariateId) %>%
     dplyr::select(.data$rowId, preferredValue = .data$covariateValue) %>%
@@ -153,13 +153,13 @@ preferValueAndFillFeFunc <- function(trainData,
     return(trainData)
   }
 
-  # Collect fallback (1466) rowIds that exist
+  #collect fallback (1466) rowIds that exist
   fallbackRows <- covs %>%
     dplyr::filter(.data$covariateId == !!fallbackCovariateId) %>%
     dplyr::select(.data$rowId, fallbackValue = .data$covariateValue) %>%
     dplyr::collect()
 
-  # 1) Update existing fallback rows using preferred where available
+  # update existing fallback rows using preferred where available
   updatedFallback <- fallbackRows %>%
     dplyr::left_join(preferred, by = "rowId") %>%
     dplyr::mutate(
@@ -170,7 +170,7 @@ preferValueAndFillFeFunc <- function(trainData,
     ) %>%
     dplyr::select(.data$rowId, .data$covariateId, .data$covariateValue)
 
-  # 2) Create fallback rows for rowIds that have preferred but no fallback
+  # create fallback rows for rowIds that have preferred but no fallback
   missingFallback <- preferred %>%
     dplyr::anti_join(fallbackRows %>% dplyr::select(.data$rowId), by = "rowId") %>%
     dplyr::transmute(
@@ -183,21 +183,21 @@ preferValueAndFillFeFunc <- function(trainData,
                  " fallback rows; creating ", nrow(missingFallback),
                  " fallback rows from preferred."))
 
-  # Remove old fallback rows from Andromeda table
+  #remove old fallback rows from Andromeda table
   trainData$covariateData$covariates <- covs %>%
     dplyr::filter(.data$covariateId != !!fallbackCovariateId)
 
-  # Append updated fallback rows
+  #append updated fallback rows
   if (nrow(updatedFallback) > 0) {
     Andromeda::appendToTable(trainData$covariateData$covariates, updatedFallback)
   }
 
-  # Append newly created fallback rows
+  #append newly created fallback rows
   if (nrow(missingFallback) > 0) {
     Andromeda::appendToTable(trainData$covariateData$covariates, missingFallback)
   }
 
-  # Optionally drop preferred rows to avoid having both 1466 and 8466
+  #optionally drop preferred rows to avoid having both 1466 and 8466
   if (isTRUE(dropPreferred)) {
     trainData$covariateData$covariates <- trainData$covariateData$covariates %>%
       dplyr::filter(.data$covariateId != !!preferredCovariateId)
