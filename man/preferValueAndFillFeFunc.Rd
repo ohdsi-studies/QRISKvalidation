@@ -3,35 +3,25 @@
 % Please edit documentation in R/feature_engineering.R
 \name{preferValueAndFillFeFunc}
 \alias{preferValueAndFillFeFunc}
-\title{Prefer preferred covariate values and fill fallback covariate rows}
+\title{Selects preferred covariate values and fill fallback covariate rows}
 \usage{
 preferValueAndFillFeFunc(trainData, fallbackCovariateId, preferredCovariateId, dropPreferred = TRUE)
 }
 \arguments{
-\item{trainData}{The data to perform the feature engineering on. This must contain \code{covariateData} with a \code{covariates} table including \code{rowId}, \code{covariateId}, and \code{covariateValue}.}
+\item{trainData}{The data to perform the feature engineering to description}
 
-\item{fallbackCovariateId}{The covariateId whose values should be overwritten or created (e.g., a derived measurement).}
+\item{fallbackCovariateId}{The covariateId whose values should be overwritten or created}
 
-\item{preferredCovariateId}{The covariateId whose values should be used when available (e.g., a directly recorded measurement).}
+\item{preferredCovariateId}{The covariateId whose values should be used when available}
 
-\item{dropPreferred}{If TRUE, removes rows with \code{preferredCovariateId} after replacement/filling.}
+\item{dropPreferred}{If TRUE, removes rows with \code{preferredCovariateId} after replacement}
 }
 \value{
-The input \code{trainData} object with modified covariate values. Fallback covariates are updated or created as needed, and preferred covariates may be removed.
+The data with measurements mapped as specified
 }
 \description{
-Prefer preferred covariate values and fill fallback covariate rows.
+Selects preferred covariate values and fills fallback covariate row
 }
 \details{
-For each \code{rowId} the following rules are applied:
-
-\itemize{
-  \item If both fallback and preferred covariates exist, the fallback value is replaced with the preferred value.
-  \item If only the preferred covariate exists, a fallback covariate row is created with the preferred value.
-  \item If only the fallback covariate exists, it is left unchanged.
-}
-
-If \code{dropPreferred = TRUE}, the \code{preferredCovariateId} rows are removed after processing.
-This allows downstream models to use a single covariateId consistently while still benefiting
-from higher-quality values when available.
+Given the settings this will select a preferred value
 }
