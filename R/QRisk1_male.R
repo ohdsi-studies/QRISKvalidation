@@ -203,6 +203,8 @@ featureEngineering = list(
       function(x){sapply(x, function(x) log(x/10))}
     )  
   ),
+  QRISKvalidation::preferValueAndFillFe()
+   ,
     QRISKvalidation::createCenteringFe(centers = data.frame(
       covariateId = c(1020, 1466, 2496, 3466),
       centerValue = c(0, 4, 26, 132.6)
