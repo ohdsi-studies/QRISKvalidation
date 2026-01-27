@@ -507,6 +507,8 @@ plpModelQRISK4_female_OG_10 <- PatientLevelPrediction::createGlmModel(
         function(x){sapply(x, function(x) ((x/10)^(-2))*log(x/10))}
       )
     ),
+    QRISKvalidation::createPreferValueAndFillFe()
+   ,
     
     # center all the non-binary
     QRISKvalidation::createCenteringFe(
