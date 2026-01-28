@@ -132,7 +132,6 @@ createMeasurementFe <- function(
 #' @return
 #' The data with a selection made between 1466 and 8466
 #' @export
-                  
 preferValueAndFillFeFunc <- function(trainData,
                                      fallbackCovariateId,
                                      preferredCovariateId,
