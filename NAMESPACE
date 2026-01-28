@@ -2,7 +2,7 @@
 
 export(centeringFeFunc)
 export(preferValueAndFillFeFunc)
-export(createPreferValueAndFillFeFunc
+export(createPreferValueAndFillFeFunc)
 export(convertMeasurementFunc)
 export(createCenteringFe)
 export(createCohortMeasurementCovariateSettings)
