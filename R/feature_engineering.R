@@ -183,7 +183,7 @@ preferValueAndFillFeFunc <- function(trainData,
                  " fallback rows from preferred."))
 
   #remove old fallback rows from Andromeda table
-  trainData$covariateData$covariates <- covs %>%
+  trainData$covariateData$covariates <- trainData$covariateData$covariates %>%
     dplyr::filter(.data$covariateId != !!fallbackCovariateId)
 
   #append updated fallback rows
