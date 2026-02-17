@@ -183,7 +183,7 @@ preferValueAndFillFeFunc <- function(trainData,
                  " fallback rows from preferred."))
 
   #remove old fallback rows from Andromeda table
-  trainData$covariateData$covariates <- trainData$covariateData$covariates %>%
+  trainData$covariateData$covariates <- covs %>%
     dplyr::filter(.data$covariateId != !!fallbackCovariateId)
 
   #append updated fallback rows
@@ -340,27 +340,6 @@ convertMeasurementFunc <- function(trainData,analysisId,covariateId,mappings){
   cData <- trainData$covariateData$covariates %>%
     dplyr::filter(.data$covariateId == !!covariateId) %>%
     dplyr::collect()
-    
-  existing <- trainData$covariateData$analysisRef %>%
-  dplyr::filter(.data$analysisId == !!analysisId) %>%
-  dplyr::tally() %>%
-  dplyr::collect()
-
-  if (nrow(existing) == 0 || is.na(existing$n) || existing$n == 0) {
-  Andromeda::appendToTable(
-    tbl = trainData$covariateData$analysisRef,
-    data = data.frame(
-      analysisId = as.integer(analysisId),
-      analysisName = paste0('Measurement mapping ', covariateId),
-      domainId = 'measurement mapping',
-      startDay = 0,
-      endDay = 0,
-      isBinary = 'N',
-      missingMeansZero = 'Y',
-      stringsAsFactors = FALSE
-    )
-  )
-} 
   
   print(paste0('applying mapping for ', nrow(cData), ' people'))
   
