@@ -229,7 +229,7 @@ getMeasurementRatioCovariateData <- function(connection,
   }
   
   # add covariateID:
-  covariates$covariateId <- covariateSettings$covariateId
+  covariates$covariateId <- rep(covariateSettings$covariateId, nrow(covariates))
   
   covariates <- covariates %>% dplyr::select("rowId", "covariateId", "covariateValue")
   
